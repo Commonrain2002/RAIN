@@ -1,0 +1,916 @@
+{
+  "generated_at": "2026-06-23T16:35:36.157946+00:00",
+  "strategy": "random_only",
+  "count": 100,
+  "repeats": 1,
+  "catalog": "./Evaluation/parcas/parcas_catalog.json",
+  "testlist": "./Evaluation/parcas/TestList.random100.json",
+  "entries": [
+    {
+      "id": 2,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "robin_hood_squares",
+      "start_line": 57,
+      "step_count": 3,
+      "bucket": "random"
+    },
+    {
+      "id": 4,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "list_max_In",
+      "start_line": 140,
+      "step_count": 9,
+      "bucket": "random"
+    },
+    {
+      "id": 19,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "smooth_decreases_squares",
+      "start_line": 487,
+      "step_count": 45,
+      "bucket": "random"
+    },
+    {
+      "id": 32,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "length_replace_zeros",
+      "start_line": 805,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 35,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "replace_zeros_all_pos",
+      "start_line": 832,
+      "step_count": 8,
+      "bucket": "random"
+    },
+    {
+      "id": 36,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "prod_list_pad_ones",
+      "start_line": 852,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 37,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "length_pad_ones",
+      "start_line": 861,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 41,
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "Zgt_imp_le_bool",
+      "start_line": 73,
+      "step_count": 2,
+      "bucket": "random"
+    },
+    {
+      "id": 44,
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "binsearch_bound_ineq",
+      "start_line": 94,
+      "step_count": 11,
+      "bucket": "random"
+    },
+    {
+      "id": 47,
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "binsearch_spec",
+      "start_line": 219,
+      "step_count": 20,
+      "bucket": "random"
+    },
+    {
+      "id": 63,
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "orig_minus_div2_eq",
+      "start_line": 169,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 69,
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "log2_up_ineq",
+      "start_line": 29,
+      "step_count": 22,
+      "bucket": "random"
+    },
+    {
+      "id": 70,
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "log2_up_ineq_we_need",
+      "start_line": 55,
+      "step_count": 13,
+      "bucket": "random"
+    },
+    {
+      "id": 71,
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "log2_up_ineq_div2",
+      "start_line": 73,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 74,
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "double_div2_le",
+      "start_line": 101,
+      "step_count": 2,
+      "bucket": "random"
+    },
+    {
+      "id": 79,
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "nat_pow_ge_1",
+      "start_line": 148,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 81,
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "orig_minus_div2_eq",
+      "start_line": 169,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 82,
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "orig_minus_div2_le_div2",
+      "start_line": 179,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 91,
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_app_inv_2",
+      "start_line": 224,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 95,
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "laslehead_cons",
+      "start_line": 295,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 97,
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_take",
+      "start_line": 321,
+      "step_count": 3,
+      "bucket": "random"
+    },
+    {
+      "id": 100,
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_lookup_take",
+      "start_line": 350,
+      "step_count": 8,
+      "bucket": "random"
+    },
+    {
+      "id": 105,
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "merge_split_middle",
+      "start_line": 420,
+      "step_count": 32,
+      "bucket": "random"
+    },
+    {
+      "id": 114,
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "merge_nil_l",
+      "start_line": 95,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 118,
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "wscredits_split",
+      "start_line": 128,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 121,
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "merge_seq_aux_spec",
+      "start_line": 215,
+      "step_count": 134,
+      "bucket": "random"
+    },
+    {
+      "id": 126,
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sort_span_closed_spec",
+      "start_line": 103,
+      "step_count": 8,
+      "bucket": "random"
+    },
+    {
+      "id": 134,
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sort_spec'",
+      "start_line": 423,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 142,
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "pow2_log2_up_bound",
+      "start_line": 203,
+      "step_count": 18,
+      "bucket": "random"
+    },
+    {
+      "id": 152,
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "merge_work_is_linear",
+      "start_line": 422,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 166,
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "take_snoc",
+      "start_line": 176,
+      "step_count": 8,
+      "bucket": "random"
+    },
+    {
+      "id": 167,
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "technical",
+      "start_line": 190,
+      "step_count": 61,
+      "bucket": "random"
+    },
+    {
+      "id": 182,
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "big_sepM_map_seq_big_sepL",
+      "start_line": 163,
+      "step_count": 10,
+      "bucket": "random"
+    },
+    {
+      "id": 185,
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_load_spec",
+      "start_line": 298,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 194,
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "tie_alloc",
+      "start_line": 20,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 204,
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "gstack_countable",
+      "start_line": 48,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 207,
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "create_spec",
+      "start_line": 151,
+      "step_count": 31,
+      "bucket": "random"
+    },
+    {
+      "id": 208,
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "participant_open",
+      "start_line": 186,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 211,
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "gmap_unreg",
+      "start_line": 244,
+      "step_count": 13,
+      "bucket": "random"
+    },
+    {
+      "id": 215,
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "active_to_passive_commit",
+      "start_line": 301,
+      "step_count": 45,
+      "bucket": "random"
+    },
+    {
+      "id": 220,
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "max_ops_agree",
+      "start_line": 439,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 228,
+      "v_rel_path": "src/examples/tabulate.v",
+      "theorem_name": "tabulate_spec",
+      "start_line": 60,
+      "step_count": 69,
+      "bucket": "random"
+    },
+    {
+      "id": 249,
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_par",
+      "start_line": 48,
+      "step_count": 3,
+      "bucket": "random"
+    },
+    {
+      "id": 263,
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_fork",
+      "start_line": 37,
+      "step_count": 15,
+      "bucket": "random"
+    },
+    {
+      "id": 265,
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_closure",
+      "start_line": 65,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 270,
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_length",
+      "start_line": 94,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 276,
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "graph_fork_incl",
+      "start_line": 47,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 279,
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "sched_step_no_ctx",
+      "start_line": 95,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 290,
+      "v_rel_path": "src/lang/syntax.v",
+      "theorem_name": "expr_size_non_zero",
+      "start_line": 115,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 295,
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "int_op_countable",
+      "start_line": 22,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 307,
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "initial_bound_use",
+      "start_line": 75,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 326,
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "Transferable_reachable",
+      "start_line": 199,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 335,
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "sumall_insert",
+      "start_line": 87,
+      "step_count": 3,
+      "bucket": "random"
+    },
+    {
+      "id": 341,
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_store",
+      "start_line": 214,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 346,
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "wcredits_le",
+      "start_line": 259,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 351,
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_spend_credits",
+      "start_line": 317,
+      "step_count": 10,
+      "bucket": "random"
+    },
+    {
+      "id": 355,
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "add_credits_to_cascade",
+      "start_line": 399,
+      "step_count": 45,
+      "bucket": "random"
+    },
+    {
+      "id": 364,
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_joins_alloc",
+      "start_line": 596,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 365,
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "isjoin_alloc",
+      "start_line": 608,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 371,
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "initial_fork",
+      "start_line": 729,
+      "step_count": 8,
+      "bucket": "random"
+    },
+    {
+      "id": 376,
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "comptree_join",
+      "start_line": 24,
+      "step_count": 7,
+      "bucket": "random"
+    },
+    {
+      "id": 382,
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "reachable_remove_sinks",
+      "start_line": 103,
+      "step_count": 11,
+      "bucket": "random"
+    },
+    {
+      "id": 383,
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "step_preserves_no_loop",
+      "start_line": 121,
+      "step_count": 28,
+      "bucket": "random"
+    },
+    {
+      "id": 390,
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "pureinv_inv_ctx",
+      "start_line": 252,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 402,
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_fupd",
+      "start_line": 28,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 415,
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_load",
+      "start_line": 115,
+      "step_count": 2,
+      "bucket": "random"
+    },
+    {
+      "id": 423,
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_par",
+      "start_line": 181,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 432,
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "elim_acc_wp_atomic",
+      "start_line": 246,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 443,
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_val",
+      "start_line": 162,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 447,
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "to_val_Some_inv",
+      "start_line": 199,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 448,
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "val_inv_final_tree",
+      "start_line": 202,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 457,
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "elim_acc_wp_atomic",
+      "start_line": 316,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 462,
+      "v_rel_path": "src/logic/wpg_more.v",
+      "theorem_name": "wpg_primitive_transfer",
+      "start_line": 129,
+      "step_count": 13,
+      "bucket": "random"
+    },
+    {
+      "id": 481,
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_length",
+      "start_line": 146,
+      "step_count": 12,
+      "bucket": "random"
+    },
+    {
+      "id": 497,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_add",
+      "start_line": 113,
+      "step_count": 3,
+      "bucket": "random"
+    },
+    {
+      "id": 498,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_snoc",
+      "start_line": 121,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 500,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_proper",
+      "start_line": 144,
+      "step_count": 2,
+      "bucket": "random"
+    },
+    {
+      "id": 502,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_proper'",
+      "start_line": 159,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 504,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_reindex_sub",
+      "start_line": 178,
+      "step_count": 11,
+      "bucket": "random"
+    },
+    {
+      "id": 505,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_factorize_gen",
+      "start_line": 194,
+      "step_count": 9,
+      "bucket": "random"
+    },
+    {
+      "id": 511,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_0",
+      "start_line": 265,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 521,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_elem_of_acc",
+      "start_line": 329,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 525,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_exists_from_zero",
+      "start_line": 402,
+      "step_count": 2,
+      "bucket": "random"
+    },
+    {
+      "id": 527,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "nat_to_Qp_succ",
+      "start_line": 415,
+      "step_count": 3,
+      "bucket": "random"
+    },
+    {
+      "id": 533,
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "edge_mon",
+      "start_line": 20,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 541,
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "vertices_singleton",
+      "start_line": 81,
+      "step_count": 2,
+      "bucket": "random"
+    },
+    {
+      "id": 545,
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_onereach",
+      "start_line": 132,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 546,
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_unions",
+      "start_line": 144,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 553,
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_reachables2",
+      "start_line": 226,
+      "step_count": 11,
+      "bucket": "random"
+    },
+    {
+      "id": 555,
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "reachables_subseteq_vertices",
+      "start_line": 246,
+      "step_count": 5,
+      "bucket": "random"
+    },
+    {
+      "id": 556,
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_sources",
+      "start_line": 261,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 566,
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "targets_are_vertices",
+      "start_line": 326,
+      "step_count": 2,
+      "bucket": "random"
+    },
+    {
+      "id": 577,
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_fixpoint_before",
+      "start_line": 128,
+      "step_count": 6,
+      "bucket": "random"
+    },
+    {
+      "id": 578,
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_fixpoint_upper",
+      "start_line": 137,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 580,
+      "v_rel_path": "src/utils/more_iris.v",
+      "theorem_name": "big_sepS_union_persistent",
+      "start_line": 8,
+      "step_count": 9,
+      "bucket": "random"
+    },
+    {
+      "id": 588,
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "lookup_total_insert_case",
+      "start_line": 10,
+      "step_count": 0,
+      "bucket": "random"
+    },
+    {
+      "id": 590,
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "insert_insert_ne",
+      "start_line": 24,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 591,
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "insert_delete_ne",
+      "start_line": 33,
+      "step_count": 7,
+      "bucket": "random"
+    },
+    {
+      "id": 593,
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "map_zip_singleton",
+      "start_line": 57,
+      "step_count": 2,
+      "bucket": "random"
+    },
+    {
+      "id": 594,
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "map_zip_empty",
+      "start_line": 63,
+      "step_count": 0,
+      "bucket": "random"
+    }
+  ],
+  "seed": 20260624,
+  "long_count": 0,
+  "random_count": 100,
+  "longest_ids": [],
+  "random_ids": [
+    2,
+    4,
+    19,
+    32,
+    35,
+    36,
+    37,
+    41,
+    44,
+    47,
+    63,
+    69,
+    70,
+    71,
+    74,
+    79,
+    81,
+    82,
+    91,
+    95,
+    97,
+    100,
+    105,
+    114,
+    118,
+    121,
+    126,
+    134,
+    142,
+    152,
+    166,
+    167,
+    182,
+    185,
+    194,
+    204,
+    207,
+    208,
+    211,
+    215,
+    220,
+    228,
+    249,
+    263,
+    265,
+    270,
+    276,
+    279,
+    290,
+    295,
+    307,
+    326,
+    335,
+    341,
+    346,
+    351,
+    355,
+    364,
+    365,
+    371,
+    376,
+    382,
+    383,
+    390,
+    402,
+    415,
+    423,
+    432,
+    443,
+    447,
+    448,
+    457,
+    462,
+    481,
+    497,
+    498,
+    500,
+    502,
+    504,
+    505,
+    511,
+    521,
+    525,
+    527,
+    533,
+    541,
+    545,
+    546,
+    553,
+    555,
+    556,
+    566,
+    577,
+    578,
+    580,
+    588,
+    590,
+    591,
+    593,
+    594
+  ]
+}

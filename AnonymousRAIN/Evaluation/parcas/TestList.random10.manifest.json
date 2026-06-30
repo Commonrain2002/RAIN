@@ -1,0 +1,107 @@
+{
+  "generated_at": "2026-06-22T11:46:15.289463+00:00",
+  "strategy": "longest_then_random",
+  "count": 10,
+  "repeats": 1,
+  "catalog": "./Evaluation/parcas/parcas_catalog.json",
+  "testlist": "./Evaluation/parcas/TestList.random10.json",
+  "entries": [
+    {
+      "id": 19,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "smooth_decreases_squares",
+      "start_line": 487,
+      "step_count": 45,
+      "bucket": "random"
+    },
+    {
+      "id": 31,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "prod_list_replace_zeros",
+      "start_line": 796,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 37,
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "length_pad_ones",
+      "start_line": 861,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 106,
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "write_merge_spec",
+      "start_line": 468,
+      "step_count": 289,
+      "bucket": "longest"
+    },
+    {
+      "id": 161,
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "list_inv_r",
+      "start_line": 107,
+      "step_count": 2,
+      "bucket": "random"
+    },
+    {
+      "id": 187,
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_store_spec",
+      "start_line": 396,
+      "step_count": 8,
+      "bucket": "random"
+    },
+    {
+      "id": 243,
+      "v_rel_path": "src/lang/head_semantics.v",
+      "theorem_name": "head_step_no_ctx",
+      "start_line": 131,
+      "step_count": 3,
+      "bucket": "random"
+    },
+    {
+      "id": 304,
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "val_countable",
+      "start_line": 172,
+      "step_count": 3,
+      "bucket": "random"
+    },
+    {
+      "id": 321,
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "is_join_mon_fork",
+      "start_line": 137,
+      "step_count": 4,
+      "bucket": "random"
+    },
+    {
+      "id": 489,
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "NoDup_range",
+      "start_line": 46,
+      "step_count": 0,
+      "bucket": "random"
+    }
+  ],
+  "seed": 20260620,
+  "long_count": 1,
+  "random_count": 9,
+  "longest_ids": [
+    106
+  ],
+  "random_ids": [
+    19,
+    31,
+    37,
+    161,
+    187,
+    243,
+    304,
+    321,
+    489
+  ]
+}

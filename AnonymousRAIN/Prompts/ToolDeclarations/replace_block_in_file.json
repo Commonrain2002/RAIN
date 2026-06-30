@@ -1,0 +1,13 @@
+{
+  "name": "replace",
+  "description": "Workflow: before calling this tool, call read_file for the same path with an inclusive 1-based line range covering the edit region, then call replace. Search the entire file for Ordinal literal matches of old_text (including overlaps). Replace with new_text and write to disk only when there is exactly one match. Zero matches return: replace failed: old text not found, please check whether the old text matches the file. Two or more matches return: replace failed: multiple matches found; increase the scope of old text to make the match unique. old_text is required and non-empty; new_text may be empty to delete old_text. On success the result is usually the literal ok. In some sessions the framework may rewrite this tool result to a longer message beginning with OK. Prior bullet edits were omitted. Focus on the current issues: followed by the latest run_check verifier outputcontinue fixing from that output without repeating the same replace.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "path": { "type": "string", "description": "Relative path to the file." },
+      "oldText": { "type": "string", "description": "Exact substring to locate and replace (required, non-empty)." },
+      "newText": { "type": "string", "description": "Replacement for oldText only; may be empty to delete oldText." }
+    },
+    "required": ["path", "oldText", "newText"]
+  }
+}

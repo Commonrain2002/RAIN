@@ -1,0 +1,9 @@
+{
+    "useTreeSearch": true,
+    "maxBudget": 256,
+    "numChildrenPerNode": 4,
+    "maxDepth": 10,
+    "searchAlgorithm": "heuristic",
+    "heuristicFn":"punish_consecutive_heuristic",
+    "initialNumChildrenPerNode":8
+}

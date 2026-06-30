@@ -1,0 +1,11 @@
+
+# Additional Coq error
+
+## Coq Error Message
+{{ErrBlock}}
+
+## Error line around
+{{SourceBlock}}
+
+## Environment before error
+{{EnvBlock}}{{RawCheckBlock}}

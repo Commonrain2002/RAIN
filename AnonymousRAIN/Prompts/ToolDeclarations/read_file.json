@@ -1,0 +1,13 @@
+{
+  "name": "read_file",
+  "description": "Read an inclusive 1-based line range from a file under project root. Each included line is formatted as '{line}: {content}'. If content exists before the requested range, output starts with '...'. If content exists after the requested range, output ends with '...'.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "path": { "type": "string", "description": "Relative POSIX path under project root." },
+      "startLine": { "type": "integer", "description": "Inclusive 1-based start line." },
+      "endLine": { "type": "integer", "description": "Inclusive 1-based end line." }
+    },
+    "required": ["path", "startLine", "endLine"]
+  }
+}

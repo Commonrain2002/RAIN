@@ -1,0 +1,15 @@
+{
+  "name": "search_external",
+  "description": "Recursively scan all Coq (.v) files under the configured extra readable root directories (extraReadableRootPaths in proofagent.config.json). Each listed absolute directory is a root for recursive read-only access. Match each line against a .NET regular expression pattern. Same physical line counts at most once even if the pattern matches multiple times on that line. Default output is absolute path:line per hit (isShowContext false). With isShowContext true, each hit is a block: absolute file path then nearby lines as '{line}: {content}' (ellipsis ... as read_file). Context radius for isShowContext true is set at process startup via CLI. Use offset and maxMatches to paginate. Footers explain when hits or output length are truncated.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "pattern": { "type": "string", "description": ".NET regular expression (Regex) pattern, matched per line." },
+      "caseInsensitive": { "type": "boolean", "description": "If true, use case-insensitive matching (RegexOptions.IgnoreCase)." },
+      "maxMatches": { "type": "integer", "description": "Page size: maximum hits to return after offset (default 250)." },
+      "offset": { "type": "integer", "description": "Skip the first K matching lines before collecting the page (default 0)." },
+      "isShowContext": { "type": "boolean", "description": "If false (default), absolute path:line only. If true, include context snippets per hit." }
+    },
+    "required": ["pattern"]
+  }
+}

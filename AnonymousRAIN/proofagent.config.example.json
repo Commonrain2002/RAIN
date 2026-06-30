@@ -1,0 +1,12 @@
+{
+  "projectRoot": "<COQ_PROJECT_ROOT>",
+  "targetCoqFile": "path/to/Target.v",
+  "checkTimeoutSeconds": 180,
+  "checkCommand": "make -j1",
+  "parseSentenceScript": "vsrocq_split_sentences_CoqStoq",
+  "userMessage": "Complete the theorem containing Admitted. Do not modify theorem statements and do not use Admitted, Abort, Axiom, or similar bypasses. All responses must be in English.",
+  "baseUrl": "https://api.deepseek.com/v1/chat/completions",
+  "model": "deepseek-v4-flash",
+  "reasoningEffort": "max",
+  "extraReadableRootPaths": []
+}

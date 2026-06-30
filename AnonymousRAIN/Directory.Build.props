@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!--  Docs/Regulation.md :/ _ ; IDE  IDE1006 -->
+    <NoWarn>$(NoWarn);IDE1006</NoWarn>
+  </PropertyGroup>
+</Project>

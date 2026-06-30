@@ -1,0 +1,13 @@
+{
+  "name": "read_lemma",
+  "description": "List indexed lemma and theorem statement texts from one Coq (.v) file under project root. Statements were collected at run startup from sentence splitting (vernac_type theorem). Output starts with the relative POSIX path, then statement blocks separated by blank lines. Use offset and maxMatches to paginate through lemmas in file order. Footers explain when lemmas or output length are truncated.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "path": { "type": "string", "description": "Relative POSIX path to a .v file under project root." },
+      "maxMatches": { "type": "integer", "description": "Page size: maximum lemmas to return after offset (default 250)." },
+      "offset": { "type": "integer", "description": "Skip the first K indexed lemmas in this file before collecting the page (default 0)." }
+    },
+    "required": ["path"]
+  }
+}

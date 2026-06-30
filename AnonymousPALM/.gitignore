@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.lia.cache
+
+/evaluation/
+/Eval/Result/
+/workspace/
+/coqstoq_copies/
+/logs/

@@ -1,0 +1,15 @@
+*.aux
+*.vo
+*.vok
+*.glob
+*.vos
+/.env
+.DS_Store
+**/*/.DS_Store
+.Makefile.d
+.Makefile.coq.d
+CoqMakefile.conf
+Makefile
+Makefile.conf
+Makefile.coq.bak
+Makefile.coq.conf

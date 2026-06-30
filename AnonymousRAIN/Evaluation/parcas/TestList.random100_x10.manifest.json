@@ -1,0 +1,7 @@
+{
+  "derived_from": "./Evaluation/parcas/TestList.random100.json",
+  "strategy": "random_only",
+  "count": 100,
+  "repeats_per_id": 10,
+  "seed_note": "same 100 ids as TestList.random100.json (seed 20260624)"
+}

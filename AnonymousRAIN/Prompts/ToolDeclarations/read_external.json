@@ -1,0 +1,13 @@
+{
+  "name": "read_external",
+  "description": "Read an inclusive 1-based line range from a file under a configured extra readable root (extraReadableRootPaths in proofagent.config.json). Each listed absolute directory is a root for recursive read-only access. Each included line is formatted as '{line}: {content}'. If content exists before the requested range, output starts with '...'. If content exists after the requested range, output ends with '...'. Use the absolute file path from search_external as path.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "path": { "type": "string", "description": "Absolute path to a file under one of the directories listed in extraReadableRootPaths." },
+      "startLine": { "type": "integer", "description": "Inclusive 1-based start line." },
+      "endLine": { "type": "integer", "description": "Inclusive 1-based end line." }
+    },
+    "required": ["path", "startLine", "endLine"]
+  }
+}

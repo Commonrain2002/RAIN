@@ -1,0 +1,7 @@
+{
+    "useTreeSearch": true,
+    "maxBudget": 100,
+    "numChildrenPerNode": 2,
+    "maxDepth": 5,
+    "searchAlgorithm": "bfs"
+}

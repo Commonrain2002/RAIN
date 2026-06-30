@@ -1,0 +1,115 @@
+## SSReflect syntax and semantics
+
+When the development uses SSReflect (e.g. `From mathcomp Require Import ...`, `Require Import ssreflect`), write proof scripts in the same MathComp-oriented style as the surrounding `.v` file.
+
+- **Locked subterms**: Subterms shown as `{...}` or `[term]` in the goal are locked. Name them with `have id := term` or `pose id := term`, then rewrite or apply on `id`. Use unlock steps only when the goal shape requires releasing a lock.
+- **Bullets**: Structure branching proofs with `-`, `+`, `*`, and nested bullets so each branch matches one disjunct or case. Keep one meaningful step per sentence after a bullet, as with vanilla Coq.
+- **`have`**: Introduce facts or small subproofs (`have eq0: x = 0 by apply: ...`, `have [H|H] := ...`). Prefer short `by ...` closers instead of long tactic chains inside a single `have`.
+- **`move=>`**: Use SSReflect introduction and forward rewriting (`move=> x y /eq0 ->.`) when nearby proofs do, instead of long `intros` plus separate `rewrite` steps.
+- **Views and suffixes**: Use view notation consistently: `/=` for simplification, and forms such as `apply/`, `rewrite/`, `exact/` with the same argument conventions as lemmas in the same file.
+- **`case`, `elim`, `wlog`**: Prefer SSReflect eliminators (`case: n`, `elim: n`, `wlog: ...`) when the module already uses them, rather than switching to unrelated vanilla `destruct`/`induction` shapes.
+- **`under`**: For rewriting under binders or a fixed subterm, follow local `under ...` / `under->` patterns from adjacent proofs.
+- **`congr`**: Reduce equalities with `congr` on the head constructor (e.g. `congr (_ + _)`, `congr (_ :: _)`) when the goal is an equality between applications.
+- **Closing subgoals**: Close trivial obligations with `by []`, `by apply: lemma`, or `done` / `by done` when the file does; avoid mixing ad hoc heavy automation with `by` style in the same proof without a reason.
+- **Consistency**: Match naming, bullets, and tactic vocabulary of lemmas in the same module. Do not drop vanilla-only tactics (`omega`, undisciplined `auto`) into an SSReflect proof unless imports and local style support them.
+
+### SSReflect worked examples (when to use what, and what changes)
+
+Read each block as: situation  tactic  effect on context and goals. Names are illustrative; match types and lemmas from the file you edit.
+
+**Locked subterm  use `pose` / `have` when a subterm is frozen in the goal**
+
+- Before (goal may print a lock): `forall n m, [n + m] + 0 = n + m` or the same with `{n + m}` inside the conclusion.
+- Wrong habit: `rewrite add0n` on the whole goal often fails because the locked spine cannot be rewritten in place.
+- `pose s := n + m.`  adds `s : nat` and `s = n + m` to the context; the goal still mentions the locked copy until you relate them.
+- `have -> s := n + m.` or `rewrite -/s` / `unlock` (as used locally)  replaces the locked occurrence with `s` so later `rewrite add0n` or `apply: lemma` can target `s`.
+- After (typical): goal `forall n m, s + 0 = s` with `s = n + m` in context; then one step `rewrite add0n` closes or simplifies.
+
+**`move=>`  combine intro, view, and forward rewrite (replaces `intros` + `rewrite` chains)**
+
+- Before: `forall n m, n + 0 = n -> m + n = m + n`.
+- `move=> n m /add0n ->.`  introduces `n`, `m`, rewrites with lemma/view `add0n` (here `n + 0 = n`) in hypotheses and goal in the forward direction (`->`).
+- After: often `m + n = m + n` with `n` and `m` in context and the `n + 0` redex gone; next step may be `rewrite addnC` or `by []` if definitional.
+- Before: `forall x y, x = 0 -> y = 0 -> x + y = 0`.
+- `move=> x y eqx eqy.`  plain introduction (like `intros x y eqx eqy`).
+- `move=> x y /eqx /eqy ->.`  substitutes `x` and `y` using the equalities forward through the goal.
+- After: goal may become `0 + 0 = 0` (then `by []` or `rewrite !add0n`).
+
+**`rewrite` with views  `/=`, `!`, `-`, `->`**
+
+- Before: `0 + (n + m) = n + m`.
+- `rewrite /=.`  runs configured simplification (often unfolding `add0`, `mul1`, etc.); goal becomes `n + m = n + m` if no extra steps needed.
+- Before: context has `H : a = b` and goal mentions `f a`.
+- `rewrite H.`  replaces `a` with `b` in goal (and optionally elsewhere per flags).
+- `rewrite -H.`  replaces `b` with `a` (backward).
+- `rewrite !H.`  repeats until no change; use when one pass leaves a redex.
+- `rewrite -> H` in `move=>`  same as forward substitution during introduction.
+
+**`apply/` and `exact/`  lemma + view in one step**
+
+- Before: goal `0 < n.+1` (MathComp successor notation).
+- `apply: ltnW.`  if the lemma expects a proof of `m < n`, SSReflect inserts coercions/views so `n.+1` matches; may leave implicit arguments as `_` in the goal.
+- Before: goal is exactly the conclusion of `addnC : forall m n, m + n = n + m`.
+- `exact: addnC.`  closes the goal; if arguments are missing, use `exact: (addnC n m).` or `apply: addnC` then solve generated subgoals with `by []`.
+- Effect: unlike vanilla `apply`, `apply/` respects canonical argument order and display forms from the library.
+
+**`have`  local fact or subproof without leaving the proof**
+
+- Before: goal `n + m = m + n` and you need `n + m = m + n` broken into smaller facts.
+- `have swap: n + m = m + n by apply: addnC.`  proves `swap` in place; context gains `swap`; main goal unchanged until you `exact: swap` or `rewrite swap`.
+- Before: goal `((n == 0) && (m == 0)) = true` (example shape).
+- `have /andP [eqn eqm].`  performs case analysis via a view lemma; context gains `eqn : n == 0` and `eqm : m == 0`; goal becomes the remaining conjunct or `true = true`.
+- `have [Hn | Hn] := eqn.`  on `eqn : n == 0`, splits bool equality into `Hn : n = 0` or `Hn : n != 0` depending on the lemma; creates two subgoals if the main goal depends on the case.
+
+**`case:`  case analysis on a term (prefer over vanilla `destruct` when the file uses SSReflect)**
+
+- Before: `b || true = true` with `b : bool`.
+- `case: b.`  two goals: `true || true = true` and `false || true = true` (often then `rewrite /=` / `by []` on each).
+- Before: `forall n, (n == 0) || (n != 0) = true`.
+- `case: n.`  one goal per constructor of `n` (e.g. `n = 0` and `n = S n'`); context may gain `n = 0` or `n = S n'`.
+- Bullets: after `case: n`, use `-` for the `0` branch and `-` for the `S _` branch so Coq tracks which subgoal you edit; changing the `case:` line invalidates both branches.
+
+**`elim:`  induction / recursion principle (replaces `induction` + custom names)**
+
+- Before: `forall n, n + 0 = n`.
+- `elim: n.`  base goal `0 + 0 = 0` and step `forall n', n' + 0 = n' -> S n' + 0 = S n'` (exact shape depends on `n`'s type).
+- Before: `forall l, size l = length l` on a list `l`.
+- `elim: l.`  base `size [] = length []` and step with `l = r :: l'` and IH on `l'`.
+- Use when the goal is universally quantified over the recursive argument; do not mix `elim: n` with a later vanilla `induction n` on the same variable.
+
+**`wlog:`  reduce to a weaker case, then inherit the general result**
+
+- Before: hard goal `forall n m, P n m` with symmetry or monotonicity in the library.
+- `wlog: /without_loss m n /general P.`  first proves a special case (fewer variables or ordered arguments), then lifts to the full goal using a supplied lemma pattern.
+- Effect: temporarily replaces the main goal with a smaller one; after the special case is done, the general goal is restored as a subgoal or solved by the wlog lemma.
+
+**`congr`  peel an equality through a constructor**
+
+- Before: `n + c = m + c` (same `c` on both sides).
+- `congr (_ + _).`  two subgoals: `n = m` and `c = c`; the second is often `by []` / reflexivity.
+- Before: `h :: t = h' :: t'`.
+- `congr (_ :: _).`  subgoals `h = h'` and `t = t'`.
+- Do not use `congr` when the head is not the same constructor on both sides (will fail); use `case:` or rewrite to align shapes first.
+
+**`under`  rewrite under a binder or fixed subterm**
+
+- Before: `forall x, f (g x) = h x` and you need to change `g x` inside the body.
+- `under g.`  rewrites in the body while `g` is abstracted; paired with `under->` or `under eq.` to discharge the abstraction obligation.
+- Effect: avoids manual `pattern (g x)` + `change` + `refine` sequences; follow the same `under`/`under->` spelling as neighboring proofs.
+
+**`by` / `done`  close the current goal only**
+
+- `by [].`  closes if the goal is trivial (reflexivity, constructor with no args, etc.).
+- `have H: Q by apply: leq_trans.`  runs a micro-proof for `Q`; if `by` fails, the whole `have` fails (no silent partial progress).
+- `by rewrite addnC.`  one-shot rewrite then close; if rewrite leaves a non-trivial goal, error.
+- `done.`  attempts several small closing tactics; use when the file already uses `done` for finishing branches.
+
+**Choosing tactics (quick map)**
+
+- Need to introduce forall / implications  `move=>` (with `/lemma` and `->` when you rewrite while introducing).
+- Need case on one value  `case:` + bullets; need induction  `elim:` + bullets.
+- Need a local lemma  `have ... by ...` then `exact:` / `rewrite`.
+- Need to simplify both sides  `rewrite /=` or `apply/` with `/=`.
+- Need to split an equality of applications  `congr`.
+- Need to rewrite inside a binder  `under` (if the file uses it).
+- Subterm locked in the goal display  `pose` / `have` + unlock or `rewrite -/name` before heavy rewrites.

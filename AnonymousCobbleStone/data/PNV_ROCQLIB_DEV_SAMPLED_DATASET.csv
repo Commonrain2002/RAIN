@@ -1,0 +1,11 @@
+example_name
+PnVRocqLib-Aczel.v-empty_spec
+PnVRocqLib-Aczel.v-union_spec
+PnVRocqLib-BasicFol.v-trms_is_enumerable
+PnVRocqLib-BasicFol2.v-twilight_chi_frm
+PnVRocqLib-HilbertFol.v-Gen_preserves_truth
+PnVRocqLib-HilbertFol.v-proof_dne
+PnVRocqLib-Prelude.v-Some_ne_None
+PnVRocqLib-Prelude.v-isCompatibleWith_eqProp_exists
+PnVRocqLib-PropositionalLogic.v-cl_isSubsetOf_Th
+PnVRocqLib-PropositionalLogic.v-inconsistent_cl_iff

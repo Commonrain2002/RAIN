@@ -1,0 +1,14 @@
+version: 1
+loggers:
+  prompts-for-proofs: DEBUG 
+<<<<<<< Updated upstream
+=======
+  # prompts-for-proofs.strategy: DEBUG
+  # prompts-for-proofs.agent: DEBUG
+  # prompts-for-proofs.evaluation: DEBUG
+  # prompts-for-proofs.coq_serapy_util: DEBUG
+  # prompts-for-proofs.main: INFO
+  # prompts-for-proofs.tree_search: DEBUG
+  # prompts-for-proofs.environment.premise_selection: DEBUG
+  # prompts-for-proofs.environment.editor: DEBUG
+>>>>>>> Stashed changes

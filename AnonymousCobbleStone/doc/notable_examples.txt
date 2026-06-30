@@ -1,0 +1,30 @@
+# fix_error
+
+This experiment is centered around giving the model the option to:
+
+- fetch definitions using check/print
+- search for relevant lemmas
+- iteratively edit the proof
+
+## Notable examples
+
+### F_mon
+
+successful proof:
+print fix_error__weak_up_to_F_mon_chat --revision fix_error__weak_up_to_F_mon_chat:30e52f8b3a3ff67476b384fa829f7c89 --run 1690766368
+
+### weak_refl
+
+print fix_error__weak_up_to_weak_refl --revision fix_error__weak_up_to_weak_refl:62e843427d8ce92ebe67251ea526cfda --run 1692040893260
+
+- weak_refl uses auto, but the prover seems to be avoiding its use. perhaps it needs to be made aware that auto is an option? (or more broadly that other tactics are an option)
+- `Print Hint.` seems like it could be useful as well. getting it to check if it should apply auto
+
+print fix_error__weak_up_to_weak_refl --revision fix_error__weak_up_to_weak_refl:cf3eec4a5a4f2f067f751437456d2aed --run 1692045939839
+
+- when I tell it to use `auto` in a hint, it does use auto and gets to the answer.
+- can it arrive there without my hint?
+
+print fix_error__weak_up_to_weak_refl --revision fix_error__weak_up_to_weak_refl:3b3d62e97e6ea065ecc5ad6f33b1276e --run 1692051103625
+
+- it manages to solve the proof without using auto.

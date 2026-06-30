@@ -1,0 +1,18 @@
+[submodule "coq-projects/weak-up-to"]
+	path = coq-projects/weak-up-to
+	url = https://github.com/sakekasi/weak-up-to.git
+[submodule "coq-projects/coqgym"]
+	path = coq-projects/coqgym
+	url = https://github.com/efirst/coqgym.git
+[submodule "coq-modeling"]
+	path = coq-modeling
+	url = https://github.com/rkthomps/coq-modeling.git
+[submodule "coq-projects/coq-wigderson"]
+	path = coq-projects/coq-wigderson
+	url = https://github.com/siraben/coq-wigderson.git
+[submodule "coq-projects/coq-bb5"]
+	path = coq-projects/coq-bb5
+	url = https://github.com/ccz181078/Coq-BB5.git
+[submodule "coq-projects/PnVRocqLib"]
+	path = coq-projects/PnVRocqLib
+	url = https://github.com/PnVDiscord/PnVRocqLib.git

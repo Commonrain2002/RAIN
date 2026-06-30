@@ -1,0 +1,9 @@
+{
+  "name": "run_check",
+  "description": "Run the same proof check command at project root as the main loop (default: plain make with no -j; or a custom shell line from startup), with the same timeout; returns parsed Coq error, coqtop Hypotheses/Goals when available, and full command output when needed. The tool result may include multiple distinct errors; fix all of them in your edits, not only the first.",
+  "parameters": {
+    "type": "object",
+    "properties": { },
+    "required": []
+  }
+}

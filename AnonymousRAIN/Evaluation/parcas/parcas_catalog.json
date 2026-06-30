@@ -1,0 +1,4214 @@
+{
+  "generated_at": "2026-06-22T15:21:50.021639+00:00",
+  "parcas_path": "${PARCAS_PATH}",
+  "entry_count": 601,
+  "entries": [
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "robin_hood_product",
+      "start_line": 44,
+      "step_count": 3,
+      "id": 1
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "robin_hood_squares",
+      "start_line": 57,
+      "step_count": 3,
+      "id": 2
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "list_min_In",
+      "start_line": 127,
+      "step_count": 9,
+      "id": 3
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "list_max_In",
+      "start_line": 140,
+      "step_count": 9,
+      "id": 4
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "list_min_le",
+      "start_line": 153,
+      "step_count": 11,
+      "id": 5
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "list_max_ge",
+      "start_line": 168,
+      "step_count": 11,
+      "id": 6
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "replace_first_length",
+      "start_line": 185,
+      "step_count": 5,
+      "id": 7
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "In_le_sum_list",
+      "start_line": 194,
+      "step_count": 7,
+      "id": 8
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "replace_first_sum",
+      "start_line": 205,
+      "step_count": 12,
+      "id": 9
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "replace_first_preserves_others",
+      "start_line": 222,
+      "step_count": 12,
+      "id": 10
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "smooth_preserves_length",
+      "start_line": 240,
+      "step_count": 8,
+      "id": 11
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "smooth_preserves_sum",
+      "start_line": 251,
+      "step_count": 34,
+      "id": 12
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "is_smoothed_spec",
+      "start_line": 290,
+      "step_count": 26,
+      "id": 13
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "prod_list_zero",
+      "start_line": 323,
+      "step_count": 7,
+      "id": 14
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "prod_replace_first",
+      "start_line": 335,
+      "step_count": 14,
+      "id": 15
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "smooth_increases_prod",
+      "start_line": 354,
+      "step_count": 99,
+      "id": 16
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "In_le_sum_squares",
+      "start_line": 458,
+      "step_count": 7,
+      "id": 17
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "sum_squares_replace_first",
+      "start_line": 470,
+      "step_count": 12,
+      "id": 18
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "smooth_decreases_squares",
+      "start_line": 487,
+      "step_count": 45,
+      "id": 19
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "smoothed_min_max_close",
+      "start_line": 560,
+      "step_count": 4,
+      "id": 20
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "sum_list_ge_min_times_length",
+      "start_line": 570,
+      "step_count": 9,
+      "id": 21
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "smoothed_elements_bounded",
+      "start_line": 584,
+      "step_count": 21,
+      "id": 22
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "fully_smooth_preserves_length",
+      "start_line": 615,
+      "step_count": 13,
+      "id": 23
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "fully_smooth_preserves_sum",
+      "start_line": 633,
+      "step_count": 13,
+      "id": 24
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "fully_smooth_increases_prod",
+      "start_line": 651,
+      "step_count": 14,
+      "id": 25
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "fully_smooth_is_smoothed",
+      "start_line": 670,
+      "step_count": 12,
+      "id": 26
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "prod_list_bounded",
+      "start_line": 687,
+      "step_count": 12,
+      "id": 27
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "am_gm_list",
+      "start_line": 710,
+      "step_count": 26,
+      "id": 28
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "prod_list_nonzero_pos",
+      "start_line": 756,
+      "step_count": 4,
+      "id": 29
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "log_sum_le_log_prod_nonzero",
+      "start_line": 772,
+      "step_count": 11,
+      "id": 30
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "prod_list_replace_zeros",
+      "start_line": 796,
+      "step_count": 4,
+      "id": 31
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "length_replace_zeros",
+      "start_line": 805,
+      "step_count": 4,
+      "id": 32
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "sum_list_replace_zeros",
+      "start_line": 814,
+      "step_count": 4,
+      "id": 33
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "sum_list_replace_zeros_bound",
+      "start_line": 823,
+      "step_count": 4,
+      "id": 34
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "replace_zeros_all_pos",
+      "start_line": 832,
+      "step_count": 8,
+      "id": 35
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "prod_list_pad_ones",
+      "start_line": 852,
+      "step_count": 4,
+      "id": 36
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "length_pad_ones",
+      "start_line": 861,
+      "step_count": 4,
+      "id": 37
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "sum_list_pad_ones",
+      "start_line": 870,
+      "step_count": 4,
+      "id": 38
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "pad_ones_all_pos",
+      "start_line": 879,
+      "step_count": 7,
+      "id": 39
+    },
+    {
+      "v_rel_path": "src/examples/am_gm_list.v",
+      "theorem_name": "am_gm_list_nonzero_general",
+      "start_line": 892,
+      "step_count": 53,
+      "id": 40
+    },
+    {
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "Zgt_imp_le_bool",
+      "start_line": 73,
+      "step_count": 2,
+      "id": 41
+    },
+    {
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "pred_is_lt_cons",
+      "start_line": 79,
+      "step_count": 2,
+      "id": 42
+    },
+    {
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "twox_subx",
+      "start_line": 87,
+      "step_count": 0,
+      "id": 43
+    },
+    {
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "binsearch_bound_ineq",
+      "start_line": 94,
+      "step_count": 11,
+      "id": 44
+    },
+    {
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "binsearch_bound_mono",
+      "start_line": 110,
+      "step_count": 4,
+      "id": 45
+    },
+    {
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "loop_val_spec",
+      "start_line": 119,
+      "step_count": 89,
+      "id": 46
+    },
+    {
+      "v_rel_path": "src/examples/binsearch.v",
+      "theorem_name": "binsearch_spec",
+      "start_line": 219,
+      "step_count": 20,
+      "id": 47
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "even_modulo",
+      "start_line": 3,
+      "step_count": 4,
+      "id": 48
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "odd_modulo",
+      "start_line": 12,
+      "step_count": 5,
+      "id": 49
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "nat_div2_lt_0",
+      "start_line": 22,
+      "step_count": 2,
+      "id": 50
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "log2_up_ineq",
+      "start_line": 29,
+      "step_count": 22,
+      "id": 51
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "log2_up_ineq_we_need",
+      "start_line": 55,
+      "step_count": 13,
+      "id": 52
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "log2_up_ineq_div2",
+      "start_line": 73,
+      "step_count": 6,
+      "id": 53
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "div2_eq_0_inv",
+      "start_line": 84,
+      "step_count": 5,
+      "id": 54
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "div2_neq2_0",
+      "start_line": 94,
+      "step_count": 2,
+      "id": 55
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "double_div2_le",
+      "start_line": 101,
+      "step_count": 2,
+      "id": 56
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "log2_up_ineq_we_need'",
+      "start_line": 107,
+      "step_count": 6,
+      "id": 57
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "pow_div",
+      "start_line": 118,
+      "step_count": 4,
+      "id": 58
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "pow_2_even",
+      "start_line": 128,
+      "step_count": 5,
+      "id": 59
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "nat_div2_pow",
+      "start_line": 138,
+      "step_count": 5,
+      "id": 60
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "nat_pow_ge_1",
+      "start_line": 148,
+      "step_count": 6,
+      "id": 61
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "orig_minus_div2_lt",
+      "start_line": 159,
+      "step_count": 5,
+      "id": 62
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "orig_minus_div2_eq",
+      "start_line": 169,
+      "step_count": 6,
+      "id": 63
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "orig_minus_div2_le_div2",
+      "start_line": 179,
+      "step_count": 6,
+      "id": 64
+    },
+    {
+      "v_rel_path": "src/examples/log_two_up.v",
+      "theorem_name": "log2_up_ineq_div2_S",
+      "start_line": 190,
+      "step_count": 11,
+      "id": 65
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "even_modulo",
+      "start_line": 3,
+      "step_count": 4,
+      "id": 66
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "odd_modulo",
+      "start_line": 12,
+      "step_count": 5,
+      "id": 67
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "nat_div2_lt_0",
+      "start_line": 22,
+      "step_count": 2,
+      "id": 68
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "log2_up_ineq",
+      "start_line": 29,
+      "step_count": 22,
+      "id": 69
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "log2_up_ineq_we_need",
+      "start_line": 55,
+      "step_count": 13,
+      "id": 70
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "log2_up_ineq_div2",
+      "start_line": 73,
+      "step_count": 6,
+      "id": 71
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "div2_eq_0_inv",
+      "start_line": 84,
+      "step_count": 5,
+      "id": 72
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "div2_neq2_0",
+      "start_line": 94,
+      "step_count": 2,
+      "id": 73
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "double_div2_le",
+      "start_line": 101,
+      "step_count": 2,
+      "id": 74
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "log2_up_ineq_we_need'",
+      "start_line": 107,
+      "step_count": 6,
+      "id": 75
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "pow_div",
+      "start_line": 118,
+      "step_count": 4,
+      "id": 76
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "pow_2_even",
+      "start_line": 128,
+      "step_count": 5,
+      "id": 77
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "nat_div2_pow",
+      "start_line": 138,
+      "step_count": 5,
+      "id": 78
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "nat_pow_ge_1",
+      "start_line": 148,
+      "step_count": 6,
+      "id": 79
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "orig_minus_div2_lt",
+      "start_line": 159,
+      "step_count": 5,
+      "id": 80
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "orig_minus_div2_eq",
+      "start_line": 169,
+      "step_count": 6,
+      "id": 81
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "orig_minus_div2_le_div2",
+      "start_line": 179,
+      "step_count": 6,
+      "id": 82
+    },
+    {
+      "v_rel_path": "src/examples/log_utils.v",
+      "theorem_name": "log2_up_ineq_div2_S",
+      "start_line": 190,
+      "step_count": 11,
+      "id": 83
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "max_under_ge",
+      "start_line": 106,
+      "step_count": 5,
+      "id": 84
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "max_under_le",
+      "start_line": 116,
+      "step_count": 7,
+      "id": 85
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "length_merge",
+      "start_line": 149,
+      "step_count": 16,
+      "id": 86
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_middle_rem",
+      "start_line": 169,
+      "step_count": 11,
+      "id": 87
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_cons_inv_forall",
+      "start_line": 185,
+      "step_count": 7,
+      "id": 88
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_snoc_inv_forall",
+      "start_line": 197,
+      "step_count": 10,
+      "id": 89
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_app_inv_1",
+      "start_line": 212,
+      "step_count": 7,
+      "id": 90
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_app_inv_2",
+      "start_line": 224,
+      "step_count": 4,
+      "id": 91
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "two_sorted_permutations_are_equal",
+      "start_line": 233,
+      "step_count": 24,
+      "id": 92
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "LocallySorted_replace",
+      "start_line": 264,
+      "step_count": 5,
+      "id": 93
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "merge_sorted",
+      "start_line": 274,
+      "step_count": 12,
+      "id": 94
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "laslehead_cons",
+      "start_line": 295,
+      "step_count": 4,
+      "id": 95
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_app",
+      "start_line": 304,
+      "step_count": 10,
+      "id": 96
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_take",
+      "start_line": 321,
+      "step_count": 3,
+      "id": 97
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_drop",
+      "start_line": 329,
+      "step_count": 3,
+      "id": 98
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "hddrel_use",
+      "start_line": 337,
+      "step_count": 6,
+      "id": 99
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_lookup_take",
+      "start_line": 350,
+      "step_count": 8,
+      "id": 100
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "Sorted_lookup_drop",
+      "start_line": 364,
+      "step_count": 8,
+      "id": 101
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "elem_of_merge",
+      "start_line": 378,
+      "step_count": 18,
+      "id": 102
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "singleton_eq_snoc",
+      "start_line": 401,
+      "step_count": 5,
+      "id": 103
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "elem_of_drop_S",
+      "start_line": 411,
+      "step_count": 4,
+      "id": 104
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "merge_split_middle",
+      "start_line": 420,
+      "step_count": 32,
+      "id": 105
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "write_merge_spec",
+      "start_line": 468,
+      "step_count": 289,
+      "id": 106
+    },
+    {
+      "v_rel_path": "src/examples/merge.v",
+      "theorem_name": "merge_spec",
+      "start_line": 769,
+      "step_count": 38,
+      "id": 107
+    },
+    {
+      "v_rel_path": "src/examples/merge_closed.v",
+      "theorem_name": "merge_span_closed_le_mono",
+      "start_line": 15,
+      "step_count": 5,
+      "id": 108
+    },
+    {
+      "v_rel_path": "src/examples/merge_closed.v",
+      "theorem_name": "merge_span_closed_spec",
+      "start_line": 26,
+      "step_count": 33,
+      "id": 109
+    },
+    {
+      "v_rel_path": "src/examples/merge_closed.v",
+      "theorem_name": "merge_span_super_closed_spec",
+      "start_line": 66,
+      "step_count": 9,
+      "id": 110
+    },
+    {
+      "v_rel_path": "src/examples/merge_closed.v",
+      "theorem_name": "merge_work_closed_spec",
+      "start_line": 81,
+      "step_count": 3,
+      "id": 111
+    },
+    {
+      "v_rel_path": "src/examples/merge_closed.v",
+      "theorem_name": "merge_spec'",
+      "start_line": 88,
+      "step_count": 7,
+      "id": 112
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "leb_total",
+      "start_line": 83,
+      "step_count": 5,
+      "id": 113
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "merge_nil_l",
+      "start_line": 95,
+      "step_count": 0,
+      "id": 114
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "merge_nil_r",
+      "start_line": 99,
+      "step_count": 0,
+      "id": 115
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "merge_cons_l",
+      "start_line": 103,
+      "step_count": 3,
+      "id": 116
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "merge_cons_r",
+      "start_line": 112,
+      "step_count": 3,
+      "id": 117
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "wscredits_split",
+      "start_line": 128,
+      "step_count": 5,
+      "id": 118
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "wscredits_le",
+      "start_line": 138,
+      "step_count": 5,
+      "id": 119
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "copy_seq_spec",
+      "start_line": 148,
+      "step_count": 56,
+      "id": 120
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "merge_seq_aux_spec",
+      "start_line": 215,
+      "step_count": 134,
+      "id": 121
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "merge_seq_aux_spec'",
+      "start_line": 361,
+      "step_count": 7,
+      "id": 122
+    },
+    {
+      "v_rel_path": "src/examples/merge_seq.v",
+      "theorem_name": "merge_seq_spec",
+      "start_line": 377,
+      "step_count": 21,
+      "id": 123
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sorted_length",
+      "start_line": 50,
+      "step_count": 3,
+      "id": 124
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sort_span_closed_unfold",
+      "start_line": 68,
+      "step_count": 30,
+      "id": 125
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sort_span_closed_spec",
+      "start_line": 103,
+      "step_count": 8,
+      "id": 126
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sort_span_super_closed",
+      "start_line": 115,
+      "step_count": 10,
+      "id": 127
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sort_work_closed_spec",
+      "start_line": 139,
+      "step_count": 34,
+      "id": 128
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sorted_refl",
+      "start_line": 177,
+      "step_count": 2,
+      "id": 129
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sorted_merge",
+      "start_line": 184,
+      "step_count": 6,
+      "id": 130
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "close_slice",
+      "start_line": 197,
+      "step_count": 11,
+      "id": 131
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "negbool_spec",
+      "start_line": 220,
+      "step_count": 4,
+      "id": 132
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sort_spec",
+      "start_line": 228,
+      "step_count": 186,
+      "id": 133
+    },
+    {
+      "v_rel_path": "src/examples/merge_sort.v",
+      "theorem_name": "sort_spec'",
+      "start_line": 423,
+      "step_count": 6,
+      "id": 134
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "sum_list_app",
+      "start_line": 55,
+      "step_count": 4,
+      "id": 135
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "level_internal_sum_bounded",
+      "start_line": 64,
+      "step_count": 13,
+      "id": 136
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "level_internal_length_bounded",
+      "start_line": 82,
+      "step_count": 14,
+      "id": 137
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "log_pow_bound",
+      "start_line": 105,
+      "step_count": 17,
+      "id": 138
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "list_jensen_bound_general_no_pos",
+      "start_line": 127,
+      "step_count": 21,
+      "id": 139
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "level_cost_bound",
+      "start_line": 171,
+      "step_count": 4,
+      "id": 140
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "level_cost_bound_alt",
+      "start_line": 179,
+      "step_count": 19,
+      "id": 141
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "pow2_log2_up_bound",
+      "start_line": 203,
+      "step_count": 18,
+      "id": 142
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "tree_log_cost_sum_bound",
+      "start_line": 233,
+      "step_count": 8,
+      "id": 143
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "sum_split",
+      "start_line": 246,
+      "step_count": 5,
+      "id": 144
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "total_tree_log_cost_bounded",
+      "start_line": 256,
+      "step_count": 19,
+      "id": 145
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "costTree_exists",
+      "start_line": 285,
+      "step_count": 5,
+      "id": 146
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "sum_log2_app",
+      "start_line": 294,
+      "step_count": 4,
+      "id": 147
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "tree_log_cost_cnode",
+      "start_line": 303,
+      "step_count": 13,
+      "id": 148
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "tree_log_cost_mono",
+      "start_line": 323,
+      "step_count": 9,
+      "id": 149
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "max_under_max_pt",
+      "start_line": 337,
+      "step_count": 7,
+      "id": 150
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "merge_work_to_tree",
+      "start_line": 348,
+      "step_count": 69,
+      "id": 151
+    },
+    {
+      "v_rel_path": "src/examples/merge_work_bound.v",
+      "theorem_name": "merge_work_is_linear",
+      "start_line": 422,
+      "step_count": 6,
+      "id": 152
+    },
+    {
+      "v_rel_path": "src/examples/parcopy.v",
+      "theorem_name": "deduce_valid_mapstoa",
+      "start_line": 31,
+      "step_count": 7,
+      "id": 153
+    },
+    {
+      "v_rel_path": "src/examples/parcopy.v",
+      "theorem_name": "parcopy_spec",
+      "start_line": 45,
+      "step_count": 99,
+      "id": 154
+    },
+    {
+      "v_rel_path": "src/examples/parfor.v",
+      "theorem_name": "parfor_work_split_unfold",
+      "start_line": 29,
+      "step_count": 11,
+      "id": 155
+    },
+    {
+      "v_rel_path": "src/examples/parfor.v",
+      "theorem_name": "parfor_work_split",
+      "start_line": 47,
+      "step_count": 0,
+      "id": 156
+    },
+    {
+      "v_rel_path": "src/examples/parfor.v",
+      "theorem_name": "parfor_spec",
+      "start_line": 54,
+      "step_count": 88,
+      "id": 157
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "list_sum_app",
+      "start_line": 58,
+      "step_count": 3,
+      "id": 158
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "scaned_singleton",
+      "start_line": 69,
+      "step_count": 6,
+      "id": 159
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "rebuild_from_func",
+      "start_line": 90,
+      "step_count": 12,
+      "id": 160
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "list_inv_r",
+      "start_line": 107,
+      "step_count": 2,
+      "id": 161
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "sum_one_app_l",
+      "start_line": 113,
+      "step_count": 4,
+      "id": 162
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "sum_one_even",
+      "start_line": 122,
+      "step_count": 27,
+      "id": 163
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "an_eq",
+      "start_line": 155,
+      "step_count": 7,
+      "id": 164
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "sum_one_take",
+      "start_line": 168,
+      "step_count": 3,
+      "id": 165
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "take_snoc",
+      "start_line": 176,
+      "step_count": 8,
+      "id": 166
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "technical",
+      "start_line": 190,
+      "step_count": 61,
+      "id": 167
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "scan_spec",
+      "start_line": 280,
+      "step_count": 269,
+      "id": 168
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "scan_span_closed_nonzero",
+      "start_line": 561,
+      "step_count": 17,
+      "id": 169
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "scan_span_le",
+      "start_line": 583,
+      "step_count": 8,
+      "id": 170
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "scan_work_closed_nonzero",
+      "start_line": 597,
+      "step_count": 4,
+      "id": 171
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "scan_work_le",
+      "start_line": 606,
+      "step_count": 7,
+      "id": 172
+    },
+    {
+      "v_rel_path": "src/examples/scan.v",
+      "theorem_name": "scan_spec'",
+      "start_line": 617,
+      "step_count": 6,
+      "id": 173
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "subG_slice",
+      "start_line": 49,
+      "step_count": 0,
+      "id": 174
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "access_timeless",
+      "start_line": 72,
+      "step_count": 3,
+      "id": 175
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "open_slice",
+      "start_line": 95,
+      "step_count": 2,
+      "id": 176
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "close_slice",
+      "start_line": 101,
+      "step_count": 2,
+      "id": 177
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "nat_to_Qp_add",
+      "start_line": 110,
+      "step_count": 3,
+      "id": 178
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "access_split",
+      "start_line": 119,
+      "step_count": 13,
+      "id": 179
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_open_split",
+      "start_line": 136,
+      "step_count": 8,
+      "id": 180
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_open_join",
+      "start_line": 150,
+      "step_count": 7,
+      "id": 181
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "big_sepM_map_seq_big_sepL",
+      "start_line": 163,
+      "step_count": 10,
+      "id": 182
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_make_spec",
+      "start_line": 178,
+      "step_count": 38,
+      "id": 183
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_load_spec_atomic",
+      "start_line": 223,
+      "step_count": 65,
+      "id": 184
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_load_spec",
+      "start_line": 298,
+      "step_count": 6,
+      "id": 185
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_store_spec_atomic",
+      "start_line": 311,
+      "step_count": 77,
+      "id": 186
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_store_spec",
+      "start_line": 396,
+      "step_count": 8,
+      "id": 187
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_length_spec",
+      "start_line": 410,
+      "step_count": 7,
+      "id": 188
+    },
+    {
+      "v_rel_path": "src/examples/slice.v",
+      "theorem_name": "slice_split_spec",
+      "start_line": 422,
+      "step_count": 40,
+      "id": 189
+    },
+    {
+      "v_rel_path": "src/examples/small.v",
+      "theorem_name": "repeat_tick_spec",
+      "start_line": 35,
+      "step_count": 24,
+      "id": 190
+    },
+    {
+      "v_rel_path": "src/examples/small.v",
+      "theorem_name": "f_spec",
+      "start_line": 65,
+      "step_count": 19,
+      "id": 191
+    },
+    {
+      "v_rel_path": "src/examples/small.v",
+      "theorem_name": "small_spec",
+      "start_line": 90,
+      "step_count": 93,
+      "id": 192
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "subG_split_array",
+      "start_line": 8,
+      "step_count": 0,
+      "id": 193
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "tie_alloc",
+      "start_line": 20,
+      "step_count": 5,
+      "id": 194
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "big_sepM_big_sepL_aux",
+      "start_line": 34,
+      "step_count": 16,
+      "id": 195
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "big_sepM_big_sepL",
+      "start_line": 56,
+      "step_count": 5,
+      "id": 196
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "NoDup_ok",
+      "start_line": 67,
+      "step_count": 9,
+      "id": 197
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "split_array_alloc",
+      "start_line": 80,
+      "step_count": 12,
+      "id": 198
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "mapstoa_use",
+      "start_line": 96,
+      "step_count": 4,
+      "id": 199
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "tie_insert",
+      "start_line": 104,
+      "step_count": 9,
+      "id": 200
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "mapstoa_update",
+      "start_line": 119,
+      "step_count": 5,
+      "id": 201
+    },
+    {
+      "v_rel_path": "src/examples/split_array.v",
+      "theorem_name": "mapstoa_ne",
+      "start_line": 128,
+      "step_count": 0,
+      "id": 202
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "gstack_eq_dec",
+      "start_line": 46,
+      "step_count": 0,
+      "id": 203
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "gstack_countable",
+      "start_line": 48,
+      "step_count": 5,
+      "id": 204
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "stack_repr_inner_persistent",
+      "start_line": 65,
+      "step_count": 2,
+      "id": 205
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "auth_frag_split",
+      "start_line": 132,
+      "step_count": 7,
+      "id": 206
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "create_spec",
+      "start_line": 151,
+      "step_count": 31,
+      "id": 207
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "participant_open",
+      "start_line": 186,
+      "step_count": 6,
+      "id": 208
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "passive_to_active",
+      "start_line": 204,
+      "step_count": 23,
+      "id": 209
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "Some_included_gmn",
+      "start_line": 234,
+      "step_count": 6,
+      "id": 210
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "gmap_unreg",
+      "start_line": 244,
+      "step_count": 13,
+      "id": 211
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "use_done_lb",
+      "start_line": 263,
+      "step_count": 5,
+      "id": 212
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "use_own_auth_nat",
+      "start_line": 272,
+      "step_count": 5,
+      "id": 213
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "wcredits_split_mset",
+      "start_line": 281,
+      "step_count": 8,
+      "id": 214
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "active_to_passive_commit",
+      "start_line": 301,
+      "step_count": 45,
+      "id": 215
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "active_to_passive_retry",
+      "start_line": 360,
+      "step_count": 17,
+      "id": 216
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "stack_load_head",
+      "start_line": 384,
+      "step_count": 11,
+      "id": 217
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "stack_repr_push_suc",
+      "start_line": 400,
+      "step_count": 14,
+      "id": 218
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "stack_repr_push_fail",
+      "start_line": 420,
+      "step_count": 13,
+      "id": 219
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "max_ops_agree",
+      "start_line": 439,
+      "step_count": 4,
+      "id": 220
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "push_spec",
+      "start_line": 448,
+      "step_count": 89,
+      "id": 221
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "stack_repr_nil",
+      "start_line": 545,
+      "step_count": 2,
+      "id": 222
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "stack_repr_inner_inj",
+      "start_line": 551,
+      "step_count": 16,
+      "id": 223
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "pop_spec",
+      "start_line": 573,
+      "step_count": 124,
+      "id": 224
+    },
+    {
+      "v_rel_path": "src/examples/stack.v",
+      "theorem_name": "transfer_participant",
+      "start_line": 705,
+      "step_count": 5,
+      "id": 225
+    },
+    {
+      "v_rel_path": "src/examples/tabulate.v",
+      "theorem_name": "subG_tabulate",
+      "start_line": 29,
+      "step_count": 0,
+      "id": 226
+    },
+    {
+      "v_rel_path": "src/examples/tabulate.v",
+      "theorem_name": "ghost_array_rebuild",
+      "start_line": 40,
+      "step_count": 12,
+      "id": 227
+    },
+    {
+      "v_rel_path": "src/examples/tabulate.v",
+      "theorem_name": "tabulate_spec",
+      "start_line": 60,
+      "step_count": 69,
+      "id": 228
+    },
+    {
+      "v_rel_path": "src/examples/tactics.v",
+      "theorem_name": "wp_code'",
+      "start_line": 13,
+      "step_count": 4,
+      "id": 229
+    },
+    {
+      "v_rel_path": "src/examples/weighted_log_sum.v",
+      "theorem_name": "add_le_mono",
+      "start_line": 13,
+      "step_count": 4,
+      "id": 230
+    },
+    {
+      "v_rel_path": "src/examples/weighted_log_sum.v",
+      "theorem_name": "exp_bound",
+      "start_line": 39,
+      "step_count": 9,
+      "id": 231
+    },
+    {
+      "v_rel_path": "src/examples/weighted_log_sum.v",
+      "theorem_name": "log2_step",
+      "start_line": 51,
+      "step_count": 40,
+      "id": 232
+    },
+    {
+      "v_rel_path": "src/examples/weighted_log_sum.v",
+      "theorem_name": "log2_up_half",
+      "start_line": 98,
+      "step_count": 30,
+      "id": 233
+    },
+    {
+      "v_rel_path": "src/examples/weighted_log_sum.v",
+      "theorem_name": "log2_shift",
+      "start_line": 134,
+      "step_count": 38,
+      "id": 234
+    },
+    {
+      "v_rel_path": "src/examples/weighted_log_sum.v",
+      "theorem_name": "sum_terms_exact_add",
+      "start_line": 176,
+      "step_count": 45,
+      "id": 235
+    },
+    {
+      "v_rel_path": "src/examples/weighted_log_sum.v",
+      "theorem_name": "sum_terms_exact",
+      "start_line": 229,
+      "step_count": 6,
+      "id": 236
+    },
+    {
+      "v_rel_path": "src/examples/weighted_log_sum.v",
+      "theorem_name": "weighted_log_sum_linear_bound",
+      "start_line": 250,
+      "step_count": 97,
+      "id": 237
+    },
+    {
+      "v_rel_path": "src/lang/atomic.v",
+      "theorem_name": "Atomic_correct",
+      "start_line": 26,
+      "step_count": 10,
+      "id": 238
+    },
+    {
+      "v_rel_path": "src/lang/atomic.v",
+      "theorem_name": "Atomic_no_val",
+      "start_line": 42,
+      "step_count": 0,
+      "id": 239
+    },
+    {
+      "v_rel_path": "src/lang/head_semantics.v",
+      "theorem_name": "eqdec_timestamp",
+      "start_line": 15,
+      "step_count": 0,
+      "id": 240
+    },
+    {
+      "v_rel_path": "src/lang/head_semantics.v",
+      "theorem_name": "countable_timestamp",
+      "start_line": 17,
+      "step_count": 0,
+      "id": 241
+    },
+    {
+      "v_rel_path": "src/lang/head_semantics.v",
+      "theorem_name": "infinite_timestamp",
+      "start_line": 19,
+      "step_count": 0,
+      "id": 242
+    },
+    {
+      "v_rel_path": "src/lang/head_semantics.v",
+      "theorem_name": "head_step_no_ctx",
+      "start_line": 131,
+      "step_count": 3,
+      "id": 243
+    },
+    {
+      "v_rel_path": "src/lang/head_semantics.v",
+      "theorem_name": "head_step_no_val",
+      "start_line": 139,
+      "step_count": 0,
+      "id": 244
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_if",
+      "start_line": 9,
+      "step_count": 3,
+      "id": 245
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_let_val",
+      "start_line": 17,
+      "step_count": 3,
+      "id": 246
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_fork",
+      "start_line": 25,
+      "step_count": 6,
+      "id": 247
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_join",
+      "start_line": 36,
+      "step_count": 5,
+      "id": 248
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_par",
+      "start_line": 48,
+      "step_count": 3,
+      "id": 249
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_fill_item",
+      "start_line": 58,
+      "step_count": 4,
+      "id": 250
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_alloc",
+      "start_line": 70,
+      "step_count": 3,
+      "id": 251
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_closure",
+      "start_line": 78,
+      "step_count": 3,
+      "id": 252
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_load",
+      "start_line": 86,
+      "step_count": 3,
+      "id": 253
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_call",
+      "start_line": 94,
+      "step_count": 5,
+      "id": 254
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_call_prim",
+      "start_line": 105,
+      "step_count": 5,
+      "id": 255
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_store",
+      "start_line": 115,
+      "step_count": 3,
+      "id": 256
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_length",
+      "start_line": 123,
+      "step_count": 3,
+      "id": 257
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_cas",
+      "start_line": 131,
+      "step_count": 3,
+      "id": 258
+    },
+    {
+      "v_rel_path": "src/lang/invert_step.v",
+      "theorem_name": "invert_step_tick",
+      "start_line": 140,
+      "step_count": 3,
+      "id": 259
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_tick",
+      "start_line": 25,
+      "step_count": 0,
+      "id": 260
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_if",
+      "start_line": 29,
+      "step_count": 0,
+      "id": 261
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_let_val",
+      "start_line": 33,
+      "step_count": 0,
+      "id": 262
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_fork",
+      "start_line": 37,
+      "step_count": 15,
+      "id": 263
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_alloc",
+      "start_line": 56,
+      "step_count": 4,
+      "id": 264
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_closure",
+      "start_line": 65,
+      "step_count": 0,
+      "id": 265
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_call",
+      "start_line": 69,
+      "step_count": 0,
+      "id": 266
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_load",
+      "start_line": 76,
+      "step_count": 0,
+      "id": 267
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_call_prim",
+      "start_line": 83,
+      "step_count": 0,
+      "id": 268
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_store",
+      "start_line": 88,
+      "step_count": 0,
+      "id": 269
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_length",
+      "start_line": 94,
+      "step_count": 0,
+      "id": 270
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_cas",
+      "start_line": 99,
+      "step_count": 0,
+      "id": 271
+    },
+    {
+      "v_rel_path": "src/lang/reducible.v",
+      "theorem_name": "reducible_no_val",
+      "start_line": 106,
+      "step_count": 5,
+      "id": 272
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "leaves_node",
+      "start_line": 19,
+      "step_count": 0,
+      "id": 273
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "graph_fork_alt",
+      "start_line": 33,
+      "step_count": 3,
+      "id": 274
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "graph_join_alt",
+      "start_line": 40,
+      "step_count": 3,
+      "id": 275
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "graph_fork_incl",
+      "start_line": 47,
+      "step_count": 0,
+      "id": 276
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "graph_join_incl",
+      "start_line": 51,
+      "step_count": 3,
+      "id": 277
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "sched_step_no_val",
+      "start_line": 91,
+      "step_count": 0,
+      "id": 278
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "sched_step_no_ctx",
+      "start_line": 95,
+      "step_count": 4,
+      "id": 279
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "sched_step_inv_graph",
+      "start_line": 103,
+      "step_count": 2,
+      "id": 280
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "step_no_val",
+      "start_line": 132,
+      "step_count": 3,
+      "id": 281
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "step_inv_graph",
+      "start_line": 140,
+      "step_count": 2,
+      "id": 282
+    },
+    {
+      "v_rel_path": "src/lang/semantics.v",
+      "theorem_name": "step_inv_cmap",
+      "start_line": 147,
+      "step_count": 5,
+      "id": 283
+    },
+    {
+      "v_rel_path": "src/lang/syntax.v",
+      "theorem_name": "loc_eq_dec",
+      "start_line": 12,
+      "step_count": 0,
+      "id": 284
+    },
+    {
+      "v_rel_path": "src/lang/syntax.v",
+      "theorem_name": "loc_countable",
+      "start_line": 14,
+      "step_count": 0,
+      "id": 285
+    },
+    {
+      "v_rel_path": "src/lang/syntax.v",
+      "theorem_name": "loc_infinite",
+      "start_line": 16,
+      "step_count": 0,
+      "id": 286
+    },
+    {
+      "v_rel_path": "src/lang/syntax.v",
+      "theorem_name": "is_val_true",
+      "start_line": 77,
+      "step_count": 0,
+      "id": 287
+    },
+    {
+      "v_rel_path": "src/lang/syntax.v",
+      "theorem_name": "is_val_false",
+      "start_line": 80,
+      "step_count": 0,
+      "id": 288
+    },
+    {
+      "v_rel_path": "src/lang/syntax.v",
+      "theorem_name": "is_loc_inv",
+      "start_line": 89,
+      "step_count": 0,
+      "id": 289
+    },
+    {
+      "v_rel_path": "src/lang/syntax.v",
+      "theorem_name": "expr_size_non_zero",
+      "start_line": 115,
+      "step_count": 0,
+      "id": 290
+    },
+    {
+      "v_rel_path": "src/lang/syntax.v",
+      "theorem_name": "fill_item_inj",
+      "start_line": 209,
+      "step_count": 3,
+      "id": 291
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "bool_op_eq_dec",
+      "start_line": 10,
+      "step_count": 0,
+      "id": 292
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "bool_op_countable",
+      "start_line": 12,
+      "step_count": 5,
+      "id": 293
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "int_op_eq_dec",
+      "start_line": 20,
+      "step_count": 0,
+      "id": 294
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "int_op_countable",
+      "start_line": 22,
+      "step_count": 5,
+      "id": 295
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "int_cmp_eq_dec",
+      "start_line": 30,
+      "step_count": 0,
+      "id": 296
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "int_cmp_countable",
+      "start_line": 32,
+      "step_count": 5,
+      "id": 297
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "PrimEq_dec",
+      "start_line": 40,
+      "step_count": 0,
+      "id": 298
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "prim_countable",
+      "start_line": 42,
+      "step_count": 16,
+      "id": 299
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "eq_val",
+      "start_line": 61,
+      "step_count": 13,
+      "id": 300
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "lit_eq_dec",
+      "start_line": 89,
+      "step_count": 4,
+      "id": 301
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "lit_countable",
+      "start_line": 96,
+      "step_count": 14,
+      "id": 302
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "expr_countable",
+      "start_line": 163,
+      "step_count": 7,
+      "id": 303
+    },
+    {
+      "v_rel_path": "src/lang/syntax_instances.v",
+      "theorem_name": "val_countable",
+      "start_line": 172,
+      "step_count": 3,
+      "id": 304
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "gmap_auth_confront_elem",
+      "start_line": 33,
+      "step_count": 6,
+      "id": 305
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "use_interp_span",
+      "start_line": 45,
+      "step_count": 22,
+      "id": 306
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "initial_bound_use",
+      "start_line": 75,
+      "step_count": 4,
+      "id": 307
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "initial_bound_deduce",
+      "start_line": 85,
+      "step_count": 5,
+      "id": 308
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "initial_wbound_deduce",
+      "start_line": 108,
+      "step_count": 9,
+      "id": 309
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "wpg_progress",
+      "start_line": 129,
+      "step_count": 12,
+      "id": 310
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "wpg_preservation",
+      "start_line": 148,
+      "step_count": 16,
+      "id": 311
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "wpg_adequacy_pre",
+      "start_line": 170,
+      "step_count": 11,
+      "id": 312
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "wpg_adequacy_open",
+      "start_line": 200,
+      "step_count": 33,
+      "id": 313
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "wpg_adequacy",
+      "start_line": 241,
+      "step_count": 2,
+      "id": 314
+    },
+    {
+      "v_rel_path": "src/logic/adequacy.v",
+      "theorem_name": "wp_adequacy",
+      "start_line": 250,
+      "step_count": 2,
+      "id": 315
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "predecessor_mon_fork",
+      "start_line": 59,
+      "step_count": 7,
+      "id": 316
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "successor_mon_fork",
+      "start_line": 74,
+      "step_count": 7,
+      "id": 317
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "predecessor_mon_join",
+      "start_line": 88,
+      "step_count": 6,
+      "id": 318
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "successor_mon_join",
+      "start_line": 101,
+      "step_count": 6,
+      "id": 319
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "is_fork_mon_fork",
+      "start_line": 127,
+      "step_count": 4,
+      "id": 320
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "is_join_mon_fork",
+      "start_line": 137,
+      "step_count": 4,
+      "id": 321
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "is_fork_mon_join",
+      "start_line": 147,
+      "step_count": 4,
+      "id": 322
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "is_join_mon_join",
+      "start_line": 157,
+      "step_count": 4,
+      "id": 323
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "is_fork_fork",
+      "start_line": 167,
+      "step_count": 10,
+      "id": 324
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "is_join_join",
+      "start_line": 182,
+      "step_count": 9,
+      "id": 325
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "Transferable_reachable",
+      "start_line": 199,
+      "step_count": 5,
+      "id": 326
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "Transferable_inv_reachable",
+      "start_line": 209,
+      "step_count": 32,
+      "id": 327
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "build_true_loop",
+      "start_line": 247,
+      "step_count": 3,
+      "id": 328
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "Transferable_in_between",
+      "start_line": 257,
+      "step_count": 44,
+      "id": 329
+    },
+    {
+      "v_rel_path": "src/logic/dominator.v",
+      "theorem_name": "Transferable_dominator",
+      "start_line": 311,
+      "step_count": 7,
+      "id": 330
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "sumall_insert_0",
+      "start_line": 53,
+      "step_count": 4,
+      "id": 331
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "sumall_singleton",
+      "start_line": 62,
+      "step_count": 2,
+      "id": 332
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "sumall_insert_id",
+      "start_line": 68,
+      "step_count": 7,
+      "id": 333
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "sumall_insert_delete",
+      "start_line": 79,
+      "step_count": 4,
+      "id": 334
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "sumall_insert",
+      "start_line": 87,
+      "step_count": 3,
+      "id": 335
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_forks_mon_fork",
+      "start_line": 123,
+      "step_count": 4,
+      "id": 336
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_forks_mon_join",
+      "start_line": 132,
+      "step_count": 4,
+      "id": 337
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_joins_mon_fork",
+      "start_line": 145,
+      "step_count": 4,
+      "id": 338
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_joins_mon_join",
+      "start_line": 154,
+      "step_count": 4,
+      "id": 339
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_alloc",
+      "start_line": 203,
+      "step_count": 6,
+      "id": 340
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_store",
+      "start_line": 214,
+      "step_count": 5,
+      "id": 341
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_exploit_mapsto",
+      "start_line": 225,
+      "step_count": 4,
+      "id": 342
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "scredits_split",
+      "start_line": 238,
+      "step_count": 2,
+      "id": 343
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "scredits_le",
+      "start_line": 244,
+      "step_count": 4,
+      "id": 344
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "wcredits_split",
+      "start_line": 253,
+      "step_count": 2,
+      "id": 345
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "wcredits_le",
+      "start_line": 259,
+      "step_count": 4,
+      "id": 346
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "scredits_in_dom_sbounds",
+      "start_line": 268,
+      "step_count": 7,
+      "id": 347
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "scredits_in_dom",
+      "start_line": 281,
+      "step_count": 6,
+      "id": 348
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_span_current_spend",
+      "start_line": 293,
+      "step_count": 8,
+      "id": 349
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_spend_wcredits",
+      "start_line": 308,
+      "step_count": 3,
+      "id": 350
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_spend_credits",
+      "start_line": 317,
+      "step_count": 10,
+      "id": 351
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "dom_uev",
+      "start_line": 338,
+      "step_count": 4,
+      "id": 352
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "add_credits_uev",
+      "start_line": 346,
+      "step_count": 20,
+      "id": 353
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "lookup_uev",
+      "start_line": 371,
+      "step_count": 21,
+      "id": 354
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "add_credits_to_cascade",
+      "start_line": 399,
+      "step_count": 45,
+      "id": 355
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "init_span_transport",
+      "start_line": 453,
+      "step_count": 4,
+      "id": 356
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "scredits_transport_aux",
+      "start_line": 463,
+      "step_count": 40,
+      "id": 357
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "scredits_transport",
+      "start_line": 518,
+      "step_count": 6,
+      "id": 358
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_forks_use",
+      "start_line": 540,
+      "step_count": 4,
+      "id": 359
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "isfork_use",
+      "start_line": 550,
+      "step_count": 3,
+      "id": 360
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_forks_alloc",
+      "start_line": 559,
+      "step_count": 6,
+      "id": 361
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "isfork_alloc",
+      "start_line": 571,
+      "step_count": 4,
+      "id": 362
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_joins_use",
+      "start_line": 586,
+      "step_count": 4,
+      "id": 363
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_joins_alloc",
+      "start_line": 596,
+      "step_count": 6,
+      "id": 364
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "isjoin_alloc",
+      "start_line": 608,
+      "step_count": 4,
+      "id": 365
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "uev_singleton",
+      "start_line": 620,
+      "step_count": 2,
+      "id": 366
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "initial_join",
+      "start_line": 626,
+      "step_count": 8,
+      "id": 367
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "gen_zero_credits",
+      "start_line": 640,
+      "step_count": 11,
+      "id": 368
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_join",
+      "start_line": 657,
+      "step_count": 50,
+      "id": 369
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "auth_span_alloc",
+      "start_line": 717,
+      "step_count": 6,
+      "id": 370
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "initial_fork",
+      "start_line": 729,
+      "step_count": 8,
+      "id": 371
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_fork",
+      "start_line": 743,
+      "step_count": 63,
+      "id": 372
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "subG_interpPreG",
+      "start_line": 860,
+      "step_count": 0,
+      "id": 373
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interpPreG_interp",
+      "start_line": 864,
+      "step_count": 0,
+      "id": 374
+    },
+    {
+      "v_rel_path": "src/logic/interp.v",
+      "theorem_name": "interp_init",
+      "start_line": 867,
+      "step_count": 40,
+      "id": 375
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "comptree_join",
+      "start_line": 24,
+      "step_count": 7,
+      "id": 376
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "comptree_inv_par",
+      "start_line": 36,
+      "step_count": 0,
+      "id": 377
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "comptree_node_no_val",
+      "start_line": 41,
+      "step_count": 0,
+      "id": 378
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "comptree_inv_ctx",
+      "start_line": 46,
+      "step_count": 8,
+      "id": 379
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "step_inv_new_leaves",
+      "start_line": 60,
+      "step_count": 10,
+      "id": 380
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "step_preserves_comptree",
+      "start_line": 75,
+      "step_count": 12,
+      "id": 381
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "reachable_remove_sinks",
+      "start_line": 103,
+      "step_count": 11,
+      "id": 382
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "step_preserves_no_loop",
+      "start_line": 121,
+      "step_count": 28,
+      "id": 383
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "new_sources_were_leaves",
+      "start_line": 157,
+      "step_count": 10,
+      "id": 384
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "step_preserves_leaf_no_source",
+      "start_line": 183,
+      "step_count": 13,
+      "id": 385
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "step_preserves_leaves_incl",
+      "start_line": 205,
+      "step_count": 7,
+      "id": 386
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "step_preserves_vertices_in_dom",
+      "start_line": 218,
+      "step_count": 10,
+      "id": 387
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "pureinv_update_leaf",
+      "start_line": 235,
+      "step_count": 3,
+      "id": 388
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "step_preserves_pureinv",
+      "start_line": 243,
+      "step_count": 3,
+      "id": 389
+    },
+    {
+      "v_rel_path": "src/logic/pureinv.v",
+      "theorem_name": "pureinv_inv_ctx",
+      "start_line": 252,
+      "step_count": 5,
+      "id": 390
+    },
+    {
+      "v_rel_path": "src/logic/transferable.v",
+      "theorem_name": "transferable_pre_mono",
+      "start_line": 22,
+      "step_count": 13,
+      "id": 391
+    },
+    {
+      "v_rel_path": "src/logic/transferable.v",
+      "theorem_name": "transferable_unfold",
+      "start_line": 38,
+      "step_count": 0,
+      "id": 392
+    },
+    {
+      "v_rel_path": "src/logic/transferable.v",
+      "theorem_name": "transferable_refl",
+      "start_line": 42,
+      "step_count": 0,
+      "id": 393
+    },
+    {
+      "v_rel_path": "src/logic/transferable.v",
+      "theorem_name": "transferable_trans",
+      "start_line": 46,
+      "step_count": 3,
+      "id": 394
+    },
+    {
+      "v_rel_path": "src/logic/transferable.v",
+      "theorem_name": "transferable_diamond",
+      "start_line": 55,
+      "step_count": 3,
+      "id": 395
+    },
+    {
+      "v_rel_path": "src/logic/transferable.v",
+      "theorem_name": "transferable_persistent",
+      "start_line": 64,
+      "step_count": 22,
+      "id": 396
+    },
+    {
+      "v_rel_path": "src/logic/transferable.v",
+      "theorem_name": "interp_transferable_use",
+      "start_line": 90,
+      "step_count": 22,
+      "id": 397
+    },
+    {
+      "v_rel_path": "src/logic/transferable.v",
+      "theorem_name": "transferable_use",
+      "start_line": 119,
+      "step_count": 3,
+      "id": 398
+    },
+    {
+      "v_rel_path": "src/logic/transferable.v",
+      "theorem_name": "transferable_alloc",
+      "start_line": 128,
+      "step_count": 13,
+      "id": 399
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "fupd_wp",
+      "start_line": 18,
+      "step_count": 0,
+      "id": 400
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "bupd_wp",
+      "start_line": 23,
+      "step_count": 0,
+      "id": 401
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_fupd",
+      "start_line": 28,
+      "step_count": 0,
+      "id": 402
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_strong_mono",
+      "start_line": 33,
+      "step_count": 0,
+      "id": 403
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_mono",
+      "start_line": 39,
+      "step_count": 0,
+      "id": 404
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_frame_step",
+      "start_line": 45,
+      "step_count": 0,
+      "id": 405
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_end",
+      "start_line": 52,
+      "step_count": 0,
+      "id": 406
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_val",
+      "start_line": 60,
+      "step_count": 0,
+      "id": 407
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_if",
+      "start_line": 64,
+      "step_count": 0,
+      "id": 408
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_let_val",
+      "start_line": 69,
+      "step_count": 0,
+      "id": 409
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_bind",
+      "start_line": 74,
+      "step_count": 0,
+      "id": 410
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_bind_inv",
+      "start_line": 79,
+      "step_count": 0,
+      "id": 411
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_let",
+      "start_line": 84,
+      "step_count": 5,
+      "id": 412
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_atomic",
+      "start_line": 94,
+      "step_count": 0,
+      "id": 413
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_alloc",
+      "start_line": 99,
+      "step_count": 4,
+      "id": 414
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_load",
+      "start_line": 115,
+      "step_count": 2,
+      "id": 415
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_store",
+      "start_line": 124,
+      "step_count": 2,
+      "id": 416
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_call",
+      "start_line": 132,
+      "step_count": 0,
+      "id": 417
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_call_prim",
+      "start_line": 137,
+      "step_count": 2,
+      "id": 418
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_cas",
+      "start_line": 144,
+      "step_count": 2,
+      "id": 419
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_length",
+      "start_line": 156,
+      "step_count": 2,
+      "id": 420
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_tick",
+      "start_line": 163,
+      "step_count": 6,
+      "id": 421
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_code",
+      "start_line": 175,
+      "step_count": 2,
+      "id": 422
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_par",
+      "start_line": 181,
+      "step_count": 0,
+      "id": 423
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_transferable",
+      "start_line": 191,
+      "step_count": 0,
+      "id": 424
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_primitive_transfer",
+      "start_line": 196,
+      "step_count": 0,
+      "id": 425
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "wp_transfer",
+      "start_line": 203,
+      "step_count": 8,
+      "id": 426
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "is_except_0_wp",
+      "start_line": 222,
+      "step_count": 0,
+      "id": 427
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "elim_modal_bupd_wp",
+      "start_line": 226,
+      "step_count": 0,
+      "id": 428
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "elim_modal_fupd_wp",
+      "start_line": 230,
+      "step_count": 0,
+      "id": 429
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "elim_modal_fupd_wp_atomic",
+      "start_line": 236,
+      "step_count": 0,
+      "id": 430
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "add_modal_fupd_wp",
+      "start_line": 242,
+      "step_count": 0,
+      "id": 431
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "elim_acc_wp_atomic",
+      "start_line": 246,
+      "step_count": 0,
+      "id": 432
+    },
+    {
+      "v_rel_path": "src/logic/wp.v",
+      "theorem_name": "elim_acc_wp_nonatomic",
+      "start_line": 253,
+      "step_count": 0,
+      "id": 433
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_pre_contractive",
+      "start_line": 44,
+      "step_count": 3,
+      "id": 434
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_unfold",
+      "start_line": 54,
+      "step_count": 0,
+      "id": 435
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "fupd_wpg",
+      "start_line": 61,
+      "step_count": 7,
+      "id": 436
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "bupd_wpg",
+      "start_line": 73,
+      "step_count": 2,
+      "id": 437
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_fupd",
+      "start_line": 80,
+      "step_count": 12,
+      "id": 438
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_strong_mono",
+      "start_line": 97,
+      "step_count": 12,
+      "id": 439
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_mono",
+      "start_line": 115,
+      "step_count": 4,
+      "id": 440
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_frame_step",
+      "start_line": 125,
+      "step_count": 8,
+      "id": 441
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_end",
+      "start_line": 140,
+      "step_count": 14,
+      "id": 442
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_val",
+      "start_line": 162,
+      "step_count": 4,
+      "id": 443
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_if",
+      "start_line": 170,
+      "step_count": 8,
+      "id": 444
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_let_val",
+      "start_line": 183,
+      "step_count": 8,
+      "id": 445
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "to_val_fill_item",
+      "start_line": 196,
+      "step_count": 0,
+      "id": 446
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "to_val_Some_inv",
+      "start_line": 199,
+      "step_count": 0,
+      "id": 447
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "val_inv_final_tree",
+      "start_line": 202,
+      "step_count": 0,
+      "id": 448
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_bind_pre",
+      "start_line": 210,
+      "step_count": 33,
+      "id": 449
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_bind",
+      "start_line": 249,
+      "step_count": 0,
+      "id": 450
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "wpg_atomic",
+      "start_line": 255,
+      "step_count": 12,
+      "id": 451
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "is_except_0_wp",
+      "start_line": 277,
+      "step_count": 3,
+      "id": 452
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "elim_modal_bupd_wp",
+      "start_line": 284,
+      "step_count": 4,
+      "id": 453
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "elim_modal_fupd_wp",
+      "start_line": 292,
+      "step_count": 3,
+      "id": 454
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "elim_modal_fupd_wp_atomic",
+      "start_line": 301,
+      "step_count": 5,
+      "id": 455
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "add_modal_fupd_wp",
+      "start_line": 312,
+      "step_count": 0,
+      "id": 456
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "elim_acc_wp_atomic",
+      "start_line": 316,
+      "step_count": 5,
+      "id": 457
+    },
+    {
+      "v_rel_path": "src/logic/wpg.v",
+      "theorem_name": "elim_acc_wp_nonatomic",
+      "start_line": 328,
+      "step_count": 6,
+      "id": 458
+    },
+    {
+      "v_rel_path": "src/logic/wpg_more.v",
+      "theorem_name": "step_preserves_transferable",
+      "start_line": 33,
+      "step_count": 47,
+      "id": 459
+    },
+    {
+      "v_rel_path": "src/logic/wpg_more.v",
+      "theorem_name": "wpg_transferable_aux",
+      "start_line": 89,
+      "step_count": 25,
+      "id": 460
+    },
+    {
+      "v_rel_path": "src/logic/wpg_more.v",
+      "theorem_name": "wpg_transferable",
+      "start_line": 120,
+      "step_count": 4,
+      "id": 461
+    },
+    {
+      "v_rel_path": "src/logic/wpg_more.v",
+      "theorem_name": "wpg_primitive_transfer",
+      "start_line": 129,
+      "step_count": 13,
+      "id": 462
+    },
+    {
+      "v_rel_path": "src/logic/wpg_more.v",
+      "theorem_name": "reducible_bind_inv",
+      "start_line": 149,
+      "step_count": 4,
+      "id": 463
+    },
+    {
+      "v_rel_path": "src/logic/wpg_more.v",
+      "theorem_name": "pureinv_ctx",
+      "start_line": 159,
+      "step_count": 3,
+      "id": 464
+    },
+    {
+      "v_rel_path": "src/logic/wpg_more.v",
+      "theorem_name": "wpg_bind_inv_pre",
+      "start_line": 168,
+      "step_count": 23,
+      "id": 465
+    },
+    {
+      "v_rel_path": "src/logic/wpg_more.v",
+      "theorem_name": "wpg_bind_inv",
+      "start_line": 197,
+      "step_count": 0,
+      "id": 466
+    },
+    {
+      "v_rel_path": "src/logic/wpg_par.v",
+      "theorem_name": "reducible_join",
+      "start_line": 15,
+      "step_count": 7,
+      "id": 467
+    },
+    {
+      "v_rel_path": "src/logic/wpg_par.v",
+      "theorem_name": "give_plain",
+      "start_line": 29,
+      "step_count": 11,
+      "id": 468
+    },
+    {
+      "v_rel_path": "src/logic/wpg_par.v",
+      "theorem_name": "is_val_false1",
+      "start_line": 47,
+      "step_count": 0,
+      "id": 469
+    },
+    {
+      "v_rel_path": "src/logic/wpg_par.v",
+      "theorem_name": "pureinv_inv_par",
+      "start_line": 52,
+      "step_count": 4,
+      "id": 470
+    },
+    {
+      "v_rel_path": "src/logic/wpg_par.v",
+      "theorem_name": "wpg_par_ctx",
+      "start_line": 61,
+      "step_count": 81,
+      "id": 471
+    },
+    {
+      "v_rel_path": "src/logic/wpg_par.v",
+      "theorem_name": "wpg_fork",
+      "start_line": 150,
+      "step_count": 23,
+      "id": 472
+    },
+    {
+      "v_rel_path": "src/logic/wpg_par.v",
+      "theorem_name": "wpg_par",
+      "start_line": 179,
+      "step_count": 6,
+      "id": 473
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_alloc",
+      "start_line": 13,
+      "step_count": 16,
+      "id": 474
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_load",
+      "start_line": 35,
+      "step_count": 14,
+      "id": 475
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_store",
+      "start_line": 56,
+      "step_count": 14,
+      "id": 476
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_call",
+      "start_line": 76,
+      "step_count": 10,
+      "id": 477
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "eval_call_prim_inj",
+      "start_line": 91,
+      "step_count": 0,
+      "id": 478
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_call_prim",
+      "start_line": 97,
+      "step_count": 13,
+      "id": 479
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_cas",
+      "start_line": 115,
+      "step_count": 21,
+      "id": 480
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_length",
+      "start_line": 146,
+      "step_count": 12,
+      "id": 481
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_tick",
+      "start_line": 163,
+      "step_count": 15,
+      "id": 482
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "wpg_code",
+      "start_line": 184,
+      "step_count": 9,
+      "id": 483
+    },
+    {
+      "v_rel_path": "src/logic/wpg_rules.v",
+      "theorem_name": "tempus_atomic",
+      "start_line": 197,
+      "step_count": 12,
+      "id": 484
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "lookup_range",
+      "start_line": 6,
+      "step_count": 5,
+      "id": 485
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "lookup_range_lt_Some",
+      "start_line": 17,
+      "step_count": 4,
+      "id": 486
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "lookup_range_inv",
+      "start_line": 26,
+      "step_count": 5,
+      "id": 487
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "elem_of_range",
+      "start_line": 36,
+      "step_count": 5,
+      "id": 488
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "NoDup_range",
+      "start_line": 46,
+      "step_count": 0,
+      "id": 489
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "length_range",
+      "start_line": 50,
+      "step_count": 0,
+      "id": 490
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "range_zero",
+      "start_line": 54,
+      "step_count": 3,
+      "id": 491
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "range_S",
+      "start_line": 60,
+      "step_count": 5,
+      "id": 492
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "range_app",
+      "start_line": 70,
+      "step_count": 4,
+      "id": 493
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_eq",
+      "start_line": 90,
+      "step_count": 0,
+      "id": 494
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_0",
+      "start_line": 102,
+      "step_count": 0,
+      "id": 495
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_S",
+      "start_line": 105,
+      "step_count": 3,
+      "id": 496
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_add",
+      "start_line": 113,
+      "step_count": 3,
+      "id": 497
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_snoc",
+      "start_line": 121,
+      "step_count": 5,
+      "id": 498
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_gen_proper",
+      "start_line": 131,
+      "step_count": 6,
+      "id": 499
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_proper",
+      "start_line": 144,
+      "step_count": 2,
+      "id": 500
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_ext",
+      "start_line": 151,
+      "step_count": 3,
+      "id": 501
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_proper'",
+      "start_line": 159,
+      "step_count": 0,
+      "id": 502
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_op",
+      "start_line": 164,
+      "step_count": 9,
+      "id": 503
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_reindex_sub",
+      "start_line": 178,
+      "step_count": 11,
+      "id": 504
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_factorize_gen",
+      "start_line": 194,
+      "step_count": 9,
+      "id": 505
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_factorize",
+      "start_line": 209,
+      "step_count": 3,
+      "id": 506
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_factorize'",
+      "start_line": 217,
+      "step_count": 4,
+      "id": 507
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_opN_factorize''",
+      "start_line": 226,
+      "step_count": 8,
+      "id": 508
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_persistent",
+      "start_line": 254,
+      "step_count": 0,
+      "id": 509
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_timeless",
+      "start_line": 259,
+      "step_count": 0,
+      "id": 510
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_0",
+      "start_line": 265,
+      "step_count": 0,
+      "id": 511
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_S",
+      "start_line": 270,
+      "step_count": 0,
+      "id": 512
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_add",
+      "start_line": 275,
+      "step_count": 0,
+      "id": 513
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_snoc",
+      "start_line": 281,
+      "step_count": 0,
+      "id": 514
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_mono",
+      "start_line": 286,
+      "step_count": 0,
+      "id": 515
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_proper",
+      "start_line": 291,
+      "step_count": 0,
+      "id": 516
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_intro",
+      "start_line": 296,
+      "step_count": 8,
+      "id": 517
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_sep",
+      "start_line": 308,
+      "step_count": 0,
+      "id": 518
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_impl",
+      "start_line": 313,
+      "step_count": 6,
+      "id": 519
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepL_sepN",
+      "start_line": 325,
+      "step_count": 0,
+      "id": 520
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_elem_of_acc",
+      "start_line": 329,
+      "step_count": 6,
+      "id": 521
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_pure",
+      "start_line": 340,
+      "step_count": 7,
+      "id": 522
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "list_snoc_exists",
+      "start_line": 351,
+      "step_count": 8,
+      "id": 523
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_exists",
+      "start_line": 364,
+      "step_count": 34,
+      "id": 524
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_exists_from_zero",
+      "start_line": 402,
+      "step_count": 2,
+      "id": 525
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_factorize",
+      "start_line": 408,
+      "step_count": 0,
+      "id": 526
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "nat_to_Qp_succ",
+      "start_line": 415,
+      "step_count": 3,
+      "id": 527
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "fractional_split_n_times",
+      "start_line": 421,
+      "step_count": 12,
+      "id": 528
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepN_to_list",
+      "start_line": 439,
+      "step_count": 12,
+      "id": 529
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepM_map_seq",
+      "start_line": 456,
+      "step_count": 14,
+      "id": 530
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepL_to_big_sepN",
+      "start_line": 475,
+      "step_count": 13,
+      "id": 531
+    },
+    {
+      "v_rel_path": "src/utils/big_opN.v",
+      "theorem_name": "big_sepL_to_sepN",
+      "start_line": 493,
+      "step_count": 6,
+      "id": 532
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "edge_mon",
+      "start_line": 20,
+      "step_count": 0,
+      "id": 533
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "edge_reachable",
+      "start_line": 28,
+      "step_count": 0,
+      "id": 534
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "reachable_pre_order",
+      "start_line": 32,
+      "step_count": 0,
+      "id": 535
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "reachable_mon",
+      "start_line": 35,
+      "step_count": 6,
+      "id": 536
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_edges",
+      "start_line": 54,
+      "step_count": 0,
+      "id": 537
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "edge_graph_upd",
+      "start_line": 58,
+      "step_count": 3,
+      "id": 538
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "graph_upd_incl",
+      "start_line": 66,
+      "step_count": 0,
+      "id": 539
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_vertices",
+      "start_line": 73,
+      "step_count": 4,
+      "id": 540
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "vertices_singleton",
+      "start_line": 81,
+      "step_count": 2,
+      "id": 541
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "vertices_union",
+      "start_line": 87,
+      "step_count": 17,
+      "id": 542
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "reachable_no_self_in_vertices",
+      "start_line": 108,
+      "step_count": 7,
+      "id": 543
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "vertices_mono",
+      "start_line": 121,
+      "step_count": 0,
+      "id": 544
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_onereach",
+      "start_line": 132,
+      "step_count": 5,
+      "id": 545
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_unions",
+      "start_line": 144,
+      "step_count": 5,
+      "id": 546
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_onereachs",
+      "start_line": 156,
+      "step_count": 9,
+      "id": 547
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "onereachs_included",
+      "start_line": 169,
+      "step_count": 6,
+      "id": 548
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "succ_reachable",
+      "start_line": 185,
+      "step_count": 10,
+      "id": 549
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "rtc_succ_reachable",
+      "start_line": 201,
+      "step_count": 4,
+      "id": 550
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "reachables_init",
+      "start_line": 211,
+      "step_count": 3,
+      "id": 551
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_reachables1",
+      "start_line": 218,
+      "step_count": 3,
+      "id": 552
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_reachables2",
+      "start_line": 226,
+      "step_count": 11,
+      "id": 553
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_reachables",
+      "start_line": 242,
+      "step_count": 0,
+      "id": 554
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "reachables_subseteq_vertices",
+      "start_line": 246,
+      "step_count": 5,
+      "id": 555
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_sources",
+      "start_line": 261,
+      "step_count": 4,
+      "id": 556
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "sources_union",
+      "start_line": 269,
+      "step_count": 2,
+      "id": 557
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "sources_singleton",
+      "start_line": 275,
+      "step_count": 2,
+      "id": 558
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "sources_empty",
+      "start_line": 281,
+      "step_count": 0,
+      "id": 559
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "sources_are_vertices",
+      "start_line": 284,
+      "step_count": 2,
+      "id": 560
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "sources_mon",
+      "start_line": 290,
+      "step_count": 2,
+      "id": 561
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "elem_of_targets",
+      "start_line": 303,
+      "step_count": 4,
+      "id": 562
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "targets_union",
+      "start_line": 311,
+      "step_count": 2,
+      "id": 563
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "targets_singleton",
+      "start_line": 317,
+      "step_count": 2,
+      "id": 564
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "targets_empty",
+      "start_line": 323,
+      "step_count": 0,
+      "id": 565
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "targets_are_vertices",
+      "start_line": 326,
+      "step_count": 2,
+      "id": 566
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "targets_mon",
+      "start_line": 332,
+      "step_count": 2,
+      "id": 567
+    },
+    {
+      "v_rel_path": "src/utils/graph.v",
+      "theorem_name": "reachables_in_targets",
+      "start_line": 339,
+      "step_count": 6,
+      "id": 568
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "subset_size_eq",
+      "start_line": 10,
+      "step_count": 9,
+      "id": 569
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_iter_bounded",
+      "start_line": 52,
+      "step_count": 2,
+      "id": 570
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_fixpoint_init",
+      "start_line": 57,
+      "step_count": 2,
+      "id": 571
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_iter_increment",
+      "start_line": 64,
+      "step_count": 3,
+      "id": 572
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_iter_size'",
+      "start_line": 75,
+      "step_count": 8,
+      "id": 573
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_iter_size",
+      "start_line": 91,
+      "step_count": 7,
+      "id": 574
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_fixpoint_limit",
+      "start_line": 106,
+      "step_count": 7,
+      "id": 575
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_fixpoint_after",
+      "start_line": 118,
+      "step_count": 5,
+      "id": 576
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_fixpoint_before",
+      "start_line": 128,
+      "step_count": 6,
+      "id": 577
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_fixpoint_upper",
+      "start_line": 137,
+      "step_count": 4,
+      "id": 578
+    },
+    {
+      "v_rel_path": "src/utils/gset_fixpoint.v",
+      "theorem_name": "gset_fixpoint_ind",
+      "start_line": 147,
+      "step_count": 4,
+      "id": 579
+    },
+    {
+      "v_rel_path": "src/utils/more_iris.v",
+      "theorem_name": "big_sepS_union_persistent",
+      "start_line": 8,
+      "step_count": 9,
+      "id": 580
+    },
+    {
+      "v_rel_path": "src/utils/more_iris.v",
+      "theorem_name": "gset_singleton_included",
+      "start_line": 30,
+      "step_count": 0,
+      "id": 581
+    },
+    {
+      "v_rel_path": "src/utils/more_iris.v",
+      "theorem_name": "auth_gset_elem_of",
+      "start_line": 33,
+      "step_count": 5,
+      "id": 582
+    },
+    {
+      "v_rel_path": "src/utils/more_iris.v",
+      "theorem_name": "auth_gset_extract_witness",
+      "start_line": 42,
+      "step_count": 4,
+      "id": 583
+    },
+    {
+      "v_rel_path": "src/utils/more_iris.v",
+      "theorem_name": "auth_gset_conclude_frag",
+      "start_line": 50,
+      "step_count": 4,
+      "id": 584
+    },
+    {
+      "v_rel_path": "src/utils/more_iris.v",
+      "theorem_name": "auth_gset_insert",
+      "start_line": 59,
+      "step_count": 5,
+      "id": 585
+    },
+    {
+      "v_rel_path": "src/utils/more_iris.v",
+      "theorem_name": "auth_gset_extract_witness_elem",
+      "start_line": 68,
+      "step_count": 3,
+      "id": 586
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "lookup_insert_case",
+      "start_line": 6,
+      "step_count": 0,
+      "id": 587
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "lookup_total_insert_case",
+      "start_line": 10,
+      "step_count": 0,
+      "id": 588
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "gmap_included_insert_notin",
+      "start_line": 14,
+      "step_count": 4,
+      "id": 589
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "insert_insert_ne",
+      "start_line": 24,
+      "step_count": 4,
+      "id": 590
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "insert_delete_ne",
+      "start_line": 33,
+      "step_count": 7,
+      "id": 591
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "insert_id_delete",
+      "start_line": 45,
+      "step_count": 2,
+      "id": 592
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "map_zip_singleton",
+      "start_line": 57,
+      "step_count": 2,
+      "id": 593
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "map_zip_empty",
+      "start_line": 63,
+      "step_count": 0,
+      "id": 594
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "map_zip_empty_inv",
+      "start_line": 67,
+      "step_count": 7,
+      "id": 595
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "dom_map_zip",
+      "start_line": 80,
+      "step_count": 7,
+      "id": 596
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "map_zip_insert",
+      "start_line": 91,
+      "step_count": 2,
+      "id": 597
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "map_zip_delete",
+      "start_line": 97,
+      "step_count": 2,
+      "id": 598
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "dom_disj_union",
+      "start_line": 110,
+      "step_count": 3,
+      "id": 599
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "dom_msingleton",
+      "start_line": 117,
+      "step_count": 3,
+      "id": 600
+    },
+    {
+      "v_rel_path": "src/utils/more_maps_and_sets.v",
+      "theorem_name": "dom_mempty",
+      "start_line": 124,
+      "step_count": 0,
+      "id": 601
+    }
+  ]
+}

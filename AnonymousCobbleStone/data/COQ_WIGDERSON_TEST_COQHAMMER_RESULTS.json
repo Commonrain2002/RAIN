@@ -1,0 +1,11 @@
+{
+    "coq-wigderson-coloring.v-coloring_max_deg_complete": true,
+    "coq-wigderson-coloring.v-map_o": true,
+    "coq-wigderson-coloring.v-ok_coloring_set_eq": true,
+    "coq-wigderson-coloring.v-two_color_step_colors_adj_c2": true,
+    "coq-wigderson-coloring.v-two_color_step_inv": true,
+    "coq-wigderson-subgraph.v-max_degree_extraction_disjoint": true,
+    "coq-wigderson-subgraph.v-not_adj_removes": true,
+    "coq-wigderson-subgraph.v-remove_max_deg_adj'": true,
+    "coq-wigderson-wigderson.v-cardinal_remove": true
+}

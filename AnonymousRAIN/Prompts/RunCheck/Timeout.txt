@@ -1,0 +1,1 @@
+Result: proof check timed out ({{TimeoutSeconds}}s); a rewrite loop may have occurred.

@@ -1,0 +1,1 @@
+dotnet publish ProofAgent.csproj -c Release -o ./publish

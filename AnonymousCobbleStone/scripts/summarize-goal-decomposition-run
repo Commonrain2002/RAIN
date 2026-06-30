@@ -1,0 +1,22 @@
+#!/bin/bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+ORIGIN_DIR=$(pwd)
+cd "$REPO_ROOT" || exit 1
+trap 'cd "$ORIGIN_DIR"' EXIT
+
+SCRIPT="$SCRIPT_DIR/summarize_goal_decomposition_run.py"
+
+if [ -x "${COBBLESTONE_PYTHON:-}" ]; then
+    exec "$COBBLESTONE_PYTHON" "$SCRIPT" "$@"
+fi
+
+if [ -n "${CONDA_PREFIX:-}" ] && [[ "$CONDA_PREFIX" == *"/envs/cobble" ]]; then
+    exec python "$SCRIPT" "$@"
+fi
+
+if command -v conda >/dev/null 2>&1 && conda env list | awk '{print $1}' | grep -qx cobble; then
+    exec conda run -n cobble --no-capture-output python "$SCRIPT" "$@"
+fi
+
+exec python "$SCRIPT" "$@"

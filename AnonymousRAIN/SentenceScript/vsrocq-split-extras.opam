@@ -1,0 +1,35 @@
+opam-version: "2.0"
+name: "vsrocq-split-extras"
+version: "0.0.0"
+synopsis: "OCaml extras to compile vsrocq_split_sentences in an existing Coq switch"
+description: """
+Does NOT declare coq-core / rocq-core / dune / ocaml  your project switch already has them.
+
+Install in the same opam switch where you build proofs, then run `make` in this tree:
+
+  opam install ./vsrocq-split-extras.opam --no-upgrade
+  make
+
+Use --dry-run first. Binary is linked to whatever coqc prints in that switch.
+"""
+maintainer: "vsrocq contributors"
+authors: ["The VsRocq development team"]
+homepage: "https://github.com/rocq-prover/vsrocq"
+bug-reports: "https://github.com/rocq-prover/vsrocq/issues"
+license: "MIT"
+depends: [
+  "base"
+  "lsp" {>= "1.15"}
+  "sel" {>= "0.6.0"}
+  "yojson"
+  "sexplib"
+  "jsonrpc" {>= "1.15"}
+  "result" {>= "1.5"}
+  "ppx_optcomp"
+  "ppx_import"
+  "ppx_sexp_conv"
+  "ppx_yojson_conv"
+  "ppx_deriving"
+]
+build: [["true"]]
+install: []

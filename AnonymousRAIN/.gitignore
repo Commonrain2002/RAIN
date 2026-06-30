@@ -1,0 +1,61 @@
+# JetBrains Rider / IntelliJ
+.idea/
+*.sln.iml
+
+# Build
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+**/bin/
+**/obj/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.userprefs
+*.pidb
+*.svclog
+*.pdb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Test / coverage
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+*.lcov
+
+# .NET Core / SDK
+project.assets.json
+project.nuget.cache
+*.rsuser
+mono_crash.*
+
+# Others
+**__pycache__**
+*.cache
+*.log
+*.vspscc
+*.vssscc
+.DS_Store
+.vscode/
+.cursor/
+.Log/
