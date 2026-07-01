@@ -263,5 +263,5 @@ solvers are on `PATH`:
 eprover --version
 vampire --version
 cvc4 --version
-z3 --version
+z3_tptp --help
 ```
