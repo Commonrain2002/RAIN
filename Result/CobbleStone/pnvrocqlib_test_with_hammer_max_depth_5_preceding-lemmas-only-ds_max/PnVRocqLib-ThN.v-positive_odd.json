@@ -1,0 +1,215 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ThN.v-positive_odd.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "333e2e4c1be943598d4730d11d3b5514",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "n_odd,n : nat"
+          ],
+          "goal": "iff (eq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1))\n  (and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n     (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0)))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "854ff7bd789947a6ae2aa0c7109f0b33",
+          "b377ee3c12544583af4ad43fcc8f52d8"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "split.",
+            "constructor."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "n_odd,n : nat"
+              ],
+              "goal": "forall _ : eq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1),\nand (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n  (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0))"
+            },
+            {
+              "hypotheses": [
+                "n_odd,n : nat"
+              ],
+              "goal": "forall\n  _ : and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n        (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0)),\neq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "",
+        "constructor.\n- intro H. exact (let H' := proj1 (div_mod_inv n_odd 2 n 1 (Nat.neq_succ_0 1)) (conj H (Nat.lt_succ_self 1)) in\n         conj (proj1 H') (conj (eq_sym (proj1 (proj2 H'))) (Nat.lt_of_lt_of_le (Nat.lt_0_succ 0) (proj2 (proj2 H'))))).\n- intro H. exact (let (Hn, Hrest) := H in let (Hmod, Hgt) := Hrest in proj1 (proj2 (div_mod_inv n_odd 2 n 1 (Nat.neq_succ_0 1)) (conj Hn (conj (eq_sym Hmod) (Nat.succ_le_of_lt Hgt))))).",
+        "split.\n- refine (fun (H : n_odd = 2*n+1) => \n    eq_ind_r (fun x => n = (x-1)/2 /\\ x mod 2 = 1 /\\ x > 0) \n      (conj (Nat.div_unique (2*n+1-1) 2 n 0 \n         (eq_trans (eq_trans (f_equal (fun x => x - 1) (Nat.add_comm (2*n) 1)) (Nat.add_sub_cancel 1 (2*n))) (eq_sym (Nat.add_0_r (2*n)))) \n         (Nat.lt_0_succ 1)) \n        (conj (Nat.mod_unique (2*n+1) 2 n 1 (eq_refl _) (Nat.lt_succ_diag_r 1)) \n              (Nat.lt_0_succ (2*n)))) H).\n- refine (fun (H : and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2)) (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0))) => \n    match H with\n    | conj Hn (conj Hmod Hpos) => \n      let q := Nat.div n_odd 2 in\n      let Hdm := eq_trans (Nat.div_mod n_odd 2 (Nat.succ_neq_zero 1)) (f_equal (fun x => 2*q + x) Hmod) in\n      let Hsub := eq_trans (f_equal (fun x => x - 1) Hdm) \n                          (eq_trans (f_equal (fun x => x - 1) (Nat.add_comm (2*q) 1)) \n                                    (Nat.add_sub_cancel 1 (2*q))) in\n      let Hdiv_eq := Nat.div_unique (n_odd-1) 2 q 0 \n                      (eq_trans Hsub (eq_sym (Nat.add_0_r (2*q)))) (Nat.lt_0_succ 1) in\n      let Hn_div := eq_trans Hn Hdiv_eq in\n      eq_trans Hdm (f_equal (fun x => 2*x+1) Hn_div)\n    end).",
+        "split.\n- intro H; subst n_odd; repeat split; [simpl; apply Nat.div2_double | apply (Nat.mod_unique (2*n+1) 2 n 1 (eq_refl _) (Nat.lt_succ_diag_r 1)) | apply Nat.lt_0_succ].\n- intros [H1 [H2 H3]]; assert (Hmod0 : (n_odd-1) % 2 = 0) by (apply (Nat.even_spec (n_odd-1)); apply (Nat.odd_succ (n_odd-1)); rewrite (Nat.succ_pred_eq_of_pos H3); apply (Nat.odd_spec n_odd); exact H2); assert (Hdivmod : (n_odd-1) = 2*n) by (rewrite (Nat.div_add_mod (n_odd-1) 2); rewrite Hmod0; rewrite H1; auto); omega."
+      ],
+      "failed_attempts": [
+        ""
+      ]
+    },
+    {
+      "uuid": "854ff7bd789947a6ae2aa0c7109f0b33",
+      "parent_uuid": "333e2e4c1be943598d4730d11d3b5514",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "n_odd,n : nat"
+          ],
+          "goal": "forall _ : eq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1),\nand (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n  (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0))"
+        },
+        "decomposition": {
+          "proofs": [
+            "split.",
+            "constructor."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "n_odd,n : nat"
+              ],
+              "goal": "forall _ : eq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1),\nand (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n  (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0))"
+            },
+            {
+              "hypotheses": [
+                "n_odd,n : nat"
+              ],
+              "goal": "forall\n  _ : and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n        (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0)),\neq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1)"
+            }
+          ]
+        },
+        "proof_prefix": "constructor."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro H. exact (let H' := proj1 (div_mod_inv n_odd 2 n 1 (Nat.neq_succ_0 1)) (conj H (Nat.lt_succ_self 1)) in\n         conj (proj1 H') (conj (eq_sym (proj1 (proj2 H'))) (Nat.lt_of_lt_of_le (Nat.lt_0_succ 0) (proj2 (proj2 H'))))).",
+        "refine (fun (H : n_odd = 2*n+1) => \n    eq_ind_r (fun x => n = (x-1)/2 /\\ x mod 2 = 1 /\\ x > 0) \n      (conj (Nat.div_unique (2*n+1-1) 2 n 0 \n         (eq_trans (eq_trans (f_equal (fun x => x - 1) (Nat.add_comm (2*n) 1)) (Nat.add_sub_cancel 1 (2*n))) (eq_sym (Nat.add_0_r (2*n)))) \n         (Nat.lt_0_succ 1)) \n        (conj (Nat.mod_unique (2*n+1) 2 n 1 (eq_refl _) (Nat.lt_succ_diag_r 1)) \n              (Nat.lt_0_succ (2*n)))) H).",
+        "intro H; subst n_odd; repeat split; [simpl; apply Nat.div2_double | apply (Nat.mod_unique (2*n+1) 2 n 1 (eq_refl _) (Nat.lt_succ_diag_r 1)) | apply Nat.lt_0_succ]."
+      ],
+      "failed_attempts": [
+        "intro H. exact (let H' := proj1 (div_mod_inv n_odd 2 n 1 (Nat.neq_succ_0 1)) (conj H (Nat.lt_succ_self 1)) in\n         conj (proj1 H') (conj (eq_sym (proj1 (proj2 H'))) (Nat.lt_of_lt_of_le (Nat.lt_0_succ 0) (proj2 (proj2 H'))))).",
+        "refine (fun (H : n_odd = 2*n+1) => \n    eq_ind_r (fun x => n = (x-1)/2 /\\ x mod 2 = 1 /\\ x > 0) \n      (conj (Nat.div_unique (2*n+1-1) 2 n 0 \n         (eq_trans (eq_trans (f_equal (fun x => x - 1) (Nat.add_comm (2*n) 1)) (Nat.add_sub_cancel 1 (2*n))) (eq_sym (Nat.add_0_r (2*n)))) \n         (Nat.lt_0_succ 1)) \n        (conj (Nat.mod_unique (2*n+1) 2 n 1 (eq_refl _) (Nat.lt_succ_diag_r 1)) \n              (Nat.lt_0_succ (2*n)))) H).",
+        "intro H; subst n_odd; repeat split; [simpl; apply Nat.div2_double | apply (Nat.mod_unique (2*n+1) 2 n 1 (eq_refl _) (Nat.lt_succ_diag_r 1)) | apply Nat.lt_0_succ]."
+      ]
+    },
+    {
+      "uuid": "b377ee3c12544583af4ad43fcc8f52d8",
+      "parent_uuid": "333e2e4c1be943598d4730d11d3b5514",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "n_odd,n : nat"
+          ],
+          "goal": "forall\n  _ : and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n        (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0)),\neq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1)"
+        },
+        "decomposition": {
+          "proofs": [
+            "split.",
+            "constructor."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "n_odd,n : nat"
+              ],
+              "goal": "forall _ : eq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1),\nand (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n  (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0))"
+            },
+            {
+              "hypotheses": [
+                "n_odd,n : nat"
+              ],
+              "goal": "forall\n  _ : and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n        (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0)),\neq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1)"
+            }
+          ]
+        },
+        "proof_prefix": "constructor. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 3,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro H. exact (let (Hn, Hrest) := H in let (Hmod, Hgt) := Hrest in proj1 (proj2 (div_mod_inv n_odd 2 n 1 (Nat.neq_succ_0 1)) (conj Hn (conj (eq_sym Hmod) (Nat.succ_le_of_lt Hgt))))).",
+        "refine (fun (H : and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2)) (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0))) => \n    match H with\n    | conj Hn (conj Hmod Hpos) => \n      let q := Nat.div n_odd 2 in\n      let Hdm := eq_trans (Nat.div_mod n_odd 2 (Nat.succ_neq_zero 1)) (f_equal (fun x => 2*q + x) Hmod) in\n      let Hsub := eq_trans (f_equal (fun x => x - 1) Hdm) \n                          (eq_trans (f_equal (fun x => x - 1) (Nat.add_comm (2*q) 1)) \n                                    (Nat.add_sub_cancel 1 (2*q))) in\n      let Hdiv_eq := Nat.div_unique (n_odd-1) 2 q 0 \n                      (eq_trans Hsub (eq_sym (Nat.add_0_r (2*q)))) (Nat.lt_0_succ 1) in\n      let Hn_div := eq_trans Hn Hdiv_eq in\n      eq_trans Hdm (f_equal (fun x => 2*x+1) Hn_div)\n    end).",
+        "intros [H1 [H2 H3]]; assert (Hmod0 : (n_odd-1) % 2 = 0) by (apply (Nat.even_spec (n_odd-1)); apply (Nat.odd_succ (n_odd-1)); rewrite (Nat.succ_pred_eq_of_pos H3); apply (Nat.odd_spec n_odd); exact H2); assert (Hdivmod : (n_odd-1) = 2*n) by (rewrite (Nat.div_add_mod (n_odd-1) 2); rewrite Hmod0; rewrite H1; auto); omega.",
+        "intros n_odd n H. destruct H as [H1 [H2 H3]]. pose proof (Nat.div_mod_eq n_odd 2) as Hdiv1. rewrite H2 in Hdiv1. assert (Hsub : n_odd - 1 = 2 * (n_odd / 2)) by (rewrite Hdiv1; rewrite Nat.add_sub_cancel; reflexivity). rewrite (Nat.div_unique (n_odd - 1) 2 (n_odd / 2) 0 Hsub (Nat.lt_0_succ 1)) in H1; rewrite H1 in Hdiv1; exact Hdiv1.",
+        "intros H. destruct H as [Hn_eq [Hmod Hgt]]. apply (proj2 (div_mod_inv n_odd 2 n 1 (Nat.succ_neq_0 1))). repeat split; auto with arith; (symmetry; auto with arith) || auto with arith.",
+        "intros n_odd n [h_eq [h_mod h_gt]]. pose proof (Nat.mod_add_div n_odd 2 (Nat.neq_succ_0 1)) as h_mod_div. rewrite h_mod in h_mod_div. rewrite plus_comm in h_mod_div. symmetry in h_mod_div. rewrite h_mod_div in h_eq. rewrite Nat.add_sub_cancel_right in h_eq. rewrite (Nat.div_eq_of_eq_mul_right (2*(Nat.div n_odd 2)) 2 (Nat.div n_odd 2) (Nat.lt_0_succ 1) (eq_refl _)) in h_eq. rewrite h_eq in h_mod_div. exact h_mod_div.",
+        "intros H. destruct H as [Hn_eq [Hmod Hgt]]. pose proof (Nat.div_mod_eq n_odd 2) as Hdm. rewrite Hmod in Hdm. assert (Hsub : Nat.sub n_odd 1 = 2 * (Nat.div n_odd 2)) by (rewrite Hdm, Nat.add_sub_cancel; reflexivity). rewrite Hsub in Hn_eq. rewrite (Nat.mul_div_cancel 2 (Nat.div n_odd 2) Nat.lt_0_2) in Hn_eq. rewrite Hn_eq in Hdm. exact Hdm.",
+        "intro H; destruct H as [H1 [H2 H3]]; apply (proj1 (proj2 (div_mod_inv n_odd 2 n 1 (Nat.neq_succ_0 1))) (conj H1 (conj H2 (Nat.succ_le_of_lt H3)))).",
+        "intros n_odd n [H1 [H2_mod H2_gt]]. apply (proj2 (div_mod_inv n_odd 2 n 1 (Nat.succ_neq_0 1))). repeat split; [exact H1 | apply (eq_sym H2_mod) | apply (Nat.succ_le_of_lt (Nat.lt_of_gt H2_gt))].",
+        "intros n_odd n H. destruct H as [Hdiv [Hmod Hgt]]. assert (Hda : n_odd = 2 * (Nat.div n_odd 2) + 1) by\n  (apply (Nat.div_add_mod n_odd 2); discriminate). replace (Nat.sub n_odd 1) with (2 * (Nat.div n_odd 2)) in Hdiv by\n  (rewrite Hda; rewrite Nat.add_sub_cancel; reflexivity). rewrite (Nat.mul_div_cancel_l (Nat.div n_odd 2) 2) in Hdiv; [|discriminate]. rewrite Hdiv in Hda. exact Hda.",
+        "intros n_odd n H. destruct H as [H1 [H2 H3]]. assert (H4 := Nat.div_add_mod n_odd 2); rewrite H2 in H4. assert (H6: Nat.div (n_odd - 1) 2 = Nat.div n_odd 2) by (apply (Nat.div_unique (n_odd - 1) 2 (Nat.div n_odd 2) 0); [rewrite H4; rewrite Nat.add_sub_cancel; rewrite Nat.add_0_r; reflexivity | repeat constructor]). rewrite H6 in H1; rewrite H1 in H4; exact H4."
+      ],
+      "failed_attempts": [
+        "intro H. exact (let (Hn, Hrest) := H in let (Hmod, Hgt) := Hrest in proj1 (proj2 (div_mod_inv n_odd 2 n 1 (Nat.neq_succ_0 1)) (conj Hn (conj (eq_sym Hmod) (Nat.succ_le_of_lt Hgt))))).",
+        "refine (fun (H : and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2)) (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0))) => \n    match H with\n    | conj Hn (conj Hmod Hpos) => \n      let q := Nat.div n_odd 2 in\n      let Hdm := eq_trans (Nat.div_mod n_odd 2 (Nat.succ_neq_zero 1)) (f_equal (fun x => 2*q + x) Hmod) in\n      let Hsub := eq_trans (f_equal (fun x => x - 1) Hdm) \n                          (eq_trans (f_equal (fun x => x - 1) (Nat.add_comm (2*q) 1)) \n                                    (Nat.add_sub_cancel 1 (2*q))) in\n      let Hdiv_eq := Nat.div_unique (n_odd-1) 2 q 0 \n                      (eq_trans Hsub (eq_sym (Nat.add_0_r (2*q)))) (Nat.lt_0_succ 1) in\n      let Hn_div := eq_trans Hn Hdiv_eq in\n      eq_trans Hdm (f_equal (fun x => 2*x+1) Hn_div)\n    end).",
+        "intros [H1 [H2 H3]]; assert (Hmod0 : (n_odd-1) % 2 = 0) by (apply (Nat.even_spec (n_odd-1)); apply (Nat.odd_succ (n_odd-1)); rewrite (Nat.succ_pred_eq_of_pos H3); apply (Nat.odd_spec n_odd); exact H2); assert (Hdivmod : (n_odd-1) = 2*n) by (rewrite (Nat.div_add_mod (n_odd-1) 2); rewrite Hmod0; rewrite H1; auto); omega.",
+        "intros n_odd n H. destruct H as [H1 [H2 H3]]. pose proof (Nat.div_mod_eq n_odd 2) as Hdiv1. rewrite H2 in Hdiv1. assert (Hsub : n_odd - 1 = 2 * (n_odd / 2)) by (rewrite Hdiv1; rewrite Nat.add_sub_cancel; reflexivity). rewrite (Nat.div_unique (n_odd - 1) 2 (n_odd / 2) 0 Hsub (Nat.lt_0_succ 1)) in H1; rewrite H1 in Hdiv1; exact Hdiv1.",
+        "intros H. destruct H as [Hn_eq [Hmod Hgt]]. apply (proj2 (div_mod_inv n_odd 2 n 1 (Nat.succ_neq_0 1))). repeat split; auto with arith; (symmetry; auto with arith) || auto with arith.",
+        "intros n_odd n [h_eq [h_mod h_gt]]. pose proof (Nat.mod_add_div n_odd 2 (Nat.neq_succ_0 1)) as h_mod_div. rewrite h_mod in h_mod_div. rewrite plus_comm in h_mod_div. symmetry in h_mod_div. rewrite h_mod_div in h_eq. rewrite Nat.add_sub_cancel_right in h_eq. rewrite (Nat.div_eq_of_eq_mul_right (2*(Nat.div n_odd 2)) 2 (Nat.div n_odd 2) (Nat.lt_0_succ 1) (eq_refl _)) in h_eq. rewrite h_eq in h_mod_div. exact h_mod_div.",
+        "intros H. destruct H as [Hn_eq [Hmod Hgt]]. pose proof (Nat.div_mod_eq n_odd 2) as Hdm. rewrite Hmod in Hdm. assert (Hsub : Nat.sub n_odd 1 = 2 * (Nat.div n_odd 2)) by (rewrite Hdm, Nat.add_sub_cancel; reflexivity). rewrite Hsub in Hn_eq. rewrite (Nat.mul_div_cancel 2 (Nat.div n_odd 2) Nat.lt_0_2) in Hn_eq. rewrite Hn_eq in Hdm. exact Hdm.",
+        "intro H; destruct H as [H1 [H2 H3]]; apply (proj1 (proj2 (div_mod_inv n_odd 2 n 1 (Nat.neq_succ_0 1))) (conj H1 (conj H2 (Nat.succ_le_of_lt H3)))).",
+        "intros n_odd n [H1 [H2_mod H2_gt]]. apply (proj2 (div_mod_inv n_odd 2 n 1 (Nat.succ_neq_0 1))). repeat split; [exact H1 | apply (eq_sym H2_mod) | apply (Nat.succ_le_of_lt (Nat.lt_of_gt H2_gt))].",
+        "intros n_odd n H. destruct H as [Hdiv [Hmod Hgt]]. assert (Hda : n_odd = 2 * (Nat.div n_odd 2) + 1) by\n  (apply (Nat.div_add_mod n_odd 2); discriminate). replace (Nat.sub n_odd 1) with (2 * (Nat.div n_odd 2)) in Hdiv by\n  (rewrite Hda; rewrite Nat.add_sub_cancel; reflexivity). rewrite (Nat.mul_div_cancel_l (Nat.div n_odd 2) 2) in Hdiv; [|discriminate]. rewrite Hdiv in Hda. exact Hda.",
+        "intros n_odd n H. destruct H as [H1 [H2 H3]]. assert (H4 := Nat.div_add_mod n_odd 2); rewrite H2 in H4. assert (H6: Nat.div (n_odd - 1) 2 = Nat.div n_odd 2) by (apply (Nat.div_unique (n_odd - 1) 2 (Nat.div n_odd 2) 0); [rewrite H4; rewrite Nat.add_sub_cancel; rewrite Nat.add_0_r; reflexivity | repeat constructor]). rewrite H6 in H1; rewrite H1 in H4; exact H4."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.1,
+      "id": 135536296878160,
+      "uuid": "854ff7bd789947a6ae2aa0c7109f0b33"
+    },
+    {
+      "cost": 0.0,
+      "id": 135535933978384,
+      "uuid": "333e2e4c1be943598d4730d11d3b5514"
+    }
+  ],
+  "costs_so_far": {
+    "333e2e4c1be943598d4730d11d3b5514": 0.0,
+    "854ff7bd789947a6ae2aa0c7109f0b33": -0.1,
+    "b377ee3c12544583af4ad43fcc8f52d8": -0.2
+  },
+  "costs_to_go": {
+    "333e2e4c1be943598d4730d11d3b5514": 0,
+    "854ff7bd789947a6ae2aa0c7109f0b33": 0,
+    "b377ee3c12544583af4ad43fcc8f52d8": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "333e2e4c1be943598d4730d11d3b5514": 0,
+    "854ff7bd789947a6ae2aa0c7109f0b33": 1,
+    "b377ee3c12544583af4ad43fcc8f52d8": 2
+  },
+  "next_node_idx": 3,
+  "remaining_nodes_to_expand": 147,
+  "root_uuid": "333e2e4c1be943598d4730d11d3b5514",
+  "done": false,
+  "visualization": "\n* (1 HYPS)|-iff (eq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1))\n  (and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n     (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0))) (cost:0.0; n_fail:0)\n  # 2 prefixes like split.\n  * (1 HYPS)|-forall _ : eq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1),\nand (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n  (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0)) (cost:-0.1; n_fail:0)\n\n  * (1 HYPS)|-forall\n  _ : and (eq n (Nat.div (Init.Nat.sub n_odd 1) 2))\n        (and (eq (Nat.modulo n_odd 2) 1) (gt n_odd 0)),\neq n_odd (Init.Nat.add (Init.Nat.mul 2 n) 1) (cost:-0.2; n_fail:3)\n"
+}

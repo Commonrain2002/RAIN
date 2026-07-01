@@ -1,0 +1,407 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-Vector.v-to_list_inj.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "b04651dba42142fab48b400b22d825c9",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "EXT_EQ : eq (to_list xs1) (to_list xs2)",
+            "xs1,xs2 : Vector.t A n",
+            "n : nat",
+            "A : Type"
+          ],
+          "goal": "eq xs1 xs2"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [
+        [
+          "674ded51138e4b6aad4499b970a19a4f",
+          "5c1da2e7ce8d44bc85e76df10bad6b41"
+        ],
+        [
+          "8608b97fc5c14caf9c4950bd310970d6",
+          "d970f45aea0d49a3a72e2c5750e1549d"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "induction xs1 as [| n0 x xs1' IHxs1]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "EXT_EQ : eq (to_list Vector.Vector.VNil) (to_list xs2)",
+                "xs2 : Vector.t A 0",
+                "A : Type"
+              ],
+              "goal": "eq Vector.Vector.VNil xs2"
+            },
+            {
+              "hypotheses": [
+                "IHxs1 : forall (xs2 : Vector.t A n0) (_ : eq (to_list xs1') (to_list xs2)),\neq xs1' xs2",
+                "EXT_EQ : eq (to_list (Vector.Vector.VCons n0 x xs1')) (to_list xs2)",
+                "xs2 : Vector.t A (S n0)",
+                "xs1' : Vector.t A n0",
+                "x : A",
+                "n0 : nat",
+                "A : Type"
+              ],
+              "goal": "eq (Vector.Vector.VCons n0 x xs1') xs2"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "induction xs1 as [|n x xs1' IH]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "EXT_EQ : eq (to_list Vector.Vector.VNil) (to_list xs2)",
+                "xs2 : Vector.t A 0",
+                "A : Type"
+              ],
+              "goal": "eq Vector.Vector.VNil xs2"
+            },
+            {
+              "hypotheses": [
+                "IH : forall (xs2 : Vector.t A n) (_ : eq (to_list xs1') (to_list xs2)),\neq xs1' xs2",
+                "EXT_EQ : eq (to_list (Vector.Vector.VCons n x xs1')) (to_list xs2)",
+                "xs2 : Vector.t A (S n)",
+                "xs1' : Vector.t A n",
+                "x : A",
+                "n : nat",
+                "A : Type"
+              ],
+              "goal": "eq (Vector.Vector.VCons n x xs1') xs2"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "induction n as [|n' IH]; intros xs1 xs2 H.\n- destruct xs1; destruct xs2; reflexivity.\n- inversion_clear xs1 as [|? h1 t1]; inversion_clear xs2 as [|? h2 t2]; injection H as [= Hhead Htail]; f_equal; [exact Hhead | apply IH; exact Htail].",
+        "induction n as [|n IH]; intros xs1 xs2 H.\n- destruct xs1, xs2; reflexivity.\n- destruct xs1 as [|n1 x xs1'], xs2 as [|n2 y xs2']; simpl in H. injection H as Hx Htl. apply IH in Htl. subst. reflexivity.",
+        "induction n; destruct xs1; destruct xs2; simpl in EXT_EQ; inversion EXT_EQ; reflexivity || (f_equal; [assumption | apply IHn; assumption]).",
+        "intros H. induction xs1 as [|n0 h1 t1 IHxs1] in xs2, H |- *.\n- exact (match xs2 with VNil => eq_refl end).\n- inversion xs2 as [| n0' h2 t2 Hlen]; subst n0'; simpl in H; injection H as [= Hhd Htl]; apply (f_equal2 (fun a b => VCons n0 a b) Hhd (IHxs1 t2 Htl)).",
+        "induction xs1 as [| n0 x xs1' IHxs1].\n- destruct xs2; reflexivity.\n- inversion xs2; subst.\n-- discriminate EXT_EQ.\n-- injection EXT_EQ as Hx Hlist. apply IHxs1 in Hlist. rewrite Hx, Hlist; reflexivity.",
+        "induction n; intros xs1 xs2 H.\n- now destruct xs1, xs2.\n- destruct xs1 as [|n' x xs1'], xs2 as [|n' y xs2']; simpl in H. injection H as H1 H2. rewrite H1. apply f_equal. apply IH. exact H2.",
+        "induction xs1 as [|n x xs1' IH].\n- destruct xs2.\n-- reflexivity.\n-- discriminate.\n- inversion xs2 as [|n0 x2 xs2' H1 H2]. subst. simpl in EXT_EQ. injection EXT_EQ as Hx Hlist. apply IH in Hlist. apply (f_equal2 (VCons n) Hx Hlist).",
+        "induction xs1 as [|n x xs1' IH]; intros xs2 H;\n  (inversion xs2; subst; simpl in H; inversion H; subst);\n  [auto | apply f_equal; apply IH; auto]."
+      ],
+      "failed_attempts": [
+        "induction n as [|n' IH]; intros xs1 xs2 H.\n- destruct xs1; destruct xs2; reflexivity.\n- inversion_clear xs1 as [|? h1 t1]; inversion_clear xs2 as [|? h2 t2]; injection H as [= Hhead Htail]; f_equal; [exact Hhead | apply IH; exact Htail].",
+        "induction n as [|n IH]; intros xs1 xs2 H.\n- destruct xs1, xs2; reflexivity.\n- destruct xs1 as [|n1 x xs1'], xs2 as [|n2 y xs2']; simpl in H. injection H as Hx Htl. apply IH in Htl. subst. reflexivity.",
+        "induction n; destruct xs1; destruct xs2; simpl in EXT_EQ; inversion EXT_EQ; reflexivity || (f_equal; [assumption | apply IHn; assumption]).",
+        "intros H. induction xs1 as [|n0 h1 t1 IHxs1] in xs2, H |- *.\n- exact (match xs2 with VNil => eq_refl end).\n- inversion xs2 as [| n0' h2 t2 Hlen]; subst n0'; simpl in H; injection H as [= Hhd Htl]; apply (f_equal2 (fun a b => VCons n0 a b) Hhd (IHxs1 t2 Htl)).",
+        "induction n; intros xs1 xs2 H.\n- now destruct xs1, xs2.\n- destruct xs1 as [|n' x xs1'], xs2 as [|n' y xs2']; simpl in H. injection H as H1 H2. rewrite H1. apply f_equal. apply IH. exact H2.",
+        "induction xs1 as [|n x xs1' IH]; intros xs2 H;\n  (inversion xs2; subst; simpl in H; inversion H; subst);\n  [auto | apply f_equal; apply IH; auto]."
+      ]
+    },
+    {
+      "uuid": "674ded51138e4b6aad4499b970a19a4f",
+      "parent_uuid": "b04651dba42142fab48b400b22d825c9",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "EXT_EQ : eq (to_list Vector.Vector.VNil) (to_list xs2)",
+            "xs2 : Vector.t A 0",
+            "A : Type"
+          ],
+          "goal": "eq Vector.Vector.VNil xs2"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction xs1 as [| n0 x xs1' IHxs1]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "EXT_EQ : eq (to_list Vector.Vector.VNil) (to_list xs2)",
+                "xs2 : Vector.t A 0",
+                "A : Type"
+              ],
+              "goal": "eq Vector.Vector.VNil xs2"
+            },
+            {
+              "hypotheses": [
+                "IHxs1 : forall (xs2 : Vector.t A n0) (_ : eq (to_list xs1') (to_list xs2)),\neq xs1' xs2",
+                "EXT_EQ : eq (to_list (Vector.Vector.VCons n0 x xs1')) (to_list xs2)",
+                "xs2 : Vector.t A (S n0)",
+                "xs1' : Vector.t A n0",
+                "x : A",
+                "n0 : nat",
+                "A : Type"
+              ],
+              "goal": "eq (Vector.Vector.VCons n0 x xs1') xs2"
+            }
+          ]
+        },
+        "proof_prefix": "induction xs1 as [| n0 x xs1' IHxs1]."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "5c1da2e7ce8d44bc85e76df10bad6b41",
+      "parent_uuid": "b04651dba42142fab48b400b22d825c9",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHxs1 : forall (xs2 : Vector.t A n0) (_ : eq (to_list xs1') (to_list xs2)),\neq xs1' xs2",
+            "EXT_EQ : eq (to_list (Vector.Vector.VCons n0 x xs1')) (to_list xs2)",
+            "xs2 : Vector.t A (S n0)",
+            "xs1' : Vector.t A n0",
+            "x : A",
+            "n0 : nat",
+            "A : Type"
+          ],
+          "goal": "eq (Vector.Vector.VCons n0 x xs1') xs2"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction xs1 as [| n0 x xs1' IHxs1]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "EXT_EQ : eq (to_list Vector.Vector.VNil) (to_list xs2)",
+                "xs2 : Vector.t A 0",
+                "A : Type"
+              ],
+              "goal": "eq Vector.Vector.VNil xs2"
+            },
+            {
+              "hypotheses": [
+                "IHxs1 : forall (xs2 : Vector.t A n0) (_ : eq (to_list xs1') (to_list xs2)),\neq xs1' xs2",
+                "EXT_EQ : eq (to_list (Vector.Vector.VCons n0 x xs1')) (to_list xs2)",
+                "xs2 : Vector.t A (S n0)",
+                "xs1' : Vector.t A n0",
+                "x : A",
+                "n0 : nat",
+                "A : Type"
+              ],
+              "goal": "eq (Vector.Vector.VCons n0 x xs1') xs2"
+            }
+          ]
+        },
+        "proof_prefix": "induction xs1 as [| n0 x xs1' IHxs1]. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "8608b97fc5c14caf9c4950bd310970d6",
+      "parent_uuid": "b04651dba42142fab48b400b22d825c9",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "EXT_EQ : eq (to_list Vector.Vector.VNil) (to_list xs2)",
+            "xs2 : Vector.t A 0",
+            "A : Type"
+          ],
+          "goal": "eq Vector.Vector.VNil xs2"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction xs1 as [|n x xs1' IH]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "EXT_EQ : eq (to_list Vector.Vector.VNil) (to_list xs2)",
+                "xs2 : Vector.t A 0",
+                "A : Type"
+              ],
+              "goal": "eq Vector.Vector.VNil xs2"
+            },
+            {
+              "hypotheses": [
+                "IH : forall (xs2 : Vector.t A n) (_ : eq (to_list xs1') (to_list xs2)),\neq xs1' xs2",
+                "EXT_EQ : eq (to_list (Vector.Vector.VCons n x xs1')) (to_list xs2)",
+                "xs2 : Vector.t A (S n)",
+                "xs1' : Vector.t A n",
+                "x : A",
+                "n : nat",
+                "A : Type"
+              ],
+              "goal": "eq (Vector.Vector.VCons n x xs1') xs2"
+            }
+          ]
+        },
+        "proof_prefix": "induction xs1 as [|n x xs1' IH]."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "destruct xs2.\n- reflexivity.\n- discriminate."
+      ],
+      "failed_attempts": [
+        "destruct xs2.\n- reflexivity.\n- discriminate."
+      ]
+    },
+    {
+      "uuid": "d970f45aea0d49a3a72e2c5750e1549d",
+      "parent_uuid": "b04651dba42142fab48b400b22d825c9",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IH : forall (xs2 : Vector.t A n) (_ : eq (to_list xs1') (to_list xs2)),\neq xs1' xs2",
+            "EXT_EQ : eq (to_list (Vector.Vector.VCons n x xs1')) (to_list xs2)",
+            "xs2 : Vector.t A (S n)",
+            "xs1' : Vector.t A n",
+            "x : A",
+            "n : nat",
+            "A : Type"
+          ],
+          "goal": "eq (Vector.Vector.VCons n x xs1') xs2"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction xs1 as [|n x xs1' IH]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "EXT_EQ : eq (to_list Vector.Vector.VNil) (to_list xs2)",
+                "xs2 : Vector.t A 0",
+                "A : Type"
+              ],
+              "goal": "eq Vector.Vector.VNil xs2"
+            },
+            {
+              "hypotheses": [
+                "IH : forall (xs2 : Vector.t A n) (_ : eq (to_list xs1') (to_list xs2)),\neq xs1' xs2",
+                "EXT_EQ : eq (to_list (Vector.Vector.VCons n x xs1')) (to_list xs2)",
+                "xs2 : Vector.t A (S n)",
+                "xs1' : Vector.t A n",
+                "x : A",
+                "n : nat",
+                "A : Type"
+              ],
+              "goal": "eq (Vector.Vector.VCons n x xs1') xs2"
+            }
+          ]
+        },
+        "proof_prefix": "induction xs1 as [|n x xs1' IH]. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 4,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "inversion xs2 as [|n0 x2 xs2' H1 H2]. subst. simpl in EXT_EQ. injection EXT_EQ as Hx Hlist. apply IH in Hlist. apply (f_equal2 (VCons n) Hx Hlist).",
+        "inversion xs2; subst.\n- discriminate EXT_EQ.\n- injection EXT_EQ as Hhead Htail. apply IH in Htail. rewrite Hhead, Htail; reflexivity.",
+        "inversion xs2 as [| n0 h t H]. injection H as [= Hn]. subst Hn. simpl to_list in EXT_EQ. injection EXT_EQ as [Hx Htl]. apply IH in Htl. subst. reflexivity.",
+        "inversion xs2 as [| n' h t Hlen Hvec]; [discriminate | injection Hlen as Hnn; subst; simpl in EXT_EQ; inversion EXT_EQ as [Hx Htail]; f_equal; [exact Hx | exact (IH t Htail)]].",
+        "inversion xs2 as [| n0 y xs2' Hlen Hxseq]. rewrite Hlen, Hxseq in *. simpl in EXT_EQ. injection EXT_EQ as Hxy Hlist. apply f_equal; [reflexivity | exact Hxy | apply (IH xs2' Hlist)].",
+        "inversion xs2 as [|n0 y xs0 H_eq H_xs2]; [discriminate H_eq | injection H_eq as H_n0; subst n0; rewrite H_xs2 in EXT_EQ; simpl in EXT_EQ; inversion EXT_EQ as [H_y H_tail]; subst y; apply f_equal; apply IH; exact H_tail].",
+        "inversion xs2 as [n' x' xs2' Heqn Heqt]. subst n'. simpl in EXT_EQ. injection EXT_EQ as [Hx Htl]. rewrite Hx. apply (f_equal (fun t => VCons n x t) (IH xs2' Htl)).",
+        "inversion xs2; subst. simpl in EXT_EQ. injection EXT_EQ as [Hx Hlist]. apply IH in Hlist. subst; reflexivity.",
+        "remember xs2 as xs2'. destruct xs2' as [| n' y xs2''].\n- discriminate.\n- subst. simpl in EXT_EQ. injection EXT_EQ as Hhead Htail. subst. apply f_equal. apply IH. exact Htail.",
+        "destruct xs2.\n- discriminate.\n- intros y ys. simpl in EXT_EQ. injection EXT_EQ as Hx Htail. rewrite Hx; injection; apply (IH ys); exact Htail.",
+        "inversion xs2 as [| n' y xs2' Hlen Hxs2].\n- discriminate.\n- injection Hlen as Hn. rewrite Hn in *. rewrite Hxs2 in *. simpl in EXT_EQ. injection EXT_EQ as Hx Hlist. pose proof (IH xs2' Hlist) as Hxs. rewrite Hx, Hxs. reflexivity.",
+        "inversion xs2 as [ Hnil | n0 h t Hxs2 Hn0 ]; subst n0.\n- discriminate.\n- rewrite Hxs2 in *; simpl in EXT_EQ; injection EXT_EQ as Hx Hlist; subst h; apply IH in Hlist; rewrite Hlist; reflexivity.",
+        "inversion xs2 as [| n0 y xs2' Hn Hxs2]. injection Hn as Hn'. subst n0. simpl in EXT_EQ. f_equal.\n- reflexivity.\n- injection EXT_EQ as Hx Htail; exact Hx.\n- apply (IH xs2' Htail)."
+      ],
+      "failed_attempts": [
+        "inversion xs2 as [|n0 x2 xs2' H1 H2]. subst. simpl in EXT_EQ. injection EXT_EQ as Hx Hlist. apply IH in Hlist. apply (f_equal2 (VCons n) Hx Hlist).",
+        "inversion xs2; subst.\n- discriminate EXT_EQ.\n- injection EXT_EQ as Hhead Htail. apply IH in Htail. rewrite Hhead, Htail; reflexivity.",
+        "inversion xs2 as [| n0 h t H]. injection H as [= Hn]. subst Hn. simpl to_list in EXT_EQ. injection EXT_EQ as [Hx Htl]. apply IH in Htl. subst. reflexivity.",
+        "inversion xs2 as [| n' h t Hlen Hvec]; [discriminate | injection Hlen as Hnn; subst; simpl in EXT_EQ; inversion EXT_EQ as [Hx Htail]; f_equal; [exact Hx | exact (IH t Htail)]].",
+        "inversion xs2 as [| n0 y xs2' Hlen Hxseq]. rewrite Hlen, Hxseq in *. simpl in EXT_EQ. injection EXT_EQ as Hxy Hlist. apply f_equal; [reflexivity | exact Hxy | apply (IH xs2' Hlist)].",
+        "inversion xs2 as [|n0 y xs0 H_eq H_xs2]; [discriminate H_eq | injection H_eq as H_n0; subst n0; rewrite H_xs2 in EXT_EQ; simpl in EXT_EQ; inversion EXT_EQ as [H_y H_tail]; subst y; apply f_equal; apply IH; exact H_tail].",
+        "inversion xs2 as [n' x' xs2' Heqn Heqt]. subst n'. simpl in EXT_EQ. injection EXT_EQ as [Hx Htl]. rewrite Hx. apply (f_equal (fun t => VCons n x t) (IH xs2' Htl)).",
+        "inversion xs2; subst. simpl in EXT_EQ. injection EXT_EQ as [Hx Hlist]. apply IH in Hlist. subst; reflexivity.",
+        "remember xs2 as xs2'. destruct xs2' as [| n' y xs2''].\n- discriminate.\n- subst. simpl in EXT_EQ. injection EXT_EQ as Hhead Htail. subst. apply f_equal. apply IH. exact Htail.",
+        "destruct xs2.\n- discriminate.\n- intros y ys. simpl in EXT_EQ. injection EXT_EQ as Hx Htail. rewrite Hx; injection; apply (IH ys); exact Htail.",
+        "inversion xs2 as [| n' y xs2' Hlen Hxs2].\n- discriminate.\n- injection Hlen as Hn. rewrite Hn in *. rewrite Hxs2 in *. simpl in EXT_EQ. injection EXT_EQ as Hx Hlist. pose proof (IH xs2' Hlist) as Hxs. rewrite Hx, Hxs. reflexivity.",
+        "inversion xs2 as [ Hnil | n0 h t Hxs2 Hn0 ]; subst n0.\n- discriminate.\n- rewrite Hxs2 in *; simpl in EXT_EQ; injection EXT_EQ as Hx Hlist; subst h; apply IH in Hlist; rewrite Hlist; reflexivity.",
+        "inversion xs2 as [| n0 y xs2' Hn Hxs2]. injection Hn as Hn'. subst n0. simpl in EXT_EQ. f_equal.\n- reflexivity.\n- injection EXT_EQ as Hx Htail; exact Hx.\n- apply (IH xs2' Htail)."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536062978192,
+      "uuid": "8608b97fc5c14caf9c4950bd310970d6"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536116663888,
+      "uuid": "674ded51138e4b6aad4499b970a19a4f"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536078503632,
+      "uuid": "5c1da2e7ce8d44bc85e76df10bad6b41"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536063179920,
+      "uuid": "b04651dba42142fab48b400b22d825c9"
+    }
+  ],
+  "costs_so_far": {
+    "b04651dba42142fab48b400b22d825c9": 0.0,
+    "674ded51138e4b6aad4499b970a19a4f": -0.1,
+    "5c1da2e7ce8d44bc85e76df10bad6b41": -0.2,
+    "8608b97fc5c14caf9c4950bd310970d6": -0.30000000000000004,
+    "d970f45aea0d49a3a72e2c5750e1549d": -0.4
+  },
+  "costs_to_go": {
+    "b04651dba42142fab48b400b22d825c9": 0,
+    "674ded51138e4b6aad4499b970a19a4f": 0,
+    "5c1da2e7ce8d44bc85e76df10bad6b41": 0,
+    "8608b97fc5c14caf9c4950bd310970d6": 0,
+    "d970f45aea0d49a3a72e2c5750e1549d": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "b04651dba42142fab48b400b22d825c9": 0,
+    "674ded51138e4b6aad4499b970a19a4f": 1,
+    "5c1da2e7ce8d44bc85e76df10bad6b41": 2,
+    "8608b97fc5c14caf9c4950bd310970d6": 3,
+    "d970f45aea0d49a3a72e2c5750e1549d": 4
+  },
+  "next_node_idx": 5,
+  "remaining_nodes_to_expand": 145,
+  "root_uuid": "b04651dba42142fab48b400b22d825c9",
+  "done": false,
+  "visualization": "\n* (4 HYPS)|-eq xs1 xs2 (cost:0.0; n_fail:1)\n  # 1 prefixes like induction xs1 as [| n0 x xs1' IHxs1].\n  * (3 HYPS)|-eq Vector.Vector.VNil xs2 (cost:-0.1; n_fail:0)\n\n  * (7 HYPS)|-eq (Vector.Vector.VCons n0 x xs1') xs2 (cost:-0.2; n_fail:0)\n\n  # 1 prefixes like induction xs1 as [|n x xs1' IH].\n  * (3 HYPS)|-eq Vector.Vector.VNil xs2 (cost:-0.30000000000000004; n_fail:0)\n\n  * (7 HYPS)|-eq (Vector.Vector.VCons n x xs1') xs2 (cost:-0.4; n_fail:4)\n"
+}

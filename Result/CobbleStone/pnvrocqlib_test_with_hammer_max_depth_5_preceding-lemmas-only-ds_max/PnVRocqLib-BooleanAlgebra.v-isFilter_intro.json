@@ -1,0 +1,232 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-BooleanAlgebra.v-isFilter_intro.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "fcd70d9374334737bc41ca745833b9f3",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "CLOSED_UPWARD : forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F",
+            "CLOSED_MEET : forall (x1 x2 : B) (_ : E.In x1 F) (_ : E.In x2 F),\nE.In (BooleanAlgebra.andB x1 x2) F",
+            "NONEMPTY : ex (fun x0 : B => E.In x0 F)",
+            "F : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "isFilter F"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "19c2bd903bf04fa1955863b7e0a9c13f",
+          "4831a5930f4847c2bb901266e62e1dd4"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "apply isFilter_if."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "CLOSED_UPWARD : forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F",
+                "CLOSED_MEET : forall (x1 x2 : B) (_ : E.In x1 F) (_ : E.In x2 F),\nE.In (BooleanAlgebra.andB x1 x2) F",
+                "NONEMPTY : ex (fun x0 : B => E.In x0 F)",
+                "F : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (xs : list B) (_ : forall (x : B) (_ : L.In x xs), E.In x F),\nE.In (andsB xs) F"
+            },
+            {
+              "hypotheses": [
+                "CLOSED_UPWARD : forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F",
+                "CLOSED_MEET : forall (x1 x2 : B) (_ : E.In x1 F) (_ : E.In x2 F),\nE.In (BooleanAlgebra.andB x1 x2) F",
+                "NONEMPTY : ex (fun x0 : B => E.In x0 F)",
+                "F : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F"
+            }
+          ]
+        }
+      ],
+      "proof": "apply isFilter_if.\n- intro xs; induction xs as [|x xs IH].\n-- sfirstorder.\n-- hauto lq: on.\n- exact CLOSED_UPWARD.",
+      "lemmas": null,
+      "attempts": [
+        "apply isFilter_if; [| exact CLOSED_UPWARD]. intros xs H_all. induction xs as [| x xs IH]; simpl.\n- destruct NONEMPTY as [x0 Hx0]. apply (CLOSED_UPWARD x0 Hx0 trueB). sfirstorder.\n- apply (CLOSED_MEET x (andsB xs) (H_all x (or_introl eq_refl)) (IH (fun y Hy => H_all y (or_intror Hy)))).",
+        "apply isFilter_if.\n- intro xs; induction xs as [|x xs IH].\n-- sfirstorder.\n-- hauto lq: on.\n- exact CLOSED_UPWARD.",
+        "apply isFilter_if.\n- induction xs as [| x xs IH]; intro H.\n-- destruct NONEMPTY as [a Ha]; apply CLOSED_UPWARD with (x := a); [exact Ha |]; destruct BOOLEAN_ALGEBRA_LAWS.trueB_id_andB as [_ H2]; exact (H2 a).\n-- simpl; apply CLOSED_MEET; [apply H; constructor | apply IH; intros y Hy; apply H; constructor 2; exact Hy].\n- exact CLOSED_UPWARD.",
+        "refine (isFilter_if _ CLOSED_UPWARD). intros xs H. induction xs as [| x xs' IH].\n- simpl. destruct NONEMPTY as [x0 Hx0]. destruct BOOLEAN_ALGEBRA_LAWS as [ _ _ _ _ _ _ _ _ _ trueB_id_andB _ _ _ _ _ _ _ _]. destruct (trueB_id_andB x0) as [Hleft Hright]. eapply CLOSED_UPWARD; [eapply Hx0 | apply Hright].\n- simpl. apply CLOSED_MEET; [apply H; left | apply IH; intros y Hy; apply H; right; exact Hy]."
+      ],
+      "failed_attempts": [
+        "refine (isFilter_if _ CLOSED_UPWARD). intros xs H. induction xs as [| x xs' IH].\n- simpl. destruct NONEMPTY as [x0 Hx0]. destruct BOOLEAN_ALGEBRA_LAWS as [ _ _ _ _ _ _ _ _ _ trueB_id_andB _ _ _ _ _ _ _ _]. destruct (trueB_id_andB x0) as [Hleft Hright]. eapply CLOSED_UPWARD; [eapply Hx0 | apply Hright].\n- simpl. apply CLOSED_MEET; [apply H; left | apply IH; intros y Hy; apply H; right; exact Hy]."
+      ]
+    },
+    {
+      "uuid": "19c2bd903bf04fa1955863b7e0a9c13f",
+      "parent_uuid": "fcd70d9374334737bc41ca745833b9f3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "CLOSED_UPWARD : forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F",
+            "CLOSED_MEET : forall (x1 x2 : B) (_ : E.In x1 F) (_ : E.In x2 F),\nE.In (BooleanAlgebra.andB x1 x2) F",
+            "NONEMPTY : ex (fun x0 : B => E.In x0 F)",
+            "F : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "forall (xs : list B) (_ : forall (x : B) (_ : L.In x xs), E.In x F),\nE.In (andsB xs) F"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply isFilter_if."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "CLOSED_UPWARD : forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F",
+                "CLOSED_MEET : forall (x1 x2 : B) (_ : E.In x1 F) (_ : E.In x2 F),\nE.In (BooleanAlgebra.andB x1 x2) F",
+                "NONEMPTY : ex (fun x0 : B => E.In x0 F)",
+                "F : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (xs : list B) (_ : forall (x : B) (_ : L.In x xs), E.In x F),\nE.In (andsB xs) F"
+            },
+            {
+              "hypotheses": [
+                "CLOSED_UPWARD : forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F",
+                "CLOSED_MEET : forall (x1 x2 : B) (_ : E.In x1 F) (_ : E.In x2 F),\nE.In (BooleanAlgebra.andB x1 x2) F",
+                "NONEMPTY : ex (fun x0 : B => E.In x0 F)",
+                "F : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F"
+            }
+          ]
+        },
+        "proof_prefix": "apply isFilter_if."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "4831a5930f4847c2bb901266e62e1dd4",
+      "parent_uuid": "fcd70d9374334737bc41ca745833b9f3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "CLOSED_UPWARD : forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F",
+            "CLOSED_MEET : forall (x1 x2 : B) (_ : E.In x1 F) (_ : E.In x2 F),\nE.In (BooleanAlgebra.andB x1 x2) F",
+            "NONEMPTY : ex (fun x0 : B => E.In x0 F)",
+            "F : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply isFilter_if."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "CLOSED_UPWARD : forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F",
+                "CLOSED_MEET : forall (x1 x2 : B) (_ : E.In x1 F) (_ : E.In x2 F),\nE.In (BooleanAlgebra.andB x1 x2) F",
+                "NONEMPTY : ex (fun x0 : B => E.In x0 F)",
+                "F : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (xs : list B) (_ : forall (x : B) (_ : L.In x xs), E.In x F),\nE.In (andsB xs) F"
+            },
+            {
+              "hypotheses": [
+                "CLOSED_UPWARD : forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F",
+                "CLOSED_MEET : forall (x1 x2 : B) (_ : E.In x1 F) (_ : E.In x2 F),\nE.In (BooleanAlgebra.andB x1 x2) F",
+                "NONEMPTY : ex (fun x0 : B => E.In x0 F)",
+                "F : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F"
+            }
+          ]
+        },
+        "proof_prefix": "apply isFilter_if. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "fcd70d9374334737bc41ca745833b9f3": 0.0,
+    "19c2bd903bf04fa1955863b7e0a9c13f": -0.1,
+    "4831a5930f4847c2bb901266e62e1dd4": -0.2
+  },
+  "costs_to_go": {
+    "fcd70d9374334737bc41ca745833b9f3": 0,
+    "19c2bd903bf04fa1955863b7e0a9c13f": 0,
+    "4831a5930f4847c2bb901266e62e1dd4": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "fcd70d9374334737bc41ca745833b9f3": 0,
+    "19c2bd903bf04fa1955863b7e0a9c13f": 1,
+    "4831a5930f4847c2bb901266e62e1dd4": 2
+  },
+  "next_node_idx": 3,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "fcd70d9374334737bc41ca745833b9f3",
+  "done": false,
+  "visualization": "\n* (8 HYPS)|-isFilter F (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # successful proof: apply isFilter_if.\n- intro xs; induction xs as [|x xs IH].\n-- sfirstorder.\n-- hauto lq: on.\n- exact CLOSED_UPWARD.\n  # 1 prefixes like apply isFilter_if.\n  * (8 HYPS)|-forall (xs : list B) (_ : forall (x : B) (_ : L.In x xs), E.In x F),\nE.In (andsB xs) F (pruned) (cost:-0.1; n_fail:0)\n\n  * (8 HYPS)|-forall (x : B) (_ : E.In x F) (x' : B) (_ : leProp x x'), E.In x' F (proven) (pruned) (done:True; cost:-0.2; n_fail:0)\n    # successful proof: hammer."
+}

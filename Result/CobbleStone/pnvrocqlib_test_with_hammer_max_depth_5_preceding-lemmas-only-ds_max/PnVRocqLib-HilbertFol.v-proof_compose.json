@@ -1,0 +1,86 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-HilbertFol.v-proof_compose.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "a5f6febe8e4744bb9d7ddaf608da6ae0",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "p,q,r : frm L",
+            "L : language"
+          ],
+          "goal": "proof nil (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r)))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 5,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "refine (ImpI (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))\n          (ImpI (Imp_frm p q) (Imp_frm p r)\n            (ImpI p r\n              (ImpE q r\n                (Hyp (Imp_frm q r) _)\n                (ImpE p q\n                  (Hyp (Imp_frm p q) _)\n                  (Hyp p _)\n                )\n              )\n            )\n          )\n        ). repeat constructor.",
+        "repeat apply ImpI. apply ImpE with (A := q); [apply Hyp; auto | apply ImpE with (A := p); [apply Hyp; auto | apply Hyp; auto]].",
+        "exact (mp nil (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))\n   (mp nil\n      (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))))\n      (Imp_frm (Imp_frm (Imp_frm q r) (Imp_frm p (Imp_frm q r))) (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))))\n      (ax2 nil (Imp_frm q r) (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r)))\n      (mp nil\n         (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r)))\n         (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))))\n         (ax1 nil (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) (Imp_frm q r))\n         (ax2 nil p q r)))\n   (ax1 nil (Imp_frm q r) p)).",
+        "repeat apply Imp_i. apply Imp_e with q.\n- apply H; auto.\n- apply Imp_e with p.\n-- apply H; auto.\n-- apply H; auto.",
+        "exact (ImpI nil (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))\n  (ImpI (Imp_frm q r :: nil) (Imp_frm p q) (Imp_frm p r)\n    (ImpI (Imp_frm p q :: Imp_frm q r :: nil) p r\n      (ImpE (p :: Imp_frm p q :: Imp_frm q r :: nil) q r\n        (Ax (p :: Imp_frm p q :: Imp_frm q r :: nil) (Imp_frm q r)\n          (in_cons p (Imp_frm p q :: Imp_frm q r :: nil)\n            (in_cons (Imp_frm p q) (Imp_frm q r :: nil)\n              (in_eq (Imp_frm q r) nil))))\n        (ImpE (p :: Imp_frm p q :: Imp_frm q r :: nil) p q\n          (Ax (p :: Imp_frm p q :: Imp_frm q r :: nil) (Imp_frm p q)\n            (in_cons p (Imp_frm p q :: Imp_frm q r :: nil)\n              (in_eq (Imp_frm p q) (Imp_frm q r :: nil))))\n          (Ax (p :: Imp_frm p q :: Imp_frm q r :: nil) p\n            (in_eq p (Imp_frm p q :: Imp_frm q r :: nil))))))).",
+        "exact (mp (mp (ax2 (Imp_frm q r) (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) (mp (ax1 (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) (Imp_frm q r)) (ax2 p q r))) (ax1 (Imp_frm q r) p)).",
+        "repeat apply Imp_i. eapply Imp_e with (A:=q) (B:=r).\n- eapply Hyp; eauto.\n- eapply Imp_e with (A:=p) (B:=q).\n-- eapply Hyp; eauto.\n-- eapply Hyp; eauto.",
+        "apply ax_comp.",
+        "do 3 apply Imp_I. apply Imp_E with (A := q); [ apply Ax; auto | apply Imp_E with (A := p); [ apply Ax; auto | apply Ax; auto ] ].",
+        "refine (proof_imp_i nil (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))\n          (proof_imp_i ((Imp_frm q r) :: nil) (Imp_frm p q) (Imp_frm p r)\n            (proof_imp_i ((Imp_frm p q) :: (Imp_frm q r) :: nil) p r\n              (proof_imp_e ((Imp_frm p q) :: (Imp_frm q r) :: nil) q r\n                (proof_hyp ((Imp_frm p q) :: (Imp_frm q r) :: nil) (Imp_frm q r) _)\n                (proof_imp_e ((Imp_frm p q) :: (Imp_frm q r) :: nil) p q\n                  (proof_hyp ((Imp_frm p q) :: (Imp_frm q r) :: nil) (Imp_frm p q) _)\n                  (proof_hyp ((Imp_frm p q) :: (Imp_frm q r) :: nil) p _)))))). all: repeat constructor.",
+        "exact (MP nil (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r)) \n   (MP nil (Imp_frm (Imp_frm q r) (Imp_frm p (Imp_frm q r))) (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))) \n      (A2 nil (Imp_frm q r) (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) \n      (MP nil (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r)))) \n         (A1 nil (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) (Imp_frm q r)) \n         (A2 nil p q r))) \n   (A1 nil (Imp_frm q r) p)).",
+        "apply ax_II.",
+        "apply ax2.",
+        "repeat apply Ded. apply MP with (Imp_frm q r); [apply Ax; auto | apply MP with (Imp_frm p q); [apply Ax; auto | apply Ax; auto]].",
+        "repeat apply proof_imp_i. apply proof_imp_e with (A := q) (B := r).\n- apply proof_ax.\n- apply proof_imp_e with (A := p) (B := q).\n-- apply proof_ax.\n-- apply proof_ax.",
+        "apply Ax2."
+      ],
+      "failed_attempts": [
+        "refine (ImpI (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))\n          (ImpI (Imp_frm p q) (Imp_frm p r)\n            (ImpI p r\n              (ImpE q r\n                (Hyp (Imp_frm q r) _)\n                (ImpE p q\n                  (Hyp (Imp_frm p q) _)\n                  (Hyp p _)\n                )\n              )\n            )\n          )\n        ). repeat constructor.",
+        "repeat apply ImpI. apply ImpE with (A := q); [apply Hyp; auto | apply ImpE with (A := p); [apply Hyp; auto | apply Hyp; auto]].",
+        "exact (mp nil (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))\n   (mp nil\n      (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))))\n      (Imp_frm (Imp_frm (Imp_frm q r) (Imp_frm p (Imp_frm q r))) (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))))\n      (ax2 nil (Imp_frm q r) (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r)))\n      (mp nil\n         (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r)))\n         (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))))\n         (ax1 nil (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) (Imp_frm q r))\n         (ax2 nil p q r)))\n   (ax1 nil (Imp_frm q r) p)).",
+        "repeat apply Imp_i. apply Imp_e with q.\n- apply H; auto.\n- apply Imp_e with p.\n-- apply H; auto.\n-- apply H; auto.",
+        "exact (ImpI nil (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))\n  (ImpI (Imp_frm q r :: nil) (Imp_frm p q) (Imp_frm p r)\n    (ImpI (Imp_frm p q :: Imp_frm q r :: nil) p r\n      (ImpE (p :: Imp_frm p q :: Imp_frm q r :: nil) q r\n        (Ax (p :: Imp_frm p q :: Imp_frm q r :: nil) (Imp_frm q r)\n          (in_cons p (Imp_frm p q :: Imp_frm q r :: nil)\n            (in_cons (Imp_frm p q) (Imp_frm q r :: nil)\n              (in_eq (Imp_frm q r) nil))))\n        (ImpE (p :: Imp_frm p q :: Imp_frm q r :: nil) p q\n          (Ax (p :: Imp_frm p q :: Imp_frm q r :: nil) (Imp_frm p q)\n            (in_cons p (Imp_frm p q :: Imp_frm q r :: nil)\n              (in_eq (Imp_frm p q) (Imp_frm q r :: nil))))\n          (Ax (p :: Imp_frm p q :: Imp_frm q r :: nil) p\n            (in_eq p (Imp_frm p q :: Imp_frm q r :: nil))))))).",
+        "exact (mp (mp (ax2 (Imp_frm q r) (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) (mp (ax1 (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) (Imp_frm q r)) (ax2 p q r))) (ax1 (Imp_frm q r) p)).",
+        "repeat apply Imp_i. eapply Imp_e with (A:=q) (B:=r).\n- eapply Hyp; eauto.\n- eapply Imp_e with (A:=p) (B:=q).\n-- eapply Hyp; eauto.\n-- eapply Hyp; eauto.",
+        "apply ax_comp.",
+        "do 3 apply Imp_I. apply Imp_E with (A := q); [ apply Ax; auto | apply Imp_E with (A := p); [ apply Ax; auto | apply Ax; auto ] ].",
+        "refine (proof_imp_i nil (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))\n          (proof_imp_i ((Imp_frm q r) :: nil) (Imp_frm p q) (Imp_frm p r)\n            (proof_imp_i ((Imp_frm p q) :: (Imp_frm q r) :: nil) p r\n              (proof_imp_e ((Imp_frm p q) :: (Imp_frm q r) :: nil) q r\n                (proof_hyp ((Imp_frm p q) :: (Imp_frm q r) :: nil) (Imp_frm q r) _)\n                (proof_imp_e ((Imp_frm p q) :: (Imp_frm q r) :: nil) p q\n                  (proof_hyp ((Imp_frm p q) :: (Imp_frm q r) :: nil) (Imp_frm p q) _)\n                  (proof_hyp ((Imp_frm p q) :: (Imp_frm q r) :: nil) p _)))))). all: repeat constructor.",
+        "exact (MP nil (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r)) \n   (MP nil (Imp_frm (Imp_frm q r) (Imp_frm p (Imp_frm q r))) (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))) \n      (A2 nil (Imp_frm q r) (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) \n      (MP nil (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r)))) \n         (A1 nil (Imp_frm (Imp_frm p (Imp_frm q r)) (Imp_frm (Imp_frm p q) (Imp_frm p r))) (Imp_frm q r)) \n         (A2 nil p q r))) \n   (A1 nil (Imp_frm q r) p)).",
+        "apply ax_II.",
+        "apply ax2.",
+        "repeat apply Ded. apply MP with (Imp_frm q r); [apply Ax; auto | apply MP with (Imp_frm p q); [apply Ax; auto | apply Ax; auto]].",
+        "repeat apply proof_imp_i. apply proof_imp_e with (A := q) (B := r).\n- apply proof_ax.\n- apply proof_imp_e with (A := p) (B := q).\n-- apply proof_ax.\n-- apply proof_ax.",
+        "apply Ax2."
+      ]
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "a5f6febe8e4744bb9d7ddaf608da6ae0": 0.0
+  },
+  "costs_to_go": {
+    "a5f6febe8e4744bb9d7ddaf608da6ae0": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "a5f6febe8e4744bb9d7ddaf608da6ae0": 0
+  },
+  "next_node_idx": 1,
+  "remaining_nodes_to_expand": 146,
+  "root_uuid": "a5f6febe8e4744bb9d7ddaf608da6ae0",
+  "done": false,
+  "visualization": "\n* (2 HYPS)|-proof nil (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))) (cost:0.0; n_fail:5)\n"
+}

@@ -1,0 +1,1001 @@
+id,trial,repeats,target_coq_file,project,steps,success,outcome,outcome_detail,post_copy_make_ok,theorem_baseline_ok,theorem_modified,post_make_note,elapsed_seconds,agent_run_seconds,tokens_prompt,tokens_prompt_cache_hit,tokens_prompt_cache_miss,tokens_completion,tokens_total
+2,1,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,35,34,223953,200064,23889,3185,227138
+2,2,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,31,29,153366,130048,23318,2590,155956
+2,3,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,39,37,203824,180224,23600,3071,206895
+2,4,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,37,36,203951,179072,24879,3167,207118
+2,5,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,58,57,376998,353024,23974,5243,382241
+2,6,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,27,26,178067,154624,23443,2709,180776
+2,7,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,102,100,222878,199296,23582,2636,225514
+2,8,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,28,27,177415,154112,23303,3110,180525
+2,9,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,36,35,202899,177664,25235,3571,206470
+2,10,10,src/examples/am_gm_list.v,parcas,3,1,success,,1,1,0,,27,26,179346,156416,22930,3005,182351
+4,1,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,53,51,196886,170240,26646,4964,201850
+4,2,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,104,102,941259,903552,37707,8887,950146
+4,3,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,159,158,1741353,1707776,33577,12331,1753684
+4,4,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,95,94,642735,610944,31791,8855,651590
+4,5,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,90,88,722563,690048,32515,8351,730914
+4,6,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,102,100,495592,432640,62952,10608,506200
+4,7,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,25,23,88685,64768,23917,2709,91394
+4,8,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,82,80,723370,670848,52522,7599,730969
+4,9,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,70,68,642381,612992,29389,5853,648234
+4,10,10,src/examples/am_gm_list.v,parcas,9,1,success,,1,1,0,,74,72,551018,522112,28906,6453,557471
+19,1,10,src/examples/am_gm_list.v,parcas,45,1,success,,1,1,0,,670,665,2971551,2893440,78111,63506,3035057
+19,2,10,src/examples/am_gm_list.v,parcas,45,1,success,,1,1,0,,1714,1707,16242787,16108672,134115,192429,16435216
+19,3,10,src/examples/am_gm_list.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1808,1802,12160744,12009984,150760,189858,12350602
+19,4,10,src/examples/am_gm_list.v,parcas,45,1,success,,1,1,0,,530,524,1879272,1834240,45032,68715,1947987
+19,5,10,src/examples/am_gm_list.v,parcas,45,1,success,,1,1,0,,192,185,186063,158720,27343,22362,208425
+19,6,10,src/examples/am_gm_list.v,parcas,45,1,success,,1,1,0,,384,377,453606,416896,36710,45664,499270
+19,7,10,src/examples/am_gm_list.v,parcas,45,1,success,,1,1,0,,575,570,3487140,3426560,60580,60523,3547663
+19,8,10,src/examples/am_gm_list.v,parcas,45,1,success,,1,1,0,,322,316,959251,909184,50067,31868,991119
+19,9,10,src/examples/am_gm_list.v,parcas,45,1,success,,1,1,0,,411,406,1548447,1489664,58783,44711,1593158
+19,10,10,src/examples/am_gm_list.v,parcas,45,1,success,,1,1,0,,432,427,703379,663680,39699,47623,751002
+32,1,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,33,28,266960,235136,31824,2524,269484
+32,2,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,37,31,208839,177536,31303,2966,211805
+32,3,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,28,22,201085,170368,30717,1828,202913
+32,4,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,38,32,144955,112512,32443,3391,148346
+32,5,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,30,25,173116,142592,30524,2112,175228
+32,6,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,21,16,139754,109056,30698,1677,141431
+32,7,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,35,30,236796,204672,32124,2855,239651
+32,8,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,26,21,202623,171520,31103,2119,204742
+32,9,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,36,30,238363,206208,32155,2817,241180
+32,10,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,38,32,329340,297344,31996,2453,331793
+35,1,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,40,34,270351,238080,32271,2819,273170
+35,2,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,56,50,117471,83072,34399,5039,122510
+35,3,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,61,56,282777,250624,32153,4872,287649
+35,4,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,25,20,111698,80384,31314,1934,113632
+35,5,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,34,29,144659,112640,32019,2875,147534
+35,6,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,40,35,241954,210176,31778,3771,245725
+35,7,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,30,24,206187,174720,31467,2175,208362
+35,8,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,30,24,143488,111744,31744,2276,145764
+35,9,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,45,39,338472,305408,33064,3878,342350
+35,10,10,src/examples/am_gm_list.v,parcas,8,1,success,,1,1,0,,62,56,339345,305280,34065,4538,343883
+36,1,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,101,96,670407,634880,35527,5531,675938
+36,2,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,32,26,238758,207104,31654,2119,240877
+36,3,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,29,23,207590,175872,31718,2367,209957
+36,4,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,35,30,177414,144768,32646,3090,180504
+36,5,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,25,20,174191,142976,31215,2144,176335
+36,6,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,27,22,174957,143616,31341,1849,176806
+36,7,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,59,53,440029,407168,32861,5383,445412
+36,8,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,30,24,204784,173056,31728,1857,206641
+36,9,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,30,25,175219,143104,32115,2029,177248
+36,10,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,34,29,177636,145280,32356,2378,180014
+37,1,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,41,36,295817,263424,32393,2991,298808
+37,2,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,23,18,142584,110976,31608,1568,144152
+37,3,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,23,18,132829,101376,31453,1764,134593
+37,4,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,26,20,143314,111744,31570,2349,145663
+37,5,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,26,20,174702,143232,31470,2520,177222
+37,6,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,28,23,175137,143744,31393,1955,177092
+37,7,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,30,25,271936,239616,32320,2323,274259
+37,8,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,30,25,268746,236800,31946,2044,270790
+37,9,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,28,23,175222,143744,31478,2344,177566
+37,10,10,src/examples/am_gm_list.v,parcas,4,1,success,,1,1,0,,23,17,142174,110848,31326,1411,143585
+41,1,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,198,72,271816,243328,28488,6424,278240
+41,2,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,228,114,689833,656512,33321,9066,698899
+41,3,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,258,134,993993,956160,37833,10879,1004872
+41,4,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,261,130,457279,425216,32063,11774,469053
+41,5,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,250,125,618105,588544,29561,8985,627090
+41,6,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,222,96,781535,753024,28511,8122,789657
+41,7,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,182,28,175737,152192,23545,2509,178246
+41,8,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,200,38,204158,179456,24702,3334,207492
+41,9,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,223,65,290642,256128,34514,5818,296460
+41,10,10,src/examples/binsearch.v,parcas,2,1,success,,1,1,0,,237,81,530590,498944,31646,8039,538629
+44,1,10,src/examples/binsearch.v,parcas,11,0,skip_keyword,src/examples/binsearch.v,1,1,0,,386,262,1204280,1159680,44600,26226,1230506
+44,2,10,src/examples/binsearch.v,parcas,11,1,success,,1,1,0,,358,235,1253041,1201536,51505,24237,1277278
+44,3,10,src/examples/binsearch.v,parcas,11,1,success,,1,1,0,,1003,894,4064472,3929600,134872,45088,4109560
+44,4,10,src/examples/binsearch.v,parcas,11,1,success,,1,1,0,,892,742,5627606,5558784,68822,76090,5703696
+44,5,10,src/examples/binsearch.v,parcas,11,1,success,,1,1,0,,527,388,2746794,2677248,69546,34790,2781584
+44,6,10,src/examples/binsearch.v,parcas,11,1,success,,1,1,0,,470,310,1060178,1000192,59986,34182,1094360
+44,7,10,src/examples/binsearch.v,parcas,11,1,success,,1,1,0,,1054,891,2561455,2478336,83119,38564,2600019
+44,8,10,src/examples/binsearch.v,parcas,11,1,success,,1,1,0,,1765,1588,4180398,4118016,62382,50599,4230997
+44,9,10,src/examples/binsearch.v,parcas,11,1,success,,1,1,0,,398,258,2119290,2071296,47994,23832,2143122
+44,10,10,src/examples/binsearch.v,parcas,11,1,success,,1,1,0,,599,468,2198527,2134400,64127,23268,2221795
+47,1,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1936,1808,9107924,9005440,102484,157004,9264928
+47,2,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1974,1809,4227467,4133760,93707,179147,4406614
+47,3,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1968,1807,8009738,7897472,112266,177203,8186941
+47,4,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1949,1806,4600121,4513536,86585,180250,4780371
+47,5,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1966,1810,12247406,12132864,114542,166568,12413974
+47,6,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2164,1983,9095658,8956928,138730,180171,9275829
+47,7,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1950,1808,7719245,7604864,114381,171870,7891115
+47,8,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1949,1806,9989734,9896192,93542,188699,10178433
+47,9,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1928,1805,8762336,8647808,114528,183839,8946175
+47,10,10,src/examples/binsearch.v,parcas,20,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1918,1804,7277603,7161344,116259,200184,7477787
+63,1,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,36,35,187274,162176,25098,2935,190209
+63,2,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,81,79,179921,151168,28753,7422,187343
+63,3,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,516,514,2961782,2902144,59638,48459,3010241
+63,4,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,30,28,136935,113792,23143,2436,139371
+63,5,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,28,25,113175,89216,23959,2077,115252
+63,6,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,26,23,111741,88320,23421,1872,113613
+63,7,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,43,40,187629,161408,26221,3996,191625
+63,8,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,64,62,523103,495488,27615,5641,528744
+63,9,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,670,668,3141803,3075584,66219,70047,3211850
+63,10,10,src/examples/log_two_up.v,parcas,6,1,success,,1,1,0,,134,131,257523,226176,31347,15035,272558
+69,1,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,177,175,395888,357760,38128,16971,412859
+69,2,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,220,218,1486616,1449984,36632,20090,1506706
+69,3,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,134,132,704063,675840,28223,11985,716048
+69,4,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,255,253,1453500,1402240,51260,27460,1480960
+69,5,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,323,321,1329600,1251456,78144,30894,1360494
+69,6,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,139,137,1376409,1329536,46873,13501,1389910
+69,7,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,183,181,1612003,1567104,44899,17451,1629454
+69,8,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,380,378,2219956,2124800,95156,41837,2261793
+69,9,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,493,490,2039941,1933568,106373,55242,2095183
+69,10,10,src/examples/log_utils.v,parcas,22,1,success,,1,1,0,,322,320,2253804,2209536,44268,33515,2287319
+70,1,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,495,494,1698118,1646208,51910,51038,1749156
+70,2,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,640,638,5977232,5911808,65424,62712,6039944
+70,3,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,503,501,2145437,2068352,77085,60705,2206142
+70,4,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,720,717,4689468,4626944,62524,79957,4769425
+70,5,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,853,850,7115825,7036800,79025,90682,7206507
+70,6,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,813,811,2620130,2487296,132834,94929,2715059
+70,7,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,685,683,4447967,4383232,64735,76114,4524081
+70,8,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,838,835,7130789,6988672,142117,89597,7220386
+70,9,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,535,533,4172308,4110592,61716,57097,4229405
+70,10,10,src/examples/log_utils.v,parcas,13,1,success,,1,1,0,,522,520,3106269,3051136,55133,57339,3163608
+71,1,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,346,345,1477207,1439488,37719,31967,1509174
+71,2,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,365,363,1997176,1955456,41720,37800,2034976
+71,3,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,74,71,450506,414336,36170,7816,458322
+71,4,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,166,164,1041861,997632,44229,15725,1057586
+71,5,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,205,203,2355102,2309376,45726,16731,2371833
+71,6,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,126,124,623962,586496,37466,13865,637827
+71,7,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,485,483,3380865,3305344,75521,51347,3432212
+71,8,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,129,126,656159,622592,33567,12355,668514
+71,9,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,62,59,509175,470656,38519,6092,515267
+71,10,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,142,139,744420,695936,48484,14323,758743
+74,1,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,156,154,699108,665856,33252,13793,712901
+74,2,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,289,288,1239199,1197824,41375,26376,1265575
+74,3,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,157,155,412965,376576,36389,15764,428729
+74,4,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,243,240,988076,943104,44972,23716,1011792
+74,5,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,222,221,841122,807936,33186,19583,860705
+74,6,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,64,62,295144,269440,25704,5087,300231
+74,7,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,26,23,154010,130816,23194,3532,157542
+74,8,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,201,199,927582,873984,53598,23480,951062
+74,9,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,23,21,109362,86272,23090,2031,111393
+74,10,10,src/examples/log_utils.v,parcas,2,1,success,,1,1,0,,235,233,719044,680448,38596,26813,745857
+79,1,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,154,152,287215,260480,26735,14828,302043
+79,2,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,186,184,373127,345216,27911,18258,391385
+79,3,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,193,191,716275,664064,52211,19139,735414
+79,4,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,249,247,1634406,1592576,41830,23332,1657738
+79,5,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,134,132,509288,478080,31208,13174,522462
+79,6,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,706,704,4105116,4026496,78620,73508,4178624
+79,7,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,537,535,4908836,4856448,52388,50551,4959387
+79,8,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,277,274,1861888,1820160,41728,29044,1890932
+79,9,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,341,338,3034772,2980608,54164,30549,3065321
+79,10,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,171,169,384503,355200,29303,16040,400543
+81,1,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,40,38,137901,112384,25517,3973,141874
+81,2,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,224,222,794168,761856,32312,17950,812118
+81,3,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,67,65,480315,450048,30267,5322,485637
+81,4,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,107,105,467565,437504,30061,9068,476633
+81,5,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,118,116,637783,608000,29783,9652,647435
+81,6,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,925,923,8361159,8249600,111559,93407,8454566
+81,7,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,49,46,171711,147968,23743,4574,176285
+81,8,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,43,40,218284,191872,26412,3979,222263
+81,9,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,32,30,161571,137984,23587,3042,164613
+81,10,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,42,40,330759,305280,25479,4698,335457
+82,1,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,858,856,4413705,4338432,75273,86356,4500061
+82,2,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,184,182,1012166,975232,36934,16714,1028880
+82,3,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,289,287,1368532,1324160,44372,22117,1390649
+82,4,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,196,194,1112476,1070592,41884,20033,1132509
+82,5,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,190,187,1172498,1136384,36114,18760,1191258
+82,6,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,49,47,95850,68480,27370,5442,101292
+82,7,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,103,100,646515,619392,27123,8868,655383
+82,8,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,1156,1153,10295061,10213120,81941,118126,10413187
+82,9,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,201,199,847623,813184,34439,17354,864977
+82,10,10,src/examples/log_utils.v,parcas,6,1,success,,1,1,0,,446,443,1438106,1389312,48794,43782,1481888
+91,1,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,360,203,538206,481024,57182,19134,557340
+91,2,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,188,30,142048,117632,24416,2486,144534
+91,3,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,239,31,94571,68352,26219,4626,99197
+91,4,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,185,44,200760,174976,25784,5031,205791
+91,5,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,216,48,184573,154368,30205,4955,189528
+91,6,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,195,38,255595,225792,29803,3839,259434
+91,7,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,241,49,360058,331904,28154,4585,364643
+91,8,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,250,40,195997,169472,26525,3666,199663
+91,9,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,242,32,119441,93568,25873,3410,122851
+91,10,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,248,37,205801,178304,27497,4093,209894
+95,1,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,212,56,240303,212352,27951,5821,246124
+95,2,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,217,64,185430,154240,31190,9986,195416
+95,3,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,193,30,150359,124544,25815,3313,153672
+95,4,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,233,41,233530,205568,27962,5350,238880
+95,5,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,230,81,137484,106752,30732,8252,145736
+95,6,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,246,66,277433,248704,28729,9250,286683
+95,7,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,232,69,218535,192128,26407,8130,226665
+95,8,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,253,41,126268,100224,26044,4830,131098
+95,9,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,272,60,244420,218240,26180,6174,250594
+95,10,10,src/examples/merge.v,parcas,4,1,success,,1,1,0,,272,60,238842,209024,29818,6698,245540
+97,1,10,src/examples/merge.v,parcas,3,1,success,,1,1,0,,264,108,634487,596992,37495,10325,644812
+97,2,10,src/examples/merge.v,parcas,3,1,success,,1,1,0,,599,391,899436,845440,53996,58435,957871
+97,3,10,src/examples/merge.v,parcas,3,1,success,,1,1,0,,368,195,655956,581504,74452,21213,677169
+97,4,10,src/examples/merge.v,parcas,3,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2016,1802,1894492,1839104,55388,30143,1924635
+97,5,10,src/examples/merge.v,parcas,3,1,success,,1,1,0,,420,224,613997,570368,43629,22334,636331
+97,6,10,src/examples/merge.v,parcas,3,1,success,,1,1,0,,432,224,841298,798592,42706,24406,865704
+97,7,10,src/examples/merge.v,parcas,3,1,success,,1,1,0,,560,296,334796,302720,32076,32982,367778
+97,8,10,src/examples/merge.v,parcas,3,1,success,,1,1,0,,434,224,924819,886656,38163,22790,947609
+97,9,10,src/examples/merge.v,parcas,3,1,success,,1,1,0,,1751,1542,1391607,1319424,72183,23050,1414657
+97,10,10,src/examples/merge.v,parcas,3,1,success,,1,1,0,,510,360,956006,910592,45414,20216,976222
+100,1,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,491,334,469663,436096,33567,12553,482216
+100,2,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,290,148,254112,222848,31264,13970,268082
+100,3,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,287,108,422699,386176,36523,10862,433561
+100,4,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,494,301,2405926,2357888,48038,27779,2433705
+100,5,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,493,280,208967,175232,33735,9630,218597
+100,6,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,404,185,427530,391936,35594,18187,445717
+100,7,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,287,141,295159,259072,36087,13982,309141
+100,8,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,357,145,438717,401024,37693,12592,451309
+100,9,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,711,528,2830780,2773504,57276,48341,2879121
+100,10,10,src/examples/merge.v,parcas,8,1,success,,1,1,0,,379,164,464631,422656,41975,16891,481522
+105,1,10,src/examples/merge.v,parcas,32,1,success,,1,1,0,,1798,1640,12825370,12710656,114714,183402,13008772
+105,2,10,src/examples/merge.v,parcas,32,1,success,,1,1,0,,1558,1450,13609721,13467520,142201,180774,13790495
+105,3,10,src/examples/merge.v,parcas,32,1,success,,1,1,0,,1380,1160,9048803,8934912,113891,137610,9186413
+105,4,10,src/examples/merge.v,parcas,32,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2024,1802,8294638,8200832,93806,135577,8430215
+105,5,10,src/examples/merge.v,parcas,32,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1963,1800,24495117,24375680,119437,188080,24683197
+105,6,10,src/examples/merge.v,parcas,32,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1972,1802,8250101,8156416,93685,207014,8457115
+105,7,10,src/examples/merge.v,parcas,32,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1962,1803,8844762,8779264,65498,140785,8985547
+105,8,10,src/examples/merge.v,parcas,32,1,success,,1,1,0,,1782,1632,11991908,11856768,135140,169274,12161182
+105,9,10,src/examples/merge.v,parcas,32,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2040,1901,7030792,6948352,82440,113480,7144272
+105,10,10,src/examples/merge.v,parcas,32,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1921,1802,25552681,25415552,137129,192226,25744907
+114,1,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,210,88,439844,408576,31268,7844,447688
+114,2,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,246,98,320076,275584,44492,8770,328846
+114,3,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,223,109,516342,482048,34294,8615,524957
+114,4,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,241,99,387613,353280,34333,9303,396916
+114,5,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,251,127,394951,361600,33351,12290,407241
+114,6,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,236,78,298033,265088,32945,6565,304598
+114,7,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,275,112,469775,425600,44175,9788,479563
+114,8,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,299,146,795034,748288,46746,13138,808172
+114,9,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,326,161,410379,356096,54283,16028,426407
+114,10,10,src/examples/merge_seq.v,parcas,0,1,success,,1,1,0,,301,180,603993,553856,50137,14696,618689
+118,1,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,178,56,356655,320768,35887,6322,362977
+118,2,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,373,212,767979,718848,49131,23126,791105
+118,3,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,362,236,598362,518656,79706,28807,627169
+118,4,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,308,189,720421,656384,64037,21678,742099
+118,5,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,448,289,420811,339200,81611,30945,451756
+118,6,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,257,103,503626,443648,59978,12859,516485
+118,7,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,285,117,449262,397312,51950,13560,462822
+118,8,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,285,147,468439,408192,60247,15435,483874
+118,9,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,279,168,514216,455040,59176,17685,531901
+118,10,10,src/examples/merge_seq.v,parcas,5,1,success,,1,1,0,,328,179,676197,638464,37733,17558,693755
+121,1,10,src/examples/merge_seq.v,parcas,134,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1921,1806,18560441,18434944,125497,176879,18737320
+121,2,10,src/examples/merge_seq.v,parcas,134,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1930,1810,6716996,6643200,73796,167401,6884397
+121,3,10,src/examples/merge_seq.v,parcas,134,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1982,1809,13529176,13406208,122968,124637,13653813
+121,4,10,src/examples/merge_seq.v,parcas,134,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1932,1806,12710102,12580992,129110,172280,12882382
+121,5,10,src/examples/merge_seq.v,parcas,134,0,verify_make_failed,rc=1,1,1,0,,1315,1175,4639583,4491136,148447,123952,4763535
+121,6,10,src/examples/merge_seq.v,parcas,134,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1972,1807,15664088,15516544,147544,178813,15842901
+121,7,10,src/examples/merge_seq.v,parcas,134,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2022,1876,7330833,7231104,99729,90071,7420904
+121,8,10,src/examples/merge_seq.v,parcas,134,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1948,1806,9501240,9416320,84920,188966,9690206
+121,9,10,src/examples/merge_seq.v,parcas,134,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1927,1806,7069578,6964224,105354,202657,7272235
+121,10,10,src/examples/merge_seq.v,parcas,134,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1916,1805,21569991,21441920,128071,169600,21739591
+126,1,10,src/examples/merge_sort.v,parcas,8,1,success,,1,1,0,,746,491,2449211,2302848,146363,59149,2508360
+126,2,10,src/examples/merge_sort.v,parcas,8,1,success,,1,1,0,,558,293,614685,561408,53277,32362,647047
+126,3,10,src/examples/merge_sort.v,parcas,8,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2028,1801,691947,663296,28651,13056,705003
+126,4,10,src/examples/merge_sort.v,parcas,8,1,success,,1,1,0,,654,395,1037188,923520,113668,50082,1087270
+126,5,10,src/examples/merge_sort.v,parcas,8,1,success,,1,1,0,,881,615,4487478,4422400,65078,63864,4551342
+126,6,10,src/examples/merge_sort.v,parcas,8,1,success,,1,1,0,,631,410,1665296,1568896,96400,43942,1709238
+126,7,10,src/examples/merge_sort.v,parcas,8,1,success,,1,1,0,,576,391,2040351,2002688,37663,40369,2080720
+126,8,10,src/examples/merge_sort.v,parcas,8,1,success,,1,1,0,,398,170,738370,697984,40386,16813,755183
+126,9,10,src/examples/merge_sort.v,parcas,8,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2013,1802,528408,494336,34072,9982,538390
+126,10,10,src/examples/merge_sort.v,parcas,8,1,success,,1,1,0,,396,158,1048974,1008384,40590,15994,1064968
+134,1,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,832,563,1557624,1440768,116856,51920,1609544
+134,2,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,498,235,422915,370688,52227,20431,443346
+134,3,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,396,156,346733,312448,34285,15604,362337
+134,4,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,464,232,481206,440448,40758,23603,504809
+134,5,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,1025,754,936847,881280,55567,20327,957174
+134,6,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,887,613,785919,689536,96383,18210,804129
+134,7,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,1023,777,2349725,2266496,83229,68602,2418327
+134,8,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,387,160,752212,714752,37460,14443,766655
+134,9,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,423,197,467219,428160,39059,20319,487538
+134,10,10,src/examples/merge_sort.v,parcas,6,1,success,,1,1,0,,907,678,1863575,1783296,80279,36416,1899991
+142,1,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,692,439,1337629,1263744,73885,51885,1389514
+142,2,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,721,459,3050131,3000576,49555,44634,3094765
+142,3,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,515,261,1333156,1270528,62628,25824,1358980
+142,4,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,634,395,2603407,2520192,83215,39702,2643109
+142,5,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,458,174,1137668,1093888,43780,14487,1152155
+142,6,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,438,170,495052,457088,37964,17997,513049
+142,7,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,342,130,749032,719360,29672,14295,763327
+142,8,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,1527,1269,6821177,6687232,133945,134971,6956148
+142,9,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,362,196,1258285,1226624,31661,20419,1278704
+142,10,10,src/examples/merge_work_bound.v,parcas,18,1,success,,1,1,0,,941,732,3621149,3559296,61853,49073,3670222
+152,1,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,269,25,158841,130176,28665,2763,161604
+152,2,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,560,302,908018,870656,37362,10626,918644
+152,3,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,575,354,641204,602496,38708,13960,655164
+152,4,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,342,91,556276,505088,51188,11730,568006
+152,5,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,271,25,128198,100992,27206,3254,131452
+152,6,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,317,67,488722,439424,49298,7132,495854
+152,7,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,596,288,455649,424832,30817,4578,460227
+152,8,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,256,26,201758,157568,44190,3220,204978
+152,9,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,311,68,327222,245248,81974,8348,335570
+152,10,10,src/examples/merge_work_bound.v,parcas,6,1,success,,1,1,0,,294,36,158723,131712,27011,4224,162947
+166,1,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,317,155,498857,422272,76585,18824,517681
+166,2,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,236,96,546850,513024,33826,9005,555855
+166,3,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,1953,1841,1786815,1737728,49087,40534,1827349
+166,4,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,486,330,1012312,977152,35160,34627,1046939
+166,5,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,324,195,294262,269568,24694,9981,304243
+166,6,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,420,245,651606,611456,40150,23727,675333
+166,7,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,330,199,642926,603776,39150,23024,665950
+166,8,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,582,461,2142907,2080128,62779,42651,2185558
+166,9,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,449,326,1049077,1009408,39669,32476,1081553
+166,10,10,src/examples/scan.v,parcas,8,1,success,,1,1,0,,390,259,892189,839936,52253,24591,916780
+167,1,10,src/examples/scan.v,parcas,61,1,success,,1,1,0,,1487,1315,7188157,7077888,110269,135575,7323732
+167,2,10,src/examples/scan.v,parcas,61,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1959,1800,36576085,36468736,107349,150883,36726968
+167,3,10,src/examples/scan.v,parcas,61,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1947,1800,344490,313728,30762,184179,528669
+167,4,10,src/examples/scan.v,parcas,61,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1991,1844,6582064,6504320,77744,90039,6672103
+167,5,10,src/examples/scan.v,parcas,61,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1975,1801,19775829,19680640,95189,164596,19940425
+167,6,10,src/examples/scan.v,parcas,61,1,success,,1,1,0,,1659,1503,21674298,21581568,92730,145790,21820088
+167,7,10,src/examples/scan.v,parcas,61,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1910,1802,26720887,26616320,104567,177052,26897939
+167,8,10,src/examples/scan.v,parcas,61,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1909,1802,30439978,30332416,107562,169538,30609516
+167,9,10,src/examples/scan.v,parcas,61,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1900,1801,32741797,32626304,115493,204094,32945891
+167,10,10,src/examples/scan.v,parcas,61,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1891,1801,39191007,39020544,170463,153764,39344771
+182,1,10,src/examples/slice.v,parcas,10,1,success,,1,1,0,,891,731,4735757,4590336,145421,80149,4815906
+182,2,10,src/examples/slice.v,parcas,10,1,success,,1,1,0,,325,196,738006,668416,69590,20359,758365
+182,3,10,src/examples/slice.v,parcas,10,1,success,,1,1,0,,473,332,1328512,1249664,78848,32659,1361171
+182,4,10,src/examples/slice.v,parcas,10,1,success,,1,1,0,,1549,1417,13910873,13691008,219865,145642,14056515
+182,5,10,src/examples/slice.v,parcas,10,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1965,1802,17300637,17202304,98333,174176,17474813
+182,6,10,src/examples/slice.v,parcas,10,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1911,1803,3351628,3271424,80204,61531,3413159
+182,7,10,src/examples/slice.v,parcas,10,1,success,,1,1,0,,324,200,832659,785280,47379,21084,853743
+182,8,10,src/examples/slice.v,parcas,10,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1965,1803,14826764,14728192,98572,150259,14977023
+182,9,10,src/examples/slice.v,parcas,10,1,success,,1,1,0,,1222,1068,3020156,2978048,42108,46949,3067105
+182,10,10,src/examples/slice.v,parcas,10,1,success,,1,1,0,,401,284,1465397,1409408,55989,28377,1493774
+185,1,10,src/examples/slice.v,parcas,6,1,success,,1,1,0,,779,649,2213610,2146560,67050,56636,2270246
+185,2,10,src/examples/slice.v,parcas,6,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1934,1806,15424085,15324416,99669,162502,15586587
+185,3,10,src/examples/slice.v,parcas,6,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1951,1806,11943970,11816960,127010,173998,12117968
+185,4,10,src/examples/slice.v,parcas,6,1,success,,1,1,0,,1586,1462,11097691,10962816,134875,132151,11229842
+185,5,10,src/examples/slice.v,parcas,6,1,success,,1,1,0,,1962,1844,14579828,14440704,139124,164575,14744403
+185,6,10,src/examples/slice.v,parcas,6,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1921,1807,16235235,16135168,100067,165722,16400957
+185,7,10,src/examples/slice.v,parcas,6,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1927,1805,3912549,3844992,67557,126307,4038856
+185,8,10,src/examples/slice.v,parcas,6,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1910,1800,14404147,14267264,136883,176916,14581063
+185,9,10,src/examples/slice.v,parcas,6,1,success,,1,1,0,,1130,1034,2132197,1977472,154725,101960,2234157
+185,10,10,src/examples/slice.v,parcas,6,1,success,,1,1,0,,1339,1234,6148738,5997312,151426,151409,6300147
+194,1,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,155,153,563526,503296,60230,16141,579667
+194,2,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,132,128,464673,403840,60833,13340,478013
+194,3,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,170,167,561577,490240,71337,16189,577766
+194,4,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,227,224,853045,770688,82357,24428,877473
+194,5,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,92,89,366719,333184,33535,8782,375501
+194,6,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,214,210,1299571,1259264,40307,19154,1318725
+194,7,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,129,126,385238,331008,54230,15969,401207
+194,8,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,119,116,531444,496896,34548,11128,542572
+194,9,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,82,78,515388,481792,33596,9085,524473
+194,10,10,src/examples/split_array.v,parcas,5,1,success,,1,1,0,,105,102,889659,858112,31547,10070,899729
+204,1,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,663,409,1527737,1486336,41401,17276,1545013
+204,2,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,809,572,959159,922880,36279,7404,966563
+204,3,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,408,115,1173644,1139840,33804,8587,1182231
+204,4,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,315,64,335013,306432,28581,7314,342327
+204,5,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,351,133,582363,544256,38107,13779,596142
+204,6,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,475,229,802128,761088,41040,22598,824726
+204,7,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,841,629,559981,532608,27373,6558,566539
+204,8,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,314,131,590481,528640,61841,13559,604040
+204,9,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,296,82,378730,327936,50794,10867,389597
+204,10,10,src/examples/stack.v,parcas,5,1,success,,1,1,0,,301,131,408768,373760,35008,12431,421199
+207,1,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2226,1983,17353103,17214720,138383,132266,17485369
+207,2,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2023,1800,24655607,24532736,122871,172160,24827767
+207,3,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2024,1803,13811289,13688192,123097,163676,13974965
+207,4,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2058,1804,15741962,15608064,133898,190361,15932323
+207,5,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2027,1804,22344566,22204672,139894,164839,22509405
+207,6,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2015,1803,14062638,13937664,124974,185533,14248171
+207,7,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1969,1803,20879270,20741376,137894,182834,21062104
+207,8,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1955,1802,25021749,24867072,154677,196257,25218006
+207,9,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1943,1802,19419575,19236608,182967,179305,19598880
+207,10,10,src/examples/stack.v,parcas,31,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1934,1802,18256515,18096128,160387,180710,18437225
+208,1,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,350,95,611994,574848,37146,8422,620416
+208,2,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,311,80,702906,665856,37050,8273,711179
+208,3,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,504,206,920553,881408,39145,20702,941255
+208,4,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,340,99,371228,338816,32412,9696,380924
+208,5,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,330,110,509355,475520,33835,12203,521558
+208,6,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,316,51,199263,171520,27743,4653,203916
+208,7,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,384,163,465402,406784,58618,17619,483021
+208,8,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,268,88,415094,382976,32118,9433,424527
+208,9,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,310,92,358496,322944,35552,9489,367985
+208,10,10,src/examples/stack.v,parcas,6,1,success,,1,1,0,,271,62,281626,252160,29466,6295,287921
+211,1,10,src/examples/stack.v,parcas,13,1,success,,1,1,0,,1573,1265,11985661,11903872,81789,115688,12101349
+211,2,10,src/examples/stack.v,parcas,13,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2022,1806,6099561,5981824,117737,140924,6240485
+211,3,10,src/examples/stack.v,parcas,13,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2025,1807,15734423,15610112,124311,179329,15913752
+211,4,10,src/examples/stack.v,parcas,13,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2051,1806,24683212,24550656,132556,181836,24865048
+211,5,10,src/examples/stack.v,parcas,13,1,success,,1,1,0,,815,602,2522516,2448896,73620,56941,2579457
+211,6,10,src/examples/stack.v,parcas,13,1,success,,1,1,0,,1098,883,7261851,7184256,77595,79712,7341563
+211,7,10,src/examples/stack.v,parcas,13,1,success,,1,1,0,,1674,1461,9243023,9151872,91151,143689,9386712
+211,8,10,src/examples/stack.v,parcas,13,1,success,,1,1,0,,1802,1647,7616581,7478528,138053,158012,7774593
+211,9,10,src/examples/stack.v,parcas,13,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1966,1817,18613510,18433920,179590,201661,18815171
+211,10,10,src/examples/stack.v,parcas,13,1,success,,1,1,0,,1083,932,4597978,4512768,85210,84301,4682279
+215,1,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2101,1805,9931623,9785856,145767,184513,10116136
+215,2,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1995,1806,12196120,12111104,85016,149396,12345516
+215,3,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2027,1806,2665550,2542976,122574,195021,2860571
+215,4,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2025,1807,3921501,3812480,109021,158827,4080328
+215,5,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2024,1806,4242557,4157056,85501,196561,4439118
+215,6,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1978,1805,4856818,4784512,72306,196350,5053168
+215,7,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2006,1857,4226960,4157312,69648,124814,4351774
+215,8,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1961,1804,5536516,5453056,83460,164609,5701125
+215,9,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1942,1804,6977515,6883584,93931,198323,7175838
+215,10,10,src/examples/stack.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1938,1804,5768023,5660032,107991,174451,5942474
+220,1,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,382,161,1387928,1337728,50200,15773,1403701
+220,2,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,256,65,228575,196480,32095,5336,233911
+220,3,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,305,88,410742,370944,39798,9255,419997
+220,4,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,275,57,215748,179328,36420,4480,220228
+220,5,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,232,51,196140,164864,31276,4176,200316
+220,6,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,395,180,1064109,1023232,40877,15282,1079391
+220,7,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,292,58,230193,198016,32177,3515,233708
+220,8,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,306,90,420269,367104,53165,7708,427977
+220,9,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,309,84,336099,302080,34019,6582,342681
+220,10,10,src/examples/stack.v,parcas,4,1,success,,1,1,0,,693,462,437274,391424,45850,6799,444073
+228,1,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1922,1802,5928510,5818112,110398,178130,6106640
+228,2,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,2006,1877,3157672,3076480,81192,129786,3287458
+228,3,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1931,1803,10529825,10392192,137633,170681,10700506
+228,4,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1918,1802,1604573,1540480,64093,168772,1773345
+228,5,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1900,1802,13244219,13147520,96699,171181,13415400
+228,6,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1895,1802,22089884,21922944,166940,185549,22275433
+228,7,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1896,1802,8650371,8493184,157187,172090,8822461
+228,8,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1887,1801,5740332,5652736,87596,180282,5920614
+228,9,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1886,1802,2481919,2373888,108031,163672,2645591
+228,10,10,src/examples/tabulate.v,parcas,69,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1884,1801,20629411,20507136,122275,177418,20806829
+249,1,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,216,200,356903,325888,31015,21373,378276
+249,2,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,204,188,456902,409344,47558,20736,477638
+249,3,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,322,305,707271,677248,30023,29718,736989
+249,4,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,267,250,420597,374016,46581,26057,446654
+249,5,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,279,263,1077364,1035392,41972,24880,1102244
+249,6,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,369,356,526983,472448,54535,39560,566543
+249,7,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,598,578,861777,818304,43473,64638,926415
+249,8,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,300,280,339979,304256,35723,33197,373176
+249,9,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,515,498,1732670,1682688,49982,49921,1782591
+249,10,10,src/lang/invert_step.v,parcas,3,1,success,,1,1,0,,388,366,588138,527872,60266,42415,630553
+263,1,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,396,383,2511238,2439168,72070,38916,2550154
+263,2,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,389,373,1089702,1013760,75942,37303,1127005
+263,3,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,240,222,607308,532992,74316,21420,628728
+263,4,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,500,482,3434248,3371648,62600,50501,3484749
+263,5,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,214,199,645742,596864,48878,20014,665756
+263,6,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,400,383,2526863,2470272,56591,41997,2568860
+263,7,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,591,575,2158268,2065536,92732,64476,2222744
+263,8,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,329,311,2353860,2309376,44484,28352,2382212
+263,9,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,211,191,1168544,1128192,40352,20817,1189361
+263,10,10,src/lang/reducible.v,parcas,15,1,success,,1,1,0,,341,324,2117615,2053504,64111,35401,2153016
+265,1,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,70,54,357864,328704,29160,5319,363183
+265,2,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,68,55,525652,498560,27092,4501,530153
+265,3,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,130,116,552990,496256,56734,10684,563674
+265,4,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,511,496,2674427,2604800,69627,41030,2715457
+265,5,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,42,29,271166,241024,30142,2969,274135
+265,6,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,53,40,295520,264448,31072,3920,299440
+265,7,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,72,59,414440,382720,31720,5941,420381
+265,8,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,106,89,292652,245632,47020,9677,302329
+265,9,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,54,37,262970,235648,27322,4482,267452
+265,10,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,130,112,602261,567680,34581,10640,612901
+270,1,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,53,39,195511,166528,28983,3836,199347
+270,2,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,114,98,254857,203520,51337,9752,264609
+270,3,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,62,44,175780,147072,28708,4389,180169
+270,4,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,74,55,205527,162816,42711,5733,211260
+270,5,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,64,46,339976,310912,29064,4130,344106
+270,6,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,64,47,284285,252288,31997,4579,288864
+270,7,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,64,48,180444,150784,29660,7364,187808
+270,8,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,55,40,184313,152320,31993,3670,187983
+270,9,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,79,64,512050,482048,30002,6345,518395
+270,10,10,src/lang/reducible.v,parcas,0,1,success,,1,1,0,,63,50,191563,158208,33355,5053,196616
+276,1,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,83,70,336301,287104,49197,7922,344223
+276,2,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,40,25,175992,148480,27512,2246,178238
+276,3,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,100,83,374921,345728,29193,3896,378817
+276,4,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,33,20,151707,123904,27803,1998,153705
+276,5,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,40,25,186588,160128,26460,1923,188511
+276,6,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,64,51,369682,338176,31506,3955,373637
+276,7,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,44,31,183921,147712,36209,2547,186468
+276,8,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,51,37,202608,173312,29296,3169,205777
+276,9,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,130,119,531265,475520,55745,11801,543066
+276,10,10,src/lang/semantics.v,parcas,0,1,success,,1,1,0,,32,21,173458,145152,28306,1978,175436
+279,1,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,127,112,263225,229248,33977,12651,275876
+279,2,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,128,112,303446,253568,49878,10394,313840
+279,3,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,317,304,615296,549504,65792,30930,646226
+279,4,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,169,157,221421,171776,49645,19306,240727
+279,5,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,132,117,254146,224000,30146,12418,266564
+279,6,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,104,88,340263,310400,29863,7806,348069
+279,7,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,163,149,502971,470656,32315,16217,519188
+279,8,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,319,306,1280153,1225600,54553,27364,1307517
+279,9,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,112,95,266851,235648,31203,10874,277725
+279,10,10,src/lang/semantics.v,parcas,4,1,success,,1,1,0,,107,94,238879,203008,35871,8329,247208
+290,1,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,64,62,237193,212480,24713,5316,242509
+290,2,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,116,114,384578,354560,30018,9866,394444
+290,3,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,51,49,219809,195968,23841,5263,225072
+290,4,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,51,48,182919,157312,25607,4163,187082
+290,5,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,376,373,1441929,1404288,37641,27558,1469487
+290,6,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,70,68,194009,166016,27993,6285,200294
+290,7,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,80,78,422787,397440,25347,6682,429469
+290,8,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,87,85,337318,308096,29222,8579,345897
+290,9,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,57,54,174869,151808,23061,5662,180531
+290,10,10,src/lang/syntax.v,parcas,0,1,success,,1,1,0,,41,39,116288,90752,25536,4281,120569
+295,1,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,51,47,478211,451072,27139,4055,482266
+295,2,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,29,25,190401,167808,22593,2597,192998
+295,3,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,63,58,365732,330880,34852,5591,371323
+295,4,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,31,27,240142,214016,26126,3775,243917
+295,5,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,51,46,430564,405760,24804,3773,434337
+295,6,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,29,23,194806,172160,22646,2838,197644
+295,7,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,37,33,199457,158080,41377,3003,202460
+295,8,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,59,55,527052,496640,30412,4658,531710
+295,9,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,38,32,143605,111616,31989,2943,146548
+295,10,10,src/lang/syntax_instances.v,parcas,5,1,success,,1,1,0,,40,35,158736,124672,34064,3423,162159
+307,1,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,283,167,773109,733952,39157,16867,789976
+307,2,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,413,289,1917283,1824512,92771,30298,1947581
+307,3,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,212,106,906236,849792,56444,11850,918086
+307,4,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,456,343,1166070,1085312,80758,22667,1188737
+307,5,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,273,127,686921,633472,53449,14856,701777
+307,6,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,260,124,668288,605440,62848,13848,682136
+307,7,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,366,244,739263,684800,54463,13737,753000
+307,8,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,405,281,1785800,1739648,46152,31170,1816970
+307,9,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,200,96,404747,358912,45835,8620,413367
+307,10,10,src/logic/adequacy.v,parcas,4,1,success,,1,1,0,,285,176,545161,493184,51977,16509,561670
+326,1,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,139,106,339286,292352,46934,12144,351430
+326,2,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,109,79,287354,231552,55802,10081,297435
+326,3,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,139,102,383729,326784,56945,11853,395582
+326,4,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,123,88,358016,325248,32768,9058,367074
+326,5,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,189,160,332972,280832,52140,18963,351935
+326,6,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,254,223,428196,377728,50468,28132,456328
+326,7,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,82,54,254187,224128,30059,6039,260226
+326,8,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,202,168,371323,336640,34683,17174,388497
+326,9,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,292,251,962499,901120,61379,27676,990175
+326,10,10,src/logic/dominator.v,parcas,5,1,success,,1,1,0,,145,105,491570,455680,35890,10737,502307
+335,1,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,140,96,374911,343808,31103,9086,383997
+335,2,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,359,319,1135234,1058048,77186,32956,1168190
+335,3,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,95,59,198495,170752,27743,6482,204977
+335,4,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,190,149,488439,452352,36087,18596,507035
+335,5,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,266,227,405870,350976,54894,23589,429459
+335,6,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,139,85,379152,347648,31504,9188,388340
+335,7,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,138,84,215194,190848,24346,9581,224775
+335,8,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,109,63,180509,156928,23581,7571,188080
+335,9,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,160,113,421821,378496,43325,13508,435329
+335,10,10,src/logic/interp.v,parcas,3,1,success,,1,1,0,,99,57,219828,195328,24500,5805,225633
+341,1,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,96,57,264715,231680,33035,6313,271028
+341,2,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,605,566,1529833,1451136,78697,63374,1593207
+341,3,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,125,86,261801,215424,46377,5540,267341
+341,4,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,630,590,3140662,3053056,87606,55546,3196208
+341,5,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,87,49,269388,239488,29900,5124,274512
+341,6,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,233,189,807264,753664,53600,18590,825854
+341,7,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,210,171,659775,601856,57919,19411,679186
+341,8,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,273,230,627165,567936,59229,29817,656982
+341,9,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,315,282,1035440,946816,88624,26788,1062228
+341,10,10,src/logic/interp.v,parcas,5,1,success,,1,1,0,,115,74,438612,404736,33876,7666,446278
+346,1,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,212,167,674800,635008,39792,16698,691498
+346,2,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,129,89,136615,106496,30119,8848,145463
+346,3,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,108,66,128773,104064,24709,5704,134477
+346,4,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,179,125,533121,455680,77441,14334,547455
+346,5,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,100,46,124773,97152,27621,5318,130091
+346,6,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,137,90,277254,250496,26758,4305,281559
+346,7,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,187,141,609950,580224,29726,16587,626537
+346,8,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,155,110,183540,158592,24948,12850,196390
+346,9,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,136,93,676292,646016,30276,8800,685092
+346,10,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,84,47,331432,304256,27176,6398,337830
+351,1,10,src/logic/interp.v,parcas,10,1,success,,1,1,0,,947,911,3395690,3332224,63466,94225,3489915
+351,2,10,src/logic/interp.v,parcas,10,1,success,,1,1,0,,428,385,1385322,1329920,55402,32494,1417816
+351,3,10,src/logic/interp.v,parcas,10,0,verify_make_failed,rc=1,1,1,0,,753,705,631148,592512,38636,78391,709539
+351,4,10,src/logic/interp.v,parcas,10,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1837,1804,9017426,8916096,101330,167146,9184572
+351,5,10,src/logic/interp.v,parcas,10,1,success,,1,1,0,,384,352,919145,865792,53353,28847,947992
+351,6,10,src/logic/interp.v,parcas,10,1,success,,1,1,0,,247,212,594902,548224,46678,23153,618055
+351,7,10,src/logic/interp.v,parcas,10,1,success,,1,1,0,,434,390,983768,926592,57176,42128,1025896
+351,8,10,src/logic/interp.v,parcas,10,1,success,,1,1,0,,559,530,2638155,2566272,71883,54939,2693094
+351,9,10,src/logic/interp.v,parcas,10,1,success,,1,1,0,,493,463,1239733,1195136,44597,57169,1296902
+351,10,10,src/logic/interp.v,parcas,10,0,skip_keyword,src/logic/interp.v,1,1,0,,119,89,44332,19968,24364,9927,54259
+355,1,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1850,1807,15262337,15125888,136449,179204,15441541
+355,2,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1851,1806,16907007,16782976,124031,169753,17076760
+355,3,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1843,1805,17827508,17749888,77620,152420,17979928
+355,4,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1837,1805,3273691,3172864,100827,174405,3448096
+355,5,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1835,1805,20030909,19940224,90685,173064,20203973
+355,6,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1838,1805,12346079,12221952,124127,174343,12520422
+355,7,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1827,1800,7734507,7631488,103019,200454,7934961
+355,8,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1831,1804,18278733,18160000,118733,179287,18458020
+355,9,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1840,1815,13665384,13543168,122216,128346,13793730
+355,10,10,src/logic/interp.v,parcas,45,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1830,1804,11043371,10929024,114347,162491,11205862
+364,1,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,92,39,250173,220032,30141,2911,253084
+364,2,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,85,35,167383,137216,30167,3451,170834
+364,3,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,77,26,105389,76032,29357,1722,107111
+364,4,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,79,37,253130,222720,30410,3210,256340
+364,5,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,92,42,368302,336128,32174,3737,372039
+364,6,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,92,48,329382,298112,31270,4079,333461
+364,7,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,104,55,430989,398720,32269,5887,436876
+364,8,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,80,35,176213,144128,32085,2864,179077
+364,9,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,68,30,134619,105088,29531,2132,136751
+364,10,10,src/logic/interp.v,parcas,6,1,success,,1,1,0,,101,57,454246,427520,26726,4814,459060
+365,1,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,81,40,315745,285056,30689,3042,318787
+365,2,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,94,48,317125,286336,30789,3195,320320
+365,3,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,79,34,225312,195840,29472,4123,229435
+365,4,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,81,34,164743,134784,29959,2887,167630
+365,5,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,86,30,134804,105472,29332,2195,136999
+365,6,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,78,38,343181,312320,30861,4227,347408
+365,7,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,74,28,134431,104832,29599,1814,136245
+365,8,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,81,38,170217,140544,29673,3064,173281
+365,9,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,75,33,167276,137728,29548,2347,169623
+365,10,10,src/logic/interp.v,parcas,4,1,success,,1,1,0,,96,56,173041,141184,31857,4773,177814
+371,1,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,199,140,694098,636288,57810,15008,709106
+371,2,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,275,218,542915,484736,58179,20621,563536
+371,3,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,421,376,984856,930304,54552,28073,1012929
+371,4,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,249,200,480940,424448,56492,18987,499927
+371,5,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,302,262,621256,547328,73928,23779,645035
+371,6,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,355,304,1046125,953344,92781,33537,1079662
+371,7,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,292,246,542372,471680,70692,24637,567009
+371,8,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,207,157,555655,472448,83207,15583,571238
+371,9,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,396,349,512750,428672,84078,38844,551594
+371,10,10,src/logic/interp.v,parcas,8,1,success,,1,1,0,,559,514,1715902,1636096,79806,46748,1762650
+376,1,10,src/logic/pureinv.v,parcas,7,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1820,1802,15862544,15764864,97680,177520,16040064
+376,2,10,src/logic/pureinv.v,parcas,7,1,success,,1,1,0,,358,343,907531,865408,42123,33033,940564
+376,3,10,src/logic/pureinv.v,parcas,7,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1820,1801,15859084,15748608,110476,168016,16027100
+376,4,10,src/logic/pureinv.v,parcas,7,1,success,,1,1,0,,362,350,996172,956672,39500,43144,1039316
+376,5,10,src/logic/pureinv.v,parcas,7,1,success,,1,1,0,,1732,1718,8878982,8754944,124038,160387,9039369
+376,6,10,src/logic/pureinv.v,parcas,7,1,success,,1,1,0,,1158,1144,6089456,5987072,102384,120411,6209867
+376,7,10,src/logic/pureinv.v,parcas,7,1,success,,1,1,0,,570,556,4258496,4183936,74560,68500,4326996
+376,8,10,src/logic/pureinv.v,parcas,7,1,success,,1,1,0,,743,730,4008026,3882496,125530,85257,4093283
+376,9,10,src/logic/pureinv.v,parcas,7,1,success,,1,1,0,,667,656,1356930,1289856,67074,69647,1426577
+376,10,10,src/logic/pureinv.v,parcas,7,1,success,,1,1,0,,304,293,764848,698880,65968,28555,793403
+382,1,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,436,416,1604626,1538048,66578,47058,1651684
+382,2,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,1310,1295,1785917,1712768,73149,132902,1918819
+382,3,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,598,584,2731412,2655104,76308,57889,2789301
+382,4,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,668,650,2067266,1978880,88386,64942,2132208
+382,5,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,277,261,569674,502656,67018,33763,603437
+382,6,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,674,653,2153779,2045568,108211,69798,2223577
+382,7,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,327,307,1354468,1299712,54756,34928,1389396
+382,8,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,477,463,1122680,1083776,38904,49839,1172519
+382,9,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,298,284,930110,856192,73918,31279,961389
+382,10,10,src/logic/pureinv.v,parcas,11,1,success,,1,1,0,,682,668,2102758,2057728,45030,69837,2172595
+383,1,10,src/logic/pureinv.v,parcas,28,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1826,1803,12273843,12148352,125491,188025,12461868
+383,2,10,src/logic/pureinv.v,parcas,28,0,skip_keyword,src/logic/pureinv.v,1,1,0,,643,626,337782,276352,61430,73540,411322
+383,3,10,src/logic/pureinv.v,parcas,28,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1813,1802,6374135,6255616,118519,211868,6586003
+383,4,10,src/logic/pureinv.v,parcas,28,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1815,1800,417665,385024,32641,173857,591522
+383,5,10,src/logic/pureinv.v,parcas,28,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1992,1981,11536861,11410560,126301,160691,11697552
+383,6,10,src/logic/pureinv.v,parcas,28,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1816,1803,3413399,3327616,85783,235752,3649151
+383,7,10,src/logic/pureinv.v,parcas,28,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1817,1802,5632509,5545600,86909,185289,5817798
+383,8,10,src/logic/pureinv.v,parcas,28,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1813,1802,10999132,10853248,145884,183358,11182490
+383,9,10,src/logic/pureinv.v,parcas,28,1,success,,1,1,0,,1728,1716,19003792,18850304,153488,181400,19185192
+383,10,10,src/logic/pureinv.v,parcas,28,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1814,1803,21220511,21125504,95007,186676,21407187
+390,1,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,189,168,408330,367616,40714,15558,423888
+390,2,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,838,814,1695626,1622272,73354,74640,1770266
+390,3,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,406,379,1241299,1191296,50003,27316,1268615
+390,4,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,401,379,923492,867328,56164,32479,955971
+390,5,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,444,419,1362250,1295360,66890,32199,1394449
+390,6,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,1327,1307,7937897,7826432,111465,119463,8057360
+390,7,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,404,378,1233295,1177728,55567,38498,1271793
+390,8,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,354,334,774829,722560,52269,30417,805246
+390,9,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,236,216,525651,488960,36691,18941,544592
+390,10,10,src/logic/pureinv.v,parcas,5,1,success,,1,1,0,,467,447,1180583,1134464,46119,44980,1225563
+402,1,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,162,56,287086,226048,61038,5683,292769
+402,2,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,122,24,159277,125952,33325,2353,161630
+402,3,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,143,36,187705,161408,26297,3592,191297
+402,4,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,142,57,259770,186368,73402,5872,265642
+402,5,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,191,59,264314,226304,38010,7193,271507
+402,6,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,151,38,357457,320128,37329,4113,361570
+402,7,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,133,26,184631,153984,30647,2560,187191
+402,8,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,135,30,218700,182912,35788,2666,221366
+402,9,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,137,45,182687,141440,41247,4698,187385
+402,10,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,139,34,237391,206976,30415,3585,240976
+415,1,10,src/logic/wp.v,parcas,2,1,success,,1,1,0,,1074,975,3895190,3768576,126614,97919,3993109
+415,2,10,src/logic/wp.v,parcas,2,1,success,,1,1,0,,769,664,1853004,1751040,101964,71332,1924336
+415,3,10,src/logic/wp.v,parcas,2,1,success,,1,1,0,,798,712,3216452,3119744,96708,73787,3290239
+415,4,10,src/logic/wp.v,parcas,2,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1894,1802,11517138,11407104,110034,178363,11695501
+415,5,10,src/logic/wp.v,parcas,2,1,success,,1,1,0,,388,303,888877,814336,74541,30319,919196
+415,6,10,src/logic/wp.v,parcas,2,1,success,,1,1,0,,578,497,1056698,953216,103482,54792,1111490
+415,7,10,src/logic/wp.v,parcas,2,1,success,,1,1,0,,643,566,2303310,2227200,76110,58900,2362210
+415,8,10,src/logic/wp.v,parcas,2,1,success,,1,1,0,,583,506,2330359,2220800,109559,69817,2400176
+415,9,10,src/logic/wp.v,parcas,2,1,success,,1,1,0,,318,237,350035,292224,57811,34511,384546
+415,10,10,src/logic/wp.v,parcas,2,1,success,,1,1,0,,454,368,1598552,1520256,78296,46295,1644847
+423,1,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,205,99,262043,228864,33179,10719,272762
+423,2,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,274,137,480053,400768,79285,17029,497082
+423,3,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,180,65,196107,163712,32395,7180,203287
+423,4,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,261,160,559442,494592,64850,16206,575648
+423,5,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,175,78,444093,378752,65341,7812,451905
+423,6,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,193,79,305475,229888,75587,9377,314852
+423,7,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,151,35,179680,144640,35040,4443,184123
+423,8,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,224,116,470328,376448,93880,16002,486330
+423,9,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,334,243,535375,483712,51663,17981,553356
+423,10,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,162,59,215522,181888,33634,7126,222648
+432,1,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,200,91,322210,273664,48546,11149,333359
+432,2,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,694,581,1720797,1673088,47709,60582,1781379
+432,3,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,326,217,871998,818176,53822,24565,896563
+432,4,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,325,208,758701,666752,91949,32855,791556
+432,5,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,374,280,661833,610176,51657,28581,690414
+432,6,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,456,356,914622,855168,59454,40930,955552
+432,7,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,345,263,1736546,1689344,47202,26146,1762692
+432,8,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,663,580,1479867,1411712,68155,69131,1548998
+432,9,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,457,371,1420475,1366400,54075,36742,1457217
+432,10,10,src/logic/wp.v,parcas,0,1,success,,1,1,0,,199,115,375687,345344,30343,12820,388507
+443,1,10,src/logic/wpg.v,parcas,4,1,success,,1,1,0,,369,311,849459,820352,29107,22693,872152
+443,2,10,src/logic/wpg.v,parcas,4,1,success,,1,1,0,,288,213,553759,481920,71839,26064,579823
+443,3,10,src/logic/wpg.v,parcas,4,1,success,,1,1,0,,447,381,1607734,1568512,39222,32288,1640022
+443,4,10,src/logic/wpg.v,parcas,4,1,success,,1,1,0,,347,289,818310,774144,44166,33632,851942
+443,5,10,src/logic/wpg.v,parcas,4,1,success,,1,1,0,,296,237,371258,320128,51130,27119,398377
+443,6,10,src/logic/wpg.v,parcas,4,0,skip_keyword,src/logic/test_wpg.v,1,1,0,,1490,1433,4973202,4864256,108946,121090,5094292
+443,7,10,src/logic/wpg.v,parcas,4,1,success,,1,1,0,,770,715,588625,523008,65617,75262,663887
+443,8,10,src/logic/wpg.v,parcas,4,1,success,,1,1,0,,439,388,1180478,1114368,66110,44153,1224631
+443,9,10,src/logic/wpg.v,parcas,4,1,success,,1,1,0,,197,138,539918,502016,37902,17376,557294
+443,10,10,src/logic/wpg.v,parcas,4,1,success,,1,1,0,,558,505,740176,707968,32208,69353,809529
+447,1,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,131,67,205640,164992,40648,5796,211436
+447,2,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,276,191,384966,354816,30150,3576,388542
+447,3,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,124,62,326297,283776,42521,5685,331982
+447,4,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,189,124,412761,360576,52185,9485,422246
+447,5,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,140,84,266094,221952,44142,6283,272377
+447,6,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,176,120,359872,331008,28864,4424,364296
+447,7,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,121,60,440820,412288,28532,5044,445864
+447,8,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,126,67,435970,389632,46338,5943,441913
+447,9,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,81,26,136772,105344,31428,2202,138974
+447,10,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,102,48,207639,160384,47255,4574,212213
+448,1,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,1073,999,3040559,2962304,78255,105574,3146133
+448,2,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,385,324,666598,625280,41318,33020,699618
+448,3,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,352,297,495415,425856,69559,28906,524321
+448,4,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,328,270,631562,570496,61066,28554,660116
+448,5,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,645,578,969498,891392,78106,57679,1027177
+448,6,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,694,637,2333414,2236672,96742,56990,2390404
+448,7,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,302,247,946710,899328,47382,28470,975180
+448,8,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,234,178,808499,732928,75571,22048,830547
+448,9,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,1238,1177,9162911,9026816,136095,137680,9300591
+448,10,10,src/logic/wpg.v,parcas,0,1,success,,1,1,0,,620,566,2412743,2312192,100551,57108,2469851
+457,1,10,src/logic/wpg.v,parcas,5,1,success,,1,1,0,,499,437,795824,709120,86704,47320,843144
+457,2,10,src/logic/wpg.v,parcas,5,1,success,,1,1,0,,1577,1520,7838321,7711232,127089,144931,7983252
+457,3,10,src/logic/wpg.v,parcas,5,1,success,,1,1,0,,510,453,1653169,1610112,43057,61837,1715006
+457,4,10,src/logic/wpg.v,parcas,5,1,success,,1,1,0,,736,672,2500382,2355712,144670,88639,2589021
+457,5,10,src/logic/wpg.v,parcas,5,1,success,,1,1,0,,1274,1218,7468124,7342336,125788,115814,7583938
+457,6,10,src/logic/wpg.v,parcas,5,1,success,,1,1,0,,878,826,2820587,2750848,69739,79053,2899640
+457,7,10,src/logic/wpg.v,parcas,5,1,success,,1,1,0,,538,487,2391317,2344704,46613,55996,2447313
+457,8,10,src/logic/wpg.v,parcas,5,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1856,1807,9982763,9896960,85803,127979,10110742
+457,9,10,src/logic/wpg.v,parcas,5,0,skip_keyword,src/logic/wpg.v,1,1,0,,1345,1295,9981015,9897856,83159,147493,10128508
+457,10,10,src/logic/wpg.v,parcas,5,1,success,,1,1,0,,1455,1407,5130418,5011072,119346,150514,5280932
+462,1,10,src/logic/wpg_more.v,parcas,13,1,success,,1,1,0,,614,543,1952867,1885696,67171,56125,2008992
+462,2,10,src/logic/wpg_more.v,parcas,13,1,success,,1,1,0,,877,809,2197189,2067328,129861,86455,2283644
+462,3,10,src/logic/wpg_more.v,parcas,13,1,success,,1,1,0,,678,615,2177354,2080384,96970,67054,2244408
+462,4,10,src/logic/wpg_more.v,parcas,13,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1885,1814,7892803,7820288,72515,122455,8015258
+462,5,10,src/logic/wpg_more.v,parcas,13,1,success,,1,1,0,,443,382,1943227,1856000,87227,39605,1982832
+462,6,10,src/logic/wpg_more.v,parcas,13,1,success,,1,1,0,,919,861,4060723,3940736,119987,81656,4142379
+462,7,10,src/logic/wpg_more.v,parcas,13,1,success,,1,1,0,,1450,1391,12264059,12102272,161787,149502,12413561
+462,8,10,src/logic/wpg_more.v,parcas,13,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1862,1805,5135161,5018240,116921,179008,5314169
+462,9,10,src/logic/wpg_more.v,parcas,13,1,success,,1,1,0,,1248,1192,8691366,8587136,104230,116882,8808248
+462,10,10,src/logic/wpg_more.v,parcas,13,1,success,,1,1,0,,444,388,2877782,2793344,84438,44519,2922301
+481,1,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,371,304,1602818,1493376,109442,22552,1625370
+481,2,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,466,410,1175351,1086080,89271,44117,1219468
+481,3,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,296,236,507535,439296,68239,21957,529492
+481,4,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,238,177,985677,943488,42189,20860,1006537
+481,5,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,361,301,800784,690944,109840,39910,840694
+481,6,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,415,347,1197579,1108736,88843,48786,1246365
+481,7,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,297,236,884527,836096,48431,28763,913290
+481,8,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,320,256,822658,742656,80002,18045,840703
+481,9,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,397,338,728981,639104,89877,37583,766564
+481,10,10,src/logic/wpg_rules.v,parcas,12,1,success,,1,1,0,,444,387,1126266,1086464,39802,20156,1146422
+497,1,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,107,104,261678,201856,59822,12049,273727
+497,2,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,179,177,869351,821248,48103,19398,888749
+497,3,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,121,119,444207,393472,50735,14500,458707
+497,4,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,73,71,441587,415744,25843,6523,448110
+497,5,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,170,168,483302,456448,26854,16545,499847
+497,6,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,184,182,470701,425088,45613,17125,487826
+497,7,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,104,102,332053,290176,41877,11856,343909
+497,8,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,129,127,298762,245760,53002,16756,315518
+497,9,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,84,82,287396,261888,25508,11417,298813
+497,10,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,442,440,2416815,2361472,55343,61868,2478683
+498,1,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,279,277,355034,304000,51034,29637,384671
+498,2,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,118,116,315990,282624,33366,11432,327422
+498,3,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,233,231,509491,485632,23859,22922,532413
+498,4,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,63,61,269418,239232,30186,7954,277372
+498,5,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,67,65,229365,200576,28789,9057,238422
+498,6,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,126,124,304167,272768,31399,22258,326425
+498,7,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,77,75,277298,228224,49074,10156,287454
+498,8,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,134,132,409759,381824,27935,18853,428612
+498,9,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,155,153,541098,489856,51242,21677,562775
+498,10,10,src/utils/big_opN.v,parcas,5,1,success,,1,1,0,,113,111,356066,330368,25698,15260,371326
+500,1,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,168,166,1361728,1327488,34240,19125,1380853
+500,2,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,61,59,375782,347904,27878,6395,382177
+500,3,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,43,40,214068,188160,25908,4198,218266
+500,4,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,111,109,687620,654464,33156,12753,700373
+500,5,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,95,93,411437,379264,32173,10580,422017
+500,6,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,70,68,376435,347648,28787,6560,382995
+500,7,10,src/utils/big_opN.v,parcas,2,0,skip_keyword,test_interactive.v;test_interactive2.v;test_interactive3.v,1,1,0,,121,119,786760,749440,37320,12736,799496
+500,8,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,38,35,165582,139520,26062,4152,169734
+500,9,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,82,79,393179,362496,30683,8532,401711
+500,10,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,85,82,722884,672512,50372,9747,732631
+502,1,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,44,41,173516,146304,27212,5272,178788
+502,2,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,28,26,115210,90496,24714,3544,118754
+502,3,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,26,24,113799,89344,24455,2676,116475
+502,4,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,62,59,326469,297344,29125,7560,334029
+502,5,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,141,138,605934,568832,37102,18216,624150
+502,6,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,27,25,138195,114688,23507,3030,141225
+502,7,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,42,39,144483,121216,23267,4651,149134
+502,8,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,56,54,368832,337024,31808,5985,374817
+502,9,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,54,52,293443,265728,27715,5747,299190
+502,10,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,48,45,422769,397184,25585,4815,427584
+504,1,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,287,284,1387918,1344000,43918,36178,1424096
+504,2,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,228,225,1036695,938752,97943,23598,1060293
+504,3,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,374,371,1022598,932224,90374,71651,1094249
+504,4,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,384,382,2472657,2424704,47953,39803,2512460
+504,5,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,171,168,503321,470016,33305,15609,518930
+504,6,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,284,282,273131,248704,24427,25258,298389
+504,7,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,282,280,638106,589056,49050,26961,665067
+504,8,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,202,199,458008,419328,38680,24569,482577
+504,9,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,159,157,700719,644096,56623,18477,719196
+504,10,10,src/utils/big_opN.v,parcas,11,1,success,,1,1,0,,296,294,1297981,1254784,43197,31751,1329732
+505,1,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,127,125,462520,433152,29368,16034,478554
+505,2,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,1423,1421,11367485,11287680,79805,148675,11516160
+505,3,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,420,417,1138699,1092864,45835,39098,1177797
+505,4,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,483,481,2225575,2174720,50855,56581,2282156
+505,5,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,1071,1069,6247599,6160512,87087,133340,6380939
+505,6,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,582,579,840575,806144,34431,63960,904535
+505,7,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,1082,1080,2238024,2193024,45000,116179,2354203
+505,8,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,283,281,842972,802688,40284,35291,878263
+505,9,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,376,373,1292328,1220352,71976,44826,1337154
+505,10,10,src/utils/big_opN.v,parcas,9,1,success,,1,1,0,,445,443,1227111,1182592,44519,44897,1272008
+511,1,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,96,94,524415,420224,104191,12415,536830
+511,2,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,86,82,193431,168448,24983,7613,201044
+511,3,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,34,31,169970,144256,25714,2718,172688
+511,4,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,136,134,443229,391552,51677,14925,458154
+511,5,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,380,378,1766945,1722496,44449,34435,1801380
+511,6,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,49,46,227945,199296,28649,4757,232702
+511,7,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,313,310,846718,771456,75262,33751,880469
+511,8,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,96,93,158519,127232,31287,8444,166963
+511,9,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,230,227,470203,422528,47675,18018,488221
+511,10,10,src/utils/big_opN.v,parcas,0,1,success,,1,1,0,,140,138,278842,244992,33850,12162,291004
+521,1,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,135,132,547587,509952,37635,12792,560379
+521,2,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,384,381,996110,950016,46094,40123,1036233
+521,3,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,901,897,4069233,3986688,82545,84738,4153971
+521,4,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,179,176,285494,257024,28470,17640,303134
+521,5,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,232,230,515677,470656,45021,26993,542670
+521,6,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,835,832,3639456,3580160,59296,93823,3733279
+521,7,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,637,634,3458986,3404288,54698,52975,3511961
+521,8,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,660,657,4002615,3928192,74423,69139,4071754
+521,9,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,693,690,2548471,2471680,76791,72672,2621143
+521,10,10,src/utils/big_opN.v,parcas,6,1,success,,1,1,0,,134,131,358139,331008,27131,13284,371423
+525,1,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,562,558,1111411,1040128,71283,56034,1167445
+525,2,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,333,329,1875098,1822336,52762,33124,1908222
+525,3,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,866,863,1063534,1007360,56174,82195,1145729
+525,4,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,83,79,508751,477440,31311,9393,518144
+525,5,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,100,97,154594,122240,32354,11803,166397
+525,6,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,353,349,825610,786560,39050,37671,863281
+525,7,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,176,173,752933,710784,42149,19762,772695
+525,8,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,114,110,476973,437888,39085,12224,489197
+525,9,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,172,169,516278,455680,60598,25165,541443
+525,10,10,src/utils/big_opN.v,parcas,2,1,success,,1,1,0,,61,58,229029,196224,32805,6865,235894
+527,1,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,568,565,2483773,2409728,74045,58008,2541781
+527,2,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,362,358,836057,748416,87641,38668,874725
+527,3,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,518,515,1971817,1869952,101865,50727,2022544
+527,4,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,231,228,1827189,1784960,42229,25395,1852584
+527,5,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,168,165,668833,623104,45729,20706,689539
+527,6,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,464,461,2828404,2761216,67188,49470,2877874
+527,7,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,239,235,1325736,1266176,59560,31382,1357118
+527,8,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,806,803,4248019,4154112,93907,94449,4342468
+527,9,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,326,322,1210942,1138304,72638,34683,1245625
+527,10,10,src/utils/big_opN.v,parcas,3,1,success,,1,1,0,,498,494,2365282,2290688,74594,54665,2419947
+533,1,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,57,55,224617,186752,37865,6253,230870
+533,2,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,134,132,630854,602880,27974,13334,644188
+533,3,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,23,20,146990,124544,22446,3335,150325
+533,4,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,47,44,328228,300160,28068,5047,333275
+533,5,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,55,52,216079,192768,23311,4778,220857
+533,6,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,16,13,82615,61056,21559,1500,84115
+533,7,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,90,87,429836,388992,40844,7889,437725
+533,8,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,37,35,221434,198912,22522,3086,224520
+533,9,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,25,22,105667,83456,22211,1918,107585
+533,10,10,src/utils/graph.v,parcas,0,1,success,,1,1,0,,60,57,185376,162816,22560,4768,190144
+541,1,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,37,35,244677,217728,26949,4303,248980
+541,2,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,68,65,415857,386048,29809,6387,422244
+541,3,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,46,43,257464,230144,27320,4961,262425
+541,4,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,53,50,250616,215040,35576,5370,255986
+541,5,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,184,181,1011684,975872,35812,15224,1026908
+541,6,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,48,45,210187,184448,25739,4042,214229
+541,7,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,109,106,345808,299904,45904,9805,355613
+541,8,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,63,60,238313,212736,25577,4907,243220
+541,9,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,37,35,274980,247808,27172,2949,277929
+541,10,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,78,75,369457,342784,26673,5959,375416
+545,1,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,78,75,545738,511872,33866,8548,554286
+545,2,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,84,80,438419,410624,27795,7704,446123
+545,3,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,129,126,630555,596864,33691,11211,641766
+545,4,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,66,63,326961,299008,27953,5962,332923
+545,5,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,102,99,519814,492160,27654,9504,529318
+545,6,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,200,197,598192,537600,60592,17593,615785
+545,7,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,422,419,1758964,1711360,47604,43811,1802775
+545,8,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,111,108,577625,542208,35417,12646,590271
+545,9,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,236,233,979124,932352,46772,25491,1004615
+545,10,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,420,417,513194,459776,53418,50598,563792
+546,1,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,83,80,480449,453504,26945,8847,489296
+546,2,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,60,57,195828,170112,25716,6572,202400
+546,3,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,104,101,337940,312832,25108,9764,347704
+546,4,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,96,93,438772,410368,28404,7880,446652
+546,5,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,320,317,691000,655360,35640,26177,717177
+546,6,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,227,223,912314,872704,39610,21725,934039
+546,7,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,137,134,720719,686976,33743,14166,734885
+546,8,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,56,53,246138,220032,26106,6052,252190
+546,9,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,70,67,280598,251776,28822,8630,289228
+546,10,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,122,119,483159,449664,33495,12726,495885
+553,1,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,506,502,1305474,1250432,55042,44708,1350182
+553,2,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,301,298,1010731,956416,54315,34199,1044930
+553,3,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,491,488,3048005,3004032,43973,44098,3092103
+553,4,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,279,275,719824,663040,56784,36464,756288
+553,5,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,367,364,1149922,1087104,62818,49052,1198974
+553,6,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,746,743,4556958,4488320,68638,77080,4634038
+553,7,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,157,153,335940,296448,39492,17253,353193
+553,8,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,438,434,2308235,2249472,58763,41750,2349985
+553,9,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,157,154,596531,560000,36531,15611,612142
+553,10,10,src/utils/graph.v,parcas,11,1,success,,1,1,0,,136,133,276667,241664,35003,13678,290345
+555,1,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,586,582,2847843,2747008,100835,56734,2904577
+555,2,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,120,116,705365,675584,29781,14751,720116
+555,3,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,339,335,1600198,1558400,41798,35032,1635230
+555,4,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,904,900,5174705,5054976,119729,118259,5292964
+555,5,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,241,238,747219,695936,51283,23548,770767
+555,6,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,337,333,1270135,1218432,51703,34596,1304731
+555,7,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,437,433,1246002,1192704,53298,48897,1294899
+555,8,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,218,214,931088,890880,40208,20436,951524
+555,9,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,202,199,484082,456064,28018,20061,504143
+555,10,10,src/utils/graph.v,parcas,5,1,success,,1,1,0,,141,138,325001,285312,39689,15891,340892
+556,1,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,38,35,119543,93440,26103,3105,122648
+556,2,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,189,185,486239,446080,40159,19245,505484
+556,3,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,88,84,525065,493184,31881,9731,534796
+556,4,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,49,45,241234,213760,27474,4601,245835
+556,5,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,90,86,255533,228736,26797,9682,265215
+556,6,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,47,44,176025,148096,27929,4774,180799
+556,7,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,118,114,589195,559360,29835,11366,600561
+556,8,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,169,166,496498,461440,35058,15945,512443
+556,9,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,53,49,172100,147456,24644,4953,177053
+556,10,10,src/utils/graph.v,parcas,4,1,success,,1,1,0,,87,83,496233,468992,27241,7382,503615
+566,1,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,30,26,244412,218240,26172,2314,246726
+566,2,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,19,15,117102,92160,24942,1380,118482
+566,3,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,24,20,119528,94720,24808,2314,121842
+566,4,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,39,35,244226,217728,26498,3004,247230
+566,5,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,20,16,117409,92288,25121,2158,119567
+566,6,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,46,42,307956,278784,29172,4659,312615
+566,7,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,20,16,118066,92800,25266,1914,119980
+566,8,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,31,27,251760,226816,24944,2615,254375
+566,9,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,22,18,119308,94336,24972,2260,121568
+566,10,10,src/utils/graph.v,parcas,2,1,success,,1,1,0,,28,24,166351,140544,25807,2521,168872
+577,1,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,195,194,443480,399360,44120,21533,465013
+577,2,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,102,101,306115,275584,30531,11983,318098
+577,3,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,220,218,759753,722944,36809,25022,784775
+577,4,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,131,129,513207,477952,35255,13715,526922
+577,5,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,124,122,429248,404480,24768,12875,442123
+577,6,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,339,338,2310280,2256128,54152,36845,2347125
+577,7,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,41,39,194360,170496,23864,4629,198989
+577,8,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,66,64,298057,267392,30665,8610,306667
+577,9,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,144,142,545674,514432,31242,19456,565130
+577,10,10,src/utils/gset_fixpoint.v,parcas,6,1,success,,1,1,0,,385,383,1510542,1464064,46478,36155,1546697
+578,1,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,104,103,707796,674432,33364,12396,720192
+578,2,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,63,62,293628,263296,30332,7204,300832
+578,3,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,76,75,430990,401920,29070,8085,439075
+578,4,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,30,29,114599,89728,24871,3146,117745
+578,5,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,43,41,169352,142848,26504,4785,174137
+578,6,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,110,109,371929,339712,32217,10566,382495
+578,7,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,45,43,118680,92544,26136,4470,123150
+578,8,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,77,75,359788,331392,28396,7341,367129
+578,9,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,41,39,118111,92032,26079,4582,122693
+578,10,10,src/utils/gset_fixpoint.v,parcas,4,1,success,,1,1,0,,39,37,266465,241664,24801,5025,271490
+580,1,10,src/utils/more_iris.v,parcas,9,1,success,,1,1,0,,547,545,2572750,2480512,92238,61015,2633765
+580,2,10,src/utils/more_iris.v,parcas,9,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1804,1801,32553108,32451072,102036,177176,32730284
+580,3,10,src/utils/more_iris.v,parcas,9,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1803,1801,8645099,8570112,74987,207302,8852401
+580,4,10,src/utils/more_iris.v,parcas,9,1,success,,1,1,0,,478,476,5228933,5171072,57861,52872,5281805
+580,5,10,src/utils/more_iris.v,parcas,9,1,success,,1,1,0,,685,683,6099447,6031360,68087,74213,6173660
+580,6,10,src/utils/more_iris.v,parcas,9,1,success,,1,1,0,,623,621,4256227,4202368,53859,56680,4312907
+580,7,10,src/utils/more_iris.v,parcas,9,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1804,1801,15725025,15625600,99425,185882,15910907
+580,8,10,src/utils/more_iris.v,parcas,9,0,agent_timeout,run_timed_out=0 run_rc=124,1,1,0,,1950,1948,6744335,6667392,76943,113421,6857756
+580,9,10,src/utils/more_iris.v,parcas,9,1,success,,1,1,0,,734,732,5821458,5737472,83986,71530,5892988
+580,10,10,src/utils/more_iris.v,parcas,9,1,success,,1,1,0,,338,336,3120638,3040512,80126,33071,3153709
+588,1,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,33,31,159925,135936,23989,3368,163293
+588,2,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,40,38,301487,273152,28335,3519,305006
+588,3,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,41,40,283793,258176,25617,3226,287019
+588,4,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,59,57,341956,301824,40132,5360,347316
+588,5,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,62,60,278621,251520,27101,7058,285679
+588,6,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,64,63,216865,174080,42785,8839,225704
+588,7,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,30,29,241589,217344,24245,4267,245856
+588,8,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,79,77,247798,222720,25078,9537,257335
+588,9,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,26,24,223244,195840,27404,2677,225921
+588,10,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,49,47,256547,209408,47139,6200,262747
+590,1,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,165,164,391861,367488,24373,18206,410067
+590,2,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,573,572,3235465,3179648,55817,76538,3312003
+590,3,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,536,534,3027789,2963968,63821,53085,3080874
+590,4,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,179,177,466757,426496,40261,18698,485455
+590,5,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,245,243,290736,259072,31664,26145,316881
+590,6,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,857,856,2628482,2523136,105346,92183,2720665
+590,7,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,226,224,585652,525184,60468,26599,612251
+590,8,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,240,239,394343,333696,60647,28462,422805
+590,9,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,161,160,480424,449792,30632,17761,498185
+590,10,10,src/utils/more_maps_and_sets.v,parcas,4,1,success,,1,1,0,,80,79,445436,419328,26108,8298,453734
+591,1,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,230,228,530627,497664,32963,29673,560300
+591,2,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,162,160,445689,404096,41593,22565,468254
+591,3,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,272,270,536295,479872,56423,41820,578115
+591,4,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,108,106,326609,300416,26193,13610,340219
+591,5,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,119,117,458162,426368,31794,11065,469227
+591,6,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,339,338,1064464,1023104,41360,37195,1101659
+591,7,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,241,239,709493,667264,42229,25689,735182
+591,8,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,537,535,1479650,1424896,54754,56042,1535692
+591,9,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,263,261,978699,939392,39307,27935,1006634
+591,10,10,src/utils/more_maps_and_sets.v,parcas,7,1,success,,1,1,0,,241,239,822155,775680,46475,25238,847393
+593,1,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,61,60,357304,310272,47032,7922,365226
+593,2,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,40,39,358477,330496,27981,4234,362711
+593,3,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,46,44,289145,237056,52089,6467,295612
+593,4,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,53,51,385940,345216,40724,5736,391676
+593,5,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,57,55,360946,312320,48626,7909,368855
+593,6,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,47,46,313063,270464,42599,6403,319466
+593,7,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,42,40,279527,233984,45543,5836,285363
+593,8,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,42,40,272449,232320,40129,6136,278585
+593,9,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,58,57,319722,260096,59626,7875,327597
+593,10,10,src/utils/more_maps_and_sets.v,parcas,2,1,success,,1,1,0,,39,38,278437,251904,26533,4624,283061
+594,1,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,40,38,190394,153472,36922,4953,195347
+594,2,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,38,36,424979,398336,26643,3679,428658
+594,3,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,57,55,332442,282880,49562,7235,339677
+594,4,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,46,45,450092,421632,28460,4632,454724
+594,5,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,27,26,214813,189568,25245,3200,218013
+594,6,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,50,48,323143,276608,46535,6801,329944
+594,7,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,20,18,220276,196096,24180,2055,222331
+594,8,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,32,30,217347,167424,49923,3631,220978
+594,9,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,18,16,177879,153600,24279,1701,179580
+594,10,10,src/utils/more_maps_and_sets.v,parcas,0,1,success,,1,1,0,,17,16,152408,129280,23128,2057,154465

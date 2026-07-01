@@ -1,0 +1,222 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-Aczel.v-rLe_eqTree_rLe.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "d209089e82f642d6b52a04b9dc7a5f62",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "EQ : eqProp y z",
+            "H_rLe : rLe x y",
+            "x,y,z : Tree"
+          ],
+          "goal": "rLe x z"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 2,
+      "children_uuids": [
+        [
+          "2c9db4c7312746b9962bc857c40a4a3d",
+          "93f0b013a9b5431b82c03079e41414f8"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "apply rLe_trans with y."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "EQ : eqProp y z",
+                "H_rLe : rLe x y",
+                "x,y,z : Tree"
+              ],
+              "goal": "rLe x y"
+            },
+            {
+              "hypotheses": [
+                "EQ : eqProp y z",
+                "H_rLe : rLe x y",
+                "x,y,z : Tree"
+              ],
+              "goal": "rLe y z"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "exact (rLe_trans x y z H_rLe\n  ((fix aux (a b : Tree) (EQ' : a == b) {struct a} : rLe a b :=\n     match a as a0 return (a0 == b -> rLe a0 b) with\n     | mkNode cs f => fun (EQ'' : mkNode cs f == b) =>\n       rLe_intro (mkNode cs f) b (fun c : cs =>\n         let Hmem : f c \u2208 mkNode cs f := member_intro cs f c in\n         let Hsub : singlton (f c) \u2286 mkNode cs f :=\n           fun (w : Tree) (Hw : w \u2208 singlton (f c)) =>\n             match Hmem with\n             | ex_intro c0 Heq =>\n               ex_intro (children (mkNode cs f)) c0\n                 (eq_trans (proj1 (singlton_spec (f c) w) Hw) Heq)\n             end in\n         let Hsubz : singlton (f c) \u2286 b :=\n           proj1 (isSubsetOf_compatWith_eqProp (singlton (f c)) (singlton (f c))\n                  (mkNode cs f) b (reflexive _) EQ'') Hsub in\n         let Hmemz : f c \u2208 b :=\n           Hsubz (f c) (proj2 (singlton_spec (f c) (f c)) (reflexive _)) in\n         match Hmemz with\n         | ex_intro c' Heq' =>\n           rLt_intro (f c) b c' (aux (f c) (childnodes b c') (eq_sym Heq'))\n         end)\n     end EQ') y z EQ)).",
+        "rewrite <- EQ. exact H_rLe.",
+        "rewrite <- EQ. exact H_rLe.",
+        "rewrite <- EQ. exact H_rLe.",
+        "apply (rLe_trans _ _ _ H_rLe). setoid_rewrite <- EQ. apply rLe_refl.",
+        "rewrite EQ in H_rLe. exact H_rLe.",
+        "[REASONING]\nWe have the hypothesis EQ : eqProp y z, which states that y and z are equal according to the setoid equality. In Coq, the setoid equality is often Leibniz equality (eq) for simple inductive types like Tree. Destructing EQ replaces y with z throughout the context and goal. After this substitution, H_rLe becomes rLe x z, which matches the goal. Hence, the proof is immediate. [CODE]\ndestruct EQ. exact H_rLe.",
+        "setoid_rewrite EQ in H_rLe. exact H_rLe.",
+        "assert (Hsub : y \u2286 z) by (rewrite EQ; reflexivity). assert (Hle : rLe y z).\n{ destruct y as [cs ts]. apply rLe_intro. intro c. assert (Hmem : ts c \u2208 (mkNode cs ts)) by apply member_intro. destruct (Hsub (ts c) Hmem) as [c2 Heq]. apply rLt_intro with c2. rewrite Heq. apply rLe_refl. }\napply rLe_trans with y; [exact H_rLe | exact Hle].",
+        "apply rLe_trans with y.\n- exact H_rLe.\n- induction y as [cs ts IH]. unfold eqProp in EQ. apply rLe_intro. intro c. destruct (proj1 (EQ (ts c)) (member_intro cs ts c)) as [d Heq]. apply (rLt_intro z d). apply (IH c (childnodes z d) Heq).",
+        "setoid_rewrite EQ in H_rLe. exact H_rLe.",
+        "cofix H. destruct H_rLe as [H1]. destruct EQ as [H2]. constructor. intro c. specialize (H1 c) as [c0 H1c]. specialize (H2 c0) as [c1 H2c]. apply rLt_intro with c1. apply (H (childnodes x c) (childnodes y c0) (childnodes z c1) H1c H2c)."
+      ],
+      "failed_attempts": [
+        "exact (rLe_trans x y z H_rLe\n  ((fix aux (a b : Tree) (EQ' : a == b) {struct a} : rLe a b :=\n     match a as a0 return (a0 == b -> rLe a0 b) with\n     | mkNode cs f => fun (EQ'' : mkNode cs f == b) =>\n       rLe_intro (mkNode cs f) b (fun c : cs =>\n         let Hmem : f c \u2208 mkNode cs f := member_intro cs f c in\n         let Hsub : singlton (f c) \u2286 mkNode cs f :=\n           fun (w : Tree) (Hw : w \u2208 singlton (f c)) =>\n             match Hmem with\n             | ex_intro c0 Heq =>\n               ex_intro (children (mkNode cs f)) c0\n                 (eq_trans (proj1 (singlton_spec (f c) w) Hw) Heq)\n             end in\n         let Hsubz : singlton (f c) \u2286 b :=\n           proj1 (isSubsetOf_compatWith_eqProp (singlton (f c)) (singlton (f c))\n                  (mkNode cs f) b (reflexive _) EQ'') Hsub in\n         let Hmemz : f c \u2208 b :=\n           Hsubz (f c) (proj2 (singlton_spec (f c) (f c)) (reflexive _)) in\n         match Hmemz with\n         | ex_intro c' Heq' =>\n           rLt_intro (f c) b c' (aux (f c) (childnodes b c') (eq_sym Heq'))\n         end)\n     end EQ') y z EQ)).",
+        "rewrite <- EQ. exact H_rLe.",
+        "rewrite <- EQ. exact H_rLe.",
+        "rewrite <- EQ. exact H_rLe.",
+        "apply (rLe_trans _ _ _ H_rLe). setoid_rewrite <- EQ. apply rLe_refl.",
+        "rewrite EQ in H_rLe. exact H_rLe.",
+        "[REASONING]\nWe have the hypothesis EQ : eqProp y z, which states that y and z are equal according to the setoid equality. In Coq, the setoid equality is often Leibniz equality (eq) for simple inductive types like Tree. Destructing EQ replaces y with z throughout the context and goal. After this substitution, H_rLe becomes rLe x z, which matches the goal. Hence, the proof is immediate. [CODE]\ndestruct EQ. exact H_rLe.",
+        "setoid_rewrite EQ in H_rLe. exact H_rLe.",
+        "assert (Hsub : y \u2286 z) by (rewrite EQ; reflexivity). assert (Hle : rLe y z).\n{ destruct y as [cs ts]. apply rLe_intro. intro c. assert (Hmem : ts c \u2208 (mkNode cs ts)) by apply member_intro. destruct (Hsub (ts c) Hmem) as [c2 Heq]. apply rLt_intro with c2. rewrite Heq. apply rLe_refl. }\napply rLe_trans with y; [exact H_rLe | exact Hle].",
+        "setoid_rewrite EQ in H_rLe. exact H_rLe.",
+        "cofix H. destruct H_rLe as [H1]. destruct EQ as [H2]. constructor. intro c. specialize (H1 c) as [c0 H1c]. specialize (H2 c0) as [c1 H2c]. apply rLt_intro with c1. apply (H (childnodes x c) (childnodes y c0) (childnodes z c1) H1c H2c)."
+      ]
+    },
+    {
+      "uuid": "2c9db4c7312746b9962bc857c40a4a3d",
+      "parent_uuid": "d209089e82f642d6b52a04b9dc7a5f62",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "EQ : eqProp y z",
+            "H_rLe : rLe x y",
+            "x,y,z : Tree"
+          ],
+          "goal": "rLe x y"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply rLe_trans with y."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "EQ : eqProp y z",
+                "H_rLe : rLe x y",
+                "x,y,z : Tree"
+              ],
+              "goal": "rLe x y"
+            },
+            {
+              "hypotheses": [
+                "EQ : eqProp y z",
+                "H_rLe : rLe x y",
+                "x,y,z : Tree"
+              ],
+              "goal": "rLe y z"
+            }
+          ]
+        },
+        "proof_prefix": "apply rLe_trans with y."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "exact H_rLe."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "93f0b013a9b5431b82c03079e41414f8",
+      "parent_uuid": "d209089e82f642d6b52a04b9dc7a5f62",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "EQ : eqProp y z",
+            "H_rLe : rLe x y",
+            "x,y,z : Tree"
+          ],
+          "goal": "rLe y z"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply rLe_trans with y."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "EQ : eqProp y z",
+                "H_rLe : rLe x y",
+                "x,y,z : Tree"
+              ],
+              "goal": "rLe x y"
+            },
+            {
+              "hypotheses": [
+                "EQ : eqProp y z",
+                "H_rLe : rLe x y",
+                "x,y,z : Tree"
+              ],
+              "goal": "rLe y z"
+            }
+          ]
+        },
+        "proof_prefix": "apply rLe_trans with y. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "induction y as [cs ts IH]. unfold eqProp in EQ. apply rLe_intro. intro c. destruct (proj1 (EQ (ts c)) (member_intro cs ts c)) as [d Heq]. apply (rLt_intro z d). apply (IH c (childnodes z d) Heq)."
+      ],
+      "failed_attempts": [
+        "induction y as [cs ts IH]. unfold eqProp in EQ. apply rLe_intro. intro c. destruct (proj1 (EQ (ts c)) (member_intro cs ts c)) as [d Heq]. apply (rLt_intro z d). apply (IH c (childnodes z d) Heq)."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.1,
+      "id": 135685060119056,
+      "uuid": "2c9db4c7312746b9962bc857c40a4a3d"
+    },
+    {
+      "cost": 0.0,
+      "id": 135685315253008,
+      "uuid": "d209089e82f642d6b52a04b9dc7a5f62"
+    }
+  ],
+  "costs_so_far": {
+    "d209089e82f642d6b52a04b9dc7a5f62": 0.0,
+    "2c9db4c7312746b9962bc857c40a4a3d": -0.1,
+    "93f0b013a9b5431b82c03079e41414f8": -0.2
+  },
+  "costs_to_go": {
+    "d209089e82f642d6b52a04b9dc7a5f62": 0,
+    "2c9db4c7312746b9962bc857c40a4a3d": 0,
+    "93f0b013a9b5431b82c03079e41414f8": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "d209089e82f642d6b52a04b9dc7a5f62": 0,
+    "2c9db4c7312746b9962bc857c40a4a3d": 1,
+    "93f0b013a9b5431b82c03079e41414f8": 2
+  },
+  "next_node_idx": 3,
+  "remaining_nodes_to_expand": 147,
+  "root_uuid": "d209089e82f642d6b52a04b9dc7a5f62",
+  "done": false,
+  "visualization": "\n* (3 HYPS)|-rLe x z (cost:0.0; n_fail:2)\n  # 1 prefixes like apply rLe_trans with y.\n  * (3 HYPS)|-rLe x y (proven) (pruned) (done:True; cost:-0.1; n_fail:0)\n    # successful proof: hammer.\n  * (3 HYPS)|-rLe y z (cost:-0.2; n_fail:1)\n"
+}

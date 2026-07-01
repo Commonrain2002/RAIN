@@ -1,0 +1,460 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ClassicalDomainTheory.v-scottApp1_isMonotonic.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "a5cf8d7554794e5f967438286f05960b",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "isMonotonic1 scottApp1"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "c2366759227b412e8c0207d4b68560d6",
+          "ed13cc046da04eb1a41b881eb1e90432"
+        ],
+        [
+          "a51fc4bbb09b48cb870e25ef16b1156d",
+          "bea48adc09534a3097e704dc987e8443"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "apply (proj1 (seperately_monotonic_iff_monotonic scottApp1)). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall x2 : D,\nisMonotonic1\n  (fun x1 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   scottApp1 (pair x1 x2))"
+            },
+            {
+              "hypotheses": [
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall x1 : sig (fun f : forall _ : D, D' => isContinuous f),\nisMonotonic1 (fun x2 : D => scottApp1 (pair x1 x2))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "unfold isMonotonic1. intros [[f hf] x] [[g hg] y] Hle. simpl. destruct Hle as [Hf Hx]. transitivity (g x)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hx : leProp\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "Hf : leProp\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "y : D",
+                "hg : isContinuous g",
+                "g : forall _ : D, D'",
+                "x : D",
+                "hf : isContinuous f",
+                "f : forall _ : D, D'",
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (f x) (g x)"
+            },
+            {
+              "hypotheses": [
+                "Hx : leProp\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "Hf : leProp\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "y : D",
+                "hg : isContinuous g",
+                "g : forall _ : D, D'",
+                "x : D",
+                "hf : isContinuous f",
+                "f : forall _ : D, D'",
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (g x) (g y)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros [[f1 c1] a1] [[f2 c2] a2] Hle. destruct Hle as [Hle_f Hle_x]. destruct Hle_f as [Hle_f']. simpl. transitivity (proj1_sig f1 a2).\n- apply (ScottContinuousMap_isMonotonic f1 c1 a1 a2 Hle_x).\n- apply (Hle_f' a2).",
+        "apply (proj1 (seperately_monotonic_iff_monotonic scottApp1)). split.\n- intro x2. unfold isMonotonic1. intros [f Hf] [g Hg] Hle. simpl in Hle. apply (Hle x2).\n- intro f. destruct f as [f Hcont]. apply ScottContinuousMap_isMonotonic with (CONTINUIOUS := Hcont).",
+        "unfold isMonotonic1. intros [[f hf] x] [[g hg] y] Hle. simpl. destruct Hle as [Hf Hx]. transitivity (g x).\n- apply (Hf x).\n- apply (continuous_isMonotonic hg x y Hx).",
+        "unfold isMonotonic1; intros [[f Hf] x] [[g Hg] y] [Hfg Hx]; simpl in Hfg; simpl; etransitivity; [apply Hfg | apply (isContinuous_monotonic g Hg x y Hx)]."
+      ],
+      "failed_attempts": [
+        "intros [[f1 c1] a1] [[f2 c2] a2] Hle. destruct Hle as [Hle_f Hle_x]. destruct Hle_f as [Hle_f']. simpl. transitivity (proj1_sig f1 a2).\n- apply (ScottContinuousMap_isMonotonic f1 c1 a1 a2 Hle_x).\n- apply (Hle_f' a2).",
+        "unfold isMonotonic1; intros [[f Hf] x] [[g Hg] y] [Hfg Hx]; simpl in Hfg; simpl; etransitivity; [apply Hfg | apply (isContinuous_monotonic g Hg x y Hx)]."
+      ]
+    },
+    {
+      "uuid": "c2366759227b412e8c0207d4b68560d6",
+      "parent_uuid": "a5cf8d7554794e5f967438286f05960b",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall x2 : D,\nisMonotonic1\n  (fun x1 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   scottApp1 (pair x1 x2))"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply (proj1 (seperately_monotonic_iff_monotonic scottApp1)). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall x2 : D,\nisMonotonic1\n  (fun x1 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   scottApp1 (pair x1 x2))"
+            },
+            {
+              "hypotheses": [
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall x1 : sig (fun f : forall _ : D, D' => isContinuous f),\nisMonotonic1 (fun x2 : D => scottApp1 (pair x1 x2))"
+            }
+          ]
+        },
+        "proof_prefix": "apply (proj1 (seperately_monotonic_iff_monotonic scottApp1)). split."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "intro x2. unfold isMonotonic1. intros [f Hf] [g Hg] Hle. simpl in Hle. apply (Hle x2).",
+      "lemmas": null,
+      "attempts": [
+        "intro x2. unfold isMonotonic1. intros [f Hf] [g Hg] Hle. simpl in Hle. apply (Hle x2)."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "ed13cc046da04eb1a41b881eb1e90432",
+      "parent_uuid": "a5cf8d7554794e5f967438286f05960b",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall x1 : sig (fun f : forall _ : D, D' => isContinuous f),\nisMonotonic1 (fun x2 : D => scottApp1 (pair x1 x2))"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply (proj1 (seperately_monotonic_iff_monotonic scottApp1)). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall x2 : D,\nisMonotonic1\n  (fun x1 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   scottApp1 (pair x1 x2))"
+            },
+            {
+              "hypotheses": [
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall x1 : sig (fun f : forall _ : D, D' => isContinuous f),\nisMonotonic1 (fun x2 : D => scottApp1 (pair x1 x2))"
+            }
+          ]
+        },
+        "proof_prefix": "apply (proj1 (seperately_monotonic_iff_monotonic scottApp1)). split. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro f. destruct f as [f Hcont]. apply ScottContinuousMap_isMonotonic with (CONTINUIOUS := Hcont)."
+      ],
+      "failed_attempts": [
+        "intro f. destruct f as [f Hcont]. apply ScottContinuousMap_isMonotonic with (CONTINUIOUS := Hcont)."
+      ]
+    },
+    {
+      "uuid": "a51fc4bbb09b48cb870e25ef16b1156d",
+      "parent_uuid": "a5cf8d7554794e5f967438286f05960b",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hx : leProp\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+            "Hf : leProp\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+            "y : D",
+            "hg : isContinuous g",
+            "g : forall _ : D, D'",
+            "x : D",
+            "hf : isContinuous f",
+            "f : forall _ : D, D'",
+            "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "leProp (f x) (g x)"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold isMonotonic1. intros [[f hf] x] [[g hg] y] Hle. simpl. destruct Hle as [Hf Hx]. transitivity (g x)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hx : leProp\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "Hf : leProp\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "y : D",
+                "hg : isContinuous g",
+                "g : forall _ : D, D'",
+                "x : D",
+                "hf : isContinuous f",
+                "f : forall _ : D, D'",
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (f x) (g x)"
+            },
+            {
+              "hypotheses": [
+                "Hx : leProp\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "Hf : leProp\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "y : D",
+                "hg : isContinuous g",
+                "g : forall _ : D, D'",
+                "x : D",
+                "hf : isContinuous f",
+                "f : forall _ : D, D'",
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (g x) (g y)"
+            }
+          ]
+        },
+        "proof_prefix": "unfold isMonotonic1. intros [[f hf] x] [[g hg] y] Hle. simpl. destruct Hle as [Hf Hx]. transitivity (g x)."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "apply (Hf x).",
+      "lemmas": null,
+      "attempts": [
+        "apply (Hf x)."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "bea48adc09534a3097e704dc987e8443",
+      "parent_uuid": "a5cf8d7554794e5f967438286f05960b",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hx : leProp\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+            "Hf : leProp\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+            "y : D",
+            "hg : isContinuous g",
+            "g : forall _ : D, D'",
+            "x : D",
+            "hf : isContinuous f",
+            "f : forall _ : D, D'",
+            "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "leProp (g x) (g y)"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold isMonotonic1. intros [[f hf] x] [[g hg] y] Hle. simpl. destruct Hle as [Hf Hx]. transitivity (g x)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hx : leProp\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "Hf : leProp\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "y : D",
+                "hg : isContinuous g",
+                "g : forall _ : D, D'",
+                "x : D",
+                "hf : isContinuous f",
+                "f : forall _ : D, D'",
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (f x) (g x)"
+            },
+            {
+              "hypotheses": [
+                "Hx : leProp\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (snd\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "Hf : leProp\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) f hf) x))\n  (fst\n     (pair (exist (fun f : forall _ : D, D' => isContinuous f) g hg) y))",
+                "y : D",
+                "hg : isContinuous g",
+                "g : forall _ : D, D'",
+                "x : D",
+                "hf : isContinuous f",
+                "f : forall _ : D, D'",
+                "scottApp1 : forall _ : prod (sig (fun f : forall _ : D, D' => isContinuous f)) D,\nD'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (g x) (g y)"
+            }
+          ]
+        },
+        "proof_prefix": "unfold isMonotonic1. intros [[f hf] x] [[g hg] y] Hle. simpl. destruct Hle as [Hf Hx]. transitivity (g x). admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "exact (ScottContinuousMap_isMonotonic g hg x y Hx).",
+      "lemmas": null,
+      "attempts": [
+        "apply (continuous_isMonotonic hg x y Hx).",
+        "exact (ScottContinuousMap_isMonotonic g hg x y Hx)."
+      ],
+      "failed_attempts": [
+        "apply (continuous_isMonotonic hg x y Hx)."
+      ]
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "a5cf8d7554794e5f967438286f05960b": 0.0,
+    "c2366759227b412e8c0207d4b68560d6": -0.1,
+    "ed13cc046da04eb1a41b881eb1e90432": -0.2,
+    "a51fc4bbb09b48cb870e25ef16b1156d": -0.30000000000000004,
+    "bea48adc09534a3097e704dc987e8443": -0.4
+  },
+  "costs_to_go": {
+    "a5cf8d7554794e5f967438286f05960b": 0,
+    "c2366759227b412e8c0207d4b68560d6": 0,
+    "ed13cc046da04eb1a41b881eb1e90432": 0,
+    "a51fc4bbb09b48cb870e25ef16b1156d": 0,
+    "bea48adc09534a3097e704dc987e8443": 0
+  },
+  "no_more_children": {
+    "bea48adc09534a3097e704dc987e8443": true
+  },
+  "node_added_idx": {
+    "a5cf8d7554794e5f967438286f05960b": 0,
+    "c2366759227b412e8c0207d4b68560d6": 1,
+    "ed13cc046da04eb1a41b881eb1e90432": 2,
+    "a51fc4bbb09b48cb870e25ef16b1156d": 3,
+    "bea48adc09534a3097e704dc987e8443": 4
+  },
+  "next_node_idx": 5,
+  "remaining_nodes_to_expand": 148,
+  "root_uuid": "a5cf8d7554794e5f967438286f05960b",
+  "done": false,
+  "visualization": "\n* (7 HYPS)|-isMonotonic1 scottApp1 (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # 1 prefixes like apply (proj1 (seperately_monotonic_iff_monotonic scottApp1)). split.\n  * (7 HYPS)|-forall x2 : D,\nisMonotonic1\n  (fun x1 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   scottApp1 (pair x1 x2)) (proven) (pruned) (done:True; cost:-0.1; n_fail:0)\n    # successful proof: intro x2. unfold isMonotonic1. intros [f Hf] [g Hg] Hle. simpl in Hle. apply (Hle x2).\n  * (7 HYPS)|-forall x1 : sig (fun f : forall _ : D, D' => isContinuous f),\nisMonotonic1 (fun x2 : D => scottApp1 (pair x1 x2)) (pruned) (cost:-0.2; n_fail:0)\n\n  # 1 prefixes like unfold isMonotonic1. intros [[f hf] x] [[g hg] y] Hle. simpl. destruct Hle as [Hf Hx]. transitivity (g x).\n  * (15 HYPS)|-leProp (f x) (g x) (proven) (pruned) (done:True; cost:-0.30000000000000004; n_fail:0)\n    # successful proof: apply (Hf x).\n  * (15 HYPS)|-leProp (g x) (g y) (proven) (pruned) (done:True; cost:-0.4; n_fail:0)\n    # successful proof: exact (ScottContinuousMap_isMonotonic g hg x y Hx)."
+}

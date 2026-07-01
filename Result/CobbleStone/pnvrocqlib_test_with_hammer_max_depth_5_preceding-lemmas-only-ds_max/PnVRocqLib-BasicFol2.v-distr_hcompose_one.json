@@ -1,0 +1,674 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-BasicFol2.v-distr_hcompose_one.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "0c832159a98d4117aad031913146efb3",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "FREE : eq (occurs_free_in_frm z p) true",
+            "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+            "p : frm (augmented_language L Henkin_constants)",
+            "t : trm (augmented_language L Henkin_constants)",
+            "z : sum ivar Henkin_constants",
+            "y : ivar",
+            "x : sum ivar Henkin_constants",
+            "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "260427eefda841be86e411ff1fb81607",
+          "c216ec266d2e49e8a66d7dc5b3d287ea"
+        ],
+        [
+          "90386b3bca634ca88193198f248c58e2",
+          "e2c5fe8341e440439042cbbe6a42bd27"
+        ],
+        [
+          "11b96fdebc4641a4819e5765cec79280",
+          "938b9039004b461da08ea02909f685dc"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "destruct (eqb z x) eqn:Heq."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Heq : eq (eqb z x) true",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq (eqb z x) false",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "case_eq (eqb z x); intro Hxz."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hxz : eq (eqb z x) true",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            },
+            {
+              "hypotheses": [
+                "Hxz : eq (eqb z x) false",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "simpl. destruct (eqb z x) eqn:Hzx."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hzx : eq (eqb z x) true",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            },
+            {
+              "hypotheses": [
+                "Hzx : eq (eqb z x) false",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "unfold cons_hsubst, hsubst_compose; simpl in FRESH. case_eq (eqb z x); [ intro Hxz; rewrite Hxz; unfold eqb; destruct (eq_dec (inl y) (inl y)) as [|n]; [reflexivity | exfalso; exact (n eq_refl)] | intro Hxz; apply equiv_hsubst_in_trm_implies_hsubst_trm_same with (t := sigma1 z); intros z0 Hocc; destruct (eq_dec z0 (inl y)) as [Heq|Hneq]; [ subst z0; assert (Hzx_neq : z <> x) by (unfold eqb in Hxz; destruct (eq_dec z x) as [e|h]; [rewrite e in Hxz; simpl in Hxz; discriminate | exact h]); rewrite (proj1 (negb_true_iff _) (proj1 (forallb_forall _ _ FRESH) z (remove_neq eq_dec z x (accum_hatom_in_frm p) Hzx_neq (proj1 (occurs_free_in_frm_iff z p) FREE)))) in Hocc; discriminate | unfold cons_hsubst, eqb; destruct (eq_dec z0 (inl y)) as [Heq'|_]; [exfalso; exact (Hneq Heq') | reflexivity] ] ].",
+        "destruct (eqb z x) eqn:Heq.\n- simpl. reflexivity.\n- rewrite Heq; simpl. apply (equiv_hsubst_in_trm_implies_hsubst_trm_same sigma2 (cons_hsubst (inl y) t sigma2) (sigma1 z)\n    (fun w Hocc =>\n      match eq_dec w (inl y) with\n      | left H =>\n          match H with\n          | eq_refl =>\n              False_rect _\n                (diff_false_true\n                  (eq_trans (eq_trans (f_equal negb Hocc) (eq_refl false))\n                    (proj1 (forallb_forall (sum ivar Henkin_constants)\n                       (remove eq_dec x (accum_hatom_in_frm p))\n                       (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n                       FRESH z\n                       (proj2 (in_remove (sum ivar Henkin_constants) (eq_dec _) z x (accum_hatom_in_frm p))\n                         (conj (proj1 (occurs_free_in_frm_iff p) FREE)\n                           (fun H2 : z = x =>\n                             diff_true_false (Heq (match eq_dec x x with\n                                                   | left _ => eq_refl true\n                                                   | right H' => H' eq_refl\n                                                   end)))))))))\n          end\n      | right H => eq_refl\n      end)).",
+        "case_eq (eqb z x); intro Hxz.\n- unfold cons_hsubst, hsubst_compose; rewrite Hxz; reflexivity.\n- unfold cons_hsubst, hsubst_compose; rewrite Hxz; simpl. apply hsubst_trm_irrelevant. apply (proj1 (forallb_forall _ _) FRESH z). apply (proj2 (in_remove eq_dec (accum_hatom_in_frm p) x z)). split.\n-- apply occurs_free_in_frm_in_accum; exact FREE.\n-- apply (proj1 (eqb_false_iff _ _) Hxz).",
+        "simpl. destruct (eqb z x) eqn:Hzx.\n- reflexivity.\n- apply hsubst_trm_not_free with (v := inl y) (t := t). apply negb_true_iff. apply (proj1 (forallb_forall (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n                               (remove eq_dec x (accum_hatom_in_frm p))) FRESH z). apply (in_remove (accum_hatom_in_frm p) z x). split.\n-- apply occurs_free_in_frm_implies_mem; exact FREE.\n-- intro H; apply Hzx; apply eqb_true; exact H."
+      ],
+      "failed_attempts": [
+        "unfold cons_hsubst, hsubst_compose; simpl in FRESH. case_eq (eqb z x); [ intro Hxz; rewrite Hxz; unfold eqb; destruct (eq_dec (inl y) (inl y)) as [|n]; [reflexivity | exfalso; exact (n eq_refl)] | intro Hxz; apply equiv_hsubst_in_trm_implies_hsubst_trm_same with (t := sigma1 z); intros z0 Hocc; destruct (eq_dec z0 (inl y)) as [Heq|Hneq]; [ subst z0; assert (Hzx_neq : z <> x) by (unfold eqb in Hxz; destruct (eq_dec z x) as [e|h]; [rewrite e in Hxz; simpl in Hxz; discriminate | exact h]); rewrite (proj1 (negb_true_iff _) (proj1 (forallb_forall _ _ FRESH) z (remove_neq eq_dec z x (accum_hatom_in_frm p) Hzx_neq (proj1 (occurs_free_in_frm_iff z p) FREE)))) in Hocc; discriminate | unfold cons_hsubst, eqb; destruct (eq_dec z0 (inl y)) as [Heq'|_]; [exfalso; exact (Hneq Heq') | reflexivity] ] ]."
+      ]
+    },
+    {
+      "uuid": "260427eefda841be86e411ff1fb81607",
+      "parent_uuid": "0c832159a98d4117aad031913146efb3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Heq : eq (eqb z x) true",
+            "FREE : eq (occurs_free_in_frm z p) true",
+            "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+            "p : frm (augmented_language L Henkin_constants)",
+            "t : trm (augmented_language L Henkin_constants)",
+            "z : sum ivar Henkin_constants",
+            "y : ivar",
+            "x : sum ivar Henkin_constants",
+            "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct (eqb z x) eqn:Heq."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Heq : eq (eqb z x) true",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq (eqb z x) false",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            }
+          ]
+        },
+        "proof_prefix": "destruct (eqb z x) eqn:Heq."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "simpl. reflexivity."
+      ],
+      "failed_attempts": [
+        "simpl. reflexivity."
+      ]
+    },
+    {
+      "uuid": "c216ec266d2e49e8a66d7dc5b3d287ea",
+      "parent_uuid": "0c832159a98d4117aad031913146efb3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Heq : eq (eqb z x) false",
+            "FREE : eq (occurs_free_in_frm z p) true",
+            "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+            "p : frm (augmented_language L Henkin_constants)",
+            "t : trm (augmented_language L Henkin_constants)",
+            "z : sum ivar Henkin_constants",
+            "y : ivar",
+            "x : sum ivar Henkin_constants",
+            "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct (eqb z x) eqn:Heq."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Heq : eq (eqb z x) true",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq (eqb z x) false",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            }
+          ]
+        },
+        "proof_prefix": "destruct (eqb z x) eqn:Heq. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite Heq; simpl. apply (equiv_hsubst_in_trm_implies_hsubst_trm_same sigma2 (cons_hsubst (inl y) t sigma2) (sigma1 z)\n    (fun w Hocc =>\n      match eq_dec w (inl y) with\n      | left H =>\n          match H with\n          | eq_refl =>\n              False_rect _\n                (diff_false_true\n                  (eq_trans (eq_trans (f_equal negb Hocc) (eq_refl false))\n                    (proj1 (forallb_forall (sum ivar Henkin_constants)\n                       (remove eq_dec x (accum_hatom_in_frm p))\n                       (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n                       FRESH z\n                       (proj2 (in_remove (sum ivar Henkin_constants) (eq_dec _) z x (accum_hatom_in_frm p))\n                         (conj (proj1 (occurs_free_in_frm_iff p) FREE)\n                           (fun H2 : z = x =>\n                             diff_true_false (Heq (match eq_dec x x with\n                                                   | left _ => eq_refl true\n                                                   | right H' => H' eq_refl\n                                                   end)))))))))\n          end\n      | right H => eq_refl\n      end))."
+      ],
+      "failed_attempts": [
+        "rewrite Heq; simpl. apply (equiv_hsubst_in_trm_implies_hsubst_trm_same sigma2 (cons_hsubst (inl y) t sigma2) (sigma1 z)\n    (fun w Hocc =>\n      match eq_dec w (inl y) with\n      | left H =>\n          match H with\n          | eq_refl =>\n              False_rect _\n                (diff_false_true\n                  (eq_trans (eq_trans (f_equal negb Hocc) (eq_refl false))\n                    (proj1 (forallb_forall (sum ivar Henkin_constants)\n                       (remove eq_dec x (accum_hatom_in_frm p))\n                       (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n                       FRESH z\n                       (proj2 (in_remove (sum ivar Henkin_constants) (eq_dec _) z x (accum_hatom_in_frm p))\n                         (conj (proj1 (occurs_free_in_frm_iff p) FREE)\n                           (fun H2 : z = x =>\n                             diff_true_false (Heq (match eq_dec x x with\n                                                   | left _ => eq_refl true\n                                                   | right H' => H' eq_refl\n                                                   end)))))))))\n          end\n      | right H => eq_refl\n      end))."
+      ]
+    },
+    {
+      "uuid": "90386b3bca634ca88193198f248c58e2",
+      "parent_uuid": "0c832159a98d4117aad031913146efb3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hxz : eq (eqb z x) true",
+            "FREE : eq (occurs_free_in_frm z p) true",
+            "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+            "p : frm (augmented_language L Henkin_constants)",
+            "t : trm (augmented_language L Henkin_constants)",
+            "z : sum ivar Henkin_constants",
+            "y : ivar",
+            "x : sum ivar Henkin_constants",
+            "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+        },
+        "decomposition": {
+          "proofs": [
+            "case_eq (eqb z x); intro Hxz."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hxz : eq (eqb z x) true",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            },
+            {
+              "hypotheses": [
+                "Hxz : eq (eqb z x) false",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            }
+          ]
+        },
+        "proof_prefix": "case_eq (eqb z x); intro Hxz."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "unfold cons_hsubst, hsubst_compose; rewrite Hxz; reflexivity."
+      ],
+      "failed_attempts": [
+        "unfold cons_hsubst, hsubst_compose; rewrite Hxz; reflexivity."
+      ]
+    },
+    {
+      "uuid": "e2c5fe8341e440439042cbbe6a42bd27",
+      "parent_uuid": "0c832159a98d4117aad031913146efb3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hxz : eq (eqb z x) false",
+            "FREE : eq (occurs_free_in_frm z p) true",
+            "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+            "p : frm (augmented_language L Henkin_constants)",
+            "t : trm (augmented_language L Henkin_constants)",
+            "z : sum ivar Henkin_constants",
+            "y : ivar",
+            "x : sum ivar Henkin_constants",
+            "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+        },
+        "decomposition": {
+          "proofs": [
+            "case_eq (eqb z x); intro Hxz."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hxz : eq (eqb z x) true",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            },
+            {
+              "hypotheses": [
+                "Hxz : eq (eqb z x) false",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            }
+          ]
+        },
+        "proof_prefix": "case_eq (eqb z x); intro Hxz. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "unfold cons_hsubst, hsubst_compose; rewrite Hxz; simpl. apply hsubst_trm_irrelevant. apply (proj1 (forallb_forall _ _) FRESH z). apply (proj2 (in_remove eq_dec (accum_hatom_in_frm p) x z)). split.\n- apply occurs_free_in_frm_in_accum; exact FREE.\n- apply (proj1 (eqb_false_iff _ _) Hxz)."
+      ],
+      "failed_attempts": [
+        "unfold cons_hsubst, hsubst_compose; rewrite Hxz; simpl. apply hsubst_trm_irrelevant. apply (proj1 (forallb_forall _ _) FRESH z). apply (proj2 (in_remove eq_dec (accum_hatom_in_frm p) x z)). split.\n- apply occurs_free_in_frm_in_accum; exact FREE.\n- apply (proj1 (eqb_false_iff _ _) Hxz)."
+      ]
+    },
+    {
+      "uuid": "11b96fdebc4641a4819e5765cec79280",
+      "parent_uuid": "0c832159a98d4117aad031913146efb3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hzx : eq (eqb z x) true",
+            "FREE : eq (occurs_free_in_frm z p) true",
+            "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+            "p : frm (augmented_language L Henkin_constants)",
+            "t : trm (augmented_language L Henkin_constants)",
+            "z : sum ivar Henkin_constants",
+            "y : ivar",
+            "x : sum ivar Henkin_constants",
+            "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+        },
+        "decomposition": {
+          "proofs": [
+            "simpl. destruct (eqb z x) eqn:Hzx."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hzx : eq (eqb z x) true",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            },
+            {
+              "hypotheses": [
+                "Hzx : eq (eqb z x) false",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            }
+          ]
+        },
+        "proof_prefix": "simpl. destruct (eqb z x) eqn:Hzx."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "reflexivity."
+      ],
+      "failed_attempts": [
+        "reflexivity."
+      ]
+    },
+    {
+      "uuid": "938b9039004b461da08ea02909f685dc",
+      "parent_uuid": "0c832159a98d4117aad031913146efb3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hzx : eq (eqb z x) false",
+            "FREE : eq (occurs_free_in_frm z p) true",
+            "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+            "p : frm (augmented_language L Henkin_constants)",
+            "t : trm (augmented_language L Henkin_constants)",
+            "z : sum ivar Henkin_constants",
+            "y : ivar",
+            "x : sum ivar Henkin_constants",
+            "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+        },
+        "decomposition": {
+          "proofs": [
+            "simpl. destruct (eqb z x) eqn:Hzx."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hzx : eq (eqb z x) true",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            },
+            {
+              "hypotheses": [
+                "Hzx : eq (eqb z x) false",
+                "FREE : eq (occurs_free_in_frm z p) true",
+                "FRESH : eq\n  (forallb (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n     (remove eq_dec x (accum_hatom_in_frm p))) true",
+                "p : frm (augmented_language L Henkin_constants)",
+                "t : trm (augmented_language L Henkin_constants)",
+                "z : sum ivar Henkin_constants",
+                "y : ivar",
+                "x : sum ivar Henkin_constants",
+                "sigma1,sigma2 : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z)"
+            }
+          ]
+        },
+        "proof_prefix": "simpl. destruct (eqb z x) eqn:Hzx. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 2,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply hsubst_trm_not_free with (v := inl y) (t := t). apply negb_true_iff. apply (proj1 (forallb_forall (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n                               (remove eq_dec x (accum_hatom_in_frm p))) FRESH z). apply (in_remove (accum_hatom_in_frm p) z x). split.\n- apply occurs_free_in_frm_implies_mem; exact FREE.\n- intro H; apply Hzx; apply eqb_true; exact H.",
+        "rewrite Hzx. apply equiv_hsubst_in_trm_implies_hsubst_trm_same with (sigma1 := sigma2) (sigma2 := cons_hsubst (inl y) t sigma2) (t := sigma1 z). intros z0 Hfree. destruct (eq_dec z0 (inl y)) as [Heq|Hneq]; [ | unfold cons_hsubst; destruct (eqb z0 (inl y)) eqn:Heqb; [exfalso; apply Hneq; unfold eqb in Heqb; destruct (eq_dec z0 (inl y)) as [H|H]; [exact H | discriminate Heqb] | reflexivity] ]. subst z0. exfalso. assert (Hfalse : occurs_free_in_trm (inl y) (sigma1 z) = false) by\n  (apply (proj1 (negb_true_iff _)); apply (proj1 (L.forallb_forall _ _) FRESH z);\n   apply (proj2 (L.in_remove hatom eq_dec x z (accum_hatom_in_frm p)));\n   split; [apply (proj1 (occurs_free_in_frm_iff z p) FREE) | intro Heqzx; apply Hzx; rewrite Heqzx; reflexivity]). rewrite Hfalse in Hfree; discriminate.",
+        "unfold cons_hsubst, hsubst_compose. case_eq (eqb z x); intro Heq; rewrite Heq.\n- simpl; auto.\n- assert (Hnotfree : occurs_free_in_trm (inl y) (sigma1 z) = false) by\n    (apply (proj1 (negb_true_iff _));\n     apply (proj1 (forallb_forall _ _) FRESH z);\n     apply in_remove; split;\n     [ apply (proj1 (occurs_free_in_frm_iff z p) FREE)\n     | intro H; subst; unfold eqb in Heq;\n       destruct eq_dec as [H'|_]; [discriminate | exfalso; apply H'; auto] ]). apply equiv_hsubst_in_trm_implies_hsubst_trm_same\n    with (sigma1 := fun w => if eqb w (inl y) then t else sigma2 w)\n         (sigma2 := sigma2) (t := sigma1 z). intro w; intro Hwfree;\n  destruct (eqb w (inl y)) eqn:E; auto;\n  (unfold eqb in E; destruct eq_dec as [H_eq|H_ne];\n   [subst w; rewrite Hnotfree in Hwfree; discriminate | discriminate]).",
+        "unfold cons_hsubst, hsubst_compose in *. rewrite Hzx in *. apply hsubst_trm_not_free. apply (proj1 (negb_true_iff _)). apply (proj1 (forallb_forall (compose (compose negb (occurs_free_in_trm (inl y))) sigma1) (remove eq_dec x (accum_hatom_in_frm p))) FRESH z). apply (proj2 (in_remove (sum ivar Henkin_constants) eq_dec (accum_hatom_in_frm p) x z) (conj (occurs_free_in_frm_accum z p FREE) (eqb_false_not_eq z x Hzx))).",
+        "unfold cons_hsubst, hsubst_compose in *. rewrite Hzx. simpl."
+      ],
+      "failed_attempts": [
+        "apply hsubst_trm_not_free with (v := inl y) (t := t). apply negb_true_iff. apply (proj1 (forallb_forall (compose (compose negb (occurs_free_in_trm (inl y))) sigma1)\n                               (remove eq_dec x (accum_hatom_in_frm p))) FRESH z). apply (in_remove (accum_hatom_in_frm p) z x). split.\n- apply occurs_free_in_frm_implies_mem; exact FREE.\n- intro H; apply Hzx; apply eqb_true; exact H.",
+        "rewrite Hzx. apply equiv_hsubst_in_trm_implies_hsubst_trm_same with (sigma1 := sigma2) (sigma2 := cons_hsubst (inl y) t sigma2) (t := sigma1 z). intros z0 Hfree. destruct (eq_dec z0 (inl y)) as [Heq|Hneq]; [ | unfold cons_hsubst; destruct (eqb z0 (inl y)) eqn:Heqb; [exfalso; apply Hneq; unfold eqb in Heqb; destruct (eq_dec z0 (inl y)) as [H|H]; [exact H | discriminate Heqb] | reflexivity] ]. subst z0. exfalso. assert (Hfalse : occurs_free_in_trm (inl y) (sigma1 z) = false) by\n  (apply (proj1 (negb_true_iff _)); apply (proj1 (L.forallb_forall _ _) FRESH z);\n   apply (proj2 (L.in_remove hatom eq_dec x z (accum_hatom_in_frm p)));\n   split; [apply (proj1 (occurs_free_in_frm_iff z p) FREE) | intro Heqzx; apply Hzx; rewrite Heqzx; reflexivity]). rewrite Hfalse in Hfree; discriminate.",
+        "unfold cons_hsubst, hsubst_compose. case_eq (eqb z x); intro Heq; rewrite Heq.\n- simpl; auto.\n- assert (Hnotfree : occurs_free_in_trm (inl y) (sigma1 z) = false) by\n    (apply (proj1 (negb_true_iff _));\n     apply (proj1 (forallb_forall _ _) FRESH z);\n     apply in_remove; split;\n     [ apply (proj1 (occurs_free_in_frm_iff z p) FREE)\n     | intro H; subst; unfold eqb in Heq;\n       destruct eq_dec as [H'|_]; [discriminate | exfalso; apply H'; auto] ]). apply equiv_hsubst_in_trm_implies_hsubst_trm_same\n    with (sigma1 := fun w => if eqb w (inl y) then t else sigma2 w)\n         (sigma2 := sigma2) (t := sigma1 z). intro w; intro Hwfree;\n  destruct (eqb w (inl y)) eqn:E; auto;\n  (unfold eqb in E; destruct eq_dec as [H_eq|H_ne];\n   [subst w; rewrite Hnotfree in Hwfree; discriminate | discriminate]).",
+        "unfold cons_hsubst, hsubst_compose in *. rewrite Hzx in *. apply hsubst_trm_not_free. apply (proj1 (negb_true_iff _)). apply (proj1 (forallb_forall (compose (compose negb (occurs_free_in_trm (inl y))) sigma1) (remove eq_dec x (accum_hatom_in_frm p))) FRESH z). apply (proj2 (in_remove (sum ivar Henkin_constants) eq_dec (accum_hatom_in_frm p) x z) (conj (occurs_free_in_frm_accum z p FREE) (eqb_false_not_eq z x Hzx))).",
+        "unfold cons_hsubst, hsubst_compose in *. rewrite Hzx. simpl."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.5,
+      "id": 135536204941648,
+      "uuid": "11b96fdebc4641a4819e5765cec79280"
+    },
+    {
+      "cost": -0.4,
+      "id": 135536204689488,
+      "uuid": "e2c5fe8341e440439042cbbe6a42bd27"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536063224080,
+      "uuid": "c216ec266d2e49e8a66d7dc5b3d287ea"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536340371024,
+      "uuid": "260427eefda841be86e411ff1fb81607"
+    },
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536338122128,
+      "uuid": "90386b3bca634ca88193198f248c58e2"
+    },
+    {
+      "cost": 0.0,
+      "id": 135535414535952,
+      "uuid": "0c832159a98d4117aad031913146efb3"
+    }
+  ],
+  "costs_so_far": {
+    "0c832159a98d4117aad031913146efb3": 0.0,
+    "260427eefda841be86e411ff1fb81607": -0.1,
+    "c216ec266d2e49e8a66d7dc5b3d287ea": -0.2,
+    "90386b3bca634ca88193198f248c58e2": -0.30000000000000004,
+    "e2c5fe8341e440439042cbbe6a42bd27": -0.4,
+    "11b96fdebc4641a4819e5765cec79280": -0.5,
+    "938b9039004b461da08ea02909f685dc": -0.6000000000000001
+  },
+  "costs_to_go": {
+    "0c832159a98d4117aad031913146efb3": 0,
+    "260427eefda841be86e411ff1fb81607": 0,
+    "c216ec266d2e49e8a66d7dc5b3d287ea": 0,
+    "90386b3bca634ca88193198f248c58e2": 0,
+    "e2c5fe8341e440439042cbbe6a42bd27": 0,
+    "11b96fdebc4641a4819e5765cec79280": 0,
+    "938b9039004b461da08ea02909f685dc": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "0c832159a98d4117aad031913146efb3": 0,
+    "260427eefda841be86e411ff1fb81607": 1,
+    "c216ec266d2e49e8a66d7dc5b3d287ea": 2,
+    "90386b3bca634ca88193198f248c58e2": 3,
+    "e2c5fe8341e440439042cbbe6a42bd27": 4,
+    "11b96fdebc4641a4819e5765cec79280": 5,
+    "938b9039004b461da08ea02909f685dc": 6
+  },
+  "next_node_idx": 7,
+  "remaining_nodes_to_expand": 148,
+  "root_uuid": "0c832159a98d4117aad031913146efb3",
+  "done": false,
+  "visualization": "\n* (9 HYPS)|-eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z) (cost:0.0; n_fail:0)\n  # 1 prefixes like destruct (eqb z x) eqn:Heq.\n  * (10 HYPS)|-eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z) (cost:-0.1; n_fail:0)\n\n  * (10 HYPS)|-eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z) (cost:-0.2; n_fail:0)\n\n  # 1 prefixes like case_eq (eqb z x); intro Hxz.\n  * (10 HYPS)|-eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z) (cost:-0.30000000000000004; n_fail:0)\n\n  * (10 HYPS)|-eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z) (cost:-0.4; n_fail:0)\n\n  # 1 prefixes like simpl. destruct (eqb z x) eqn:Hzx.\n  * (10 HYPS)|-eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z) (cost:-0.5; n_fail:0)\n\n  * (10 HYPS)|-eq (cons_hsubst x t (hsubst_compose sigma1 sigma2) z)\n  (hsubst_compose (cons_hsubst x (Var_trm y) sigma1)\n     (cons_hsubst (inl y) t sigma2) z) (cost:-0.6000000000000001; n_fail:2)\n"
+}

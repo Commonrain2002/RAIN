@@ -1,0 +1,410 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-BasicFol.v-trm_is_enumerable.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "33d796326bed455fac98c5b201dd5380",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "t : trm L",
+            "enum_constant_symbols : isEnumerable (constant_symbols L)",
+            "enum_function_symbols : isEnumerable (function_symbols L)",
+            "rank : Set",
+            "L : language"
+          ],
+          "goal": "sig (fun x : nat => eq (enum_trm x) t)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [
+        [
+          "5e1f317f502c4339b95b5d8817dc6ea8",
+          "58c9598a1179466cb7912dda49c5302d",
+          "1aa1f01289e1442d9cefae56dce936a5"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "destruct enum_function_symbols as [ef ef_spec], enum_constant_symbols as [ec ec_spec]. induction t; eauto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "x : ivar",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x0 : nat => eq (enum_trm x0) (Var_trm x))"
+            },
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "ts : trms L (function_arity_table L f)",
+                "f : function_symbols L",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x : nat => eq (enum_trm x) (Fun_trm f ts))"
+            },
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "c : constant_symbols L",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x : nat => eq (enum_trm x) (Con_trm c))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "destruct (gen_trm_good t (trm_depth t) (le_n (trm_depth t))) as [s Hs]. destruct (cp_surj (trm_depth t, s)) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. exact Hs.",
+        "destruct (gen_trm_good t (trm_depth t) (le_n (trm_depth t))) as [s Hs]. exists (Nat.pair (trm_depth t) s). unfold enum_trm. now rewrite Nat.unpair_pair.",
+        "destruct (gen_trm_spec t) as [rk [seed H]]. destruct (cp_surj (rk, seed)) as [x Hx]. refine (exist _ x _). unfold enum_trm. rewrite Hx. exact H.",
+        "exact (enum_trm_spec t).",
+        "destruct (gen_trm_good t (trm_depth t) (le_n (trm_depth t))) as [seed H]. destruct (cp_surj (trm_depth t) seed) as [n Hcp]. exists n. unfold enum_trm. rewrite Hcp. simpl. exact H.",
+        "destruct (gen_trm_good t (trm_depth t) (le_n _)) as [seed H]. destruct (cp_surj (trm_depth t, seed)) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. exact H.",
+        "induction t as [v| f args IH | c] using trm_ind.\n- destruct (cp_surjective 0 v) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; reflexivity.\n- destruct (enum_function_symbols.(enum_spec) f) as [m Hm]. induction args as [| n t' ts IHts] using trms_ind.\n-- destruct (cp_surjective (S 0) m) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; simpl; rewrite Hm; reflexivity.\n-- destruct (IH t') as [xt Hxt]. destruct IHts as [xs Hxs]. destruct (cp_surjective (S n) (cp xt xs)) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; simpl; rewrite Hm, Hxt, Hxs; reflexivity.\n- destruct (enum_constant_symbols.(enum_spec) c) as [n Hn]. destruct (cp_surjective 1 n) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; simpl; rewrite Hn; reflexivity.",
+        "destruct enum_function_symbols as [ef ef_spec], enum_constant_symbols as [ec ec_spec]. induction t; eauto."
+      ],
+      "failed_attempts": [
+        "destruct (gen_trm_good t (trm_depth t) (le_n (trm_depth t))) as [s Hs]. destruct (cp_surj (trm_depth t, s)) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. exact Hs.",
+        "destruct (gen_trm_good t (trm_depth t) (le_n (trm_depth t))) as [s Hs]. exists (Nat.pair (trm_depth t) s). unfold enum_trm. now rewrite Nat.unpair_pair.",
+        "destruct (gen_trm_spec t) as [rk [seed H]]. destruct (cp_surj (rk, seed)) as [x Hx]. refine (exist _ x _). unfold enum_trm. rewrite Hx. exact H.",
+        "exact (enum_trm_spec t).",
+        "destruct (gen_trm_good t (trm_depth t) (le_n (trm_depth t))) as [seed H]. destruct (cp_surj (trm_depth t) seed) as [n Hcp]. exists n. unfold enum_trm. rewrite Hcp. simpl. exact H.",
+        "destruct (gen_trm_good t (trm_depth t) (le_n _)) as [seed H]. destruct (cp_surj (trm_depth t, seed)) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. exact H.",
+        "induction t as [v| f args IH | c] using trm_ind.\n- destruct (cp_surjective 0 v) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; reflexivity.\n- destruct (enum_function_symbols.(enum_spec) f) as [m Hm]. induction args as [| n t' ts IHts] using trms_ind.\n-- destruct (cp_surjective (S 0) m) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; simpl; rewrite Hm; reflexivity.\n-- destruct (IH t') as [xt Hxt]. destruct IHts as [xs Hxs]. destruct (cp_surjective (S n) (cp xt xs)) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; simpl; rewrite Hm, Hxt, Hxs; reflexivity.\n- destruct (enum_constant_symbols.(enum_spec) c) as [n Hn]. destruct (cp_surjective 1 n) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; simpl; rewrite Hn; reflexivity."
+      ]
+    },
+    {
+      "uuid": "5e1f317f502c4339b95b5d8817dc6ea8",
+      "parent_uuid": "33d796326bed455fac98c5b201dd5380",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+            "ec : forall _ : nat, constant_symbols L",
+            "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+            "ef : forall _ : nat, function_symbols L",
+            "x : ivar",
+            "enum_constant_symbols : isEnumerable (constant_symbols L)",
+            "enum_function_symbols : isEnumerable (function_symbols L)",
+            "rank : Set",
+            "L : language"
+          ],
+          "goal": "sig (fun x0 : nat => eq (enum_trm x0) (Var_trm x))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct enum_function_symbols as [ef ef_spec], enum_constant_symbols as [ec ec_spec]. induction t; eauto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "x : ivar",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x0 : nat => eq (enum_trm x0) (Var_trm x))"
+            },
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "ts : trms L (function_arity_table L f)",
+                "f : function_symbols L",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x : nat => eq (enum_trm x) (Fun_trm f ts))"
+            },
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "c : constant_symbols L",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x : nat => eq (enum_trm x) (Con_trm c))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct enum_function_symbols as [ef ef_spec], enum_constant_symbols as [ec ec_spec]. induction t; eauto."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "58c9598a1179466cb7912dda49c5302d",
+      "parent_uuid": "33d796326bed455fac98c5b201dd5380",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+            "ec : forall _ : nat, constant_symbols L",
+            "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+            "ef : forall _ : nat, function_symbols L",
+            "ts : trms L (function_arity_table L f)",
+            "f : function_symbols L",
+            "enum_constant_symbols : isEnumerable (constant_symbols L)",
+            "enum_function_symbols : isEnumerable (function_symbols L)",
+            "rank : Set",
+            "L : language"
+          ],
+          "goal": "sig (fun x : nat => eq (enum_trm x) (Fun_trm f ts))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct enum_function_symbols as [ef ef_spec], enum_constant_symbols as [ec ec_spec]. induction t; eauto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "x : ivar",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x0 : nat => eq (enum_trm x0) (Var_trm x))"
+            },
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "ts : trms L (function_arity_table L f)",
+                "f : function_symbols L",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x : nat => eq (enum_trm x) (Fun_trm f ts))"
+            },
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "c : constant_symbols L",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x : nat => eq (enum_trm x) (Con_trm c))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct enum_function_symbols as [ef ef_spec], enum_constant_symbols as [ec ec_spec]. induction t; eauto. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "1aa1f01289e1442d9cefae56dce936a5",
+      "parent_uuid": "33d796326bed455fac98c5b201dd5380",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+            "ec : forall _ : nat, constant_symbols L",
+            "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+            "ef : forall _ : nat, function_symbols L",
+            "c : constant_symbols L",
+            "enum_constant_symbols : isEnumerable (constant_symbols L)",
+            "enum_function_symbols : isEnumerable (function_symbols L)",
+            "rank : Set",
+            "L : language"
+          ],
+          "goal": "sig (fun x : nat => eq (enum_trm x) (Con_trm c))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct enum_function_symbols as [ef ef_spec], enum_constant_symbols as [ec ec_spec]. induction t; eauto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "x : ivar",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x0 : nat => eq (enum_trm x0) (Var_trm x))"
+            },
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "ts : trms L (function_arity_table L f)",
+                "f : function_symbols L",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x : nat => eq (enum_trm x) (Fun_trm f ts))"
+            },
+            {
+              "hypotheses": [
+                "ec_spec : forall x : constant_symbols L, sig (fun n : nat => eq (ec n) x)",
+                "ec : forall _ : nat, constant_symbols L",
+                "ef_spec : forall x : function_symbols L, sig (fun n : nat => eq (ef n) x)",
+                "ef : forall _ : nat, function_symbols L",
+                "c : constant_symbols L",
+                "enum_constant_symbols : isEnumerable (constant_symbols L)",
+                "enum_function_symbols : isEnumerable (function_symbols L)",
+                "rank : Set",
+                "L : language"
+              ],
+              "goal": "sig (fun x : nat => eq (enum_trm x) (Con_trm c))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct enum_function_symbols as [ef ef_spec], enum_constant_symbols as [ec ec_spec]. induction t; eauto. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 3,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "destruct (gen_trm_good (Con_trm c) (trm_depth (Con_trm c)) (le_n _)) as [s Hs]. destruct (cp_surj (trm_depth (Con_trm c)) s) as [x Hx]. refine (exist _ x _). unfold enum_trm. rewrite Hx. simpl. assumption.",
+        "destruct (gen_trm_good (Con_trm c) (trm_depth (Con_trm c)) (le_n _)) as [seed H]. destruct (cp_surj (trm_depth (Con_trm c)) seed) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. exact H.",
+        "destruct (ec_spec c) as [n Hn]. destruct (cp_surjective 0 n) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. rewrite gen_trm_base. rewrite Hn. reflexivity.",
+        "destruct (ec_spec c) as [n H]. exists n. unfold enum_trm. simpl. rewrite H. reflexivity.",
+        "destruct (gen_trm_good (Con_trm c) (trm_depth (Con_trm c))) as [s Hs]; [apply le_n |]. destruct (cp_surjective (trm_depth (Con_trm c)) s) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; exact Hs.",
+        "destruct (gen_trm_good (Con_trm c) (trm_depth (Con_trm c)) (le_n _)) as [seed Hseed]. destruct (cp_surjective (trm_depth (Con_trm c), seed)) as [x Hcp]. refine (exist _ x _). unfold enum_trm; rewrite Hcp; rewrite Hseed; reflexivity.",
+        "destruct (ec_spec c) as [n Hn]. destruct (cp_surj 0 n) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. simpl. now rewrite Hn.",
+        "destruct (enum_constant_symbols.(enum_spec) c) as [n hn]. destruct (cp_surj 0 n) as [x hx]. exists x. unfold enum_trm. rewrite hx. simpl. rewrite hn. reflexivity."
+      ],
+      "failed_attempts": [
+        "destruct (gen_trm_good (Con_trm c) (trm_depth (Con_trm c)) (le_n _)) as [s Hs]. destruct (cp_surj (trm_depth (Con_trm c)) s) as [x Hx]. refine (exist _ x _). unfold enum_trm. rewrite Hx. simpl. assumption.",
+        "destruct (gen_trm_good (Con_trm c) (trm_depth (Con_trm c)) (le_n _)) as [seed H]. destruct (cp_surj (trm_depth (Con_trm c)) seed) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. exact H.",
+        "destruct (ec_spec c) as [n Hn]. destruct (cp_surjective 0 n) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. rewrite gen_trm_base. rewrite Hn. reflexivity.",
+        "destruct (ec_spec c) as [n H]. exists n. unfold enum_trm. simpl. rewrite H. reflexivity.",
+        "destruct (gen_trm_good (Con_trm c) (trm_depth (Con_trm c))) as [s Hs]; [apply le_n |]. destruct (cp_surjective (trm_depth (Con_trm c)) s) as [x Hx]. exists x; unfold enum_trm; rewrite Hx; exact Hs.",
+        "destruct (gen_trm_good (Con_trm c) (trm_depth (Con_trm c)) (le_n _)) as [seed Hseed]. destruct (cp_surjective (trm_depth (Con_trm c), seed)) as [x Hcp]. refine (exist _ x _). unfold enum_trm; rewrite Hcp; rewrite Hseed; reflexivity.",
+        "destruct (ec_spec c) as [n Hn]. destruct (cp_surj 0 n) as [x Hx]. exists x. unfold enum_trm. rewrite Hx. simpl. now rewrite Hn.",
+        "destruct (enum_constant_symbols.(enum_spec) c) as [n hn]. destruct (cp_surj 0 n) as [x hx]. exists x. unfold enum_trm. rewrite hx. simpl. rewrite hn. reflexivity."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.2,
+      "id": 135536116389840,
+      "uuid": "58c9598a1179466cb7912dda49c5302d"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536116398032,
+      "uuid": "5e1f317f502c4339b95b5d8817dc6ea8"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536287060176,
+      "uuid": "33d796326bed455fac98c5b201dd5380"
+    }
+  ],
+  "costs_so_far": {
+    "33d796326bed455fac98c5b201dd5380": 0.0,
+    "5e1f317f502c4339b95b5d8817dc6ea8": -0.1,
+    "58c9598a1179466cb7912dda49c5302d": -0.2,
+    "1aa1f01289e1442d9cefae56dce936a5": -0.30000000000000004
+  },
+  "costs_to_go": {
+    "33d796326bed455fac98c5b201dd5380": 0,
+    "5e1f317f502c4339b95b5d8817dc6ea8": 0,
+    "58c9598a1179466cb7912dda49c5302d": 0,
+    "1aa1f01289e1442d9cefae56dce936a5": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "33d796326bed455fac98c5b201dd5380": 0,
+    "5e1f317f502c4339b95b5d8817dc6ea8": 1,
+    "58c9598a1179466cb7912dda49c5302d": 2,
+    "1aa1f01289e1442d9cefae56dce936a5": 3
+  },
+  "next_node_idx": 4,
+  "remaining_nodes_to_expand": 146,
+  "root_uuid": "33d796326bed455fac98c5b201dd5380",
+  "done": false,
+  "visualization": "\n* (5 HYPS)|-sig (fun x : nat => eq (enum_trm x) t) (cost:0.0; n_fail:1)\n  # 1 prefixes like destruct enum_function_symbols as [ef ef_spec], enum_constant_symbols as [ec ec_spec]. induction t; eauto.\n  * (9 HYPS)|-sig (fun x0 : nat => eq (enum_trm x0) (Var_trm x)) (cost:-0.1; n_fail:0)\n\n  * (10 HYPS)|-sig (fun x : nat => eq (enum_trm x) (Fun_trm f ts)) (cost:-0.2; n_fail:0)\n\n  * (9 HYPS)|-sig (fun x : nat => eq (enum_trm x) (Con_trm c)) (cost:-0.30000000000000004; n_fail:3)\n"
+}

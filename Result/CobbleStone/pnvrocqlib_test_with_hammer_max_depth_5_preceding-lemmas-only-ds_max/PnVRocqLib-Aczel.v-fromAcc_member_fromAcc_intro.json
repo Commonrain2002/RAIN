@@ -1,0 +1,60 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-Aczel.v-fromAcc_member_fromAcc_intro.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "6dc787209ca44dbbadebf57eea9611cf",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "R_x_x' : R x x'",
+            "ACC' : Acc R x'",
+            "ACC : Acc R x",
+            "x,x' : A",
+            "R : forall (_ : A) (_ : A), Prop",
+            "A : Type"
+          ],
+          "goal": "member (fromAcc x ACC) (fromAcc x' ACC')"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "apply (proj2 (fromAcc_unfold A R x' ACC' (fromAcc x ACC))). exists (exist (fun y : A => R y x') x R_x_x'). apply fromAcc_pirrel.",
+      "lemmas": null,
+      "attempts": [
+        "apply (proj2 (fromAcc_unfold A R x' ACC' (fromAcc x ACC))).\nexists (exist (fun y : A => R y x') x R_x_x').\napply fromAcc_pirrel."
+      ],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "6dc787209ca44dbbadebf57eea9611cf": 0.0
+  },
+  "costs_to_go": {
+    "6dc787209ca44dbbadebf57eea9611cf": 0
+  },
+  "no_more_children": {
+    "6dc787209ca44dbbadebf57eea9611cf": true
+  },
+  "node_added_idx": {
+    "6dc787209ca44dbbadebf57eea9611cf": 0
+  },
+  "next_node_idx": 1,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "6dc787209ca44dbbadebf57eea9611cf",
+  "done": false,
+  "visualization": "\n* (6 HYPS)|-member (fromAcc x ACC) (fromAcc x' ACC') (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # successful proof: apply (proj2 (fromAcc_unfold A R x' ACC' (fromAcc x ACC))). exists (exist (fun y : A => R y x') x R_x_x'). apply fromAcc_pirrel."
+}

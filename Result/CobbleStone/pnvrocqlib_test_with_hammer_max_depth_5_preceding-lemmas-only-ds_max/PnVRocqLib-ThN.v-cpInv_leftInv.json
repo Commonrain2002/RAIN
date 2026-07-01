@@ -1,0 +1,330 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ThN.v-cpInv_leftInv.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "8200472610bf4355a2bebac5dc21ace6",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "n : nat"
+          ],
+          "goal": "Logic.eq (cpInv (fst (cp n)) (snd (cp n))) n"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "ae914cbf7613425195018aa0dd7204a3",
+          "a491e0c2c01545cd9cfd5ca473ddd6b1"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "induction n."
+          ],
+          "goals": [
+            {
+              "hypotheses": [],
+              "goal": "Logic.eq (cpInv (fst (cp 0)) (snd (cp 0))) 0"
+            },
+            {
+              "hypotheses": [
+                "IHn : Logic.eq (cpInv (fst (cp n)) (snd (cp n))) n",
+                "n : nat"
+              ],
+              "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "induction n; simpl; [reflexivity | destruct (cp n) as [[| x] y]; rewrite <- IHn; unfold cpInv; simpl; rewrite <- plus_n_Sm; rewrite plus_comm; reflexivity].",
+        "induction n; simpl; try reflexivity. destruct (cp n) as [x y]. destruct x as [|x']; all: rewrite <- IHn; unfold cpInv; simpl; rewrite <- plus_n_Sm; reflexivity.",
+        "induction n.\n- reflexivity.\n- destruct (cp n) as [x y]. destruct x as [| x']; rewrite <- IHn; unfold cpInv; simpl; rewrite (Nat.add_comm (S y)); rewrite ?Nat.add_succ_r; reflexivity.",
+        "refine (fix f n : cpInv (fst (cp n)) (snd (cp n)) = n :=\n  match n with\n  | 0 => eq_refl\n  | S n' =>\n    match cp n' as p return (cp n' = p -> cpInv (fst (cp (S n'))) (snd (cp (S n'))) = S n') with\n    | (x, y) => fun H : cp n' = (x, y) =>\n      match x return cpInv (fst (cp (S n'))) (snd (cp (S n'))) = S n' with\n      | 0 => _\n      | S x' => _\n      end\n    end (eq_refl (cp n'))\n  end). all: simpl; unfold cpInv; simpl; try rewrite plus_n_O; rewrite plus_n_Sm; apply eq_S; pose proof (f n') as H1; rewrite H in H1; apply H1."
+      ],
+      "failed_attempts": [
+        "induction n; simpl; [reflexivity | destruct (cp n) as [[| x] y]; rewrite <- IHn; unfold cpInv; simpl; rewrite <- plus_n_Sm; rewrite plus_comm; reflexivity].",
+        "induction n; simpl; try reflexivity. destruct (cp n) as [x y]. destruct x as [|x']; all: rewrite <- IHn; unfold cpInv; simpl; rewrite <- plus_n_Sm; reflexivity.",
+        "refine (fix f n : cpInv (fst (cp n)) (snd (cp n)) = n :=\n  match n with\n  | 0 => eq_refl\n  | S n' =>\n    match cp n' as p return (cp n' = p -> cpInv (fst (cp (S n'))) (snd (cp (S n'))) = S n') with\n    | (x, y) => fun H : cp n' = (x, y) =>\n      match x return cpInv (fst (cp (S n'))) (snd (cp (S n'))) = S n' with\n      | 0 => _\n      | S x' => _\n      end\n    end (eq_refl (cp n'))\n  end). all: simpl; unfold cpInv; simpl; try rewrite plus_n_O; rewrite plus_n_Sm; apply eq_S; pose proof (f n') as H1; rewrite H in H1; apply H1."
+      ]
+    },
+    {
+      "uuid": "ae914cbf7613425195018aa0dd7204a3",
+      "parent_uuid": "8200472610bf4355a2bebac5dc21ace6",
+      "value": {
+        "obligation": {
+          "hypotheses": [],
+          "goal": "Logic.eq (cpInv (fst (cp 0)) (snd (cp 0))) 0"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction n."
+          ],
+          "goals": [
+            {
+              "hypotheses": [],
+              "goal": "Logic.eq (cpInv (fst (cp 0)) (snd (cp 0))) 0"
+            },
+            {
+              "hypotheses": [
+                "IHn : Logic.eq (cpInv (fst (cp n)) (snd (cp n))) n",
+                "n : nat"
+              ],
+              "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+            }
+          ]
+        },
+        "proof_prefix": "induction n."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "reflexivity."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "a491e0c2c01545cd9cfd5ca473ddd6b1",
+      "parent_uuid": "8200472610bf4355a2bebac5dc21ace6",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHn : Logic.eq (cpInv (fst (cp n)) (snd (cp n))) n",
+            "n : nat"
+          ],
+          "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction n."
+          ],
+          "goals": [
+            {
+              "hypotheses": [],
+              "goal": "Logic.eq (cpInv (fst (cp 0)) (snd (cp 0))) 0"
+            },
+            {
+              "hypotheses": [
+                "IHn : Logic.eq (cpInv (fst (cp n)) (snd (cp n))) n",
+                "n : nat"
+              ],
+              "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+            }
+          ]
+        },
+        "proof_prefix": "induction n. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "6453fd953a7d4a5aa09a729ee232ef25",
+          "5b333f939f674d98837629fd52baf93d"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "destruct (cp n) as [a b] eqn:H. destruct a."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "IHn : Logic.eq (cpInv (fst (pair 0 b)) (snd (pair 0 b))) n",
+                "H : Logic.eq (cp n) (pair 0 b)",
+                "n,b : nat"
+              ],
+              "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+            },
+            {
+              "hypotheses": [
+                "IHn : Logic.eq (cpInv (fst (pair (S a) b)) (snd (pair (S a) b))) n",
+                "H : Logic.eq (cp n) (pair (S a) b)",
+                "n,a,b : nat"
+              ],
+              "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "destruct (cp n) as [x y]. destruct x as [| x']; rewrite <- IHn; unfold cpInv; simpl; rewrite (Nat.add_comm (S y)); rewrite ?Nat.add_succ_r; reflexivity.",
+        "destruct (cp n) as [a b] eqn:Hcp; rewrite Hcp in IHn; simpl in IHn; rewrite Hcp; destruct a as [| a']; [ unfold cpInv in *; simpl in *; rewrite IHn; rewrite <- (Nat.add_succ_r (sum_from_0_to b) b); apply (Nat.mul_cancel_l _ _ 2); [ exact (Nat.succ_neq_zero 1) | rewrite sum_from_0_to_spec, (Nat.mul_add_distr_l 2 (sum_from_0_to b) (S b)), (sum_from_0_to_spec b); rewrite (Nat.mul_comm b (S b)), (Nat.mul_comm 2 (S b)), <- (Nat.mul_add_distr_r (S b) b 2); apply (Nat.mul_cancel_l _ _ (S b)); [ exact (Nat.succ_neq_zero b) | simpl; rewrite (Nat.add_succ_r b 1), (Nat.add_1_r b); reflexivity] ] | unfold cpInv in *; simpl in *; rewrite (Nat.add_succ_r a' b), (Nat.add_succ_l a' b) in *; rewrite (Nat.add_succ_r (sum_from_0_to (S (add a' b))) b), IHn; reflexivity ].",
+        "destruct (cp n) as [x y] eqn:H; rewrite H; simpl; rewrite H in IHn; simpl in IHn; destruct x as [|u]; [rewrite IHn; unfold cpInv; rewrite plus_n_O, plus_0_n, plus_n_O, <- plus_n_Sm; apply (f_equal (fun t => 2*t)); rewrite sum_from_0_to_spec, sum_from_0_to_spec; ring | rewrite IHn; unfold cpInv; simpl; rewrite plus_n_Sm; reflexivity].",
+        "destruct (cp n) as [a b] eqn:H. destruct a. all: rewrite H; simpl; rewrite H in IHn; rewrite IHn; unfold cpInv; simpl; rewrite plus_n_O, plus_n_Sm; reflexivity.",
+        "destruct (cp n) as [a b] eqn:Hcp. rewrite <- IHn. unfold cpInv. simpl. rewrite Hcp. case a; simpl; omega."
+      ],
+      "failed_attempts": [
+        "destruct (cp n) as [x y]. destruct x as [| x']; rewrite <- IHn; unfold cpInv; simpl; rewrite (Nat.add_comm (S y)); rewrite ?Nat.add_succ_r; reflexivity.",
+        "destruct (cp n) as [a b] eqn:Hcp; rewrite Hcp in IHn; simpl in IHn; rewrite Hcp; destruct a as [| a']; [ unfold cpInv in *; simpl in *; rewrite IHn; rewrite <- (Nat.add_succ_r (sum_from_0_to b) b); apply (Nat.mul_cancel_l _ _ 2); [ exact (Nat.succ_neq_zero 1) | rewrite sum_from_0_to_spec, (Nat.mul_add_distr_l 2 (sum_from_0_to b) (S b)), (sum_from_0_to_spec b); rewrite (Nat.mul_comm b (S b)), (Nat.mul_comm 2 (S b)), <- (Nat.mul_add_distr_r (S b) b 2); apply (Nat.mul_cancel_l _ _ (S b)); [ exact (Nat.succ_neq_zero b) | simpl; rewrite (Nat.add_succ_r b 1), (Nat.add_1_r b); reflexivity] ] | unfold cpInv in *; simpl in *; rewrite (Nat.add_succ_r a' b), (Nat.add_succ_l a' b) in *; rewrite (Nat.add_succ_r (sum_from_0_to (S (add a' b))) b), IHn; reflexivity ].",
+        "destruct (cp n) as [x y] eqn:H; rewrite H; simpl; rewrite H in IHn; simpl in IHn; destruct x as [|u]; [rewrite IHn; unfold cpInv; rewrite plus_n_O, plus_0_n, plus_n_O, <- plus_n_Sm; apply (f_equal (fun t => 2*t)); rewrite sum_from_0_to_spec, sum_from_0_to_spec; ring | rewrite IHn; unfold cpInv; simpl; rewrite plus_n_Sm; reflexivity].",
+        "destruct (cp n) as [a b] eqn:Hcp. rewrite <- IHn. unfold cpInv. simpl. rewrite Hcp. case a; simpl; omega."
+      ]
+    },
+    {
+      "uuid": "6453fd953a7d4a5aa09a729ee232ef25",
+      "parent_uuid": "a491e0c2c01545cd9cfd5ca473ddd6b1",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHn : Logic.eq (cpInv (fst (pair 0 b)) (snd (pair 0 b))) n",
+            "H : Logic.eq (cp n) (pair 0 b)",
+            "n,b : nat"
+          ],
+          "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct (cp n) as [a b] eqn:H. destruct a."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "IHn : Logic.eq (cpInv (fst (pair 0 b)) (snd (pair 0 b))) n",
+                "H : Logic.eq (cp n) (pair 0 b)",
+                "n,b : nat"
+              ],
+              "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+            },
+            {
+              "hypotheses": [
+                "IHn : Logic.eq (cpInv (fst (pair (S a) b)) (snd (pair (S a) b))) n",
+                "H : Logic.eq (cp n) (pair (S a) b)",
+                "n,a,b : nat"
+              ],
+              "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+            }
+          ]
+        },
+        "proof_prefix": "induction n. admit. destruct (cp n) as [a b] eqn:H. destruct a."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "5b333f939f674d98837629fd52baf93d",
+      "parent_uuid": "a491e0c2c01545cd9cfd5ca473ddd6b1",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHn : Logic.eq (cpInv (fst (pair (S a) b)) (snd (pair (S a) b))) n",
+            "H : Logic.eq (cp n) (pair (S a) b)",
+            "n,a,b : nat"
+          ],
+          "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct (cp n) as [a b] eqn:H. destruct a."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "IHn : Logic.eq (cpInv (fst (pair 0 b)) (snd (pair 0 b))) n",
+                "H : Logic.eq (cp n) (pair 0 b)",
+                "n,b : nat"
+              ],
+              "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+            },
+            {
+              "hypotheses": [
+                "IHn : Logic.eq (cpInv (fst (pair (S a) b)) (snd (pair (S a) b))) n",
+                "H : Logic.eq (cp n) (pair (S a) b)",
+                "n,a,b : nat"
+              ],
+              "goal": "Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n)"
+            }
+          ]
+        },
+        "proof_prefix": "induction n. admit. destruct (cp n) as [a b] eqn:H. destruct a. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "simpl (cp (S n)). rewrite H. simpl. simpl in IHn. rewrite <- IHn. unfold cpInv. simpl (add (S a) b). rewrite plus_n_Sm. rewrite plus_n_Sm. reflexivity.",
+      "lemmas": null,
+      "attempts": [
+        "simpl cp. rewrite H. simpl. unfold cpInv, add; simpl. rewrite (plus_n_Sm (sum_from_0_to (S (a + b))) b). unfold cpInv, add in IHn; simpl in IHn. rewrite <- IHn. reflexivity.",
+        "simpl (cp (S n)).\nrewrite H.\nsimpl.\nsimpl in IHn.\nrewrite <- IHn.\nunfold cpInv.\nsimpl (add (S a) b).\nrewrite plus_n_Sm.\nrewrite plus_n_Sm.\nreflexivity."
+      ],
+      "failed_attempts": [
+        "simpl cp. rewrite H. simpl. unfold cpInv, add; simpl. rewrite (plus_n_Sm (sum_from_0_to (S (a + b))) b). unfold cpInv, add in IHn; simpl in IHn. rewrite <- IHn. reflexivity."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.2,
+      "id": 135536161115728,
+      "uuid": "a491e0c2c01545cd9cfd5ca473ddd6b1"
+    },
+    {
+      "cost": 0.0,
+      "id": 135535545904784,
+      "uuid": "8200472610bf4355a2bebac5dc21ace6"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536063114384,
+      "uuid": "ae914cbf7613425195018aa0dd7204a3"
+    }
+  ],
+  "costs_so_far": {
+    "8200472610bf4355a2bebac5dc21ace6": 0.0,
+    "ae914cbf7613425195018aa0dd7204a3": -0.1,
+    "a491e0c2c01545cd9cfd5ca473ddd6b1": -0.2,
+    "6453fd953a7d4a5aa09a729ee232ef25": -0.30000000000000004,
+    "5b333f939f674d98837629fd52baf93d": -0.4
+  },
+  "costs_to_go": {
+    "8200472610bf4355a2bebac5dc21ace6": 0,
+    "ae914cbf7613425195018aa0dd7204a3": 0,
+    "a491e0c2c01545cd9cfd5ca473ddd6b1": 0,
+    "6453fd953a7d4a5aa09a729ee232ef25": 0,
+    "5b333f939f674d98837629fd52baf93d": 0
+  },
+  "no_more_children": {
+    "5b333f939f674d98837629fd52baf93d": true
+  },
+  "node_added_idx": {
+    "8200472610bf4355a2bebac5dc21ace6": 0,
+    "ae914cbf7613425195018aa0dd7204a3": 1,
+    "a491e0c2c01545cd9cfd5ca473ddd6b1": 2,
+    "6453fd953a7d4a5aa09a729ee232ef25": 3,
+    "5b333f939f674d98837629fd52baf93d": 4
+  },
+  "next_node_idx": 5,
+  "remaining_nodes_to_expand": 147,
+  "root_uuid": "8200472610bf4355a2bebac5dc21ace6",
+  "done": false,
+  "visualization": "\n* (1 HYPS)|-Logic.eq (cpInv (fst (cp n)) (snd (cp n))) n (cost:0.0; n_fail:0)\n  # 1 prefixes like induction n.\n  * (0 HYPS)|-Logic.eq (cpInv (fst (cp 0)) (snd (cp 0))) 0 (proven) (pruned) (done:True; cost:-0.1; n_fail:0)\n    # successful proof: hammer.\n  * (2 HYPS)|-Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n) (cost:-0.2; n_fail:0)\n    # 1 prefixes like destruct (cp n) as [a b] eqn:H. destruct a.\n    * (3 HYPS)|-Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n) (cost:-0.30000000000000004; n_fail:1)\n\n    * (3 HYPS)|-Logic.eq (cpInv (fst (cp (S n))) (snd (cp (S n)))) (S n) (proven) (pruned) (done:True; cost:-0.4; n_fail:0)\n      # successful proof: simpl (cp (S n)). rewrite H. simpl. simpl in IHn. rewrite <- IHn. unfold cpInv. simpl (add (S a) b). rewrite plus_n_Sm. rewrite plus_n_Sm. reflexivity."
+}

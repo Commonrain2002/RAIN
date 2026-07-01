@@ -1,0 +1,528 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ThN.v-div_mod_uniqueness.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "21df10a4d17e4fa2859e43f890e1bf83",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "r_lt_b : lt r b",
+            "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+            "a,b,q,r : nat"
+          ],
+          "goal": "and (eq (Nat.div a b) q) (eq (Nat.modulo a b) r)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "fbea433bb1834fc08972ee810a4439e2",
+          "fb68f36b7207446a884e25f6409be4ff"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "eq (Nat.div a b) q"
+            },
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "eq (Nat.modulo a b) r"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "exact (Nat.div_mod_unique a b q r H_DIVISION r_lt_b).",
+        "split.\n- apply (Nat.div_unique a b q r H_DIVISION r_lt_b).\n- apply (Nat.mod_unique a b q r H_DIVISION r_lt_b).",
+        "exact (conj (Nat.div_unique a b q r r_lt_b H_DIVISION) (Nat.mod_unique a b q r r_lt_b H_DIVISION)).",
+        "split.\n- apply Nat.div_unique with (r := r); [exact H_DIVISION | exact r_lt_b].\n- apply Nat.mod_unique with (q := q); [exact H_DIVISION | exact r_lt_b]."
+      ],
+      "failed_attempts": [
+        "exact (Nat.div_mod_unique a b q r H_DIVISION r_lt_b).",
+        "exact (conj (Nat.div_unique a b q r r_lt_b H_DIVISION) (Nat.mod_unique a b q r r_lt_b H_DIVISION))."
+      ]
+    },
+    {
+      "uuid": "fbea433bb1834fc08972ee810a4439e2",
+      "parent_uuid": "21df10a4d17e4fa2859e43f890e1bf83",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "r_lt_b : lt r b",
+            "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+            "a,b,q,r : nat"
+          ],
+          "goal": "eq (Nat.div a b) q"
+        },
+        "decomposition": {
+          "proofs": [
+            "split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "eq (Nat.div a b) q"
+            },
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "eq (Nat.modulo a b) r"
+            }
+          ]
+        },
+        "proof_prefix": "split."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 5,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "apply (eq_sym (Nat.div_unique a b q r r_lt_b H_DIVISION)).",
+      "lemmas": null,
+      "attempts": [
+        "apply (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "apply Nat.div_unique with (r := r); [exact H_DIVISION | exact r_lt_b].",
+        "exact (Nat.div_unique a b q r r_lt_b H_DIVISION).",
+        "apply (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "exact (Nat.div_unique a b q r r_lt_b H_DIVISION).",
+        "apply Nat.div_unique with (r := r); assumption.",
+        "apply Nat.div_unique; assumption.",
+        "exact (eq_sym (Nat.div_unique a b q r H_DIVISION r_lt_b)).",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "apply (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "exact (Nat.div_unique a b q r r_lt_b H_DIVISION).",
+        "apply Nat.div_unique with (r := r).\n- exact r_lt_b.\n- exact H_DIVISION.",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "apply Nat.div_unique; assumption.",
+        "apply (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "apply (Nat.div_unique a b q r); assumption.",
+        "apply Nat.div_unique; [exact r_lt_b | exact H_DIVISION].",
+        "apply (Nat.div_unique a b q r); assumption.",
+        "exact (Nat.div_unique a b q r r_lt_b H_DIVISION).",
+        "apply (Nat.div_unique a b q r); assumption.",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "apply (eq_sym (Nat.div_unique a b q r r_lt_b H_DIVISION))."
+      ],
+      "failed_attempts": [
+        "apply (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "apply Nat.div_unique with (r := r); [exact H_DIVISION | exact r_lt_b].",
+        "exact (Nat.div_unique a b q r r_lt_b H_DIVISION).",
+        "apply (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "exact (Nat.div_unique a b q r r_lt_b H_DIVISION).",
+        "apply Nat.div_unique with (r := r); assumption.",
+        "apply Nat.div_unique; assumption.",
+        "exact (eq_sym (Nat.div_unique a b q r H_DIVISION r_lt_b)).",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "apply (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "exact (Nat.div_unique a b q r r_lt_b H_DIVISION).",
+        "apply Nat.div_unique with (r := r).\n- exact r_lt_b.\n- exact H_DIVISION.",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "apply Nat.div_unique; assumption.",
+        "apply (Nat.div_unique a b q r H_DIVISION r_lt_b).",
+        "apply (Nat.div_unique a b q r); assumption.",
+        "apply Nat.div_unique; [exact r_lt_b | exact H_DIVISION].",
+        "apply (Nat.div_unique a b q r); assumption.",
+        "exact (Nat.div_unique a b q r r_lt_b H_DIVISION).",
+        "apply (Nat.div_unique a b q r); assumption.",
+        "exact (Nat.div_unique a b q r H_DIVISION r_lt_b)."
+      ]
+    },
+    {
+      "uuid": "fb68f36b7207446a884e25f6409be4ff",
+      "parent_uuid": "21df10a4d17e4fa2859e43f890e1bf83",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "r_lt_b : lt r b",
+            "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+            "a,b,q,r : nat"
+          ],
+          "goal": "eq (Nat.modulo a b) r"
+        },
+        "decomposition": {
+          "proofs": [
+            "split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "eq (Nat.div a b) q"
+            },
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "eq (Nat.modulo a b) r"
+            }
+          ]
+        },
+        "proof_prefix": "split. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "6e57c596992440a38b6579f883a15788",
+          "9d73cb1ea9434c99a9e41ef63f0ea71a"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "rewrite H_DIVISION. rewrite Nat.add_mod."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul b q) b) (Nat.modulo r b)) b) r"
+            },
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "not (eq b 0)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply (Nat.mod_unique a b q r H_DIVISION r_lt_b).",
+        "apply Nat.mod_unique with (q := q); [exact H_DIVISION | exact r_lt_b].",
+        "exact (Nat.mod_unique a b q r H_DIVISION r_lt_b).",
+        "rewrite H_DIVISION. rewrite Nat.add_mod. rewrite (Nat.mod_mul_left_mod b q). rewrite (Nat.mod_small r_lt_b). rewrite Nat.add_0_l. rewrite (Nat.mod_small r_lt_b). reflexivity.",
+        "apply (Nat.mod_unique a b q r r_lt_b H_DIVISION).",
+        "apply Nat.mod_unique; [exact H_DIVISION | exact r_lt_b]."
+      ],
+      "failed_attempts": [
+        "apply (Nat.mod_unique a b q r H_DIVISION r_lt_b).",
+        "apply Nat.mod_unique with (q := q); [exact H_DIVISION | exact r_lt_b].",
+        "exact (Nat.mod_unique a b q r H_DIVISION r_lt_b).",
+        "apply (Nat.mod_unique a b q r r_lt_b H_DIVISION).",
+        "apply Nat.mod_unique; [exact H_DIVISION | exact r_lt_b]."
+      ]
+    },
+    {
+      "uuid": "6e57c596992440a38b6579f883a15788",
+      "parent_uuid": "fb68f36b7207446a884e25f6409be4ff",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "r_lt_b : lt r b",
+            "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+            "a,b,q,r : nat"
+          ],
+          "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul b q) b) (Nat.modulo r b)) b) r"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite H_DIVISION. rewrite Nat.add_mod."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul b q) b) (Nat.modulo r b)) b) r"
+            },
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "not (eq b 0)"
+            }
+          ]
+        },
+        "proof_prefix": "split. admit. rewrite H_DIVISION. rewrite Nat.add_mod."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [
+        [
+          "8ce7bb8effb84b4099c396c3e8bffb69",
+          "aa8fcfd4b9e4422fa8bf94c9d9462718"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "destruct b as [| b']."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "r_lt_b : lt r 0",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul 0 q) r)",
+                "a,q,r : nat"
+              ],
+              "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul 0 q) 0) (Nat.modulo r 0)) 0) r"
+            },
+            {
+              "hypotheses": [
+                "r_lt_b : lt r (S b')",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul (S b') q) r)",
+                "a,b',q,r : nat"
+              ],
+              "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul (S b') q) (S b'))\n        (Nat.modulo r (S b'))) (S b')) r"
+            }
+          ]
+        }
+      ],
+      "proof": "rewrite (Nat.mul_comm b q), (Nat.mod_mul q b), (Nat.mod_small r b r_lt_b), (Nat.add_0_l), (Nat.mod_small r b r_lt_b).\n- sfirstorder.\n- sauto lq: on.",
+      "lemmas": null,
+      "attempts": [
+        "rewrite (Nat.mod_mul_left_mod b q (Nat.lt_0_neq b (Nat.lt_of_le_of_lt (Nat.le_0_l r) r_lt_b))), (Nat.mod_small r b r_lt_b), Nat.add_0_l, (Nat.mod_small r b r_lt_b); reflexivity.",
+        "rewrite (Nat.mod_small r b r_lt_b). rewrite (Nat.mod_mul b q). rewrite Nat.add_0_l. rewrite (Nat.mod_small r b r_lt_b). reflexivity.",
+        "rewrite (Nat.mod_small r b r_lt_b). rewrite (Nat.mod_mul_left_mod b q (fun H => Nat.not_lt_zero r (Nat.lt_of_lt_of_eq r_lt_b H))). rewrite Nat.add_0_l. rewrite (Nat.mod_small r b r_lt_b). reflexivity.",
+        "rewrite (Nat.mod_mul_left_mod b q). rewrite (Nat.mod_small r b r_lt_b). simpl. exact (Nat.mod_small r b r_lt_b).",
+        "destruct b as [| b'].\n- inversion r_lt_b.\n- rewrite (Nat.mod_small r (S b') r_lt_b). rewrite (Nat.mod_mul_left_mod q (S b') (Nat.succ_neq_zero b')). rewrite Nat.add_0_l. rewrite (Nat.mod_small r (S b') r_lt_b). reflexivity.",
+        "rewrite (Nat.mod_add_mod (Init.Nat.mul b q) r b). apply (Nat.mod_unique (Init.Nat.mul b q + r) b q r).\n- reflexivity.\n- exact r_lt_b.",
+        "rewrite (Nat.mod_mul_left_mod b q). rewrite (Nat.mod_small r b r_lt_b). rewrite (Nat.add_0_l r). rewrite (Nat.mod_small r b r_lt_b). reflexivity.",
+        "rewrite (Nat.mul_comm b q), (Nat.mod_mul q b), (Nat.mod_small r b r_lt_b), (Nat.add_0_l), (Nat.mod_small r b r_lt_b).\n- sfirstorder.\n- sauto lq: on."
+      ],
+      "failed_attempts": [
+        "rewrite (Nat.mod_mul_left_mod b q (Nat.lt_0_neq b (Nat.lt_of_le_of_lt (Nat.le_0_l r) r_lt_b))), (Nat.mod_small r b r_lt_b), Nat.add_0_l, (Nat.mod_small r b r_lt_b); reflexivity.",
+        "rewrite (Nat.mod_small r b r_lt_b). rewrite (Nat.mod_mul b q). rewrite Nat.add_0_l. rewrite (Nat.mod_small r b r_lt_b). reflexivity.",
+        "rewrite (Nat.mod_small r b r_lt_b). rewrite (Nat.mod_mul_left_mod b q (fun H => Nat.not_lt_zero r (Nat.lt_of_lt_of_eq r_lt_b H))). rewrite Nat.add_0_l. rewrite (Nat.mod_small r b r_lt_b). reflexivity.",
+        "rewrite (Nat.mod_mul_left_mod b q). rewrite (Nat.mod_small r b r_lt_b). simpl. exact (Nat.mod_small r b r_lt_b).",
+        "rewrite (Nat.mod_add_mod (Init.Nat.mul b q) r b). apply (Nat.mod_unique (Init.Nat.mul b q + r) b q r).\n- reflexivity.\n- exact r_lt_b.",
+        "rewrite (Nat.mod_mul_left_mod b q). rewrite (Nat.mod_small r b r_lt_b). rewrite (Nat.add_0_l r). rewrite (Nat.mod_small r b r_lt_b). reflexivity."
+      ]
+    },
+    {
+      "uuid": "8ce7bb8effb84b4099c396c3e8bffb69",
+      "parent_uuid": "6e57c596992440a38b6579f883a15788",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "r_lt_b : lt r 0",
+            "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul 0 q) r)",
+            "a,q,r : nat"
+          ],
+          "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul 0 q) 0) (Nat.modulo r 0)) 0) r"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct b as [| b']."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "r_lt_b : lt r 0",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul 0 q) r)",
+                "a,q,r : nat"
+              ],
+              "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul 0 q) 0) (Nat.modulo r 0)) 0) r"
+            },
+            {
+              "hypotheses": [
+                "r_lt_b : lt r (S b')",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul (S b') q) r)",
+                "a,b',q,r : nat"
+              ],
+              "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul (S b') q) (S b'))\n        (Nat.modulo r (S b'))) (S b')) r"
+            }
+          ]
+        },
+        "proof_prefix": "split. admit. rewrite H_DIVISION. rewrite Nat.add_mod. destruct b as [| b']."
+      },
+      "depth": 3,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "inversion r_lt_b."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "aa8fcfd4b9e4422fa8bf94c9d9462718",
+      "parent_uuid": "6e57c596992440a38b6579f883a15788",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "r_lt_b : lt r (S b')",
+            "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul (S b') q) r)",
+            "a,b',q,r : nat"
+          ],
+          "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul (S b') q) (S b'))\n        (Nat.modulo r (S b'))) (S b')) r"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct b as [| b']."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "r_lt_b : lt r 0",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul 0 q) r)",
+                "a,q,r : nat"
+              ],
+              "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul 0 q) 0) (Nat.modulo r 0)) 0) r"
+            },
+            {
+              "hypotheses": [
+                "r_lt_b : lt r (S b')",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul (S b') q) r)",
+                "a,b',q,r : nat"
+              ],
+              "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul (S b') q) (S b'))\n        (Nat.modulo r (S b'))) (S b')) r"
+            }
+          ]
+        },
+        "proof_prefix": "split. admit. rewrite H_DIVISION. rewrite Nat.add_mod. destruct b as [| b']. admit."
+      },
+      "depth": 3,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite (Nat.mod_small r (S b') r_lt_b). rewrite (Nat.mod_mul_left_mod q (S b') (Nat.succ_neq_zero b')). rewrite Nat.add_0_l. rewrite (Nat.mod_small r (S b') r_lt_b). reflexivity."
+      ],
+      "failed_attempts": [
+        "rewrite (Nat.mod_small r (S b') r_lt_b). rewrite (Nat.mod_mul_left_mod q (S b') (Nat.succ_neq_zero b')). rewrite Nat.add_0_l. rewrite (Nat.mod_small r (S b') r_lt_b). reflexivity."
+      ]
+    },
+    {
+      "uuid": "9d73cb1ea9434c99a9e41ef63f0ea71a",
+      "parent_uuid": "fb68f36b7207446a884e25f6409be4ff",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "r_lt_b : lt r b",
+            "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+            "a,b,q,r : nat"
+          ],
+          "goal": "not (eq b 0)"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite H_DIVISION. rewrite Nat.add_mod."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul b q) b) (Nat.modulo r b)) b) r"
+            },
+            {
+              "hypotheses": [
+                "r_lt_b : lt r b",
+                "H_DIVISION : eq a (Init.Nat.add (Init.Nat.mul b q) r)",
+                "a,b,q,r : nat"
+              ],
+              "goal": "not (eq b 0)"
+            }
+          ]
+        },
+        "proof_prefix": "split. admit. rewrite H_DIVISION. rewrite Nat.add_mod. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "21df10a4d17e4fa2859e43f890e1bf83": 0.0,
+    "fbea433bb1834fc08972ee810a4439e2": -0.1,
+    "fb68f36b7207446a884e25f6409be4ff": -0.2,
+    "6e57c596992440a38b6579f883a15788": -0.30000000000000004,
+    "9d73cb1ea9434c99a9e41ef63f0ea71a": -0.4,
+    "8ce7bb8effb84b4099c396c3e8bffb69": -0.5,
+    "aa8fcfd4b9e4422fa8bf94c9d9462718": -0.6000000000000001
+  },
+  "costs_to_go": {
+    "21df10a4d17e4fa2859e43f890e1bf83": 0,
+    "fbea433bb1834fc08972ee810a4439e2": 0,
+    "fb68f36b7207446a884e25f6409be4ff": 0,
+    "6e57c596992440a38b6579f883a15788": 0,
+    "9d73cb1ea9434c99a9e41ef63f0ea71a": 0,
+    "8ce7bb8effb84b4099c396c3e8bffb69": 0,
+    "aa8fcfd4b9e4422fa8bf94c9d9462718": 0
+  },
+  "no_more_children": {
+    "fbea433bb1834fc08972ee810a4439e2": true
+  },
+  "node_added_idx": {
+    "21df10a4d17e4fa2859e43f890e1bf83": 0,
+    "fbea433bb1834fc08972ee810a4439e2": 1,
+    "fb68f36b7207446a884e25f6409be4ff": 2,
+    "6e57c596992440a38b6579f883a15788": 3,
+    "9d73cb1ea9434c99a9e41ef63f0ea71a": 4,
+    "8ce7bb8effb84b4099c396c3e8bffb69": 5,
+    "aa8fcfd4b9e4422fa8bf94c9d9462718": 6
+  },
+  "next_node_idx": 7,
+  "remaining_nodes_to_expand": 140,
+  "root_uuid": "21df10a4d17e4fa2859e43f890e1bf83",
+  "done": false,
+  "visualization": "\n* (3 HYPS)|-and (eq (Nat.div a b) q) (eq (Nat.modulo a b) r) (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # 1 prefixes like split.\n  * (3 HYPS)|-eq (Nat.div a b) q (proven) (pruned) (done:True; cost:-0.1; n_fail:5)\n    # successful proof: apply (eq_sym (Nat.div_unique a b q r r_lt_b H_DIVISION)).\n  * (3 HYPS)|-eq (Nat.modulo a b) r (proven) (pruned) (done:True; cost:-0.2; n_fail:0)\n    # 1 prefixes like rewrite H_DIVISION. rewrite Nat.add_mod.\n    * (3 HYPS)|-eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul b q) b) (Nat.modulo r b)) b) r (proven) (pruned) (done:True; cost:-0.30000000000000004; n_fail:1)\n      # successful proof: rewrite (Nat.mul_comm b q), (Nat.mod_mul q b), (Nat.mod_small r b r_lt_b), (Nat.add_0_l), (Nat.mod_small r b r_lt_b).\n- sfirstorder.\n- sauto lq: on.\n      # 1 prefixes like destruct b as [| b'].\n      * (3 HYPS)|-eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul 0 q) 0) (Nat.modulo r 0)) 0) r (proven) (pruned) (done:True; cost:-0.5; n_fail:0)\n        # successful proof: hammer.\n      * (3 HYPS)|-eq\n  (Nat.modulo\n     (Nat.add (Nat.modulo (Init.Nat.mul (S b') q) (S b'))\n        (Nat.modulo r (S b'))) (S b')) r (pruned) (cost:-0.6000000000000001; n_fail:0)\n\n    * (3 HYPS)|-not (eq b 0) (proven) (pruned) (done:True; cost:-0.4; n_fail:0)\n      # successful proof: hammer."
+}

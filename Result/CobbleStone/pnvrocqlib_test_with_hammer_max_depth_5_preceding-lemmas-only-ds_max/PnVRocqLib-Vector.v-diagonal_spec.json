@@ -1,0 +1,376 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-Vector.v-diagonal_spec.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "3ec464c88363425ebe89cd2bfa84e6d3",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "xss : Vector.t (Vector.t A n) n",
+            "n : nat",
+            "A : Type"
+          ],
+          "goal": "forall i : Fin.t n, eq (nth (nth xss i) i) (nth (diagonal xss) i)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "625d4314622a41a58ba618fa178e75a0",
+          "325b64e5fa8d44c78437eaee7f18f149"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "induction n."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "xss : Vector.t (Vector.t A 0) 0",
+                "A : Type"
+              ],
+              "goal": "forall i : Fin.t 0, eq (nth (nth xss i) i) (nth (diagonal xss) i)"
+            },
+            {
+              "hypotheses": [
+                "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+                "xss : Vector.t (Vector.t A (S n)) (S n)",
+                "n : nat",
+                "A : Type"
+              ],
+              "goal": "forall i : Fin.t (S n), eq (nth (nth xss i) i) (nth (diagonal xss) i)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "induction n as [|n' IH]; intros xss i; destruct i as [|i']. all: try reflexivity. rewrite (nth_unfold xss (FS i')). rewrite (nth_unfold (tail xss !! i') (FS i')). rewrite (map_spec tail (tail xss) i'). simpl; apply (IH (map tail (tail xss)) i').",
+        "induction n as [|n IH]; intros A xss i.\n- inversion i.\n- destruct i as [|i'].\n-- reflexivity.\n-- simpl. rewrite <- IH with (A:=A) (xss:= map tail (tail xss)) (i:=i').",
+        "induction n.\n- intros xss i; inversion i.\n- intros xss i; destruct i as [ | i'].\n-- simpl; reflexivity.\n-- destruct xss as [r rs]; simpl. assert (nth_tail : forall (v : Vector.t A (S n)) (j : Fin.t n), nth v (FS j) = nth (tail v) j)\n      by (intros v j; destruct v; [discriminate | reflexivity]). assert (nth_map_tail : forall (rs' : Vector.t (Vector.t A (S n)) n) (j : Fin.t n), nth (map tail rs') j = tail (nth rs' j))\n      by (induction rs'; intros j; destruct j; simpl; auto; apply IHrs'). rewrite (nth_tail (nth rs i') i'), <- (nth_map_tail rs i'). apply (IH (map tail rs) i').",
+        "refine (let lemma_gen (A : Type) := fix lemma_gen (n : nat) (rows : Vector.t (Vector.t A (S n)) n) (i j : Fin.t n) {struct rows} : nth (nth rows i) (FS j) = nth (nth (map tail rows) i) j :=\n  match rows with\n  | VNil => fun i j => match i with end\n  | VCons n' r rs => fun i j =>\n    match i with\n    | FZ n' => \n      match j with\n      | FZ n' => \n        match r with\n        | VCons n'' x xs => eq_refl\n        end\n      | FS j' => \n        match r with\n        | VCons n'' x xs => eq_refl\n        end\n      end\n    | FS i' => lemma_gen n' rs i' j\n    end\n  end in\n  let rec proof (A : Type) (n : nat) (xss : Vector.t (Vector.t A n) n) (i : Fin.t n) {struct n} : eq (nth (nth xss i) i) (nth (diagonal xss) i) :=\n    match n as n0 return (forall (xss : Vector.t (Vector.t A n0) n0) (i : Fin.t n0), eq (nth (nth xss i) i) (nth (diagonal xss) i)) with\n    | 0 => fun xss i => match i with end\n    | S n' => fun xss i =>\n      match i with\n      | FZ n' => fun xss =>\n        match xss with\n        | VCons n'' row rows => \n          match row with\n          | VCons n''' x xs => eq_refl\n          end\n        end\n      | FS i' => fun xss =>\n        match xss with\n        | VCons n'' row rows => \n          eq_trans (lemma_gen A n' rows i' i') (proof A n' (map tail rows) i')\n        end\n      end xss\n    end\n  in proof A n xss i)."
+      ],
+      "failed_attempts": [
+        "induction n as [|n' IH]; intros xss i; destruct i as [|i']. all: try reflexivity. rewrite (nth_unfold xss (FS i')). rewrite (nth_unfold (tail xss !! i') (FS i')). rewrite (map_spec tail (tail xss) i'). simpl; apply (IH (map tail (tail xss)) i').",
+        "induction n as [|n IH]; intros A xss i.\n- inversion i.\n- destruct i as [|i'].\n-- reflexivity.\n-- simpl. rewrite <- IH with (A:=A) (xss:= map tail (tail xss)) (i:=i').",
+        "refine (let lemma_gen (A : Type) := fix lemma_gen (n : nat) (rows : Vector.t (Vector.t A (S n)) n) (i j : Fin.t n) {struct rows} : nth (nth rows i) (FS j) = nth (nth (map tail rows) i) j :=\n  match rows with\n  | VNil => fun i j => match i with end\n  | VCons n' r rs => fun i j =>\n    match i with\n    | FZ n' => \n      match j with\n      | FZ n' => \n        match r with\n        | VCons n'' x xs => eq_refl\n        end\n      | FS j' => \n        match r with\n        | VCons n'' x xs => eq_refl\n        end\n      end\n    | FS i' => lemma_gen n' rs i' j\n    end\n  end in\n  let rec proof (A : Type) (n : nat) (xss : Vector.t (Vector.t A n) n) (i : Fin.t n) {struct n} : eq (nth (nth xss i) i) (nth (diagonal xss) i) :=\n    match n as n0 return (forall (xss : Vector.t (Vector.t A n0) n0) (i : Fin.t n0), eq (nth (nth xss i) i) (nth (diagonal xss) i)) with\n    | 0 => fun xss i => match i with end\n    | S n' => fun xss i =>\n      match i with\n      | FZ n' => fun xss =>\n        match xss with\n        | VCons n'' row rows => \n          match row with\n          | VCons n''' x xs => eq_refl\n          end\n        end\n      | FS i' => fun xss =>\n        match xss with\n        | VCons n'' row rows => \n          eq_trans (lemma_gen A n' rows i' i') (proof A n' (map tail rows) i')\n        end\n      end xss\n    end\n  in proof A n xss i)."
+      ]
+    },
+    {
+      "uuid": "625d4314622a41a58ba618fa178e75a0",
+      "parent_uuid": "3ec464c88363425ebe89cd2bfa84e6d3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "xss : Vector.t (Vector.t A 0) 0",
+            "A : Type"
+          ],
+          "goal": "forall i : Fin.t 0, eq (nth (nth xss i) i) (nth (diagonal xss) i)"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction n."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "xss : Vector.t (Vector.t A 0) 0",
+                "A : Type"
+              ],
+              "goal": "forall i : Fin.t 0, eq (nth (nth xss i) i) (nth (diagonal xss) i)"
+            },
+            {
+              "hypotheses": [
+                "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+                "xss : Vector.t (Vector.t A (S n)) (S n)",
+                "n : nat",
+                "A : Type"
+              ],
+              "goal": "forall i : Fin.t (S n), eq (nth (nth xss i) i) (nth (diagonal xss) i)"
+            }
+          ]
+        },
+        "proof_prefix": "induction n."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "sauto q: on."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "325b64e5fa8d44c78437eaee7f18f149",
+      "parent_uuid": "3ec464c88363425ebe89cd2bfa84e6d3",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+            "xss : Vector.t (Vector.t A (S n)) (S n)",
+            "n : nat",
+            "A : Type"
+          ],
+          "goal": "forall i : Fin.t (S n), eq (nth (nth xss i) i) (nth (diagonal xss) i)"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction n."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "xss : Vector.t (Vector.t A 0) 0",
+                "A : Type"
+              ],
+              "goal": "forall i : Fin.t 0, eq (nth (nth xss i) i) (nth (diagonal xss) i)"
+            },
+            {
+              "hypotheses": [
+                "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+                "xss : Vector.t (Vector.t A (S n)) (S n)",
+                "n : nat",
+                "A : Type"
+              ],
+              "goal": "forall i : Fin.t (S n), eq (nth (nth xss i) i) (nth (diagonal xss) i)"
+            }
+          ]
+        },
+        "proof_prefix": "induction n. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [
+        [
+          "25eb8d60cdb143ac9fc8e7e5a1ffdd7d",
+          "5ad274cc4c7f43b09b82980ed4574611"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "intro i. destruct i as [|i']."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+                "xss : Vector.t (Vector.t A (S n0)) (S n0)",
+                "n,n0 : nat",
+                "A : Type"
+              ],
+              "goal": "eq (nth (nth xss Fin.FZ) Fin.FZ) (nth (diagonal xss) Fin.FZ)"
+            },
+            {
+              "hypotheses": [
+                "i : Fin.t i'",
+                "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+                "xss : Vector.t (Vector.t A (S i')) (S i')",
+                "n,i' : nat",
+                "A : Type"
+              ],
+              "goal": "eq (nth (nth xss (Fin.FS i)) (Fin.FS i))\n  (nth (diagonal xss) (Fin.FS i))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros xss i; destruct i as [ | i'].\n- simpl; reflexivity.\n- destruct xss as [r rs]; simpl. assert (nth_tail : forall (v : Vector.t A (S n)) (j : Fin.t n), nth v (FS j) = nth (tail v) j)\n      by (intros v j; destruct v; [discriminate | reflexivity]). assert (nth_map_tail : forall (rs' : Vector.t (Vector.t A (S n)) n) (j : Fin.t n), nth (map tail rs') j = tail (nth rs' j))\n      by (induction rs'; intros j; destruct j; simpl; auto; apply IHrs'). rewrite (nth_tail (nth rs i') i'), <- (nth_map_tail rs i'). apply (IH (map tail rs) i').",
+        "inversion xss as [| n0 x xs H].\n- discriminate H.\n- subst n0; intro i; case i as [ | i'].\n-- simpl; apply (nth_unfold x FZ).\n-- simpl; rewrite (nth_unfold (nth xs i') (FS i')); rewrite (map_spec tail xs i'); apply IHn.",
+        "intros i. case i; intros.\n- reflexivity.\n- rewrite nth_unfold with (xs := nth (tail xss) i') (i := FS i'). rewrite map_spec with (f := tail) (xs := tail xss) (i := i'). apply IHn.",
+        "assert (H_nth_fs : forall A n (v : Vector.t A (S n)) (i : Fin.t n), nth v (FS i) = nth (tail v) i) by\n  (intros A n v i; destruct v; [inversion i | simpl; reflexivity]). assert (H_nth_map_tail : forall A n (v : Vector.t (Vector.t A (S n)) n) (i : Fin.t n), nth (map tail v) i = tail (nth v i)) by\n  (induction v; intros i; [inversion i | case i; simpl; [reflexivity | apply IHv]]). destruct xss as [| h t]; [intro i; inversion i | intro i; case i; [reflexivity | intro i'; simpl; rewrite H_nth_fs; rewrite <- H_nth_map_tail; apply IHn]].",
+        "intros i. destruct i; [reflexivity|]. destruct xss as [| h t]; [inversion i|]. destruct h as [| a h']; [inversion i|]. simpl. destruct (nth t i) as [| b r] eqn:H; [inversion i|]. simpl. replace r with (nth (map tail t) i) by (rewrite H; simpl; reflexivity). apply IHn.",
+        "intro i. destruct i as [|i'].\n- rewrite !nth_unfold; simpl; reflexivity.\n- rewrite !nth_unfold; simpl; rewrite <- (map_spec tail (tail xss) i'); apply (IHn (map tail (tail xss)) i').",
+        "intros i; destruct i as [| i']; [simpl; reflexivity | simpl; rewrite (nth_unfold xss (FS i')), (nth_unfold (tail xss !! i') (FS i')), (map_spec tail (tail xss) i'); apply IHn].",
+        "destruct xss as [ | n firstRow restRows]; [discriminate|]. intro i; destruct i as [ | k].\n- simpl; reflexivity.\n- assert (nth_tail : forall (v : Vector.t A (S n)) (j : Fin.t n), nth v (FS j) = nth (tail v) j)\n      by (intro v; destruct v; reflexivity). assert (tail_nth_map : forall (vs : Vector.t (Vector.t A (S n)) n) (j : Fin.t n), tail (nth vs j) = nth (map tail vs) j)\n      by (induction vs; intro j; [ inversion j | destruct j; [reflexivity | apply IHvs] ]). rewrite (nth_tail (nth restRows k) k), (tail_nth_map restRows k). apply IHn.",
+        "intro i; case i; [simpl; reflexivity | intro i'; destruct xss as [h t]; simpl; set (w := map tail t); assert (nth_succ: forall n0 (w0 : Vector.t A (S n0)) (j : Fin.t n0), nth w0 (FS j) = nth (tail w0) j) by (induction w0; intros j; [inversion j | reflexivity]); assert (nth_map_tail: forall n0 (v0 : Vector.t (Vector.t A (S n0)) n0) (i0 : Fin.t n0), nth (map tail v0) i0 = tail (nth v0 i0)) by (induction v0; intros i0; [inversion i0 | simpl; destruct i0 as [| i'']; [reflexivity | simpl; apply IHv0]]); assert (H: nth (nth t i') (FS i') = nth (nth w i') i') by (rewrite (nth_succ n (nth t i') i'); rewrite (nth_map_tail n t i'); reflexivity); rewrite H; apply IHn]."
+      ],
+      "failed_attempts": [
+        "intros xss i; destruct i as [ | i'].\n- simpl; reflexivity.\n- destruct xss as [r rs]; simpl. assert (nth_tail : forall (v : Vector.t A (S n)) (j : Fin.t n), nth v (FS j) = nth (tail v) j)\n      by (intros v j; destruct v; [discriminate | reflexivity]). assert (nth_map_tail : forall (rs' : Vector.t (Vector.t A (S n)) n) (j : Fin.t n), nth (map tail rs') j = tail (nth rs' j))\n      by (induction rs'; intros j; destruct j; simpl; auto; apply IHrs'). rewrite (nth_tail (nth rs i') i'), <- (nth_map_tail rs i'). apply (IH (map tail rs) i').",
+        "inversion xss as [| n0 x xs H].\n- discriminate H.\n- subst n0; intro i; case i as [ | i'].\n-- simpl; apply (nth_unfold x FZ).\n-- simpl; rewrite (nth_unfold (nth xs i') (FS i')); rewrite (map_spec tail xs i'); apply IHn.",
+        "intros i. case i; intros.\n- reflexivity.\n- rewrite nth_unfold with (xs := nth (tail xss) i') (i := FS i'). rewrite map_spec with (f := tail) (xs := tail xss) (i := i'). apply IHn.",
+        "assert (H_nth_fs : forall A n (v : Vector.t A (S n)) (i : Fin.t n), nth v (FS i) = nth (tail v) i) by\n  (intros A n v i; destruct v; [inversion i | simpl; reflexivity]). assert (H_nth_map_tail : forall A n (v : Vector.t (Vector.t A (S n)) n) (i : Fin.t n), nth (map tail v) i = tail (nth v i)) by\n  (induction v; intros i; [inversion i | case i; simpl; [reflexivity | apply IHv]]). destruct xss as [| h t]; [intro i; inversion i | intro i; case i; [reflexivity | intro i'; simpl; rewrite H_nth_fs; rewrite <- H_nth_map_tail; apply IHn]].",
+        "intros i. destruct i; [reflexivity|]. destruct xss as [| h t]; [inversion i|]. destruct h as [| a h']; [inversion i|]. simpl. destruct (nth t i) as [| b r] eqn:H; [inversion i|]. simpl. replace r with (nth (map tail t) i) by (rewrite H; simpl; reflexivity). apply IHn.",
+        "intros i; destruct i as [| i']; [simpl; reflexivity | simpl; rewrite (nth_unfold xss (FS i')), (nth_unfold (tail xss !! i') (FS i')), (map_spec tail (tail xss) i'); apply IHn].",
+        "destruct xss as [ | n firstRow restRows]; [discriminate|]. intro i; destruct i as [ | k].\n- simpl; reflexivity.\n- assert (nth_tail : forall (v : Vector.t A (S n)) (j : Fin.t n), nth v (FS j) = nth (tail v) j)\n      by (intro v; destruct v; reflexivity). assert (tail_nth_map : forall (vs : Vector.t (Vector.t A (S n)) n) (j : Fin.t n), tail (nth vs j) = nth (map tail vs) j)\n      by (induction vs; intro j; [ inversion j | destruct j; [reflexivity | apply IHvs] ]). rewrite (nth_tail (nth restRows k) k), (tail_nth_map restRows k). apply IHn.",
+        "intro i; case i; [simpl; reflexivity | intro i'; destruct xss as [h t]; simpl; set (w := map tail t); assert (nth_succ: forall n0 (w0 : Vector.t A (S n0)) (j : Fin.t n0), nth w0 (FS j) = nth (tail w0) j) by (induction w0; intros j; [inversion j | reflexivity]); assert (nth_map_tail: forall n0 (v0 : Vector.t (Vector.t A (S n0)) n0) (i0 : Fin.t n0), nth (map tail v0) i0 = tail (nth v0 i0)) by (induction v0; intros i0; [inversion i0 | simpl; destruct i0 as [| i'']; [reflexivity | simpl; apply IHv0]]); assert (H: nth (nth t i') (FS i') = nth (nth w i') i') by (rewrite (nth_succ n (nth t i') i'); rewrite (nth_map_tail n t i'); reflexivity); rewrite H; apply IHn]."
+      ]
+    },
+    {
+      "uuid": "25eb8d60cdb143ac9fc8e7e5a1ffdd7d",
+      "parent_uuid": "325b64e5fa8d44c78437eaee7f18f149",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+            "xss : Vector.t (Vector.t A (S n0)) (S n0)",
+            "n,n0 : nat",
+            "A : Type"
+          ],
+          "goal": "eq (nth (nth xss Fin.FZ) Fin.FZ) (nth (diagonal xss) Fin.FZ)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro i. destruct i as [|i']."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+                "xss : Vector.t (Vector.t A (S n0)) (S n0)",
+                "n,n0 : nat",
+                "A : Type"
+              ],
+              "goal": "eq (nth (nth xss Fin.FZ) Fin.FZ) (nth (diagonal xss) Fin.FZ)"
+            },
+            {
+              "hypotheses": [
+                "i : Fin.t i'",
+                "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+                "xss : Vector.t (Vector.t A (S i')) (S i')",
+                "n,i' : nat",
+                "A : Type"
+              ],
+              "goal": "eq (nth (nth xss (Fin.FS i)) (Fin.FS i))\n  (nth (diagonal xss) (Fin.FS i))"
+            }
+          ]
+        },
+        "proof_prefix": "induction n. admit. intro i. destruct i as [|i']."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "rewrite !nth_unfold; simpl; reflexivity.",
+      "lemmas": null,
+      "attempts": [
+        "rewrite !nth_unfold; simpl; reflexivity."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "5ad274cc4c7f43b09b82980ed4574611",
+      "parent_uuid": "325b64e5fa8d44c78437eaee7f18f149",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "i : Fin.t i'",
+            "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+            "xss : Vector.t (Vector.t A (S i')) (S i')",
+            "n,i' : nat",
+            "A : Type"
+          ],
+          "goal": "eq (nth (nth xss (Fin.FS i)) (Fin.FS i))\n  (nth (diagonal xss) (Fin.FS i))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro i. destruct i as [|i']."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+                "xss : Vector.t (Vector.t A (S n0)) (S n0)",
+                "n,n0 : nat",
+                "A : Type"
+              ],
+              "goal": "eq (nth (nth xss Fin.FZ) Fin.FZ) (nth (diagonal xss) Fin.FZ)"
+            },
+            {
+              "hypotheses": [
+                "i : Fin.t i'",
+                "IHn : forall (xss : Vector.t (Vector.t A n) n) (i : Fin.t n),\neq (nth (nth xss i) i) (nth (diagonal xss) i)",
+                "xss : Vector.t (Vector.t A (S i')) (S i')",
+                "n,i' : nat",
+                "A : Type"
+              ],
+              "goal": "eq (nth (nth xss (Fin.FS i)) (Fin.FS i))\n  (nth (diagonal xss) (Fin.FS i))"
+            }
+          ]
+        },
+        "proof_prefix": "induction n. admit. intro i. destruct i as [|i']. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite !nth_unfold; simpl; rewrite <- (map_spec tail (tail xss) i'); apply (IHn (map tail (tail xss)) i')."
+      ],
+      "failed_attempts": [
+        "rewrite !nth_unfold; simpl; rewrite <- (map_spec tail (tail xss) i'); apply (IHn (map tail (tail xss)) i')."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536116508112,
+      "uuid": "25eb8d60cdb143ac9fc8e7e5a1ffdd7d"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536160298896,
+      "uuid": "325b64e5fa8d44c78437eaee7f18f149"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536160295440,
+      "uuid": "625d4314622a41a58ba618fa178e75a0"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536204578896,
+      "uuid": "3ec464c88363425ebe89cd2bfa84e6d3"
+    }
+  ],
+  "costs_so_far": {
+    "3ec464c88363425ebe89cd2bfa84e6d3": 0.0,
+    "625d4314622a41a58ba618fa178e75a0": -0.1,
+    "325b64e5fa8d44c78437eaee7f18f149": -0.2,
+    "25eb8d60cdb143ac9fc8e7e5a1ffdd7d": -0.30000000000000004,
+    "5ad274cc4c7f43b09b82980ed4574611": -0.4
+  },
+  "costs_to_go": {
+    "3ec464c88363425ebe89cd2bfa84e6d3": 0,
+    "625d4314622a41a58ba618fa178e75a0": 0,
+    "325b64e5fa8d44c78437eaee7f18f149": 0,
+    "25eb8d60cdb143ac9fc8e7e5a1ffdd7d": 0,
+    "5ad274cc4c7f43b09b82980ed4574611": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "3ec464c88363425ebe89cd2bfa84e6d3": 0,
+    "625d4314622a41a58ba618fa178e75a0": 1,
+    "325b64e5fa8d44c78437eaee7f18f149": 2,
+    "25eb8d60cdb143ac9fc8e7e5a1ffdd7d": 3,
+    "5ad274cc4c7f43b09b82980ed4574611": 4
+  },
+  "next_node_idx": 5,
+  "remaining_nodes_to_expand": 147,
+  "root_uuid": "3ec464c88363425ebe89cd2bfa84e6d3",
+  "done": false,
+  "visualization": "\n* (3 HYPS)|-forall i : Fin.t n, eq (nth (nth xss i) i) (nth (diagonal xss) i) (cost:0.0; n_fail:0)\n  # 1 prefixes like induction n.\n  * (2 HYPS)|-forall i : Fin.t 0, eq (nth (nth xss i) i) (nth (diagonal xss) i) (proven) (pruned) (done:True; cost:-0.1; n_fail:0)\n    # successful proof: hammer.\n  * (4 HYPS)|-forall i : Fin.t (S n), eq (nth (nth xss i) i) (nth (diagonal xss) i) (cost:-0.2; n_fail:1)\n    # 1 prefixes like intro i. destruct i as [|i'].\n    * (4 HYPS)|-eq (nth (nth xss Fin.FZ) Fin.FZ) (nth (diagonal xss) Fin.FZ) (proven) (pruned) (done:True; cost:-0.30000000000000004; n_fail:0)\n      # successful proof: rewrite !nth_unfold; simpl; reflexivity.\n    * (5 HYPS)|-eq (nth (nth xss (Fin.FS i)) (Fin.FS i))\n  (nth (diagonal xss) (Fin.FS i)) (cost:-0.4; n_fail:1)\n"
+}

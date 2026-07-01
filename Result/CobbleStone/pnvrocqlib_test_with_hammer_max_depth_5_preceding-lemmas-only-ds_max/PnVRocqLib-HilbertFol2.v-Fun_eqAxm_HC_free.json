@@ -1,0 +1,224 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-HilbertFol2.v-Fun_eqAxm_HC_free.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "a236312c90894844988e81c4348ccb7a",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "f : function_symbols (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Fun_eqAxm f)) false"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [
+        [
+          "6a12a44914654be588f4899c7d217ec0",
+          "7d849feaac294bf0952487e057ca61bb"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "intro c. unfold Fun_eqAxm. induction (function_arity_table L f) as [| n IH]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "c : Henkin_constants",
+                "f : function_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false"
+            },
+            {
+              "hypotheses": [
+                "IH : eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false",
+                "n : nat",
+                "c : Henkin_constants",
+                "f : function_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro c. unfold Fun_eqAxm. induction (function_arity_table (augmented_language L Henkin_constants) f) as [|m IH]; simpl.\n- reflexivity.\n- apply IH.",
+        "intros c; compute; reflexivity.",
+        "intro c; compute; reflexivity.",
+        "intros c. unfold Fun_eqAxm. simpl. reflexivity.",
+        "intro c; compute; reflexivity.",
+        "intros c; compute; reflexivity.",
+        "intro c; unfold Fun_eqAxm; destruct (function_arity_table L f); simpl; reflexivity.",
+        "intro c. unfold Fun_eqAxm. induction (function_arity_table L f) as [| n IH].\n- simpl; reflexivity.\n- simpl; rewrite IH; simpl; reflexivity."
+      ],
+      "failed_attempts": [
+        "intro c. unfold Fun_eqAxm. induction (function_arity_table (augmented_language L Henkin_constants) f) as [|m IH]; simpl.\n- reflexivity.\n- apply IH.",
+        "intros c; compute; reflexivity.",
+        "intro c; compute; reflexivity.",
+        "intros c. unfold Fun_eqAxm. simpl. reflexivity.",
+        "intro c; compute; reflexivity.",
+        "intros c; compute; reflexivity.",
+        "intro c; unfold Fun_eqAxm; destruct (function_arity_table L f); simpl; reflexivity."
+      ]
+    },
+    {
+      "uuid": "6a12a44914654be588f4899c7d217ec0",
+      "parent_uuid": "a236312c90894844988e81c4348ccb7a",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "c : Henkin_constants",
+            "f : function_symbols (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro c. unfold Fun_eqAxm. induction (function_arity_table L f) as [| n IH]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "c : Henkin_constants",
+                "f : function_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false"
+            },
+            {
+              "hypotheses": [
+                "IH : eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false",
+                "n : nat",
+                "c : Henkin_constants",
+                "f : function_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false"
+            }
+          ]
+        },
+        "proof_prefix": "intro c. unfold Fun_eqAxm. induction (function_arity_table L f) as [| n IH]."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 2,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "simpl; reflexivity.",
+        "set (n0 := function_arity_table (augmented_language L Henkin_constants) f). assert (Hv : forall n, HC_occurs_in_trms c (fst (varcouples n)) = false /\\\n                      HC_occurs_in_trms c (snd (varcouples n)) = false). induction n; split; simpl; auto; destruct IHn as [Hl Hr]; simpl; rewrite Hl, Hr; auto. assert (Hbase : HC_occurs_in_frm c\n                 (Eqn_frm (Fun_trm f (fst (varcouples n0))) (Fun_trm f (snd (varcouples n0)))) = false). simpl; destruct (Hv n0) as [Hl Hr]; rewrite Hl, Hr; auto. assert (Hlemma : forall (p : frm (augmented_language L Henkin_constants)) n,\n                  HC_occurs_in_frm c p = false ->\n                  HC_occurs_in_frm c (eqns_imp p n) = false). induction n; intros p Hp; simpl; auto; simpl; rewrite IHn; simpl; auto. exact (Hlemma (Eqn_frm (Fun_trm f (fst (varcouples n0))) (Fun_trm f (snd (varcouples n0)))) n0 Hbase).",
+        "compute; reflexivity.",
+        "assert (H_aux : forall n p, HC_occurs_in_frm c p = false -> HC_occurs_in_frm c (eqns_imp p n) = false).\n{ induction n; intros p Hpn; simpl; [assumption | apply IHn; assumption]. }\nassert (H_base : HC_occurs_in_frm c\n  (prod_rec\n     (fun _ : prod\n            (trms (augmented_language L Henkin_constants)\n               (function_arity_table (augmented_language L Henkin_constants) f))\n            (trms (augmented_language L Henkin_constants)\n               (function_arity_table (augmented_language L Henkin_constants) f))\n      => frm (augmented_language L Henkin_constants))\n     (fun lhs rhs : trms (augmented_language L Henkin_constants)\n                      (function_arity_table (augmented_language L Henkin_constants) f) =>\n      Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n     (varcouples\n        (function_arity_table (augmented_language L Henkin_constants) f))) = false).\n{ induction (function_arity_table (augmented_language L Henkin_constants) f) as [| n IH]; simpl; [reflexivity | apply IH]. }\napply H_aux; assumption.",
+        "induction (function_arity_table (augmented_language L Henkin_constants) f) as [| n IH].\n- unfold eqns_imp, varcouples; simpl; reflexivity.\n- unfold eqns_imp; simpl; rewrite IH; simpl; reflexivity."
+      ],
+      "failed_attempts": [
+        "simpl; reflexivity.",
+        "set (n0 := function_arity_table (augmented_language L Henkin_constants) f). assert (Hv : forall n, HC_occurs_in_trms c (fst (varcouples n)) = false /\\\n                      HC_occurs_in_trms c (snd (varcouples n)) = false). induction n; split; simpl; auto; destruct IHn as [Hl Hr]; simpl; rewrite Hl, Hr; auto. assert (Hbase : HC_occurs_in_frm c\n                 (Eqn_frm (Fun_trm f (fst (varcouples n0))) (Fun_trm f (snd (varcouples n0)))) = false). simpl; destruct (Hv n0) as [Hl Hr]; rewrite Hl, Hr; auto. assert (Hlemma : forall (p : frm (augmented_language L Henkin_constants)) n,\n                  HC_occurs_in_frm c p = false ->\n                  HC_occurs_in_frm c (eqns_imp p n) = false). induction n; intros p Hp; simpl; auto; simpl; rewrite IHn; simpl; auto. exact (Hlemma (Eqn_frm (Fun_trm f (fst (varcouples n0))) (Fun_trm f (snd (varcouples n0)))) n0 Hbase).",
+        "compute; reflexivity.",
+        "assert (H_aux : forall n p, HC_occurs_in_frm c p = false -> HC_occurs_in_frm c (eqns_imp p n) = false).\n{ induction n; intros p Hpn; simpl; [assumption | apply IHn; assumption]. }\nassert (H_base : HC_occurs_in_frm c\n  (prod_rec\n     (fun _ : prod\n            (trms (augmented_language L Henkin_constants)\n               (function_arity_table (augmented_language L Henkin_constants) f))\n            (trms (augmented_language L Henkin_constants)\n               (function_arity_table (augmented_language L Henkin_constants) f))\n      => frm (augmented_language L Henkin_constants))\n     (fun lhs rhs : trms (augmented_language L Henkin_constants)\n                      (function_arity_table (augmented_language L Henkin_constants) f) =>\n      Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n     (varcouples\n        (function_arity_table (augmented_language L Henkin_constants) f))) = false).\n{ induction (function_arity_table (augmented_language L Henkin_constants) f) as [| n IH]; simpl; [reflexivity | apply IH]. }\napply H_aux; assumption.",
+        "induction (function_arity_table (augmented_language L Henkin_constants) f) as [| n IH].\n- unfold eqns_imp, varcouples; simpl; reflexivity.\n- unfold eqns_imp; simpl; rewrite IH; simpl; reflexivity."
+      ]
+    },
+    {
+      "uuid": "7d849feaac294bf0952487e057ca61bb",
+      "parent_uuid": "a236312c90894844988e81c4348ccb7a",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IH : eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false",
+            "n : nat",
+            "c : Henkin_constants",
+            "f : function_symbols (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro c. unfold Fun_eqAxm. induction (function_arity_table L f) as [| n IH]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "c : Henkin_constants",
+                "f : function_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false"
+            },
+            {
+              "hypotheses": [
+                "IH : eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false",
+                "n : nat",
+                "c : Henkin_constants",
+                "f : function_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false"
+            }
+          ]
+        },
+        "proof_prefix": "intro c. unfold Fun_eqAxm. induction (function_arity_table L f) as [| n IH]. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "sfirstorder."
+      ],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": 0.0,
+      "id": 135536160939344,
+      "uuid": "a236312c90894844988e81c4348ccb7a"
+    }
+  ],
+  "costs_so_far": {
+    "a236312c90894844988e81c4348ccb7a": 0.0,
+    "6a12a44914654be588f4899c7d217ec0": -0.1,
+    "7d849feaac294bf0952487e057ca61bb": -0.2
+  },
+  "costs_to_go": {
+    "a236312c90894844988e81c4348ccb7a": 0,
+    "6a12a44914654be588f4899c7d217ec0": 0,
+    "7d849feaac294bf0952487e057ca61bb": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "a236312c90894844988e81c4348ccb7a": 0,
+    "6a12a44914654be588f4899c7d217ec0": 1,
+    "7d849feaac294bf0952487e057ca61bb": 2
+  },
+  "next_node_idx": 3,
+  "remaining_nodes_to_expand": 147,
+  "root_uuid": "a236312c90894844988e81c4348ccb7a",
+  "done": false,
+  "visualization": "\n* (2 HYPS)|-forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Fun_eqAxm f)) false (cost:0.0; n_fail:1)\n  # 1 prefixes like intro c. unfold Fun_eqAxm. induction (function_arity_table L f) as [| n IH].\n  * (3 HYPS)|-eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false (cost:-0.1; n_fail:2)\n\n  * (5 HYPS)|-eq\n  (HC_occurs_in_frm c\n     (eqns_imp\n        (prod_rec\n           (fun\n              _ : prod\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n                    (trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f))\n            => frm (augmented_language L Henkin_constants))\n           (fun\n              lhs\n               rhs : trms (augmented_language L Henkin_constants)\n                       (function_arity_table\n                          (augmented_language L Henkin_constants) f) =>\n            Eqn_frm (Fun_trm f lhs) (Fun_trm f rhs))\n           (varcouples\n              (function_arity_table\n                 (augmented_language L Henkin_constants) f)))\n        (function_arity_table (augmented_language L Henkin_constants) f)))\n  false (proven) (pruned) (done:True; cost:-0.2; n_fail:0)\n    # successful proof: hammer."
+}

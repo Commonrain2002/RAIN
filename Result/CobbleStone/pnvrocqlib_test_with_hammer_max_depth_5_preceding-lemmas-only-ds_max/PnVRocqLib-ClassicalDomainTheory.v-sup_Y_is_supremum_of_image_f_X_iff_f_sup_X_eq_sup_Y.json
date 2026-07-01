@@ -1,0 +1,524 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ClassicalDomainTheory.v-sup_Y_is_supremum_of_image_f_X_iff_f_sup_X_eq_sup_Y.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "271b6785a4e046a58ddf2cc487a6ef03",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "SUPREMUM : is_supremum_of sup_X X",
+            "DIRECTED : isDirected X",
+            "CONTINUIOUS : isContinuous f",
+            "sup_Y : D'",
+            "sup_X : D",
+            "X : E.t D",
+            "f : forall _ : D, D'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "iff (is_supremum_of sup_Y (E.image f X)) (eqProp (f sup_X) sup_Y)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "1b2fae8083a249058d45738c341e97b0",
+          "fd909963ad584466a8d5c38866fb4a93"
+        ],
+        [
+          "79668986391743e5a2f4739bda5076bb",
+          "c52059f2147140ee9a6dfa2fb6570e51"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "assert (Hf_sup : is_supremum_of (f sup_X) (E.image f X))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "is_supremum_of (f sup_X) (E.image f X)"
+            },
+            {
+              "hypotheses": [
+                "Hf_sup : is_supremum_of (f sup_X) (E.image f X)",
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "iff (is_supremum_of sup_Y (E.image f X)) (eqProp (f sup_X) sup_Y)"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : is_supremum_of sup_Y (E.image f X), eqProp (f sup_X) sup_Y"
+            },
+            {
+              "hypotheses": [
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : eqProp (f sup_X) sup_Y, is_supremum_of sup_Y (E.image f X)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "",
+        "assert (Hdir : isDirected (E.image f X)) by (apply isDirected_intro; [destruct DIRECTED as [[x Hx] DIR]; exists (f x); apply In_image with x; auto | intros a b Ha Hb; destruct Ha as [x ? Hx], Hb as [y ? Hy]; subst; destruct (DIR x y Hx Hy) as [z [Hz [le1 le2]]]; exists (f z); split; [apply In_image with z; auto | split; apply ScottContinuousMap_isMonotonic; assumption]]). pose proof (f_sup_X_eq_sup_image_f_X D D' PROSET PROSET' CPO CPO' f X sup_X CONTINUIOUS DIRECTED SUPREMUM Hdir) as Heq_sup. pose proof (supremum_cpo_spec (E.image f X) Hdir) as Hsup_sup. split.\n- intro Hsup. apply (leProp_PartialOrder (f sup_X) sup_Y); split.\n-- apply (proj2 leProp_PreOrder (f sup_X) (supremum_cpo (E.image f X) Hdir) sup_Y);\n      [ apply (fst (proj1 (leProp_PartialOrder (f sup_X) (supremum_cpo (E.image f X) Hdir)) Heq_sup))\n      | apply (proj2 (Hsup_sup sup_Y)); apply (proj1 (Hsup sup_Y)); apply (proj1 leProp_PreOrder _) ].\n-- apply (proj2 leProp_PreOrder sup_Y (supremum_cpo (E.image f X) Hdir) (f sup_X));\n      [ apply (proj2 (Hsup (supremum_cpo (E.image f X) Hdir))); apply (proj1 (Hsup_sup (supremum_cpo (E.image f X) Hdir))); apply (proj1 leProp_PreOrder _)\n      | apply (snd (proj1 (leProp_PartialOrder (f sup_X) (supremum_cpo (E.image f X) Hdir)) Heq_sup)) ].\n- intro Heq. apply (fun (a b : D') (S : E.t D') (Heq_eq : eqProp a b) (Hb : is_supremum_of b S) => (fun u => let (H1, H2) := Hb u in (let (H3, H4) := proj1 (leProp_PartialOrder a b) Heq_eq in conj (fun H5 : leProp a u => H1 (proj2 leProp_PreOrder b a u H4 H5)) (fun H6 : E.In u (upperboundsOf S) => proj2 leProp_PreOrder a b u H3 (H2 H6))))) sup_Y (f sup_X) (E.image f X) Heq (fun u => let (H1, H2) := Hsup_sup u in (let (H3, H4) := proj1 (leProp_PartialOrder (f sup_X) (supremum_cpo (E.image f X) Hdir)) Heq_sup in conj (fun H5 : leProp (f sup_X) u => H1 (proj2 leProp_PreOrder (supremum_cpo (E.image f X) Hdir) (f sup_X) u H4 H5)) (fun H6 : E.In u (upperboundsOf (E.image f X)) => proj2 leProp_PreOrder (f sup_X) (supremum_cpo (E.image f X) Hdir) u H3 (H2 H6)))).",
+        "assert (Hf_sup : is_supremum_of (f sup_X) (E.image f X)).\n{ apply continuous_preserves_supremum; assumption. }\nsplit.\n- intro H; apply (supremum_unique (E.image f X) (f sup_X) sup_Y Hf_sup H).\n- intro H; rewrite <- H; exact Hf_sup.",
+        "split.\n- intro Hsup. exact (supremum_unique D' PROSET' (f sup_X) sup_Y (E.image f X) (continuous_sup D D' PROSET PROSET' CPO CPO' f CONTINUOUS X DIRECTED SUPREMUM) Hsup).\n- intro Heq. rewrite <- Heq. exact (continuous_sup D D' PROSET PROSET' CPO CPO' f CONTINUOUS X DIRECTED SUPREMUM)."
+      ],
+      "failed_attempts": [
+        "",
+        "assert (Hdir : isDirected (E.image f X)) by (apply isDirected_intro; [destruct DIRECTED as [[x Hx] DIR]; exists (f x); apply In_image with x; auto | intros a b Ha Hb; destruct Ha as [x ? Hx], Hb as [y ? Hy]; subst; destruct (DIR x y Hx Hy) as [z [Hz [le1 le2]]]; exists (f z); split; [apply In_image with z; auto | split; apply ScottContinuousMap_isMonotonic; assumption]]). pose proof (f_sup_X_eq_sup_image_f_X D D' PROSET PROSET' CPO CPO' f X sup_X CONTINUIOUS DIRECTED SUPREMUM Hdir) as Heq_sup. pose proof (supremum_cpo_spec (E.image f X) Hdir) as Hsup_sup. split.\n- intro Hsup. apply (leProp_PartialOrder (f sup_X) sup_Y); split.\n-- apply (proj2 leProp_PreOrder (f sup_X) (supremum_cpo (E.image f X) Hdir) sup_Y);\n      [ apply (fst (proj1 (leProp_PartialOrder (f sup_X) (supremum_cpo (E.image f X) Hdir)) Heq_sup))\n      | apply (proj2 (Hsup_sup sup_Y)); apply (proj1 (Hsup sup_Y)); apply (proj1 leProp_PreOrder _) ].\n-- apply (proj2 leProp_PreOrder sup_Y (supremum_cpo (E.image f X) Hdir) (f sup_X));\n      [ apply (proj2 (Hsup (supremum_cpo (E.image f X) Hdir))); apply (proj1 (Hsup_sup (supremum_cpo (E.image f X) Hdir))); apply (proj1 leProp_PreOrder _)\n      | apply (snd (proj1 (leProp_PartialOrder (f sup_X) (supremum_cpo (E.image f X) Hdir)) Heq_sup)) ].\n- intro Heq. apply (fun (a b : D') (S : E.t D') (Heq_eq : eqProp a b) (Hb : is_supremum_of b S) => (fun u => let (H1, H2) := Hb u in (let (H3, H4) := proj1 (leProp_PartialOrder a b) Heq_eq in conj (fun H5 : leProp a u => H1 (proj2 leProp_PreOrder b a u H4 H5)) (fun H6 : E.In u (upperboundsOf S) => proj2 leProp_PreOrder a b u H3 (H2 H6))))) sup_Y (f sup_X) (E.image f X) Heq (fun u => let (H1, H2) := Hsup_sup u in (let (H3, H4) := proj1 (leProp_PartialOrder (f sup_X) (supremum_cpo (E.image f X) Hdir)) Heq_sup in conj (fun H5 : leProp (f sup_X) u => H1 (proj2 leProp_PreOrder (supremum_cpo (E.image f X) Hdir) (f sup_X) u H4 H5)) (fun H6 : E.In u (upperboundsOf (E.image f X)) => proj2 leProp_PreOrder (f sup_X) (supremum_cpo (E.image f X) Hdir) u H3 (H2 H6))))."
+      ]
+    },
+    {
+      "uuid": "1b2fae8083a249058d45738c341e97b0",
+      "parent_uuid": "271b6785a4e046a58ddf2cc487a6ef03",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "SUPREMUM : is_supremum_of sup_X X",
+            "DIRECTED : isDirected X",
+            "CONTINUIOUS : isContinuous f",
+            "sup_Y : D'",
+            "sup_X : D",
+            "X : E.t D",
+            "f : forall _ : D, D'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "is_supremum_of (f sup_X) (E.image f X)"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (Hf_sup : is_supremum_of (f sup_X) (E.image f X))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "is_supremum_of (f sup_X) (E.image f X)"
+            },
+            {
+              "hypotheses": [
+                "Hf_sup : is_supremum_of (f sup_X) (E.image f X)",
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "iff (is_supremum_of sup_Y (E.image f X)) (eqProp (f sup_X) sup_Y)"
+            }
+          ]
+        },
+        "proof_prefix": "assert (Hf_sup : is_supremum_of (f sup_X) (E.image f X))."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "fd909963ad584466a8d5c38866fb4a93",
+      "parent_uuid": "271b6785a4e046a58ddf2cc487a6ef03",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hf_sup : is_supremum_of (f sup_X) (E.image f X)",
+            "SUPREMUM : is_supremum_of sup_X X",
+            "DIRECTED : isDirected X",
+            "CONTINUIOUS : isContinuous f",
+            "sup_Y : D'",
+            "sup_X : D",
+            "X : E.t D",
+            "f : forall _ : D, D'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "iff (is_supremum_of sup_Y (E.image f X)) (eqProp (f sup_X) sup_Y)"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (Hf_sup : is_supremum_of (f sup_X) (E.image f X))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "is_supremum_of (f sup_X) (E.image f X)"
+            },
+            {
+              "hypotheses": [
+                "Hf_sup : is_supremum_of (f sup_X) (E.image f X)",
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "iff (is_supremum_of sup_Y (E.image f X)) (eqProp (f sup_X) sup_Y)"
+            }
+          ]
+        },
+        "proof_prefix": "assert (Hf_sup : is_supremum_of (f sup_X) (E.image f X)). admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "79668986391743e5a2f4739bda5076bb",
+      "parent_uuid": "271b6785a4e046a58ddf2cc487a6ef03",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "SUPREMUM : is_supremum_of sup_X X",
+            "DIRECTED : isDirected X",
+            "CONTINUIOUS : isContinuous f",
+            "sup_Y : D'",
+            "sup_X : D",
+            "X : E.t D",
+            "f : forall _ : D, D'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall _ : is_supremum_of sup_Y (E.image f X), eqProp (f sup_X) sup_Y"
+        },
+        "decomposition": {
+          "proofs": [
+            "split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : is_supremum_of sup_Y (E.image f X), eqProp (f sup_X) sup_Y"
+            },
+            {
+              "hypotheses": [
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : eqProp (f sup_X) sup_Y, is_supremum_of sup_Y (E.image f X)"
+            }
+          ]
+        },
+        "proof_prefix": "split."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro Hsup. exact (supremum_unique D' PROSET' (f sup_X) sup_Y (E.image f X) (continuous_sup D D' PROSET PROSET' CPO CPO' f CONTINUOUS X DIRECTED SUPREMUM) Hsup)."
+      ],
+      "failed_attempts": [
+        "intro Hsup. exact (supremum_unique D' PROSET' (f sup_X) sup_Y (E.image f X) (continuous_sup D D' PROSET PROSET' CPO CPO' f CONTINUOUS X DIRECTED SUPREMUM) Hsup)."
+      ]
+    },
+    {
+      "uuid": "c52059f2147140ee9a6dfa2fb6570e51",
+      "parent_uuid": "271b6785a4e046a58ddf2cc487a6ef03",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "SUPREMUM : is_supremum_of sup_X X",
+            "DIRECTED : isDirected X",
+            "CONTINUIOUS : isContinuous f",
+            "sup_Y : D'",
+            "sup_X : D",
+            "X : E.t D",
+            "f : forall _ : D, D'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall _ : eqProp (f sup_X) sup_Y, is_supremum_of sup_Y (E.image f X)"
+        },
+        "decomposition": {
+          "proofs": [
+            "split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : is_supremum_of sup_Y (E.image f X), eqProp (f sup_X) sup_Y"
+            },
+            {
+              "hypotheses": [
+                "SUPREMUM : is_supremum_of sup_X X",
+                "DIRECTED : isDirected X",
+                "CONTINUIOUS : isContinuous f",
+                "sup_Y : D'",
+                "sup_X : D",
+                "X : E.t D",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : eqProp (f sup_X) sup_Y, is_supremum_of sup_Y (E.image f X)"
+            }
+          ]
+        },
+        "proof_prefix": "split. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 2,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro Heq. rewrite <- Heq. exact (continuous_sup D D' PROSET PROSET' CPO CPO' f CONTINUOUS X DIRECTED SUPREMUM).",
+        "intro H_eqY. assert (H_mon := ScottContinuousMap_isMonotonic f CONTINUIOUS). assert (H_img_dir : isDirected (E.image f X)) by\n  exact (let (NONEMPTY, _) := DIRECTED in\n         let (x0, Hx0) := NONEMPTY in\n         isDirected_intro (E.image f X)\n           (ex_intro (fun x' : D' => E.In x' (E.image f X)) (f x0)\n              (In_image D D' f X (f x0) x0 eq_refl Hx0))\n           (fun y1 y2 Hy1 Hy2 =>\n              let (x1, Heq1, Hx1) := Hy1 in\n              let (x2, Heq2, Hx2) := Hy2 in\n              let (_, H_dir) := DIRECTED in\n              let (x3, conj Hx3 (conj Hle1 Hle2)) := H_dir x1 x2 Hx1 Hx2 in\n              ex_intro (fun x' : D' => and (E.In x' (E.image f X))\n                                           (and (leProp y1 x') (leProp y2 x'))) (f x3)\n                (conj (In_image D D' f X (f x3) x3 eq_refl Hx3)\n                      (conj (PreOrder_Transitive (leProp_PreOrder D' PROSET') y1 (f x1) (f x3)\n                                (eq_ind (f x1) (fun y => leProp y (f x1))\n                                   (PreOrder_Reflexive (leProp_PreOrder D' PROSET') (f x1)) y1 Heq1)\n                                (H_mon x1 x3 Hle1))\n                            (PreOrder_Transitive (leProp_PreOrder D' PROSET') y2 (f x2) (f x3)\n                                (eq_ind (f x2) (fun y => leProp y (f x2))\n                                   (PreOrder_Reflexive (leProp_PreOrder D' PROSET') (f x2)) y2 Heq2)\n                                (H_mon x2 x3 Hle2)))))). assert (H_eq_sup : f sup_X == supremum_cpo (E.image f X) H_img_dir) by\n  exact (f_sup_X_eq_sup_image_f_X f X sup_X CONTINUIOUS DIRECTED SUPREMUM H_img_dir). assert (H_sup_img := CPO'.(supremum_cpo_spec) (E.image f X) H_img_dir). destruct (proj1 (PROSET'.(leProp_PartialOrder) (f sup_X) sup_Y) H_eqY) as [Hle_fX_Y Hle_Y_fX];\ndestruct (proj1 (PROSET'.(leProp_PartialOrder) (f sup_X) (supremum_cpo (E.image f X) H_img_dir)) H_eq_sup) as [Hle_fX_img Hle_img_fX]. unfold is_supremum_of; intro u; split.\n- intro Hle_supY_u; apply (proj1 (H_sup_img u) (PreOrder_Transitive (leProp_PreOrder D' PROSET') (supremum_cpo (E.image f X) H_img_dir) (f sup_X) u Hle_img_fX (PreOrder_Transitive (leProp_PreOrder D' PROSET') (f sup_X) sup_Y u Hle_fX_Y Hle_supY_u))).\n- intro H_upper; apply (PreOrder_Transitive (leProp_PreOrder D' PROSET') sup_Y (f sup_X) u Hle_Y_fX (PreOrder_Transitive (leProp_PreOrder D' PROSET') (f sup_X) (supremum_cpo (E.image f X) H_img_dir) u Hle_fX_img (proj2 (H_sup_img u) H_upper))).",
+        "",
+        "intro H_eq. setoid_rewrite H_eq. apply continuous_sup; assumption.",
+        "intros H_eq. setoid_rewrite H_eq. apply continuous_supremum; assumption."
+      ],
+      "failed_attempts": [
+        "intro Heq. rewrite <- Heq. exact (continuous_sup D D' PROSET PROSET' CPO CPO' f CONTINUOUS X DIRECTED SUPREMUM).",
+        "intro H_eqY. assert (H_mon := ScottContinuousMap_isMonotonic f CONTINUIOUS). assert (H_img_dir : isDirected (E.image f X)) by\n  exact (let (NONEMPTY, _) := DIRECTED in\n         let (x0, Hx0) := NONEMPTY in\n         isDirected_intro (E.image f X)\n           (ex_intro (fun x' : D' => E.In x' (E.image f X)) (f x0)\n              (In_image D D' f X (f x0) x0 eq_refl Hx0))\n           (fun y1 y2 Hy1 Hy2 =>\n              let (x1, Heq1, Hx1) := Hy1 in\n              let (x2, Heq2, Hx2) := Hy2 in\n              let (_, H_dir) := DIRECTED in\n              let (x3, conj Hx3 (conj Hle1 Hle2)) := H_dir x1 x2 Hx1 Hx2 in\n              ex_intro (fun x' : D' => and (E.In x' (E.image f X))\n                                           (and (leProp y1 x') (leProp y2 x'))) (f x3)\n                (conj (In_image D D' f X (f x3) x3 eq_refl Hx3)\n                      (conj (PreOrder_Transitive (leProp_PreOrder D' PROSET') y1 (f x1) (f x3)\n                                (eq_ind (f x1) (fun y => leProp y (f x1))\n                                   (PreOrder_Reflexive (leProp_PreOrder D' PROSET') (f x1)) y1 Heq1)\n                                (H_mon x1 x3 Hle1))\n                            (PreOrder_Transitive (leProp_PreOrder D' PROSET') y2 (f x2) (f x3)\n                                (eq_ind (f x2) (fun y => leProp y (f x2))\n                                   (PreOrder_Reflexive (leProp_PreOrder D' PROSET') (f x2)) y2 Heq2)\n                                (H_mon x2 x3 Hle2)))))). assert (H_eq_sup : f sup_X == supremum_cpo (E.image f X) H_img_dir) by\n  exact (f_sup_X_eq_sup_image_f_X f X sup_X CONTINUIOUS DIRECTED SUPREMUM H_img_dir). assert (H_sup_img := CPO'.(supremum_cpo_spec) (E.image f X) H_img_dir). destruct (proj1 (PROSET'.(leProp_PartialOrder) (f sup_X) sup_Y) H_eqY) as [Hle_fX_Y Hle_Y_fX];\ndestruct (proj1 (PROSET'.(leProp_PartialOrder) (f sup_X) (supremum_cpo (E.image f X) H_img_dir)) H_eq_sup) as [Hle_fX_img Hle_img_fX]. unfold is_supremum_of; intro u; split.\n- intro Hle_supY_u; apply (proj1 (H_sup_img u) (PreOrder_Transitive (leProp_PreOrder D' PROSET') (supremum_cpo (E.image f X) H_img_dir) (f sup_X) u Hle_img_fX (PreOrder_Transitive (leProp_PreOrder D' PROSET') (f sup_X) sup_Y u Hle_fX_Y Hle_supY_u))).\n- intro H_upper; apply (PreOrder_Transitive (leProp_PreOrder D' PROSET') sup_Y (f sup_X) u Hle_Y_fX (PreOrder_Transitive (leProp_PreOrder D' PROSET') (f sup_X) (supremum_cpo (E.image f X) H_img_dir) u Hle_fX_img (proj2 (H_sup_img u) H_upper))).",
+        "",
+        "intro H_eq. setoid_rewrite H_eq. apply continuous_sup; assumption.",
+        "intros H_eq. setoid_rewrite H_eq. apply continuous_supremum; assumption."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536203932048,
+      "uuid": "79668986391743e5a2f4739bda5076bb"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536160841424,
+      "uuid": "1b2fae8083a249058d45738c341e97b0"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536203938832,
+      "uuid": "fd909963ad584466a8d5c38866fb4a93"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536160558608,
+      "uuid": "271b6785a4e046a58ddf2cc487a6ef03"
+    }
+  ],
+  "costs_so_far": {
+    "271b6785a4e046a58ddf2cc487a6ef03": 0.0,
+    "1b2fae8083a249058d45738c341e97b0": -0.1,
+    "fd909963ad584466a8d5c38866fb4a93": -0.2,
+    "79668986391743e5a2f4739bda5076bb": -0.30000000000000004,
+    "c52059f2147140ee9a6dfa2fb6570e51": -0.4
+  },
+  "costs_to_go": {
+    "271b6785a4e046a58ddf2cc487a6ef03": 0,
+    "1b2fae8083a249058d45738c341e97b0": 0,
+    "fd909963ad584466a8d5c38866fb4a93": 0,
+    "79668986391743e5a2f4739bda5076bb": 0,
+    "c52059f2147140ee9a6dfa2fb6570e51": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "271b6785a4e046a58ddf2cc487a6ef03": 0,
+    "1b2fae8083a249058d45738c341e97b0": 1,
+    "fd909963ad584466a8d5c38866fb4a93": 2,
+    "79668986391743e5a2f4739bda5076bb": 3,
+    "c52059f2147140ee9a6dfa2fb6570e51": 4
+  },
+  "next_node_idx": 5,
+  "remaining_nodes_to_expand": 148,
+  "root_uuid": "271b6785a4e046a58ddf2cc487a6ef03",
+  "done": false,
+  "visualization": "\n* (13 HYPS)|-iff (is_supremum_of sup_Y (E.image f X)) (eqProp (f sup_X) sup_Y) (cost:0.0; n_fail:0)\n  # 1 prefixes like assert (Hf_sup : is_supremum_of (f sup_X) (E.image f X)).\n  * (13 HYPS)|-is_supremum_of (f sup_X) (E.image f X) (cost:-0.1; n_fail:0)\n\n  * (14 HYPS)|-iff (is_supremum_of sup_Y (E.image f X)) (eqProp (f sup_X) sup_Y) (proven) (pruned) (done:True; cost:-0.2; n_fail:0)\n    # successful proof: hammer.\n  # 1 prefixes like split.\n  * (13 HYPS)|-forall _ : is_supremum_of sup_Y (E.image f X), eqProp (f sup_X) sup_Y (cost:-0.30000000000000004; n_fail:0)\n\n  * (13 HYPS)|-forall _ : eqProp (f sup_X) sup_Y, is_supremum_of sup_Y (E.image f X) (cost:-0.4; n_fail:2)\n"
+}

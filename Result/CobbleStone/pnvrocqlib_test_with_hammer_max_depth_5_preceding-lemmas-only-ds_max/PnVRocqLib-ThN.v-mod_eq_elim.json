@@ -1,0 +1,64 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ThN.v-mod_eq_elim.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "712f4dc788d74834bd3fad7a3e614d4c",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H_mod_eq : eq (Nat.modulo a1 b) (Nat.modulo a2 b)",
+            "b_ne_0 : not (eq b 0)",
+            "a1,a2,b : nat"
+          ],
+          "goal": "ex\n  (fun q1 : nat =>\n   ex\n     (fun q2 : nat =>\n      eq (Init.Nat.add a1 (Init.Nat.mul b q1))\n        (Init.Nat.add a2 (Init.Nat.mul b q2))))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "pose (r := a1 mod b). assert (H1 : a1 = b * ((a1 - r)/b) + r /\\ r < b).\n{ apply (proj2 (div_mod_inv a1 b ((a1 - r)/b) r b_ne_0)). split; [reflexivity | split; [reflexivity | apply n_mod_b_le_n; exact b_ne_0]]. }\nassert (H2 : a2 = b * ((a2 - r)/b) + r /\\ r < b).\n{ apply (proj2 (div_mod_inv a2 b ((a2 - r)/b) r b_ne_0)). sfirstorder use: Reflect.Nat_leb_le, Reflect.Nat_ge_leb, n_mod_b_le_n. }\ndestruct H1 as [H1_eq H1_lt], H2 as [H2_eq H2_lt]. exists ((a2 - r)/b), ((a1 - r)/b). sfirstorder.",
+      "lemmas": null,
+      "attempts": [
+        "pose (r := a1 mod b). assert (H1 : a1 = b * ((a1 - r)/b) + r /\\ r < b).\n{ apply (proj2 (div_mod_inv a1 b ((a1 - r)/b) r b_ne_0)). split; [reflexivity | split; [reflexivity | apply n_mod_b_le_n; exact b_ne_0]]. }\nassert (H2 : a2 = b * ((a2 - r)/b) + r /\\ r < b).\n{ apply (proj2 (div_mod_inv a2 b ((a2 - r)/b) r b_ne_0)). sfirstorder use: Reflect.Nat_leb_le, Reflect.Nat_ge_leb, n_mod_b_le_n. }\ndestruct H1 as [H1_eq H1_lt], H2 as [H2_eq H2_lt]. exists ((a2 - r)/b), ((a1 - r)/b). sfirstorder.",
+        "set (r := a1 mod b). assert (H1_rep : a1 = b * ((a1 - r) / b) + r /\\ r < b) by\n  (apply (proj2 (div_mod_inv a1 b ((a1 - r) / b) r b_ne_0));\n   repeat split; [reflexivity | reflexivity | apply n_mod_b_le_n; exact b_ne_0]). assert (H2_rep : a2 = b * ((a2 - r) / b) + r /\\ r < b) by\n  (apply (proj2 (div_mod_inv a2 b ((a2 - r) / b) r b_ne_0));\n   repeat split; [reflexivity | rewrite <- H_mod_eq; reflexivity | rewrite <- H_mod_eq; apply n_mod_b_le_n; exact b_ne_0]). destruct H1_rep as [H1_eq H1_lt], H2_rep as [H2_eq H2_lt]. exists ((a2 - r) / b), ((a1 - r) / b). rewrite H1_eq, H2_eq. omega.",
+        "exists (Nat.div a2 b), (Nat.div a1 b). rewrite (Nat.div_mod_eq a1 b), (Nat.div_mod_eq a2 b), H_mod_eq. rewrite (Nat.add_assoc (b * (a1 / b)) (a1 % b) (b * (a2 / b))), (Nat.add_comm (a1 % b) (b * (a2 / b))), <- (Nat.add_assoc (b * (a1 / b)) (b * (a2 / b)) (a1 % b)). rewrite (Nat.add_assoc (b * (a2 / b)) (a1 % b) (b * (a1 / b))), (Nat.add_comm (a1 % b) (b * (a1 / b))), <- (Nat.add_assoc (b * (a2 / b)) (b * (a1 / b)) (a1 % b)). apply (Nat.add_cancel_r (a1 % b)). apply Nat.add_comm.",
+        "exists (Nat.div a2 b). exists (Nat.div a1 b). rewrite (Nat.div_mod_eq a1 b b_ne_0). rewrite (Nat.div_mod_eq a2 b b_ne_0). rewrite H_mod_eq. generalize (b * (a1 / b)) (b * (a2 / b)) (a1 mod b). intros x y r. omega."
+      ],
+      "failed_attempts": [
+        "set (r := a1 mod b). assert (H1_rep : a1 = b * ((a1 - r) / b) + r /\\ r < b) by\n  (apply (proj2 (div_mod_inv a1 b ((a1 - r) / b) r b_ne_0));\n   repeat split; [reflexivity | reflexivity | apply n_mod_b_le_n; exact b_ne_0]). assert (H2_rep : a2 = b * ((a2 - r) / b) + r /\\ r < b) by\n  (apply (proj2 (div_mod_inv a2 b ((a2 - r) / b) r b_ne_0));\n   repeat split; [reflexivity | rewrite <- H_mod_eq; reflexivity | rewrite <- H_mod_eq; apply n_mod_b_le_n; exact b_ne_0]). destruct H1_rep as [H1_eq H1_lt], H2_rep as [H2_eq H2_lt]. exists ((a2 - r) / b), ((a1 - r) / b). rewrite H1_eq, H2_eq. omega.",
+        "exists (Nat.div a2 b), (Nat.div a1 b). rewrite (Nat.div_mod_eq a1 b), (Nat.div_mod_eq a2 b), H_mod_eq. rewrite (Nat.add_assoc (b * (a1 / b)) (a1 % b) (b * (a2 / b))), (Nat.add_comm (a1 % b) (b * (a2 / b))), <- (Nat.add_assoc (b * (a1 / b)) (b * (a2 / b)) (a1 % b)). rewrite (Nat.add_assoc (b * (a2 / b)) (a1 % b) (b * (a1 / b))), (Nat.add_comm (a1 % b) (b * (a1 / b))), <- (Nat.add_assoc (b * (a2 / b)) (b * (a1 / b)) (a1 % b)). apply (Nat.add_cancel_r (a1 % b)). apply Nat.add_comm.",
+        "exists (Nat.div a2 b). exists (Nat.div a1 b). rewrite (Nat.div_mod_eq a1 b b_ne_0). rewrite (Nat.div_mod_eq a2 b b_ne_0). rewrite H_mod_eq. generalize (b * (a1 / b)) (b * (a2 / b)) (a1 mod b). intros x y r. omega."
+      ]
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "712f4dc788d74834bd3fad7a3e614d4c": 0.0
+  },
+  "costs_to_go": {
+    "712f4dc788d74834bd3fad7a3e614d4c": 0
+  },
+  "no_more_children": {
+    "712f4dc788d74834bd3fad7a3e614d4c": true
+  },
+  "node_added_idx": {
+    "712f4dc788d74834bd3fad7a3e614d4c": 0
+  },
+  "next_node_idx": 1,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "712f4dc788d74834bd3fad7a3e614d4c",
+  "done": false,
+  "visualization": "\n* (3 HYPS)|-ex\n  (fun q1 : nat =>\n   ex\n     (fun q2 : nat =>\n      eq (Init.Nat.add a1 (Init.Nat.mul b q1))\n        (Init.Nat.add a2 (Init.Nat.mul b q2)))) (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # successful proof: pose (r := a1 mod b). assert (H1 : a1 = b * ((a1 - r)/b) + r /\\ r < b).\n{ apply (proj2 (div_mod_inv a1 b ((a1 - r)/b) r b_ne_0)). split; [reflexivity | split; [reflexivity | apply n_mod_b_le_n; exact b_ne_0]]. }\nassert (H2 : a2 = b * ((a2 - r)/b) + r /\\ r < b).\n{ apply (proj2 (div_mod_inv a2 b ((a2 - r)/b) r b_ne_0)). sfirstorder use: Reflect.Nat_leb_le, Reflect.Nat_ge_leb, n_mod_b_le_n. }\ndestruct H1 as [H1_eq H1_lt], H2 as [H2_eq H2_lt]. exists ((a2 - r)/b), ((a1 - r)/b). sfirstorder."
+}

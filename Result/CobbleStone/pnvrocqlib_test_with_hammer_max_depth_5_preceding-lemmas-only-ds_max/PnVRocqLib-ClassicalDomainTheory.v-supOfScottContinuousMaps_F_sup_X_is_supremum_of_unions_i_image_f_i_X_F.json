@@ -1,0 +1,765 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ClassicalDomainTheory.v-supOfScottContinuousMaps_F_sup_X_is_supremum_of_unions_i_image_f_i_X_F.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "0e959c9add3e42af868f2abb032d11e6",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+            "X_isDirected : isDirected X",
+            "F_isDirected : isDirected F",
+            "sup_X : D",
+            "X : E.t D",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "is_supremum_of (supOfScottContinuousMaps F F_isDirected sup_X)\n  (E.unions\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         E.image (fun x : D => proj1_sig f_i x) X) F))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "6ccab08431ea4157aa89a5b1eb6c6833",
+          "26b18f42152a42da9fc823087647d020"
+        ],
+        [
+          "cb19f10913df484aa0fb908b6c15849e",
+          "3b17fb788bcb4e1f90ca6450995800f5"
+        ],
+        [
+          "7205ea5c5d394f3d9108993d8f96444a",
+          "71b6fbb258a54c02b344599b61abce38"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "intro u; split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : leProp (supOfScottContinuousMaps F F_isDirected sup_X) u,\nE.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))"
+            },
+            {
+              "hypotheses": [
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall\n  _ : E.In u\n        (upperboundsOf\n           (E.unions\n              (E.image\n                 (fun\n                    f_i : sig\n                            (fun f : forall _ : D, D' => isContinuous f)\n                  => E.image (fun x : D => proj1_sig f_i x) X) F))),\nleProp (supOfScottContinuousMaps F F_isDirected sup_X) u"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "unfold is_supremum_of. unfold upperboundsOf in sup_X_is_supremum_of_X. intros u; split; intro H."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : leProp (supOfScottContinuousMaps F F_isDirected sup_X) u",
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))"
+            },
+            {
+              "hypotheses": [
+                "H : E.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))",
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (supOfScottContinuousMaps F F_isDirected sup_X) u"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "set (s := supOfScottContinuousMaps F F_isDirected sup_X). set (S := E.unions\n           (E.image\n              (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n               E.image (fun x : D => proj1_sig f_i x) X) F)). unfold is_supremum_of; intro u; split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "u : D'",
+                "S : forall _ : D', Prop",
+                "s : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : leProp s u, E.In u (upperboundsOf S)"
+            },
+            {
+              "hypotheses": [
+                "u : D'",
+                "S : forall _ : D', Prop",
+                "s : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : E.In u (upperboundsOf S), leProp s u"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro u; split.\n- intros Hle x Hx_union; destruct Hx_union as [Y [ [y [-> HyX]] [f_i [-> Hf]] ]]; transitivity (proj1_sig f_i sup_X); [ apply (proj1 (ScottContinuousMap_preserves_supremum (proj1_sig f_i) X sup_X (proj2_sig f_i) X_isDirected sup_X_is_supremum_of_X (proj1_sig f_i sup_X)) (PreOrder_Reflexive _ _ (leProp_PreOrder PROSET') (proj1_sig f_i sup_X)) (proj1_sig f_i y) (In_image y eq_refl HyX)) | transitivity (supOfScottContinuousMaps F F_isDirected sup_X); [ apply (proj1 ((supremum_cpo_spec CPO') _ (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) (supOfScottContinuousMaps F F_isDirected sup_X) (PreOrder_Reflexive _ _ (leProp_PreOrder PROSET') (supOfScottContinuousMaps F F_isDirected sup_X)) (proj1_sig f_i sup_X) (In_image f_i eq_refl Hf)) | exact Hle ] ].\n- intros Hupper; apply (proj1 ((supremum_cpo_spec CPO') _ (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) u); intros z [f_i [-> Hf]]; apply (proj1 (ScottContinuousMap_preserves_supremum (proj1_sig f_i) X sup_X (proj2_sig f_i) X_isDirected sup_X_is_supremum_of_X u)); intros y [y0 [-> HyX]]; apply (Hupper (proj1_sig f_i y0) (In_unions (E.image (fun x : D => proj1_sig f_i x) X) (In_image y0 eq_refl HyX) (In_image f_i eq_refl Hf))).",
+        "unfold is_supremum_of. unfold upperboundsOf in sup_X_is_supremum_of_X. intros u; split; intro H.\n- unfold upperboundsOf; intro Hle; intros y Hy; apply leProp_trans with (supOfScottContinuousMaps F F_isDirected sup_X); [| exact Hle]. destruct Hy as [S HyS HSinF]; destruct HSinF as [f_i Heq Hinfi]; rewrite Heq in HyS; destruct HyS as [x Heq2 Hx]; rewrite Heq2. apply leProp_trans with (supOfScottContinuousMaps F F_isDirected x); [apply ((proj1 (supremum_cpo_spec CPO' (E.image (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i' x) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected x)) (supOfScottContinuousMaps F F_isDirected x) (reflexivity _)) (proj1_sig f_i x)); apply In_image with f_i; auto | apply supOfScottContinuousMaps_isMonotonic; apply (proj1 (sup_X_is_supremum_of_X sup_X) (reflexivity _) x Hx)].\n- unfold upperboundsOf in H; apply (proj2 (supremum_cpo_spec CPO' (E.image (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i sup_X) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) u). unfold upperboundsOf; intros y Hy. destruct Hy as [f_i Heq Hinfi]; rewrite Heq; apply (proj2 (ScottContinuousMap_preserves_supremum (proj1_sig f_i) X sup_X (proj2_sig f_i) X_isDirected sup_X_is_supremum_of_X) u); unfold upperboundsOf; intros y' Hy'; destruct Hy' as [x Heq2 Hx]; rewrite Heq2; apply H; apply In_unions with (E.image (fun x0 : D => proj1_sig f_i x0) X); [apply In_image with x; auto | apply In_image with f_i; auto].",
+        "refine (let supST := supOfScottContinuousMaps F F_isDirected sup_X in\n        let T := E.image (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i sup_X) F in\n        let S := E.unions (E.image (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => E.image (fun x : D => proj1_sig f_i x) X) F) in\n        let HsupT : is_supremum_of supST T :=\n          supremum_cpo_spec CPO' T (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X) in\n        let reflD x := PreOrder_Reflexive (leProp_PreOrder D PROSET) x in\n        let reflD' x := PreOrder_Reflexive (leProp_PreOrder D' PROSET') x in\n        let transD' x y z := PreOrder_Transitive (leProp_PreOrder D' PROSET') x y z in\n        conj\n          (fun (u : D') (Hle : leProp supST u) (y : D') (Hy : E.In y S) =>\n            match Hy with\n            | In_unions _ X' Hx_in_X' HX'_in_F =>\n              match HX'_in_F with\n              | In_image _ _ _ _ _ f_i Heq_X' Hfi =>\n                (match Heq_X' in _ = X'' return (E.In y X'' -> E.In y (E.image (fun x : D => proj1_sig f_i x) X)) with\n                 | eq_refl => fun H => H\n                 end Hx_in_X')\n                (fun Hx_in_X'_img =>\n                  match Hx_in_X'_img with\n                  | In_image _ _ _ _ _ x Heq_y Hx =>\n                    let Hx_sup : leProp x sup_X :=\n                      proj1 (sup_X_is_supremum_of_X sup_X) (reflD sup_X) x Hx in\n                    let Hmono : leProp (proj1_sig f_i x) (proj1_sig f_i sup_X) :=\n                      continuous_monotone D D' PROSET PROSET' CPO CPO' (proj1_sig f_i) (proj2_sig f_i) x sup_X Hx_sup in\n                    let H_T_ub : leProp (proj1_sig f_i sup_X) supST :=\n                      let HsupT_upper : forall u' : D', leProp supST u' -> forall y' : D', E.In y' T -> leProp y' u' :=\n                        proj1 (HsupT supST) (reflD' supST) in\n                      HsupT_upper supST (reflD' supST) (proj1_sig f_i sup_X)\n                        (@In_image (sig (fun f : forall _ : D, D' => isContinuous f)) D'\n                           (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i' sup_X) F\n                           (proj1_sig f_i sup_X) f_i eq_refl Hfi) in\n                    match Heq_y in _ = y' return leProp y' u with\n                    | eq_refl => transD' (proj1_sig f_i x) (proj1_sig f_i sup_X) u Hmono (transD' (proj1_sig f_i sup_X) supST u H_T_ub Hle)\n                    end\n                  end)\n              end\n            end)\n          (fun (u : D') (H_ub_S : forall y : D', E.In y S -> leProp y u) =>\n            let HsupT_spec : is_supremum_of supST T := HsupT in\n            proj2 (HsupT_spec u)\n              (fun (y : D') (Hy : E.In y T) =>\n                match Hy with\n                | @In_image (sig (fun f : forall _ : D, D' => isContinuous f)) D'\n                    (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i' sup_X) F\n                    y f_i Heq_y Hfi =>\n                  (match Heq_y in _ = y' return (y' = proj1_sig f_i sup_X -> leProp y' u) -> leProp y' u with\n                   | eq_refl => fun k => k eq_refl\n                   end)\n                    (fun _ : proj1_sig f_i sup_X = proj1_sig f_i sup_X =>\n                      let Hcont : isContinuous (proj1_sig f_i) := proj2_sig f_i in\n                      let Hsup_fi_image : is_supremum_of (proj1_sig f_i sup_X) (E.image (fun x : D => proj1_sig f_i x) X) :=\n                        continuous_sup D D' PROSET PROSET' CPO CPO' (proj1_sig f_i) Hcont X sup_X sup_X_is_supremum_of_X X_isDirected in\n                      let H_upper_image : forall z : D', E.In z (E.image (fun x : D => proj1_sig f_i x) X) -> leProp z u :=\n                        fun z Hz =>\n                          H_ub_S z\n                            (@In_unions D' (E.image (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => E.image (fun x : D => proj1_sig f_i' x) X) F)\n                              (E.image (fun x : D => proj1_sig f_i x) X) Hz\n                              (@In_image (sig (fun f : forall _ : D, D' => isContinuous f)) (E.t D')\n                                (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => E.image (fun x : D => proj1_sig f_i' x) X) F\n                                (E.image (fun x : D => proj1_sig f_i x) X) f_i eq_refl Hfi)) in\n                      proj1 (Hsup_fi_image u) H_upper_image)\n                end))).",
+        "set (s := supOfScottContinuousMaps F F_isDirected sup_X). set (S := E.unions\n           (E.image\n              (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n               E.image (fun x : D => proj1_sig f_i x) X) F)). unfold is_supremum_of; intro u; split.\n- intro Hle; unfold upperboundsOf, E.unions, E.image; intros y Hy; destruct Hy as [Y [Hy_in_Y HY]]; destruct HY as [f_i [HY' Hf_i]]; subst Y; destruct Hy_in_Y as [x [Hy' Hx]]; subst y; transitivity (proj1_sig f_i sup_X); [apply (proj1 (proj1 (continuous_sup (proj1_sig f_i) (proj2_sig f_i) X sup_X sup_X_is_supremum_of_X X_isDirected) (proj1_sig f_i sup_X)) (PreOrder_Reflexive leProp (leProp_PreOrder D' PROSET') (proj1_sig f_i sup_X)) (proj1_sig f_i x)); exists x; auto | transitivity s; [apply (proj1 (proj1 (supremum_cpo_spec CPO' (E.image (fun f_i => proj1_sig f_i sup_X) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) s) (PreOrder_Reflexive leProp (leProp_PreOrder D' PROSET') s) (proj1_sig f_i sup_X)); eexists; eauto | exact Hle]].\n- intro Hup; apply (proj2 (supremum_cpo_spec CPO' (E.image (fun f_i => proj1_sig f_i sup_X) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) u); unfold upperboundsOf; intros t Ht; destruct Ht as [f_i [Ht' Hf_i]]; subst t; apply (proj2 (continuous_sup (proj1_sig f_i) (proj2_sig f_i) X sup_X sup_X_is_supremum_of_X X_isDirected) u); unfold upperboundsOf; intros y Hy_img; destruct Hy_img as [x [Hy' Hx]]; subst y; apply Hup; unfold S; eexists (E.image (proj1_sig f_i) X); split; [ eexists x; split; eauto | eexists f_i; split; eauto ]."
+      ],
+      "failed_attempts": [
+        "refine (let supST := supOfScottContinuousMaps F F_isDirected sup_X in\n        let T := E.image (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i sup_X) F in\n        let S := E.unions (E.image (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => E.image (fun x : D => proj1_sig f_i x) X) F) in\n        let HsupT : is_supremum_of supST T :=\n          supremum_cpo_spec CPO' T (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X) in\n        let reflD x := PreOrder_Reflexive (leProp_PreOrder D PROSET) x in\n        let reflD' x := PreOrder_Reflexive (leProp_PreOrder D' PROSET') x in\n        let transD' x y z := PreOrder_Transitive (leProp_PreOrder D' PROSET') x y z in\n        conj\n          (fun (u : D') (Hle : leProp supST u) (y : D') (Hy : E.In y S) =>\n            match Hy with\n            | In_unions _ X' Hx_in_X' HX'_in_F =>\n              match HX'_in_F with\n              | In_image _ _ _ _ _ f_i Heq_X' Hfi =>\n                (match Heq_X' in _ = X'' return (E.In y X'' -> E.In y (E.image (fun x : D => proj1_sig f_i x) X)) with\n                 | eq_refl => fun H => H\n                 end Hx_in_X')\n                (fun Hx_in_X'_img =>\n                  match Hx_in_X'_img with\n                  | In_image _ _ _ _ _ x Heq_y Hx =>\n                    let Hx_sup : leProp x sup_X :=\n                      proj1 (sup_X_is_supremum_of_X sup_X) (reflD sup_X) x Hx in\n                    let Hmono : leProp (proj1_sig f_i x) (proj1_sig f_i sup_X) :=\n                      continuous_monotone D D' PROSET PROSET' CPO CPO' (proj1_sig f_i) (proj2_sig f_i) x sup_X Hx_sup in\n                    let H_T_ub : leProp (proj1_sig f_i sup_X) supST :=\n                      let HsupT_upper : forall u' : D', leProp supST u' -> forall y' : D', E.In y' T -> leProp y' u' :=\n                        proj1 (HsupT supST) (reflD' supST) in\n                      HsupT_upper supST (reflD' supST) (proj1_sig f_i sup_X)\n                        (@In_image (sig (fun f : forall _ : D, D' => isContinuous f)) D'\n                           (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i' sup_X) F\n                           (proj1_sig f_i sup_X) f_i eq_refl Hfi) in\n                    match Heq_y in _ = y' return leProp y' u with\n                    | eq_refl => transD' (proj1_sig f_i x) (proj1_sig f_i sup_X) u Hmono (transD' (proj1_sig f_i sup_X) supST u H_T_ub Hle)\n                    end\n                  end)\n              end\n            end)\n          (fun (u : D') (H_ub_S : forall y : D', E.In y S -> leProp y u) =>\n            let HsupT_spec : is_supremum_of supST T := HsupT in\n            proj2 (HsupT_spec u)\n              (fun (y : D') (Hy : E.In y T) =>\n                match Hy with\n                | @In_image (sig (fun f : forall _ : D, D' => isContinuous f)) D'\n                    (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i' sup_X) F\n                    y f_i Heq_y Hfi =>\n                  (match Heq_y in _ = y' return (y' = proj1_sig f_i sup_X -> leProp y' u) -> leProp y' u with\n                   | eq_refl => fun k => k eq_refl\n                   end)\n                    (fun _ : proj1_sig f_i sup_X = proj1_sig f_i sup_X =>\n                      let Hcont : isContinuous (proj1_sig f_i) := proj2_sig f_i in\n                      let Hsup_fi_image : is_supremum_of (proj1_sig f_i sup_X) (E.image (fun x : D => proj1_sig f_i x) X) :=\n                        continuous_sup D D' PROSET PROSET' CPO CPO' (proj1_sig f_i) Hcont X sup_X sup_X_is_supremum_of_X X_isDirected in\n                      let H_upper_image : forall z : D', E.In z (E.image (fun x : D => proj1_sig f_i x) X) -> leProp z u :=\n                        fun z Hz =>\n                          H_ub_S z\n                            (@In_unions D' (E.image (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => E.image (fun x : D => proj1_sig f_i' x) X) F)\n                              (E.image (fun x : D => proj1_sig f_i x) X) Hz\n                              (@In_image (sig (fun f : forall _ : D, D' => isContinuous f)) (E.t D')\n                                (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => E.image (fun x : D => proj1_sig f_i' x) X) F\n                                (E.image (fun x : D => proj1_sig f_i x) X) f_i eq_refl Hfi)) in\n                      proj1 (Hsup_fi_image u) H_upper_image)\n                end)))."
+      ]
+    },
+    {
+      "uuid": "6ccab08431ea4157aa89a5b1eb6c6833",
+      "parent_uuid": "0e959c9add3e42af868f2abb032d11e6",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "u : D'",
+            "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+            "X_isDirected : isDirected X",
+            "F_isDirected : isDirected F",
+            "sup_X : D",
+            "X : E.t D",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall _ : leProp (supOfScottContinuousMaps F F_isDirected sup_X) u,\nE.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro u; split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : leProp (supOfScottContinuousMaps F F_isDirected sup_X) u,\nE.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))"
+            },
+            {
+              "hypotheses": [
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall\n  _ : E.In u\n        (upperboundsOf\n           (E.unions\n              (E.image\n                 (fun\n                    f_i : sig\n                            (fun f : forall _ : D, D' => isContinuous f)\n                  => E.image (fun x : D => proj1_sig f_i x) X) F))),\nleProp (supOfScottContinuousMaps F F_isDirected sup_X) u"
+            }
+          ]
+        },
+        "proof_prefix": "intro u; split."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros Hle x Hx_union; destruct Hx_union as [Y [ [y [-> HyX]] [f_i [-> Hf]] ]]; transitivity (proj1_sig f_i sup_X); [ apply (proj1 (ScottContinuousMap_preserves_supremum (proj1_sig f_i) X sup_X (proj2_sig f_i) X_isDirected sup_X_is_supremum_of_X (proj1_sig f_i sup_X)) (PreOrder_Reflexive _ _ (leProp_PreOrder PROSET') (proj1_sig f_i sup_X)) (proj1_sig f_i y) (In_image y eq_refl HyX)) | transitivity (supOfScottContinuousMaps F F_isDirected sup_X); [ apply (proj1 ((supremum_cpo_spec CPO') _ (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) (supOfScottContinuousMaps F F_isDirected sup_X) (PreOrder_Reflexive _ _ (leProp_PreOrder PROSET') (supOfScottContinuousMaps F F_isDirected sup_X)) (proj1_sig f_i sup_X) (In_image f_i eq_refl Hf)) | exact Hle ] ]."
+      ],
+      "failed_attempts": [
+        "intros Hle x Hx_union; destruct Hx_union as [Y [ [y [-> HyX]] [f_i [-> Hf]] ]]; transitivity (proj1_sig f_i sup_X); [ apply (proj1 (ScottContinuousMap_preserves_supremum (proj1_sig f_i) X sup_X (proj2_sig f_i) X_isDirected sup_X_is_supremum_of_X (proj1_sig f_i sup_X)) (PreOrder_Reflexive _ _ (leProp_PreOrder PROSET') (proj1_sig f_i sup_X)) (proj1_sig f_i y) (In_image y eq_refl HyX)) | transitivity (supOfScottContinuousMaps F F_isDirected sup_X); [ apply (proj1 ((supremum_cpo_spec CPO') _ (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) (supOfScottContinuousMaps F F_isDirected sup_X) (PreOrder_Reflexive _ _ (leProp_PreOrder PROSET') (supOfScottContinuousMaps F F_isDirected sup_X)) (proj1_sig f_i sup_X) (In_image f_i eq_refl Hf)) | exact Hle ] ]."
+      ]
+    },
+    {
+      "uuid": "26b18f42152a42da9fc823087647d020",
+      "parent_uuid": "0e959c9add3e42af868f2abb032d11e6",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "u : D'",
+            "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+            "X_isDirected : isDirected X",
+            "F_isDirected : isDirected F",
+            "sup_X : D",
+            "X : E.t D",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall\n  _ : E.In u\n        (upperboundsOf\n           (E.unions\n              (E.image\n                 (fun\n                    f_i : sig\n                            (fun f : forall _ : D, D' => isContinuous f)\n                  => E.image (fun x : D => proj1_sig f_i x) X) F))),\nleProp (supOfScottContinuousMaps F F_isDirected sup_X) u"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro u; split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : leProp (supOfScottContinuousMaps F F_isDirected sup_X) u,\nE.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))"
+            },
+            {
+              "hypotheses": [
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall\n  _ : E.In u\n        (upperboundsOf\n           (E.unions\n              (E.image\n                 (fun\n                    f_i : sig\n                            (fun f : forall _ : D, D' => isContinuous f)\n                  => E.image (fun x : D => proj1_sig f_i x) X) F))),\nleProp (supOfScottContinuousMaps F F_isDirected sup_X) u"
+            }
+          ]
+        },
+        "proof_prefix": "intro u; split. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros Hupper; apply (proj1 ((supremum_cpo_spec CPO') _ (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) u); intros z [f_i [-> Hf]]; apply (proj1 (ScottContinuousMap_preserves_supremum (proj1_sig f_i) X sup_X (proj2_sig f_i) X_isDirected sup_X_is_supremum_of_X u)); intros y [y0 [-> HyX]]; apply (Hupper (proj1_sig f_i y0) (In_unions (E.image (fun x : D => proj1_sig f_i x) X) (In_image y0 eq_refl HyX) (In_image f_i eq_refl Hf)))."
+      ],
+      "failed_attempts": [
+        "intros Hupper; apply (proj1 ((supremum_cpo_spec CPO') _ (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) u); intros z [f_i [-> Hf]]; apply (proj1 (ScottContinuousMap_preserves_supremum (proj1_sig f_i) X sup_X (proj2_sig f_i) X_isDirected sup_X_is_supremum_of_X u)); intros y [y0 [-> HyX]]; apply (Hupper (proj1_sig f_i y0) (In_unions (E.image (fun x : D => proj1_sig f_i x) X) (In_image y0 eq_refl HyX) (In_image f_i eq_refl Hf)))."
+      ]
+    },
+    {
+      "uuid": "cb19f10913df484aa0fb908b6c15849e",
+      "parent_uuid": "0e959c9add3e42af868f2abb032d11e6",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : leProp (supOfScottContinuousMaps F F_isDirected sup_X) u",
+            "u : D'",
+            "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+            "X_isDirected : isDirected X",
+            "F_isDirected : isDirected F",
+            "sup_X : D",
+            "X : E.t D",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "E.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold is_supremum_of. unfold upperboundsOf in sup_X_is_supremum_of_X. intros u; split; intro H."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : leProp (supOfScottContinuousMaps F F_isDirected sup_X) u",
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))"
+            },
+            {
+              "hypotheses": [
+                "H : E.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))",
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (supOfScottContinuousMaps F F_isDirected sup_X) u"
+            }
+          ]
+        },
+        "proof_prefix": "unfold is_supremum_of. unfold upperboundsOf in sup_X_is_supremum_of_X. intros u; split; intro H."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "unfold upperboundsOf; intro Hle; intros y Hy; apply leProp_trans with (supOfScottContinuousMaps F F_isDirected sup_X); [| exact Hle]. destruct Hy as [S HyS HSinF]; destruct HSinF as [f_i Heq Hinfi]; rewrite Heq in HyS; destruct HyS as [x Heq2 Hx]; rewrite Heq2. apply leProp_trans with (supOfScottContinuousMaps F F_isDirected x); [apply ((proj1 (supremum_cpo_spec CPO' (E.image (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i' x) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected x)) (supOfScottContinuousMaps F F_isDirected x) (reflexivity _)) (proj1_sig f_i x)); apply In_image with f_i; auto | apply supOfScottContinuousMaps_isMonotonic; apply (proj1 (sup_X_is_supremum_of_X sup_X) (reflexivity _) x Hx)]."
+      ],
+      "failed_attempts": [
+        "unfold upperboundsOf; intro Hle; intros y Hy; apply leProp_trans with (supOfScottContinuousMaps F F_isDirected sup_X); [| exact Hle]. destruct Hy as [S HyS HSinF]; destruct HSinF as [f_i Heq Hinfi]; rewrite Heq in HyS; destruct HyS as [x Heq2 Hx]; rewrite Heq2. apply leProp_trans with (supOfScottContinuousMaps F F_isDirected x); [apply ((proj1 (supremum_cpo_spec CPO' (E.image (fun f_i' : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i' x) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected x)) (supOfScottContinuousMaps F F_isDirected x) (reflexivity _)) (proj1_sig f_i x)); apply In_image with f_i; auto | apply supOfScottContinuousMaps_isMonotonic; apply (proj1 (sup_X_is_supremum_of_X sup_X) (reflexivity _) x Hx)]."
+      ]
+    },
+    {
+      "uuid": "3b17fb788bcb4e1f90ca6450995800f5",
+      "parent_uuid": "0e959c9add3e42af868f2abb032d11e6",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : E.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))",
+            "u : D'",
+            "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+            "X_isDirected : isDirected X",
+            "F_isDirected : isDirected F",
+            "sup_X : D",
+            "X : E.t D",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "leProp (supOfScottContinuousMaps F F_isDirected sup_X) u"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold is_supremum_of. unfold upperboundsOf in sup_X_is_supremum_of_X. intros u; split; intro H."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : leProp (supOfScottContinuousMaps F F_isDirected sup_X) u",
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))"
+            },
+            {
+              "hypotheses": [
+                "H : E.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F)))",
+                "u : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (supOfScottContinuousMaps F F_isDirected sup_X) u"
+            }
+          ]
+        },
+        "proof_prefix": "unfold is_supremum_of. unfold upperboundsOf in sup_X_is_supremum_of_X. intros u; split; intro H. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "unfold upperboundsOf in H; apply (proj2 (supremum_cpo_spec CPO' (E.image (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i sup_X) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) u). unfold upperboundsOf; intros y Hy. destruct Hy as [f_i Heq Hinfi]; rewrite Heq; apply (proj2 (ScottContinuousMap_preserves_supremum (proj1_sig f_i) X sup_X (proj2_sig f_i) X_isDirected sup_X_is_supremum_of_X) u); unfold upperboundsOf; intros y' Hy'; destruct Hy' as [x Heq2 Hx]; rewrite Heq2; apply H; apply In_unions with (E.image (fun x0 : D => proj1_sig f_i x0) X); [apply In_image with x; auto | apply In_image with f_i; auto]."
+      ],
+      "failed_attempts": [
+        "unfold upperboundsOf in H; apply (proj2 (supremum_cpo_spec CPO' (E.image (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i sup_X) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) u). unfold upperboundsOf; intros y Hy. destruct Hy as [f_i Heq Hinfi]; rewrite Heq; apply (proj2 (ScottContinuousMap_preserves_supremum (proj1_sig f_i) X sup_X (proj2_sig f_i) X_isDirected sup_X_is_supremum_of_X) u); unfold upperboundsOf; intros y' Hy'; destruct Hy' as [x Heq2 Hx]; rewrite Heq2; apply H; apply In_unions with (E.image (fun x0 : D => proj1_sig f_i x0) X); [apply In_image with x; auto | apply In_image with f_i; auto]."
+      ]
+    },
+    {
+      "uuid": "7205ea5c5d394f3d9108993d8f96444a",
+      "parent_uuid": "0e959c9add3e42af868f2abb032d11e6",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "u : D'",
+            "S : forall _ : D', Prop",
+            "s : D'",
+            "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+            "X_isDirected : isDirected X",
+            "F_isDirected : isDirected F",
+            "sup_X : D",
+            "X : E.t D",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall _ : leProp s u, E.In u (upperboundsOf S)"
+        },
+        "decomposition": {
+          "proofs": [
+            "set (s := supOfScottContinuousMaps F F_isDirected sup_X). set (S := E.unions\n           (E.image\n              (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n               E.image (fun x : D => proj1_sig f_i x) X) F)). unfold is_supremum_of; intro u; split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "u : D'",
+                "S : forall _ : D', Prop",
+                "s : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : leProp s u, E.In u (upperboundsOf S)"
+            },
+            {
+              "hypotheses": [
+                "u : D'",
+                "S : forall _ : D', Prop",
+                "s : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : E.In u (upperboundsOf S), leProp s u"
+            }
+          ]
+        },
+        "proof_prefix": "set (s := supOfScottContinuousMaps F F_isDirected sup_X). set (S := E.unions\n           (E.image\n              (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n               E.image (fun x : D => proj1_sig f_i x) X) F)). unfold is_supremum_of; intro u; split."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro Hle; unfold upperboundsOf, E.unions, E.image; intros y Hy; destruct Hy as [Y [Hy_in_Y HY]]; destruct HY as [f_i [HY' Hf_i]]; subst Y; destruct Hy_in_Y as [x [Hy' Hx]]; subst y; transitivity (proj1_sig f_i sup_X); [apply (proj1 (proj1 (continuous_sup (proj1_sig f_i) (proj2_sig f_i) X sup_X sup_X_is_supremum_of_X X_isDirected) (proj1_sig f_i sup_X)) (PreOrder_Reflexive leProp (leProp_PreOrder D' PROSET') (proj1_sig f_i sup_X)) (proj1_sig f_i x)); exists x; auto | transitivity s; [apply (proj1 (proj1 (supremum_cpo_spec CPO' (E.image (fun f_i => proj1_sig f_i sup_X) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) s) (PreOrder_Reflexive leProp (leProp_PreOrder D' PROSET') s) (proj1_sig f_i sup_X)); eexists; eauto | exact Hle]]."
+      ],
+      "failed_attempts": [
+        "intro Hle; unfold upperboundsOf, E.unions, E.image; intros y Hy; destruct Hy as [Y [Hy_in_Y HY]]; destruct HY as [f_i [HY' Hf_i]]; subst Y; destruct Hy_in_Y as [x [Hy' Hx]]; subst y; transitivity (proj1_sig f_i sup_X); [apply (proj1 (proj1 (continuous_sup (proj1_sig f_i) (proj2_sig f_i) X sup_X sup_X_is_supremum_of_X X_isDirected) (proj1_sig f_i sup_X)) (PreOrder_Reflexive leProp (leProp_PreOrder D' PROSET') (proj1_sig f_i sup_X)) (proj1_sig f_i x)); exists x; auto | transitivity s; [apply (proj1 (proj1 (supremum_cpo_spec CPO' (E.image (fun f_i => proj1_sig f_i sup_X) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) s) (PreOrder_Reflexive leProp (leProp_PreOrder D' PROSET') s) (proj1_sig f_i sup_X)); eexists; eauto | exact Hle]]."
+      ]
+    },
+    {
+      "uuid": "71b6fbb258a54c02b344599b61abce38",
+      "parent_uuid": "0e959c9add3e42af868f2abb032d11e6",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "u : D'",
+            "S : forall _ : D', Prop",
+            "s : D'",
+            "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+            "X_isDirected : isDirected X",
+            "F_isDirected : isDirected F",
+            "sup_X : D",
+            "X : E.t D",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall _ : E.In u (upperboundsOf S), leProp s u"
+        },
+        "decomposition": {
+          "proofs": [
+            "set (s := supOfScottContinuousMaps F F_isDirected sup_X). set (S := E.unions\n           (E.image\n              (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n               E.image (fun x : D => proj1_sig f_i x) X) F)). unfold is_supremum_of; intro u; split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "u : D'",
+                "S : forall _ : D', Prop",
+                "s : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : leProp s u, E.In u (upperboundsOf S)"
+            },
+            {
+              "hypotheses": [
+                "u : D'",
+                "S : forall _ : D', Prop",
+                "s : D'",
+                "sup_X_is_supremum_of_X : is_supremum_of sup_X X",
+                "X_isDirected : isDirected X",
+                "F_isDirected : isDirected F",
+                "sup_X : D",
+                "X : E.t D",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall _ : E.In u (upperboundsOf S), leProp s u"
+            }
+          ]
+        },
+        "proof_prefix": "set (s := supOfScottContinuousMaps F F_isDirected sup_X). set (S := E.unions\n           (E.image\n              (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n               E.image (fun x : D => proj1_sig f_i x) X) F)). unfold is_supremum_of; intro u; split. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro Hup; apply (proj2 (supremum_cpo_spec CPO' (E.image (fun f_i => proj1_sig f_i sup_X) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) u); unfold upperboundsOf; intros t Ht; destruct Ht as [f_i [Ht' Hf_i]]; subst t; apply (proj2 (continuous_sup (proj1_sig f_i) (proj2_sig f_i) X sup_X sup_X_is_supremum_of_X X_isDirected) u); unfold upperboundsOf; intros y Hy_img; destruct Hy_img as [x [Hy' Hx]]; subst y; apply Hup; unfold S; eexists (E.image (proj1_sig f_i) X); split; [ eexists x; split; eauto | eexists f_i; split; eauto ]."
+      ],
+      "failed_attempts": [
+        "intro Hup; apply (proj2 (supremum_cpo_spec CPO' (E.image (fun f_i => proj1_sig f_i sup_X) F) (supOfScottContinuousMaps_isWellDefined F F_isDirected sup_X)) u); unfold upperboundsOf; intros t Ht; destruct Ht as [f_i [Ht' Hf_i]]; subst t; apply (proj2 (continuous_sup (proj1_sig f_i) (proj2_sig f_i) X sup_X sup_X_is_supremum_of_X X_isDirected) u); unfold upperboundsOf; intros y Hy_img; destruct Hy_img as [x [Hy' Hx]]; subst y; apply Hup; unfold S; eexists (E.image (proj1_sig f_i) X); split; [ eexists x; split; eauto | eexists f_i; split; eauto ]."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.5,
+      "id": 135536116465552,
+      "uuid": "7205ea5c5d394f3d9108993d8f96444a"
+    },
+    {
+      "cost": -0.4,
+      "id": 135536116288336,
+      "uuid": "3b17fb788bcb4e1f90ca6450995800f5"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536116237520,
+      "uuid": "26b18f42152a42da9fc823087647d020"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536116242320,
+      "uuid": "6ccab08431ea4157aa89a5b1eb6c6833"
+    },
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536116300880,
+      "uuid": "cb19f10913df484aa0fb908b6c15849e"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536161121808,
+      "uuid": "0e959c9add3e42af868f2abb032d11e6"
+    }
+  ],
+  "costs_so_far": {
+    "0e959c9add3e42af868f2abb032d11e6": 0.0,
+    "6ccab08431ea4157aa89a5b1eb6c6833": -0.1,
+    "26b18f42152a42da9fc823087647d020": -0.2,
+    "cb19f10913df484aa0fb908b6c15849e": -0.30000000000000004,
+    "3b17fb788bcb4e1f90ca6450995800f5": -0.4,
+    "7205ea5c5d394f3d9108993d8f96444a": -0.5,
+    "71b6fbb258a54c02b344599b61abce38": -0.6000000000000001
+  },
+  "costs_to_go": {
+    "0e959c9add3e42af868f2abb032d11e6": 0,
+    "6ccab08431ea4157aa89a5b1eb6c6833": 0,
+    "26b18f42152a42da9fc823087647d020": 0,
+    "cb19f10913df484aa0fb908b6c15849e": 0,
+    "3b17fb788bcb4e1f90ca6450995800f5": 0,
+    "7205ea5c5d394f3d9108993d8f96444a": 0,
+    "71b6fbb258a54c02b344599b61abce38": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "0e959c9add3e42af868f2abb032d11e6": 0,
+    "6ccab08431ea4157aa89a5b1eb6c6833": 1,
+    "26b18f42152a42da9fc823087647d020": 2,
+    "cb19f10913df484aa0fb908b6c15849e": 3,
+    "3b17fb788bcb4e1f90ca6450995800f5": 4,
+    "7205ea5c5d394f3d9108993d8f96444a": 5,
+    "71b6fbb258a54c02b344599b61abce38": 6
+  },
+  "next_node_idx": 7,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "0e959c9add3e42af868f2abb032d11e6",
+  "done": false,
+  "visualization": "\n* (12 HYPS)|-is_supremum_of (supOfScottContinuousMaps F F_isDirected sup_X)\n  (E.unions\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         E.image (fun x : D => proj1_sig f_i x) X) F)) (cost:0.0; n_fail:0)\n  # 1 prefixes like intro u; split.\n  * (13 HYPS)|-forall _ : leProp (supOfScottContinuousMaps F F_isDirected sup_X) u,\nE.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F))) (cost:-0.1; n_fail:0)\n\n  * (13 HYPS)|-forall\n  _ : E.In u\n        (upperboundsOf\n           (E.unions\n              (E.image\n                 (fun\n                    f_i : sig\n                            (fun f : forall _ : D, D' => isContinuous f)\n                  => E.image (fun x : D => proj1_sig f_i x) X) F))),\nleProp (supOfScottContinuousMaps F F_isDirected sup_X) u (cost:-0.2; n_fail:0)\n\n  # 1 prefixes like unfold is_supremum_of. unfold upperboundsOf in sup_X_is_supremum_of_X. intros u; split; intro H.\n  * (14 HYPS)|-E.In u\n  (upperboundsOf\n     (E.unions\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => E.image (fun x : D => proj1_sig f_i x) X) F))) (cost:-0.30000000000000004; n_fail:0)\n\n  * (14 HYPS)|-leProp (supOfScottContinuousMaps F F_isDirected sup_X) u (cost:-0.4; n_fail:0)\n\n  # 1 prefixes like set (s := supOfScottContinuousMaps F F_isDirected sup_X). set (S := E.unions\n           (E.image\n              (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n               E.image (fun x : D => proj1_sig f_i x) X) F)). unfold is_supremum_of; intro u; split.\n  * (15 HYPS)|-forall _ : leProp s u, E.In u (upperboundsOf S) (cost:-0.5; n_fail:0)\n\n  * (15 HYPS)|-forall _ : E.In u (upperboundsOf S), leProp s u (cost:-0.6000000000000001; n_fail:1)\n"
+}

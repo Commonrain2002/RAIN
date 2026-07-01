@@ -1,0 +1,2129 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ClassicalDomainTheory.v-supOfScottContinuousMaps_isWellDefined.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "7321be1759804467bb629217a168e9b4",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "F_isDirected : isDirected F",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall x : D,\nisDirected\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "17b6096d19e34ee3a9dc35679b112ea5",
+          "c5b3bfd07f114903a9a02f0da534a81d"
+        ],
+        [
+          "8eaf8b29e4404b09a8561e850c031132",
+          "e2c97bcacff94def852f823ab20f6097"
+        ],
+        [
+          "491e010808334f89a236b11cf851f7d1",
+          "a18aa252e5574f8c9eac1d7746f1b7d9"
+        ],
+        [
+          "1c21664a452242f5ad897f013af52032",
+          "02d292abe05e4595b3bd691596f7c914"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "intro x. destruct F_isDirected as [Hnon Hdir]. apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnon : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnon : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "intro x; destruct F_isDirected as [Hnonempty Hdirected]; apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdirected : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdirected : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "intros x. destruct F_isDirected as [F_nonempty F_directed]. apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "F_directed : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "F_nonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "F_directed : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "F_nonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro x. destruct F_isDirected as [Hnon Hdir]. apply isDirected_intro.\n- now (destruct Hnon as [f Hf]; eexists; eapply In_image; [reflexivity| exact Hf]).\n- now (intros y1 y2 Hy1 Hy2; destruct Hy1 as [f1 Heq1 Hin1], Hy2 as [f2 Heq2 Hin2]; destruct Hdir with f1 f2 Hin1 Hin2 as [f3 [Hin3 [Hle1 Hle2]]]; simpl in Hle1, Hle2; specialize (Hle1 x); specialize (Hle2 x); eexists; repeat apply conj; [eapply In_image; [reflexivity| exact Hin3]| rewrite Heq1; exact Hle1| rewrite Heq2; exact Hle2]).",
+        "intro x; destruct F_isDirected as [Hnonempty Hdirected]; apply isDirected_intro.\n- destruct Hnonempty as [f Hf]; now exists (proj1_sig f x); apply In_image with f.\n- intros y1 y2 Hy1 Hy2. destruct Hy1 as [f1 Heq1 Hf1], Hy2 as [f2 Heq2 Hf2]; subst. destruct (Hdirected f1 f2 Hf1 Hf2) as [f3 [Hf3 [Hle1 Hle2]]]. exists (proj1_sig f3 x); split; [now apply In_image with f3 | split; [exact (Hle1 x) | exact (Hle2 x)]].",
+        "intros x. destruct F_isDirected as [F_nonempty F_directed]. apply isDirected_intro.\n- destruct F_nonempty as [f0 Hf0]. exists (proj1_sig f0 x). apply In_image with f0; auto.\n- intros y1 y2 Hy1 Hy2. destruct Hy1 as [f1 Heq1 Hf1]. destruct Hy2 as [f2 Heq2 Hf2]. destruct (F_directed f1 f2 Hf1 Hf2) as [f3 [Hf3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split; [apply In_image with f3; auto | split; [rewrite Heq1; apply (Hle1 x) | rewrite Heq2; apply (Hle2 x)]].",
+        "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro.\n- destruct Hnonemp_F as [f0 Hf0]; exists (proj1_sig f0 x); apply In_image with (x := f0); [reflexivity | exact Hf0].\n- intros y1 y2 Hy1 Hy2; inversion Hy1 as [f1 Heq1 Hf1]; inversion Hy2 as [f2 Heq2 Hf2]; destruct (Hdir_F f1 f2 Hf1 Hf2) as [f3 [Hf3 [Hle1 Hle2]]]; exists (proj1_sig f3 x); split; [apply In_image with (x := f3); [reflexivity | exact Hf3] | split; [rewrite Heq1; apply (Hle1 x) | rewrite Heq2; apply (Hle2 x)]]."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "17b6096d19e34ee3a9dc35679b112ea5",
+      "parent_uuid": "7321be1759804467bb629217a168e9b4",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "x : D",
+            "Hdir : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnon : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro x. destruct F_isDirected as [Hnon Hdir]. apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnon : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnon : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x. destruct F_isDirected as [Hnon Hdir]. apply isDirected_intro."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "sauto lq: on."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "c5b3bfd07f114903a9a02f0da534a81d",
+      "parent_uuid": "7321be1759804467bb629217a168e9b4",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "x : D",
+            "Hdir : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnon : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro x. destruct F_isDirected as [Hnon Hdir]. apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnon : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnon : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x. destruct F_isDirected as [Hnon Hdir]. apply isDirected_intro. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "now (intros y1 y2 Hy1 Hy2; destruct Hy1 as [f1 Heq1 Hin1], Hy2 as [f2 Heq2 Hin2]; destruct Hdir with f1 f2 Hin1 Hin2 as [f3 [Hin3 [Hle1 Hle2]]]; simpl in Hle1, Hle2; specialize (Hle1 x); specialize (Hle2 x); eexists; repeat apply conj; [eapply In_image; [reflexivity| exact Hin3]| rewrite Heq1; exact Hle1| rewrite Heq2; exact Hle2])."
+      ],
+      "failed_attempts": [
+        "now (intros y1 y2 Hy1 Hy2; destruct Hy1 as [f1 Heq1 Hin1], Hy2 as [f2 Heq2 Hin2]; destruct Hdir with f1 f2 Hin1 Hin2 as [f3 [Hin3 [Hle1 Hle2]]]; simpl in Hle1, Hle2; specialize (Hle1 x); specialize (Hle2 x); eexists; repeat apply conj; [eapply In_image; [reflexivity| exact Hin3]| rewrite Heq1; exact Hle1| rewrite Heq2; exact Hle2])."
+      ]
+    },
+    {
+      "uuid": "8eaf8b29e4404b09a8561e850c031132",
+      "parent_uuid": "7321be1759804467bb629217a168e9b4",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "x : D",
+            "Hdirected : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro x; destruct F_isDirected as [Hnonempty Hdirected]; apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdirected : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdirected : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonempty Hdirected]; apply isDirected_intro."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "sauto lq: on."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "e2c97bcacff94def852f823ab20f6097",
+      "parent_uuid": "7321be1759804467bb629217a168e9b4",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "x : D",
+            "Hdirected : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro x; destruct F_isDirected as [Hnonempty Hdirected]; apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdirected : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdirected : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonempty Hdirected]; apply isDirected_intro. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros y1 y2 Hy1 Hy2. destruct Hy1 as [f1 Heq1 Hf1], Hy2 as [f2 Heq2 Hf2]; subst. destruct (Hdirected f1 f2 Hf1 Hf2) as [f3 [Hf3 [Hle1 Hle2]]]. exists (proj1_sig f3 x); split; [now apply In_image with f3 | split; [exact (Hle1 x) | exact (Hle2 x)]]."
+      ],
+      "failed_attempts": [
+        "intros y1 y2 Hy1 Hy2. destruct Hy1 as [f1 Heq1 Hf1], Hy2 as [f2 Heq2 Hf2]; subst. destruct (Hdirected f1 f2 Hf1 Hf2) as [f3 [Hf3 [Hle1 Hle2]]]. exists (proj1_sig f3 x); split; [now apply In_image with f3 | split; [exact (Hle1 x) | exact (Hle2 x)]]."
+      ]
+    },
+    {
+      "uuid": "491e010808334f89a236b11cf851f7d1",
+      "parent_uuid": "7321be1759804467bb629217a168e9b4",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "x : D",
+            "F_directed : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "F_nonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x. destruct F_isDirected as [F_nonempty F_directed]. apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "F_directed : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "F_nonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "F_directed : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "F_nonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        "proof_prefix": "intros x. destruct F_isDirected as [F_nonempty F_directed]. apply isDirected_intro."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "destruct F_nonempty as [f0 Hf0]. exists (proj1_sig f0 x). apply In_image with f0; auto."
+      ],
+      "failed_attempts": [
+        "destruct F_nonempty as [f0 Hf0]. exists (proj1_sig f0 x). apply In_image with f0; auto."
+      ]
+    },
+    {
+      "uuid": "a18aa252e5574f8c9eac1d7746f1b7d9",
+      "parent_uuid": "7321be1759804467bb629217a168e9b4",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "x : D",
+            "F_directed : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "F_nonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x. destruct F_isDirected as [F_nonempty F_directed]. apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "F_directed : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "F_nonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "F_directed : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "F_nonempty : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        "proof_prefix": "intros x. destruct F_isDirected as [F_nonempty F_directed]. apply isDirected_intro. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros y1 y2 Hy1 Hy2. destruct Hy1 as [f1 Heq1 Hf1]. destruct Hy2 as [f2 Heq2 Hf2]. destruct (F_directed f1 f2 Hf1 Hf2) as [f3 [Hf3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split; [apply In_image with f3; auto | split; [rewrite Heq1; apply (Hle1 x) | rewrite Heq2; apply (Hle2 x)]]."
+      ],
+      "failed_attempts": [
+        "intros y1 y2 Hy1 Hy2. destruct Hy1 as [f1 Heq1 Hf1]. destruct Hy2 as [f2 Heq2 Hf2]. destruct (F_directed f1 f2 Hf1 Hf2) as [f3 [Hf3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split; [apply In_image with f3; auto | split; [rewrite Heq1; apply (Hle1 x) | rewrite Heq2; apply (Hle2 x)]]."
+      ]
+    },
+    {
+      "uuid": "1c21664a452242f5ad897f013af52032",
+      "parent_uuid": "7321be1759804467bb629217a168e9b4",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "sauto lq: on."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "02d292abe05e4595b3bd691596f7c914",
+      "parent_uuid": "7321be1759804467bb629217a168e9b4",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F))"
+            },
+            {
+              "hypotheses": [
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3)))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "79a2c8f5e7d74c6a9a69de77a88f066d",
+          "c7d2f2c1da8042ad85d03c4d33a9c4d7"
+        ],
+        [
+          "5f063166728840fb9f1dd5420f54279e",
+          "29c0615d82a2462fbd3bd0cbb11e8ad2"
+        ],
+        [
+          "10b3c22e356e48999ac28347caca8be9",
+          "7c35629121e94bfda7d3f7fb575b093e",
+          "df7d7b6454884a32bc357d7d7023f70a"
+        ],
+        [
+          "bc4fa0c35718461997c47b969d6964f3",
+          "7000b7c7dce24fa199342f7e4b2ddcad"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [f1 Hx1_eq Hf1F]. destruct Hx2 as [f2 Hx2_eq Hf2F]. destruct (Hdir_F f1 f2 Hf1F Hf2F) as [f3 [Hf3F [Hf1f3 Hf2f3]]]. exists (proj1_sig f3 x). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hf2f3 : leProp f2 f3",
+                "Hf1f3 : leProp f1 f3",
+                "Hf3F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf2F : E.In f2 F",
+                "Hx2_eq : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf1F : E.In f1 F",
+                "Hx1_eq : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hf2f3 : leProp f2 f3",
+                "Hf1f3 : leProp f1 f3",
+                "Hf3F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf2F : E.In f2 F",
+                "Hx2_eq : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf1F : E.In f1 F",
+                "Hx1_eq : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "intros x1 x2 h1 h2. inversion h1 as [f1 h_eq1 h_f1_in_F]. inversion h2 as [f2 h_eq2 h_f2_in_F]. destruct (Hdir_F f1 f2 h_f1_in_F h_f2_in_F) as [f3 [h_f3_in_F [h_le13 h_le23]]]. exists (proj1_sig f3 x). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "h_le23 : leProp f2 f3",
+                "h_le13 : leProp f1 f3",
+                "h_f3_in_F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f2_in_F : E.In f2 F",
+                "h_eq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f1_in_F : E.In f1 F",
+                "h_eq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "h1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "h_le23 : leProp f2 f3",
+                "h_le13 : leProp f1 f3",
+                "h_f3_in_F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f2_in_F : E.In f2 F",
+                "h_eq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f1_in_F : E.In f1 F",
+                "h_eq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "h1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [a1 Hx1_eq Hmem1]; subst x1. destruct Hx2 as [a2 Hx2_eq Hmem2]; subst x2. destruct (Hdir_F a1 a2 Hmem1 Hmem2) as [a3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig a3 x). split; [ | split]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig a3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (proj1_sig a1 x) (proj1_sig a3 x)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (proj1_sig a2 x) (proj1_sig a3 x)"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "intros x1 x2 H1 H2. inversion H1 as [f1 Heq1 Hmem1]. inversion H2 as [f2 Heq2 Hmem2]. destruct (Hdir_F f1 f2 Hmem1 Hmem2) as [f3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : leProp f2 f3",
+                "Hle1 : leProp f1 f3",
+                "Hmem3 : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In f2 F",
+                "Heq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In f1 F",
+                "Heq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "H2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "H1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp f2 f3",
+                "Hle1 : leProp f1 f3",
+                "Hmem3 : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In f2 F",
+                "Heq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In f1 F",
+                "Heq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "H2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "H1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros y1 y2 Hy1 Hy2; inversion Hy1 as [f1 Heq1 Hf1]; inversion Hy2 as [f2 Heq2 Hf2]; destruct (Hdir_F f1 f2 Hf1 Hf2) as [f3 [Hf3 [Hle1 Hle2]]]; exists (proj1_sig f3 x); split; [apply In_image with (x := f3); [reflexivity | exact Hf3] | split; [rewrite Heq1; apply (Hle1 x) | rewrite Heq2; apply (Hle2 x)]].",
+        "intros x1 x2 Hx1 Hx2. destruct Hx1 as [f1 Hx1_eq Hf1F]. destruct Hx2 as [f2 Hx2_eq Hf2F]. destruct (Hdir_F f1 f2 Hf1F Hf2F) as [f3 [Hf3F [Hf1f3 Hf2f3]]]. exists (proj1_sig f3 x). split.\n- apply (E.In_image (sig (fun f : forall _ : D, D' => isContinuous f)) D' (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i x) F (proj1_sig f3 x) f3 eq_refl Hf3F).\n- split.\n-- rewrite Hx1_eq. apply Hf1f3.\n-- rewrite Hx2_eq. apply Hf2f3.",
+        "intros x1 x2 h1 h2. inversion h1 as [f1 h_eq1 h_f1_in_F]. inversion h2 as [f2 h_eq2 h_f2_in_F]. destruct (Hdir_F f1 f2 h_f1_in_F h_f2_in_F) as [f3 [h_f3_in_F [h_le13 h_le23]]]. exists (proj1_sig f3 x). split.\n- apply In_image with (x := f3); [reflexivity | exact h_f3_in_F].\n- split.\n-- rewrite h_eq1; exact (h_le13 x).\n-- rewrite h_eq2; exact (h_le23 x).",
+        "intros x1 x2 Hx1 Hx2. destruct Hx1 as [a1 Hx1_eq Hmem1]; subst x1. destruct Hx2 as [a2 Hx2_eq Hmem2]; subst x2. destruct (Hdir_F a1 a2 Hmem1 Hmem2) as [a3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig a3 x). split; [ | split].\n- apply (In_image _ _ _ _ _ a3 eq_refl Hmem3).\n- apply (Hle1 x).\n- apply (Hle2 x).",
+        "intros x1 x2 H1 H2. inversion H1 as [f1 Heq1 Hmem1]. inversion H2 as [f2 Heq2 Hmem2]. destruct (Hdir_F f1 f2 Hmem1 Hmem2) as [f3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split.\n- apply (In_image _ _ _ _ f3); [reflexivity | assumption].\n- split.\n-- rewrite Heq1; apply (Hle1 x).\n-- rewrite Heq2; apply (Hle2 x)."
+      ],
+      "failed_attempts": [
+        "intros y1 y2 Hy1 Hy2; inversion Hy1 as [f1 Heq1 Hf1]; inversion Hy2 as [f2 Heq2 Hf2]; destruct (Hdir_F f1 f2 Hf1 Hf2) as [f3 [Hf3 [Hle1 Hle2]]]; exists (proj1_sig f3 x); split; [apply In_image with (x := f3); [reflexivity | exact Hf3] | split; [rewrite Heq1; apply (Hle1 x) | rewrite Heq2; apply (Hle2 x)]]."
+      ]
+    },
+    {
+      "uuid": "79a2c8f5e7d74c6a9a69de77a88f066d",
+      "parent_uuid": "02d292abe05e4595b3bd691596f7c914",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hf2f3 : leProp f2 f3",
+            "Hf1f3 : leProp f1 f3",
+            "Hf3F : E.In f3 F",
+            "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hf2F : E.In f2 F",
+            "Hx2_eq : eq x2 (proj1_sig f2 x)",
+            "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hf1F : E.In f1 F",
+            "Hx1_eq : eq x1 (proj1_sig f1 x)",
+            "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "x1,x2 : D'",
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [f1 Hx1_eq Hf1F]. destruct Hx2 as [f2 Hx2_eq Hf2F]. destruct (Hdir_F f1 f2 Hf1F Hf2F) as [f3 [Hf3F [Hf1f3 Hf2f3]]]. exists (proj1_sig f3 x). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hf2f3 : leProp f2 f3",
+                "Hf1f3 : leProp f1 f3",
+                "Hf3F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf2F : E.In f2 F",
+                "Hx2_eq : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf1F : E.In f1 F",
+                "Hx1_eq : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hf2f3 : leProp f2 f3",
+                "Hf1f3 : leProp f1 f3",
+                "Hf3F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf2F : E.In f2 F",
+                "Hx2_eq : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf1F : E.In f1 F",
+                "Hx1_eq : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit. intros x1 x2 Hx1 Hx2. destruct Hx1 as [f1 Hx1_eq Hf1F]. destruct Hx2 as [f2 Hx2_eq Hf2F]. destruct (Hdir_F f1 f2 Hf1F Hf2F) as [f3 [Hf3F [Hf1f3 Hf2f3]]]. exists (proj1_sig f3 x). split."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply (E.In_image (sig (fun f : forall _ : D, D' => isContinuous f)) D' (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i x) F (proj1_sig f3 x) f3 eq_refl Hf3F)."
+      ],
+      "failed_attempts": [
+        "apply (E.In_image (sig (fun f : forall _ : D, D' => isContinuous f)) D' (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) => proj1_sig f_i x) F (proj1_sig f3 x) f3 eq_refl Hf3F)."
+      ]
+    },
+    {
+      "uuid": "c7d2f2c1da8042ad85d03c4d33a9c4d7",
+      "parent_uuid": "02d292abe05e4595b3bd691596f7c914",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hf2f3 : leProp f2 f3",
+            "Hf1f3 : leProp f1 f3",
+            "Hf3F : E.In f3 F",
+            "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hf2F : E.In f2 F",
+            "Hx2_eq : eq x2 (proj1_sig f2 x)",
+            "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hf1F : E.In f1 F",
+            "Hx1_eq : eq x1 (proj1_sig f1 x)",
+            "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "x1,x2 : D'",
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [f1 Hx1_eq Hf1F]. destruct Hx2 as [f2 Hx2_eq Hf2F]. destruct (Hdir_F f1 f2 Hf1F Hf2F) as [f3 [Hf3F [Hf1f3 Hf2f3]]]. exists (proj1_sig f3 x). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hf2f3 : leProp f2 f3",
+                "Hf1f3 : leProp f1 f3",
+                "Hf3F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf2F : E.In f2 F",
+                "Hx2_eq : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf1F : E.In f1 F",
+                "Hx1_eq : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hf2f3 : leProp f2 f3",
+                "Hf1f3 : leProp f1 f3",
+                "Hf3F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf2F : E.In f2 F",
+                "Hx2_eq : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hf1F : E.In f1 F",
+                "Hx1_eq : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit. intros x1 x2 Hx1 Hx2. destruct Hx1 as [f1 Hx1_eq Hf1F]. destruct Hx2 as [f2 Hx2_eq Hf2F]. destruct (Hdir_F f1 f2 Hf1F Hf2F) as [f3 [Hf3F [Hf1f3 Hf2f3]]]. exists (proj1_sig f3 x). split. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "split.\n- rewrite Hx1_eq. apply Hf1f3.\n- rewrite Hx2_eq. apply Hf2f3."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "5f063166728840fb9f1dd5420f54279e",
+      "parent_uuid": "02d292abe05e4595b3bd691596f7c914",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "h_le23 : leProp f2 f3",
+            "h_le13 : leProp f1 f3",
+            "h_f3_in_F : E.In f3 F",
+            "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "h_f2_in_F : E.In f2 F",
+            "h_eq2 : eq x2 (proj1_sig f2 x)",
+            "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "h_f1_in_F : E.In f1 F",
+            "h_eq1 : eq x1 (proj1_sig f1 x)",
+            "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "h2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+            "h1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+            "x1,x2 : D'",
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 h1 h2. inversion h1 as [f1 h_eq1 h_f1_in_F]. inversion h2 as [f2 h_eq2 h_f2_in_F]. destruct (Hdir_F f1 f2 h_f1_in_F h_f2_in_F) as [f3 [h_f3_in_F [h_le13 h_le23]]]. exists (proj1_sig f3 x). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "h_le23 : leProp f2 f3",
+                "h_le13 : leProp f1 f3",
+                "h_f3_in_F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f2_in_F : E.In f2 F",
+                "h_eq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f1_in_F : E.In f1 F",
+                "h_eq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "h1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "h_le23 : leProp f2 f3",
+                "h_le13 : leProp f1 f3",
+                "h_f3_in_F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f2_in_F : E.In f2 F",
+                "h_eq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f1_in_F : E.In f1 F",
+                "h_eq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "h1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit. intros x1 x2 h1 h2. inversion h1 as [f1 h_eq1 h_f1_in_F]. inversion h2 as [f2 h_eq2 h_f2_in_F]. destruct (Hdir_F f1 f2 h_f1_in_F h_f2_in_F) as [f3 [h_f3_in_F [h_le13 h_le23]]]. exists (proj1_sig f3 x). split."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply In_image with (x := f3); [reflexivity | exact h_f3_in_F]."
+      ],
+      "failed_attempts": [
+        "apply In_image with (x := f3); [reflexivity | exact h_f3_in_F]."
+      ]
+    },
+    {
+      "uuid": "29c0615d82a2462fbd3bd0cbb11e8ad2",
+      "parent_uuid": "02d292abe05e4595b3bd691596f7c914",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "h_le23 : leProp f2 f3",
+            "h_le13 : leProp f1 f3",
+            "h_f3_in_F : E.In f3 F",
+            "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "h_f2_in_F : E.In f2 F",
+            "h_eq2 : eq x2 (proj1_sig f2 x)",
+            "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "h_f1_in_F : E.In f1 F",
+            "h_eq1 : eq x1 (proj1_sig f1 x)",
+            "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "h2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+            "h1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+            "x1,x2 : D'",
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 h1 h2. inversion h1 as [f1 h_eq1 h_f1_in_F]. inversion h2 as [f2 h_eq2 h_f2_in_F]. destruct (Hdir_F f1 f2 h_f1_in_F h_f2_in_F) as [f3 [h_f3_in_F [h_le13 h_le23]]]. exists (proj1_sig f3 x). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "h_le23 : leProp f2 f3",
+                "h_le13 : leProp f1 f3",
+                "h_f3_in_F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f2_in_F : E.In f2 F",
+                "h_eq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f1_in_F : E.In f1 F",
+                "h_eq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "h1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "h_le23 : leProp f2 f3",
+                "h_le13 : leProp f1 f3",
+                "h_f3_in_F : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f2_in_F : E.In f2 F",
+                "h_eq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h_f1_in_F : E.In f1 F",
+                "h_eq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "h2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "h1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit. intros x1 x2 h1 h2. inversion h1 as [f1 h_eq1 h_f1_in_F]. inversion h2 as [f2 h_eq2 h_f2_in_F]. destruct (Hdir_F f1 f2 h_f1_in_F h_f2_in_F) as [f3 [h_f3_in_F [h_le13 h_le23]]]. exists (proj1_sig f3 x). split. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "split.\n- rewrite h_eq1; exact (h_le13 x).\n- rewrite h_eq2; exact (h_le23 x)."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "10b3c22e356e48999ac28347caca8be9",
+      "parent_uuid": "02d292abe05e4595b3bd691596f7c914",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hle2 : leProp a2 a3",
+            "Hle1 : leProp a1 a3",
+            "Hmem3 : E.In a3 F",
+            "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem2 : E.In a2 F",
+            "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem1 : E.In a1 F",
+            "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "E.In (proj1_sig a3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [a1 Hx1_eq Hmem1]; subst x1. destruct Hx2 as [a2 Hx2_eq Hmem2]; subst x2. destruct (Hdir_F a1 a2 Hmem1 Hmem2) as [a3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig a3 x). split; [ | split]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig a3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (proj1_sig a1 x) (proj1_sig a3 x)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (proj1_sig a2 x) (proj1_sig a3 x)"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit. intros x1 x2 Hx1 Hx2. destruct Hx1 as [a1 Hx1_eq Hmem1]; subst x1. destruct Hx2 as [a2 Hx2_eq Hmem2]; subst x2. destruct (Hdir_F a1 a2 Hmem1 Hmem2) as [a3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig a3 x). split; [ | split]."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply (In_image _ _ _ _ _ a3 eq_refl Hmem3)."
+      ],
+      "failed_attempts": [
+        "apply (In_image _ _ _ _ _ a3 eq_refl Hmem3)."
+      ]
+    },
+    {
+      "uuid": "7c35629121e94bfda7d3f7fb575b093e",
+      "parent_uuid": "02d292abe05e4595b3bd691596f7c914",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hle2 : leProp a2 a3",
+            "Hle1 : leProp a1 a3",
+            "Hmem3 : E.In a3 F",
+            "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem2 : E.In a2 F",
+            "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem1 : E.In a1 F",
+            "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "leProp (proj1_sig a1 x) (proj1_sig a3 x)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [a1 Hx1_eq Hmem1]; subst x1. destruct Hx2 as [a2 Hx2_eq Hmem2]; subst x2. destruct (Hdir_F a1 a2 Hmem1 Hmem2) as [a3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig a3 x). split; [ | split]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig a3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (proj1_sig a1 x) (proj1_sig a3 x)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (proj1_sig a2 x) (proj1_sig a3 x)"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit. intros x1 x2 Hx1 Hx2. destruct Hx1 as [a1 Hx1_eq Hmem1]; subst x1. destruct Hx2 as [a2 Hx2_eq Hmem2]; subst x2. destruct (Hdir_F a1 a2 Hmem1 Hmem2) as [a3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig a3 x). split; [ | split]. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "apply (Hle1 x)."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "df7d7b6454884a32bc357d7d7023f70a",
+      "parent_uuid": "02d292abe05e4595b3bd691596f7c914",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hle2 : leProp a2 a3",
+            "Hle1 : leProp a1 a3",
+            "Hmem3 : E.In a3 F",
+            "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem2 : E.In a2 F",
+            "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem1 : E.In a1 F",
+            "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "leProp (proj1_sig a2 x) (proj1_sig a3 x)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [a1 Hx1_eq Hmem1]; subst x1. destruct Hx2 as [a2 Hx2_eq Hmem2]; subst x2. destruct (Hdir_F a1 a2 Hmem1 Hmem2) as [a3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig a3 x). split; [ | split]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig a3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (proj1_sig a1 x) (proj1_sig a3 x)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp a2 a3",
+                "Hle1 : leProp a1 a3",
+                "Hmem3 : E.In a3 F",
+                "a3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In a2 F",
+                "a2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In a1 F",
+                "a1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (proj1_sig a2 x) (proj1_sig a3 x)"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit. intros x1 x2 Hx1 Hx2. destruct Hx1 as [a1 Hx1_eq Hmem1]; subst x1. destruct Hx2 as [a2 Hx2_eq Hmem2]; subst x2. destruct (Hdir_F a1 a2 Hmem1 Hmem2) as [a3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig a3 x). split; [ | split]. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "apply (Hle2 x)."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "bc4fa0c35718461997c47b969d6964f3",
+      "parent_uuid": "02d292abe05e4595b3bd691596f7c914",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hle2 : leProp f2 f3",
+            "Hle1 : leProp f1 f3",
+            "Hmem3 : E.In f3 F",
+            "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem2 : E.In f2 F",
+            "Heq2 : eq x2 (proj1_sig f2 x)",
+            "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem1 : E.In f1 F",
+            "Heq1 : eq x1 (proj1_sig f1 x)",
+            "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "H2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+            "H1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+            "x1,x2 : D'",
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 H1 H2. inversion H1 as [f1 Heq1 Hmem1]. inversion H2 as [f2 Heq2 Hmem2]. destruct (Hdir_F f1 f2 Hmem1 Hmem2) as [f3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : leProp f2 f3",
+                "Hle1 : leProp f1 f3",
+                "Hmem3 : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In f2 F",
+                "Heq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In f1 F",
+                "Heq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "H2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "H1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp f2 f3",
+                "Hle1 : leProp f1 f3",
+                "Hmem3 : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In f2 F",
+                "Heq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In f1 F",
+                "Heq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "H2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "H1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit. intros x1 x2 H1 H2. inversion H1 as [f1 Heq1 Hmem1]. inversion H2 as [f2 Heq2 Hmem2]. destruct (Hdir_F f1 f2 Hmem1 Hmem2) as [f3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "apply E.In_image with (x := f3); [reflexivity | exact Hmem3].",
+      "lemmas": null,
+      "attempts": [
+        "apply (In_image _ _ _ _ f3); [reflexivity | assumption].",
+        "apply (E.In_image _ _ _ _ f3 eq_refl Hmem3).",
+        "apply In_image with (x := f3).\n- reflexivity.\n- exact Hmem3.",
+        "apply (E.In_image _ _ _ _ _ f3 eq_refl Hmem3).",
+        "apply In_image with (x := f3).\n- reflexivity.\n- exact Hmem3.",
+        "apply E.In_image with (x := f3); [reflexivity | exact Hmem3]."
+      ],
+      "failed_attempts": [
+        "apply (In_image _ _ _ _ f3); [reflexivity | assumption].",
+        "apply (E.In_image _ _ _ _ f3 eq_refl Hmem3).",
+        "apply In_image with (x := f3).\n- reflexivity.\n- exact Hmem3.",
+        "apply (E.In_image _ _ _ _ _ f3 eq_refl Hmem3).",
+        "apply In_image with (x := f3).\n- reflexivity.\n- exact Hmem3."
+      ]
+    },
+    {
+      "uuid": "7000b7c7dce24fa199342f7e4b2ddcad",
+      "parent_uuid": "02d292abe05e4595b3bd691596f7c914",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hle2 : leProp f2 f3",
+            "Hle1 : leProp f1 f3",
+            "Hmem3 : E.In f3 F",
+            "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem2 : E.In f2 F",
+            "Heq2 : eq x2 (proj1_sig f2 x)",
+            "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "Hmem1 : E.In f1 F",
+            "Heq1 : eq x1 (proj1_sig f1 x)",
+            "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+            "H2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+            "H1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+            "x1,x2 : D'",
+            "x : D",
+            "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+            "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+            "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 H1 H2. inversion H1 as [f1 Heq1 Hmem1]. inversion H2 as [f2 Heq2 Hmem2]. destruct (Hdir_F f1 f2 Hmem1 Hmem2) as [f3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : leProp f2 f3",
+                "Hle1 : leProp f1 f3",
+                "Hmem3 : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In f2 F",
+                "Heq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In f1 F",
+                "Heq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "H2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "H1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : leProp f2 f3",
+                "Hle1 : leProp f1 f3",
+                "Hmem3 : E.In f3 F",
+                "f3 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem2 : E.In f2 F",
+                "Heq2 : eq x2 (proj1_sig f2 x)",
+                "f2 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "Hmem1 : E.In f1 F",
+                "Heq1 : eq x1 (proj1_sig f1 x)",
+                "f1 : sig (fun f : forall _ : D, D' => isContinuous f)",
+                "H2 : E.In x2\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "H1 : E.In x1\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F)",
+                "x1,x2 : D'",
+                "x : D",
+                "Hdir_F : forall (x1 x2 : sig (fun f : forall _ : D, D' => isContinuous f))\n  (_ : E.In x1 F) (_ : E.In x2 F),\nex\n  (fun x3 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   and (E.In x3 F) (and (leProp x1 x3) (leProp x2 x3)))",
+                "Hnonemp_F : ex\n  (fun x0 : sig (fun f : forall _ : D, D' => isContinuous f) =>\n   E.In x0 F)",
+                "F : E.t (sig (fun f : forall _ : D, D' => isContinuous f))",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x))"
+            }
+          ]
+        },
+        "proof_prefix": "intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro. admit. intros x1 x2 H1 H2. inversion H1 as [f1 Heq1 Hmem1]. inversion H2 as [f2 Heq2 Hmem2]. destruct (Hdir_F f1 f2 Hmem1 Hmem2) as [f3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "split.\n- rewrite Heq1; apply (Hle1 x).\n- rewrite Heq2; apply (Hle2 x)."
+      ],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "7321be1759804467bb629217a168e9b4": 0.0,
+    "17b6096d19e34ee3a9dc35679b112ea5": -0.1,
+    "c5b3bfd07f114903a9a02f0da534a81d": -0.2,
+    "8eaf8b29e4404b09a8561e850c031132": -0.30000000000000004,
+    "e2c97bcacff94def852f823ab20f6097": -0.4,
+    "491e010808334f89a236b11cf851f7d1": -0.5,
+    "a18aa252e5574f8c9eac1d7746f1b7d9": -0.6000000000000001,
+    "1c21664a452242f5ad897f013af52032": -0.7000000000000001,
+    "02d292abe05e4595b3bd691596f7c914": -0.8,
+    "79a2c8f5e7d74c6a9a69de77a88f066d": -0.9,
+    "c7d2f2c1da8042ad85d03c4d33a9c4d7": -1.0,
+    "5f063166728840fb9f1dd5420f54279e": -1.1,
+    "29c0615d82a2462fbd3bd0cbb11e8ad2": -1.2000000000000002,
+    "10b3c22e356e48999ac28347caca8be9": -1.3,
+    "7c35629121e94bfda7d3f7fb575b093e": -1.4000000000000001,
+    "df7d7b6454884a32bc357d7d7023f70a": -1.5,
+    "bc4fa0c35718461997c47b969d6964f3": -1.6,
+    "7000b7c7dce24fa199342f7e4b2ddcad": -1.7000000000000002
+  },
+  "costs_to_go": {
+    "7321be1759804467bb629217a168e9b4": 0,
+    "17b6096d19e34ee3a9dc35679b112ea5": 0,
+    "c5b3bfd07f114903a9a02f0da534a81d": 0,
+    "8eaf8b29e4404b09a8561e850c031132": 0,
+    "e2c97bcacff94def852f823ab20f6097": 0,
+    "491e010808334f89a236b11cf851f7d1": 0,
+    "a18aa252e5574f8c9eac1d7746f1b7d9": 0,
+    "1c21664a452242f5ad897f013af52032": 0,
+    "02d292abe05e4595b3bd691596f7c914": 0,
+    "79a2c8f5e7d74c6a9a69de77a88f066d": 0,
+    "c7d2f2c1da8042ad85d03c4d33a9c4d7": 0,
+    "5f063166728840fb9f1dd5420f54279e": 0,
+    "29c0615d82a2462fbd3bd0cbb11e8ad2": 0,
+    "10b3c22e356e48999ac28347caca8be9": 0,
+    "7c35629121e94bfda7d3f7fb575b093e": 0,
+    "df7d7b6454884a32bc357d7d7023f70a": 0,
+    "bc4fa0c35718461997c47b969d6964f3": 0,
+    "7000b7c7dce24fa199342f7e4b2ddcad": 0
+  },
+  "no_more_children": {
+    "bc4fa0c35718461997c47b969d6964f3": true
+  },
+  "node_added_idx": {
+    "7321be1759804467bb629217a168e9b4": 0,
+    "17b6096d19e34ee3a9dc35679b112ea5": 1,
+    "c5b3bfd07f114903a9a02f0da534a81d": 2,
+    "8eaf8b29e4404b09a8561e850c031132": 3,
+    "e2c97bcacff94def852f823ab20f6097": 4,
+    "491e010808334f89a236b11cf851f7d1": 5,
+    "a18aa252e5574f8c9eac1d7746f1b7d9": 6,
+    "1c21664a452242f5ad897f013af52032": 7,
+    "02d292abe05e4595b3bd691596f7c914": 8,
+    "79a2c8f5e7d74c6a9a69de77a88f066d": 9,
+    "c7d2f2c1da8042ad85d03c4d33a9c4d7": 10,
+    "5f063166728840fb9f1dd5420f54279e": 11,
+    "29c0615d82a2462fbd3bd0cbb11e8ad2": 12,
+    "10b3c22e356e48999ac28347caca8be9": 13,
+    "7c35629121e94bfda7d3f7fb575b093e": 14,
+    "df7d7b6454884a32bc357d7d7023f70a": 15,
+    "bc4fa0c35718461997c47b969d6964f3": 16,
+    "7000b7c7dce24fa199342f7e4b2ddcad": 17
+  },
+  "next_node_idx": 18,
+  "remaining_nodes_to_expand": 146,
+  "root_uuid": "7321be1759804467bb629217a168e9b4",
+  "done": false,
+  "visualization": "\n* (8 HYPS)|-forall x : D,\nisDirected\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F) (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # 1 prefixes like intro x. destruct F_isDirected as [Hnon Hdir]. apply isDirected_intro.\n  * (10 HYPS)|-ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F)) (proven) (pruned) (done:True; cost:-0.1; n_fail:0)\n    # successful proof: hammer.\n  * (10 HYPS)|-forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3))) (pruned) (cost:-0.2; n_fail:0)\n\n  # 1 prefixes like intro x; destruct F_isDirected as [Hnonempty Hdirected]; apply isDirected_intro.\n  * (10 HYPS)|-ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F)) (proven) (pruned) (done:True; cost:-0.30000000000000004; n_fail:0)\n    # successful proof: hammer.\n  * (10 HYPS)|-forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3))) (pruned) (cost:-0.4; n_fail:0)\n\n  # 1 prefixes like intros x. destruct F_isDirected as [F_nonempty F_directed]. apply isDirected_intro.\n  * (10 HYPS)|-ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F)) (proven) (pruned) (done:True; cost:-0.5; n_fail:0)\n    # successful proof: hammer.\n  * (10 HYPS)|-forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3))) (pruned) (cost:-0.6000000000000001; n_fail:0)\n\n  # 1 prefixes like intro x; destruct F_isDirected as [Hnonemp_F Hdir_F]; apply isDirected_intro.\n  * (10 HYPS)|-ex\n  (fun x0 : D' =>\n   E.In x0\n     (E.image\n        (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n         proj1_sig f_i x) F)) (proven) (pruned) (done:True; cost:-0.7000000000000001; n_fail:0)\n    # successful proof: hammer.\n  * (10 HYPS)|-forall (x1 x2 : D')\n  (_ : E.In x1\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F))\n  (_ : E.In x2\n         (E.image\n            (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n             => proj1_sig f_i x) F)),\nex\n  (fun x3 : D' =>\n   and\n     (E.In x3\n        (E.image\n           (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f)\n            => proj1_sig f_i x) F)) (and (leProp x1 x3) (leProp x2 x3))) (proven) (pruned) (done:True; cost:-0.8; n_fail:0)\n    # 1 prefixes like intros x1 x2 Hx1 Hx2. destruct Hx1 as [f1 Hx1_eq Hf1F]. destruct Hx2 as [f2 Hx2_eq Hf2F]. destruct (Hdir_F f1 f2 Hf1F Hf2F) as [f3 [Hf3F [Hf1f3 Hf2f3]]]. exists (proj1_sig f3 x). split.\n    * (21 HYPS)|-E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F) (pruned) (cost:-0.9; n_fail:0)\n\n    * (21 HYPS)|-and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x)) (proven) (pruned) (done:True; cost:-1.0; n_fail:0)\n      # successful proof: hammer.\n    # 1 prefixes like intros x1 x2 h1 h2. inversion h1 as [f1 h_eq1 h_f1_in_F]. inversion h2 as [f2 h_eq2 h_f2_in_F]. destruct (Hdir_F f1 f2 h_f1_in_F h_f2_in_F) as [f3 [h_f3_in_F [h_le13 h_le23]]]. exists (proj1_sig f3 x). split.\n    * (23 HYPS)|-E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F) (pruned) (cost:-1.1; n_fail:0)\n\n    * (23 HYPS)|-and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x)) (proven) (pruned) (done:True; cost:-1.2000000000000002; n_fail:0)\n      # successful proof: hammer.\n    # 1 prefixes like intros x1 x2 Hx1 Hx2. destruct Hx1 as [a1 Hx1_eq Hmem1]; subst x1. destruct Hx2 as [a2 Hx2_eq Hmem2]; subst x2. destruct (Hdir_F a1 a2 Hmem1 Hmem2) as [a3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig a3 x). split; [ | split].\n    * (18 HYPS)|-E.In (proj1_sig a3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F) (pruned) (cost:-1.3; n_fail:0)\n\n    * (18 HYPS)|-leProp (proj1_sig a1 x) (proj1_sig a3 x) (proven) (pruned) (done:True; cost:-1.4000000000000001; n_fail:0)\n      # successful proof: hammer.\n    * (18 HYPS)|-leProp (proj1_sig a2 x) (proj1_sig a3 x) (proven) (pruned) (done:True; cost:-1.5; n_fail:0)\n      # successful proof: hammer.\n    # 1 prefixes like intros x1 x2 H1 H2. inversion H1 as [f1 Heq1 Hmem1]. inversion H2 as [f2 Heq2 Hmem2]. destruct (Hdir_F f1 f2 Hmem1 Hmem2) as [f3 [Hmem3 [Hle1 Hle2]]]. exists (proj1_sig f3 x). split.\n    * (23 HYPS)|-E.In (proj1_sig f3 x)\n  (E.image\n     (fun f_i : sig (fun f : forall _ : D, D' => isContinuous f) =>\n      proj1_sig f_i x) F) (proven) (pruned) (done:True; cost:-1.6; n_fail:1)\n      # successful proof: apply E.In_image with (x := f3); [reflexivity | exact Hmem3].\n    * (23 HYPS)|-and (leProp x1 (proj1_sig f3 x)) (leProp x2 (proj1_sig f3 x)) (proven) (pruned) (done:True; cost:-1.7000000000000002; n_fail:0)\n      # successful proof: hammer."
+}

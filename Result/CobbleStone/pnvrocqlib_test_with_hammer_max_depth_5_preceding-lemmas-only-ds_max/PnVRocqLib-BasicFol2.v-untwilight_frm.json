@@ -1,0 +1,551 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-BasicFol2.v-untwilight_frm.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "553c7359ada548d5b4585b448ddda407",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "HENKIN_FREE : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false",
+            "p : frm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "alpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "1d8c048d5b7a4402b64300971e2fa1ad",
+          "8a82121e6a7b49d89c0a7b34e1a05d11",
+          "1c39dd66733a4da2b31744784db30f85",
+          "3a9247dcbbba41d192bc479e74ae5949",
+          "8c7a5e694a8b491f8c9b6b4f48a5dafd"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Rel_frm R ts)) false",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Rel_frm R (twilight_trms ts))\n  (Rel_frm R\n     (subst_trms (fun z : ivar => Var_trm (Init.Nat.mul z 2)) ts))"
+            },
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Eqn_frm t1 t2)) false",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Eqn_frm (twilight_trm t1) (twilight_trm t2))\n  (Eqn_frm (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t1)\n     (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants, eq (HC_occurs_in_frm c (Neg_frm p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Neg_frm (twilight_frm p))\n  (Neg_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p2) false,\nalpha_equiv (twilight_frm p2)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2)",
+                "IHp1 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p1) false,\nalpha_equiv (twilight_frm p1)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Imp_frm p1 p2)) false",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Imp_frm (twilight_frm p1) (twilight_frm p2))\n  (Imp_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)\n     (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (All_frm y p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (All_frm (Init.Nat.mul 2 y) (twilight_frm p))\n  (All_frm\n     (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n        (All_frm y p))\n     (subst_frm\n        (cons_subst y\n           (Var_trm\n              (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n                 (All_frm y p)))\n           (fun z : ivar => Var_trm (Init.Nat.mul z 2))) p))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "induction q; simpl; intros H12; try constructor; auto.\n- apply alpha_Rel_frm; induction ts; simpl; auto; destruct a; simpl; f_equal; auto;\n      try (apply H12; simpl; auto).\n-- apply IHts; intros x Hx; apply H12; simpl; auto.\n- apply alpha_Eqn_frm; (induction t; simpl; auto; try (apply H12; simpl; auto);\n      try (apply IHt; intros x Hx; apply H12; simpl; auto)).\n- apply IHq; intro x; split; apply H12; simpl; auto.\n- apply IHq1, IHq2; intro x; split; apply H12; simpl; auto.\n- set (chi1 := chi_frm T1 (All_frm y q1)). set (chi2 := chi_frm T2 (All_frm y q1)). eapply alpha_All_frm with (z := y).\n-- simpl. set (S1 := cons_subst y (Var_trm chi1) T1). set (U1 := one_subst chi1 (Var_trm y)). set (T1' := fun x => if eq_dec x y then Var_trm y else T1 x). have Hcomp1 : subst_frm U1 (subst_frm S1 q1) = subst_frm T1' q1.\n{ apply subst_hsubst_compat_in_frm with (sigma := hsubst_compose (to_hsubst S1) (to_hsubst U1)).\n---- intro a; rewrite hsubst_compose_frm_spec; simpl. apply subst_hsubst_compat_in_frm with (sigma := to_hsubst T1'); auto. apply hsubst_frm_eq_on_subst; intro a'; apply hsubst_compose_eq.\n---- apply hsubst_frm_eq_on_subst; intro a'. apply hsubst_compose_eq. }\nset (T2' := fun x => if eq_dec x y then Var_trm y else T2 x). have Hcomp2 : subst_frm (one_subst chi2 (Var_trm y)) (subst_frm (cons_subst y (Var_trm chi2) T2) q1) = subst_frm T2' q1.\n{ ... }\nrewrite Hcomp1, Hcomp2. apply IHq1. intro x; split.\n--- destruct (eq_dec x y) as [e|n]; subst; auto. have Hxfree : is_free_in_frm x (All_frm y q1) = true.\n{ simpl; rewrite H12; auto; rewrite n; auto. }\ndestruct (H12 x Hxfree) as [H1 H2]; auto.\n--- destruct (eq_dec x y) as [e|n]; subst; auto. have Hxfree : is_free_in_frm x (All_frm y q1) = true.\n{ simpl; rewrite H12; auto; rewrite n; auto. }\ndestruct (H12 x Hxfree) as [H1 H2]; auto.\n-- simpl; auto.\n-- simpl; auto.",
+        "induction p as [R ts|t1 t2|p1 IH1|p1 IH2 p2 IH3|y p1 IH];\n  [ apply alpha_Rel_frm; apply untwilight_trms; intro c; simpl; apply HENKIN_FREE\n  | apply alpha_Eqn_frm; apply untwilight_trm; intro c;\n    [ apply (proj1 (orb_false_iff _ _))\n    | apply (proj2 (orb_false_iff _ _)) ]; simpl; apply HENKIN_FREE\n  | apply alpha_Neg_frm; apply IH1; intro c; simpl; apply HENKIN_FREE\n  | apply alpha_Imp_frm; [apply IH2 | apply IH3]; intro c; simpl; apply HENKIN_FREE\n  | set (chi := chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) (All_frm y p1));\n    apply alpha_All_frm with (z := 2*y);\n    [ \n      let s2 := fun z => Var_trm (z*2) in\n      have H_alpha : alpha_equiv (twilight_frm p1) (subst_frm s2 p1) :=\n        IH (fun c => HENKIN_FREE c) ;\n      ... | simpl; reflexivity\n    |  ... ]\n  ].",
+        "induction p; simpl.\n- apply alpha_Rel_frm; apply twilight_trms_eq_subst_trms; intro c; apply HENKIN_FREE.\n- apply alpha_Eqn_frm; [apply twilight_trm_eq_subst_trm; intro c; apply HENKIN_FREE | apply twilight_trm_eq_subst_trm; intro c; apply HENKIN_FREE].\n- apply alpha_Neg_frm; apply IHp.\n- apply alpha_Imp_frm; [apply IHp1 | apply IHp2].\n- let s := (fun z : ivar => Var_trm (Init.Nat.mul z 2)) in\n  set (ch := chi_frm s (All_frm y p1));\n  apply (alpha_All_frm (2*y) (2*y) ch (twilight_frm p1) (subst_frm (cons_subst y (Var_trm ch) s) p1));\n  [ simpl; rewrite one_subst_identity; rewrite subst_frm_comp; rewrite subst_frm_comp;\n    erewrite comp_scaling_lemma; [apply IHp; intro c; apply HENKIN_FREE | auto]\n  | simpl; reflexivity\n  | simpl; apply chi_frm_not_free_in_subst; intro c; apply HENKIN_FREE ].",
+        "induction p; constructor; auto; try apply HENKIN_FREE."
+      ],
+      "failed_attempts": [
+        "induction q; simpl; intros H12; try constructor; auto.\n- apply alpha_Rel_frm; induction ts; simpl; auto; destruct a; simpl; f_equal; auto;\n      try (apply H12; simpl; auto).\n-- apply IHts; intros x Hx; apply H12; simpl; auto.\n- apply alpha_Eqn_frm; (induction t; simpl; auto; try (apply H12; simpl; auto);\n      try (apply IHt; intros x Hx; apply H12; simpl; auto)).\n- apply IHq; intro x; split; apply H12; simpl; auto.\n- apply IHq1, IHq2; intro x; split; apply H12; simpl; auto.\n- set (chi1 := chi_frm T1 (All_frm y q1)). set (chi2 := chi_frm T2 (All_frm y q1)). eapply alpha_All_frm with (z := y).\n-- simpl. set (S1 := cons_subst y (Var_trm chi1) T1). set (U1 := one_subst chi1 (Var_trm y)). set (T1' := fun x => if eq_dec x y then Var_trm y else T1 x). have Hcomp1 : subst_frm U1 (subst_frm S1 q1) = subst_frm T1' q1.\n{ apply subst_hsubst_compat_in_frm with (sigma := hsubst_compose (to_hsubst S1) (to_hsubst U1)).\n---- intro a; rewrite hsubst_compose_frm_spec; simpl. apply subst_hsubst_compat_in_frm with (sigma := to_hsubst T1'); auto. apply hsubst_frm_eq_on_subst; intro a'; apply hsubst_compose_eq.\n---- apply hsubst_frm_eq_on_subst; intro a'. apply hsubst_compose_eq. }\nset (T2' := fun x => if eq_dec x y then Var_trm y else T2 x). have Hcomp2 : subst_frm (one_subst chi2 (Var_trm y)) (subst_frm (cons_subst y (Var_trm chi2) T2) q1) = subst_frm T2' q1.\n{ ... }\nrewrite Hcomp1, Hcomp2. apply IHq1. intro x; split.\n--- destruct (eq_dec x y) as [e|n]; subst; auto. have Hxfree : is_free_in_frm x (All_frm y q1) = true.\n{ simpl; rewrite H12; auto; rewrite n; auto. }\ndestruct (H12 x Hxfree) as [H1 H2]; auto.\n--- destruct (eq_dec x y) as [e|n]; subst; auto. have Hxfree : is_free_in_frm x (All_frm y q1) = true.\n{ simpl; rewrite H12; auto; rewrite n; auto. }\ndestruct (H12 x Hxfree) as [H1 H2]; auto.\n-- simpl; auto.\n-- simpl; auto.",
+        "induction p as [R ts|t1 t2|p1 IH1|p1 IH2 p2 IH3|y p1 IH];\n  [ apply alpha_Rel_frm; apply untwilight_trms; intro c; simpl; apply HENKIN_FREE\n  | apply alpha_Eqn_frm; apply untwilight_trm; intro c;\n    [ apply (proj1 (orb_false_iff _ _))\n    | apply (proj2 (orb_false_iff _ _)) ]; simpl; apply HENKIN_FREE\n  | apply alpha_Neg_frm; apply IH1; intro c; simpl; apply HENKIN_FREE\n  | apply alpha_Imp_frm; [apply IH2 | apply IH3]; intro c; simpl; apply HENKIN_FREE\n  | set (chi := chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) (All_frm y p1));\n    apply alpha_All_frm with (z := 2*y);\n    [ \n      let s2 := fun z => Var_trm (z*2) in\n      have H_alpha : alpha_equiv (twilight_frm p1) (subst_frm s2 p1) :=\n        IH (fun c => HENKIN_FREE c) ;\n      ... | simpl; reflexivity\n    |  ... ]\n  ].",
+        "induction p; constructor; auto; try apply HENKIN_FREE."
+      ]
+    },
+    {
+      "uuid": "1d8c048d5b7a4402b64300971e2fa1ad",
+      "parent_uuid": "553c7359ada548d5b4585b448ddda407",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Rel_frm R ts)) false",
+            "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+            "R : relation_symbols (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "alpha_equiv (Rel_frm R (twilight_trms ts))\n  (Rel_frm R\n     (subst_trms (fun z : ivar => Var_trm (Init.Nat.mul z 2)) ts))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Rel_frm R ts)) false",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Rel_frm R (twilight_trms ts))\n  (Rel_frm R\n     (subst_trms (fun z : ivar => Var_trm (Init.Nat.mul z 2)) ts))"
+            },
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Eqn_frm t1 t2)) false",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Eqn_frm (twilight_trm t1) (twilight_trm t2))\n  (Eqn_frm (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t1)\n     (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants, eq (HC_occurs_in_frm c (Neg_frm p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Neg_frm (twilight_frm p))\n  (Neg_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p2) false,\nalpha_equiv (twilight_frm p2)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2)",
+                "IHp1 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p1) false,\nalpha_equiv (twilight_frm p1)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Imp_frm p1 p2)) false",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Imp_frm (twilight_frm p1) (twilight_frm p2))\n  (Imp_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)\n     (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (All_frm y p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (All_frm (Init.Nat.mul 2 y) (twilight_frm p))\n  (All_frm\n     (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n        (All_frm y p))\n     (subst_frm\n        (cons_subst y\n           (Var_trm\n              (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n                 (All_frm y p)))\n           (fun z : ivar => Var_trm (Init.Nat.mul z 2))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "induction p; simpl."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "8a82121e6a7b49d89c0a7b34e1a05d11",
+      "parent_uuid": "553c7359ada548d5b4585b448ddda407",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Eqn_frm t1 t2)) false",
+            "t1,t2 : trm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "alpha_equiv (Eqn_frm (twilight_trm t1) (twilight_trm t2))\n  (Eqn_frm (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t1)\n     (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t2))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Rel_frm R ts)) false",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Rel_frm R (twilight_trms ts))\n  (Rel_frm R\n     (subst_trms (fun z : ivar => Var_trm (Init.Nat.mul z 2)) ts))"
+            },
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Eqn_frm t1 t2)) false",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Eqn_frm (twilight_trm t1) (twilight_trm t2))\n  (Eqn_frm (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t1)\n     (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants, eq (HC_occurs_in_frm c (Neg_frm p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Neg_frm (twilight_frm p))\n  (Neg_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p2) false,\nalpha_equiv (twilight_frm p2)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2)",
+                "IHp1 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p1) false,\nalpha_equiv (twilight_frm p1)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Imp_frm p1 p2)) false",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Imp_frm (twilight_frm p1) (twilight_frm p2))\n  (Imp_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)\n     (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (All_frm y p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (All_frm (Init.Nat.mul 2 y) (twilight_frm p))\n  (All_frm\n     (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n        (All_frm y p))\n     (subst_frm\n        (cons_subst y\n           (Var_trm\n              (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n                 (All_frm y p)))\n           (fun z : ivar => Var_trm (Init.Nat.mul z 2))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "induction p; simpl. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "1c39dd66733a4da2b31744784db30f85",
+      "parent_uuid": "553c7359ada548d5b4585b448ddda407",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+            "HENKIN_FREE : forall c : Henkin_constants, eq (HC_occurs_in_frm c (Neg_frm p)) false",
+            "p : frm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "alpha_equiv (Neg_frm (twilight_frm p))\n  (Neg_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Rel_frm R ts)) false",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Rel_frm R (twilight_trms ts))\n  (Rel_frm R\n     (subst_trms (fun z : ivar => Var_trm (Init.Nat.mul z 2)) ts))"
+            },
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Eqn_frm t1 t2)) false",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Eqn_frm (twilight_trm t1) (twilight_trm t2))\n  (Eqn_frm (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t1)\n     (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants, eq (HC_occurs_in_frm c (Neg_frm p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Neg_frm (twilight_frm p))\n  (Neg_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p2) false,\nalpha_equiv (twilight_frm p2)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2)",
+                "IHp1 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p1) false,\nalpha_equiv (twilight_frm p1)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Imp_frm p1 p2)) false",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Imp_frm (twilight_frm p1) (twilight_frm p2))\n  (Imp_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)\n     (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (All_frm y p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (All_frm (Init.Nat.mul 2 y) (twilight_frm p))\n  (All_frm\n     (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n        (All_frm y p))\n     (subst_frm\n        (cons_subst y\n           (Var_trm\n              (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n                 (All_frm y p)))\n           (fun z : ivar => Var_trm (Init.Nat.mul z 2))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "induction p; simpl. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "3a9247dcbbba41d192bc479e74ae5949",
+      "parent_uuid": "553c7359ada548d5b4585b448ddda407",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp2 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p2) false,\nalpha_equiv (twilight_frm p2)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2)",
+            "IHp1 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p1) false,\nalpha_equiv (twilight_frm p1)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)",
+            "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Imp_frm p1 p2)) false",
+            "p1,p2 : frm (augmented_language L Henkin_constants)",
+            "L : language"
+          ],
+          "goal": "alpha_equiv (Imp_frm (twilight_frm p1) (twilight_frm p2))\n  (Imp_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)\n     (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Rel_frm R ts)) false",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Rel_frm R (twilight_trms ts))\n  (Rel_frm R\n     (subst_trms (fun z : ivar => Var_trm (Init.Nat.mul z 2)) ts))"
+            },
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Eqn_frm t1 t2)) false",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Eqn_frm (twilight_trm t1) (twilight_trm t2))\n  (Eqn_frm (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t1)\n     (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants, eq (HC_occurs_in_frm c (Neg_frm p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Neg_frm (twilight_frm p))\n  (Neg_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p2) false,\nalpha_equiv (twilight_frm p2)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2)",
+                "IHp1 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p1) false,\nalpha_equiv (twilight_frm p1)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Imp_frm p1 p2)) false",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Imp_frm (twilight_frm p1) (twilight_frm p2))\n  (Imp_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)\n     (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (All_frm y p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (All_frm (Init.Nat.mul 2 y) (twilight_frm p))\n  (All_frm\n     (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n        (All_frm y p))\n     (subst_frm\n        (cons_subst y\n           (Var_trm\n              (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n                 (All_frm y p)))\n           (fun z : ivar => Var_trm (Init.Nat.mul z 2))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "induction p; simpl. admit. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "8c7a5e694a8b491f8c9b6b4f48a5dafd",
+      "parent_uuid": "553c7359ada548d5b4585b448ddda407",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+            "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (All_frm y p)) false",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y : ivar",
+            "L : language"
+          ],
+          "goal": "alpha_equiv (All_frm (Init.Nat.mul 2 y) (twilight_frm p))\n  (All_frm\n     (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n        (All_frm y p))\n     (subst_frm\n        (cons_subst y\n           (Var_trm\n              (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n                 (All_frm y p)))\n           (fun z : ivar => Var_trm (Init.Nat.mul z 2))) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Rel_frm R ts)) false",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Rel_frm R (twilight_trms ts))\n  (Rel_frm R\n     (subst_trms (fun z : ivar => Var_trm (Init.Nat.mul z 2)) ts))"
+            },
+            {
+              "hypotheses": [
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Eqn_frm t1 t2)) false",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Eqn_frm (twilight_trm t1) (twilight_trm t2))\n  (Eqn_frm (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t1)\n     (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants, eq (HC_occurs_in_frm c (Neg_frm p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Neg_frm (twilight_frm p))\n  (Neg_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p2) false,\nalpha_equiv (twilight_frm p2)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2)",
+                "IHp1 : forall\n  _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p1) false,\nalpha_equiv (twilight_frm p1)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (Imp_frm p1 p2)) false",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (Imp_frm (twilight_frm p1) (twilight_frm p2))\n  (Imp_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)\n     (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : forall c : Henkin_constants, eq (HC_occurs_in_frm c p) false,\nalpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)",
+                "HENKIN_FREE : forall c : Henkin_constants,\neq (HC_occurs_in_frm c (All_frm y p)) false",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "L : language"
+              ],
+              "goal": "alpha_equiv (All_frm (Init.Nat.mul 2 y) (twilight_frm p))\n  (All_frm\n     (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n        (All_frm y p))\n     (subst_frm\n        (cons_subst y\n           (Var_trm\n              (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n                 (All_frm y p)))\n           (fun z : ivar => Var_trm (Init.Nat.mul z 2))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "induction p; simpl. admit. admit. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.4,
+      "id": 135536203413072,
+      "uuid": "3a9247dcbbba41d192bc479e74ae5949"
+    },
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536203401616,
+      "uuid": "1c39dd66733a4da2b31744784db30f85"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536203408016,
+      "uuid": "8a82121e6a7b49d89c0a7b34e1a05d11"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536116917776,
+      "uuid": "1d8c048d5b7a4402b64300971e2fa1ad"
+    },
+    {
+      "cost": 0.0,
+      "id": 135535414696528,
+      "uuid": "553c7359ada548d5b4585b448ddda407"
+    }
+  ],
+  "costs_so_far": {
+    "553c7359ada548d5b4585b448ddda407": 0.0,
+    "1d8c048d5b7a4402b64300971e2fa1ad": -0.1,
+    "8a82121e6a7b49d89c0a7b34e1a05d11": -0.2,
+    "1c39dd66733a4da2b31744784db30f85": -0.30000000000000004,
+    "3a9247dcbbba41d192bc479e74ae5949": -0.4,
+    "8c7a5e694a8b491f8c9b6b4f48a5dafd": -0.5
+  },
+  "costs_to_go": {
+    "553c7359ada548d5b4585b448ddda407": 0,
+    "1d8c048d5b7a4402b64300971e2fa1ad": 0,
+    "8a82121e6a7b49d89c0a7b34e1a05d11": 0,
+    "1c39dd66733a4da2b31744784db30f85": 0,
+    "3a9247dcbbba41d192bc479e74ae5949": 0,
+    "8c7a5e694a8b491f8c9b6b4f48a5dafd": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "553c7359ada548d5b4585b448ddda407": 0,
+    "1d8c048d5b7a4402b64300971e2fa1ad": 1,
+    "8a82121e6a7b49d89c0a7b34e1a05d11": 2,
+    "1c39dd66733a4da2b31744784db30f85": 3,
+    "3a9247dcbbba41d192bc479e74ae5949": 4,
+    "8c7a5e694a8b491f8c9b6b4f48a5dafd": 5
+  },
+  "next_node_idx": 6,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "553c7359ada548d5b4585b448ddda407",
+  "done": false,
+  "visualization": "\n* (3 HYPS)|-alpha_equiv (twilight_frm p)\n  (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p) (cost:0.0; n_fail:0)\n  # 1 prefixes like induction p; simpl.\n  * (4 HYPS)|-alpha_equiv (Rel_frm R (twilight_trms ts))\n  (Rel_frm R\n     (subst_trms (fun z : ivar => Var_trm (Init.Nat.mul z 2)) ts)) (cost:-0.1; n_fail:0)\n\n  * (3 HYPS)|-alpha_equiv (Eqn_frm (twilight_trm t1) (twilight_trm t2))\n  (Eqn_frm (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t1)\n     (subst_trm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) t2)) (cost:-0.2; n_fail:0)\n\n  * (4 HYPS)|-alpha_equiv (Neg_frm (twilight_frm p))\n  (Neg_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p)) (proven) (pruned) (done:True; cost:-0.30000000000000004; n_fail:0)\n    # successful proof: hammer.\n  * (5 HYPS)|-alpha_equiv (Imp_frm (twilight_frm p1) (twilight_frm p2))\n  (Imp_frm (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p1)\n     (subst_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2)) p2)) (cost:-0.4; n_fail:0)\n\n  * (5 HYPS)|-alpha_equiv (All_frm (Init.Nat.mul 2 y) (twilight_frm p))\n  (All_frm\n     (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n        (All_frm y p))\n     (subst_frm\n        (cons_subst y\n           (Var_trm\n              (chi_frm (fun z : ivar => Var_trm (Init.Nat.mul z 2))\n                 (All_frm y p)))\n           (fun z : ivar => Var_trm (Init.Nat.mul z 2))) p)) (cost:-0.5; n_fail:1)\n"
+}

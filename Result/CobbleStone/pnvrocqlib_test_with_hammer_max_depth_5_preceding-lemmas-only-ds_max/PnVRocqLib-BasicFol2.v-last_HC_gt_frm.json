@@ -1,0 +1,758 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-BasicFol2.v-last_HC_gt_frm.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "79cf3ace963643e7ba160b8e789c0042",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "hc : Henkin_constants",
+            "L : language"
+          ],
+          "goal": "forall (p : frm (augmented_language L Henkin_constants))\n  (_ : gt hc (maxs (accum_HCs_frm p))),\neq (HC_occurs_in_frm hc p) false"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [
+        [
+          "9b9ffff21d6643058b0944b550712353",
+          "9017207c45c24e71a74e7543b0d517bd"
+        ],
+        [
+          "fcf44d6d0c404f0eae8e7b5515c04fb6",
+          "5fdb01185a0e4907b88d530954ce8ca2",
+          "3c1e6977bb60417d84e1a04c6f38dbbb",
+          "b0be9d6f46904f1bba0c66c0a946fe32",
+          "644050170bce4b399d12186880f82653"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "intros p Hgt. case_eq (HC_occurs_in_frm hc p); intro H."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq (HC_occurs_in_frm hc p) true",
+                "Hgt : gt hc (maxs (accum_HCs_frm p))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq true false"
+            },
+            {
+              "hypotheses": [
+                "H : eq (HC_occurs_in_frm hc p) false",
+                "Hgt : gt hc (maxs (accum_HCs_frm p))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq false false"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "intros p H. induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Rel_frm R ts)))",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_trms hc ts) false"
+            },
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Eqn_frm t1 t2)))",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_trm hc t1) (HC_occurs_in_trm hc t2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (Neg_frm p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : gt hc (maxs (accum_HCs_frm p2)),\neq (HC_occurs_in_frm hc p2) false",
+                "IHp1 : forall _ : gt hc (maxs (accum_HCs_frm p1)),\neq (HC_occurs_in_frm hc p1) false",
+                "H : gt hc (maxs (accum_HCs_frm (Imp_frm p1 p2)))",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_frm hc p1) (HC_occurs_in_frm hc p2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (All_frm y p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "induction l as [|a l IH]; intros Hgt HIn; simpl in *.\n- contradiction.\n- destruct HIn as [HIn|HIn].\n-- subst; apply (Nat.lt_irrefl a); eapply Nat.lt_le_trans; eauto; apply Nat.le_max_l.\n-- apply IH; auto; eapply Nat.lt_le_trans; eauto; apply Nat.le_max_r. intros p Hgt. destruct (HC_occurs_in_frm hc p) eqn:Hocc.\n- exfalso. apply (proj1 (HC_occurs_in_frm_iff_in_accumHCs_frm p hc)) in Hocc. exact (not_in_if_gt_maxs (accum_HCs_frm p) hc Hgt Hocc).\n- reflexivity.",
+        "intros p H. assert (le_max_l : forall a b, a <= Init.Nat.max a b) by\n  (induction a; destruct b; simpl; auto). assert (le_max_r : forall a b, b <= Init.Nat.max a b) by\n  (induction a; destruct b; simpl; auto). assert (maxs_ge : forall n l, In n l -> n <= maxs l) by\n  (induction l; intros HIn; simpl; destruct HIn as [H'|H'];\n   [subst; apply le_max_l | apply IHl in H'; apply le_trans with (maxs l); [exact H' | apply le_max_r]]). assert (Hnotin : ~ In hc (accum_HCs_frm p)) by\n  (intro HIn; apply H; apply maxs_ge in HIn; exact HIn). destruct (HC_occurs_in_frm hc p) eqn:E;\n[exfalso; apply Hnotin; apply (HC_occurs_in_frm_iff_in_accumHCs_frm p hc); auto | reflexivity].",
+        "intros p H. assert (not_in_gt_maxs : forall l : list nat, gt hc (maxs l) -> ~ In hc l) by\n  (induction l; simpl; intros Hgt Hin; auto; destruct Hin as [->|Hin];\n   [ pose proof (Nat.lt_of_le_of_lt (Nat.le_max_l a (maxs l)) Hgt) as Hlt;\n     subst; exact (Nat.lt_irrefl a Hlt)\n   | apply IHl; [apply (Nat.lt_of_le_of_lt (Nat.le_max_r a (maxs l)) Hgt) | exact Hin] ]). assert (frm_implies_in : forall p, HC_occurs_in_frm hc p = true -> In hc (accum_HCs_frm p)) by\n  exact (fix rec_frm p (Hp : HC_occurs_in_frm hc p = true) : In hc (accum_HCs_frm p) :=\n    match p return HC_occurs_in_frm hc p = true -> In hc (accum_HCs_frm p) with\n    | Rel_frm R ts => fun Hp' => rec_trms ts Hp'\n    | Eqn_frm t1 t2 => fun Hp' =>\n      let Horb := Hp' in\n      match orb_true_iff _ _ Horb with\n      | or_introl Ht1 => rewrite in_app_iff; left; apply rec_trm t1 Ht1\n      | or_intror Ht2 => rewrite in_app_iff; right; apply rec_trm t2 Ht2\n      end\n    | Imp_frm p1 p2 => fun Hp' =>\n      let Horb := Hp' in\n      match orb_true_iff _ _ Horb with\n      | or_introl Hp1 => rewrite in_app_iff; left; apply rec_frm p1 Hp1\n      | or_intror Hp2 => rewrite in_app_iff; right; apply rec_frm p2 Hp2\n      end\n    | Neg_frm p1 => fun Hp' => rec_frm p1 Hp'\n    | All_frm x p1 => fun Hp' => rec_frm p1 Hp'\n    end Hp\n  with rec_trm t (Ht : HC_occurs_in_trm hc t = true) : In hc (accum_HCs_trm t) :=\n    match t return HC_occurs_in_trm hc t = true -> In hc (accum_HCs_trm t) with\n    | Var x => fun Ht' => discriminate Ht'\n    | BVar n => fun Ht' => discriminate Ht'\n    | Const c => fun Ht' =>\n      match c with\n      | inl _ => discriminate Ht'\n      | inr hc' => \n        simpl in Ht';\n        destruct (Nat.eq_dec hc hc') as [E|E];\n        [ subst; simpl; auto | discriminate Ht' ]\n      end\n    | Func f args => fun Ht' => rec_trms args Ht'\n    end Ht\n  with rec_trms ts (Hts : HC_occurs_in_trms hc ts = true) : In hc (accum_HCs_trms ts) :=\n    match ts return HC_occurs_in_trms hc ts = true -> In hc (accum_HCs_trms ts) with\n    | nil_trms => fun Hts' => discriminate Hts'\n    | cons_trms t ts' => fun Hts' =>\n      let Horb := Hts' in\n      match orb_true_iff _ _ Horb with\n      | or_introl Ht => rewrite in_app_iff; left; apply rec_trm t Ht\n      | or_intror Hts'' => rewrite in_app_iff; right; apply rec_trms ts' Hts''\n      end\n    end Hts\n  for rec_frm). apply not_true_iff_false; intro Htrue; apply (not_in_gt_maxs (accum_HCs_frm p) H); apply (frm_implies_in p Htrue).",
+        "intros p H. assert (maxs_app_ge1 : forall l1 l2, maxs l1 <= maxs (l1 ++ l2)) by (induction l1; simpl; auto; apply Nat.max_le_compat_r; auto). assert (maxs_app_ge2 : forall l1 l2, maxs l2 <= maxs (l1 ++ l2)) by (induction l1; simpl; auto; eapply le_trans; [apply IHl1 | apply Nat.le_max_r]). induction p; simpl.\n- apply HC_occurs_in_trms_false; exact H.\n- apply orb_false_iff; split; [apply HC_occurs_in_trm_false; apply (Nat.lt_of_lt_of_le H (maxs_app_ge1 _ _)) | apply HC_occurs_in_trm_false; apply (Nat.lt_of_lt_of_le H (maxs_app_ge2 _ _))].\n- apply orb_false_iff; split; [apply IHp1; apply (Nat.lt_of_lt_of_le H (maxs_app_ge1 _ _)) | apply IHp2; apply (Nat.lt_of_lt_of_le H (maxs_app_ge2 _ _))].\n- apply IHp; exact H.\n- apply IHp; exact H.",
+        "intros p Hgt. case_eq (HC_occurs_in_frm hc p); intro H.\n- exfalso. apply (proj1 (HC_occurs_in_frm_iff_in_accumHCs_frm p hc) H) in H. assert (Hnotin : forall (l : list nat) (x : nat), x > maxs l -> ~ In x l)\n    by (induction l as [|a l IH]; simpl; intros x Hmax HIn; destruct HIn as [Hx|HIn];\n        [subst a; exact (Nat.lt_irrefl x (Nat.lt_of_le_of_lt (Nat.le_max_l x (maxs l)) Hmax))\n        | apply (IH x (Nat.lt_of_le_of_lt (Nat.le_max_r a (maxs l)) Hmax) HIn)]). apply (Hnotin (accum_HCs_frm p) hc Hgt H).\n- exact H.",
+        "intros p Hgt. destruct (HC_occurs_in_frm hc p) eqn:Hv; [| reflexivity]. exfalso; apply (proj1 (HC_occurs_in_frm_iff_in_accumHCs_frm p hc) Hv) in Hv. induction (accum_HCs_frm p) as [|a l IH] in Hv, Hgt |- *.\n- inversion Hv.\n- simpl in Hgt; destruct Hv as [-> | Hv'].\n-- apply (Nat.lt_irrefl a (Nat.le_lt_trans (Nat.le_max_l a (maxs l)) Hgt)).\n-- apply (IH Hv' (Nat.le_lt_trans (Nat.le_max_r a (maxs l)) Hgt)).",
+        "intros p H. induction p; simpl.\n- exact (HC_occurs_in_trms_false hc ts H).\n- apply orb_false_iff; split; [ apply HC_occurs_in_trm_false; eapply Nat.lt_le_trans; [exact H | apply maxs_app_l] | apply HC_occurs_in_trm_false; eapply Nat.lt_le_trans; [exact H | apply maxs_app_r] ].\n- apply orb_false_iff; split; [ apply IHp1; eapply Nat.lt_le_trans; [exact H | apply maxs_app_l] | apply IHp2; eapply Nat.lt_le_trans; [exact H | apply maxs_app_r] ].\n- apply IHp; exact H.\n- apply IHp; exact H.",
+        "induction ts; simpl; intros H; auto. apply orb_false_iff; split; [apply HC_occurs_in_trm_false_if_gt_maxs; eapply Nat.lt_of_lt_of_le; [exact H|]; apply maxs_app_l | apply IHts; eapply Nat.lt_of_lt_of_le; [exact H|]; apply maxs_app_r]. induction p; intro H; simpl in *.\n- apply HC_occurs_in_trms_false_if_gt_maxs; exact H.\n- apply orb_false_iff; split; apply HC_occurs_in_trm_false_if_gt_maxs; eauto using maxs_app_l, maxs_app_r.\n- apply orb_false_iff; split; [apply IHp1 | apply IHp2]; eauto using maxs_app_l, maxs_app_r.\n- all: apply IHp; exact H."
+      ],
+      "failed_attempts": [
+        "induction l as [|a l IH]; intros Hgt HIn; simpl in *.\n- contradiction.\n- destruct HIn as [HIn|HIn].\n-- subst; apply (Nat.lt_irrefl a); eapply Nat.lt_le_trans; eauto; apply Nat.le_max_l.\n-- apply IH; auto; eapply Nat.lt_le_trans; eauto; apply Nat.le_max_r. intros p Hgt. destruct (HC_occurs_in_frm hc p) eqn:Hocc.\n- exfalso. apply (proj1 (HC_occurs_in_frm_iff_in_accumHCs_frm p hc)) in Hocc. exact (not_in_if_gt_maxs (accum_HCs_frm p) hc Hgt Hocc).\n- reflexivity.",
+        "intros p H. assert (le_max_l : forall a b, a <= Init.Nat.max a b) by\n  (induction a; destruct b; simpl; auto). assert (le_max_r : forall a b, b <= Init.Nat.max a b) by\n  (induction a; destruct b; simpl; auto). assert (maxs_ge : forall n l, In n l -> n <= maxs l) by\n  (induction l; intros HIn; simpl; destruct HIn as [H'|H'];\n   [subst; apply le_max_l | apply IHl in H'; apply le_trans with (maxs l); [exact H' | apply le_max_r]]). assert (Hnotin : ~ In hc (accum_HCs_frm p)) by\n  (intro HIn; apply H; apply maxs_ge in HIn; exact HIn). destruct (HC_occurs_in_frm hc p) eqn:E;\n[exfalso; apply Hnotin; apply (HC_occurs_in_frm_iff_in_accumHCs_frm p hc); auto | reflexivity].",
+        "intros p H. assert (not_in_gt_maxs : forall l : list nat, gt hc (maxs l) -> ~ In hc l) by\n  (induction l; simpl; intros Hgt Hin; auto; destruct Hin as [->|Hin];\n   [ pose proof (Nat.lt_of_le_of_lt (Nat.le_max_l a (maxs l)) Hgt) as Hlt;\n     subst; exact (Nat.lt_irrefl a Hlt)\n   | apply IHl; [apply (Nat.lt_of_le_of_lt (Nat.le_max_r a (maxs l)) Hgt) | exact Hin] ]). assert (frm_implies_in : forall p, HC_occurs_in_frm hc p = true -> In hc (accum_HCs_frm p)) by\n  exact (fix rec_frm p (Hp : HC_occurs_in_frm hc p = true) : In hc (accum_HCs_frm p) :=\n    match p return HC_occurs_in_frm hc p = true -> In hc (accum_HCs_frm p) with\n    | Rel_frm R ts => fun Hp' => rec_trms ts Hp'\n    | Eqn_frm t1 t2 => fun Hp' =>\n      let Horb := Hp' in\n      match orb_true_iff _ _ Horb with\n      | or_introl Ht1 => rewrite in_app_iff; left; apply rec_trm t1 Ht1\n      | or_intror Ht2 => rewrite in_app_iff; right; apply rec_trm t2 Ht2\n      end\n    | Imp_frm p1 p2 => fun Hp' =>\n      let Horb := Hp' in\n      match orb_true_iff _ _ Horb with\n      | or_introl Hp1 => rewrite in_app_iff; left; apply rec_frm p1 Hp1\n      | or_intror Hp2 => rewrite in_app_iff; right; apply rec_frm p2 Hp2\n      end\n    | Neg_frm p1 => fun Hp' => rec_frm p1 Hp'\n    | All_frm x p1 => fun Hp' => rec_frm p1 Hp'\n    end Hp\n  with rec_trm t (Ht : HC_occurs_in_trm hc t = true) : In hc (accum_HCs_trm t) :=\n    match t return HC_occurs_in_trm hc t = true -> In hc (accum_HCs_trm t) with\n    | Var x => fun Ht' => discriminate Ht'\n    | BVar n => fun Ht' => discriminate Ht'\n    | Const c => fun Ht' =>\n      match c with\n      | inl _ => discriminate Ht'\n      | inr hc' => \n        simpl in Ht';\n        destruct (Nat.eq_dec hc hc') as [E|E];\n        [ subst; simpl; auto | discriminate Ht' ]\n      end\n    | Func f args => fun Ht' => rec_trms args Ht'\n    end Ht\n  with rec_trms ts (Hts : HC_occurs_in_trms hc ts = true) : In hc (accum_HCs_trms ts) :=\n    match ts return HC_occurs_in_trms hc ts = true -> In hc (accum_HCs_trms ts) with\n    | nil_trms => fun Hts' => discriminate Hts'\n    | cons_trms t ts' => fun Hts' =>\n      let Horb := Hts' in\n      match orb_true_iff _ _ Horb with\n      | or_introl Ht => rewrite in_app_iff; left; apply rec_trm t Ht\n      | or_intror Hts'' => rewrite in_app_iff; right; apply rec_trms ts' Hts''\n      end\n    end Hts\n  for rec_frm). apply not_true_iff_false; intro Htrue; apply (not_in_gt_maxs (accum_HCs_frm p) H); apply (frm_implies_in p Htrue).",
+        "intros p H. assert (maxs_app_ge1 : forall l1 l2, maxs l1 <= maxs (l1 ++ l2)) by (induction l1; simpl; auto; apply Nat.max_le_compat_r; auto). assert (maxs_app_ge2 : forall l1 l2, maxs l2 <= maxs (l1 ++ l2)) by (induction l1; simpl; auto; eapply le_trans; [apply IHl1 | apply Nat.le_max_r]). induction p; simpl.\n- apply HC_occurs_in_trms_false; exact H.\n- apply orb_false_iff; split; [apply HC_occurs_in_trm_false; apply (Nat.lt_of_lt_of_le H (maxs_app_ge1 _ _)) | apply HC_occurs_in_trm_false; apply (Nat.lt_of_lt_of_le H (maxs_app_ge2 _ _))].\n- apply orb_false_iff; split; [apply IHp1; apply (Nat.lt_of_lt_of_le H (maxs_app_ge1 _ _)) | apply IHp2; apply (Nat.lt_of_lt_of_le H (maxs_app_ge2 _ _))].\n- apply IHp; exact H.\n- apply IHp; exact H.",
+        "intros p Hgt. destruct (HC_occurs_in_frm hc p) eqn:Hv; [| reflexivity]. exfalso; apply (proj1 (HC_occurs_in_frm_iff_in_accumHCs_frm p hc) Hv) in Hv. induction (accum_HCs_frm p) as [|a l IH] in Hv, Hgt |- *.\n- inversion Hv.\n- simpl in Hgt; destruct Hv as [-> | Hv'].\n-- apply (Nat.lt_irrefl a (Nat.le_lt_trans (Nat.le_max_l a (maxs l)) Hgt)).\n-- apply (IH Hv' (Nat.le_lt_trans (Nat.le_max_r a (maxs l)) Hgt)).",
+        "induction ts; simpl; intros H; auto. apply orb_false_iff; split; [apply HC_occurs_in_trm_false_if_gt_maxs; eapply Nat.lt_of_lt_of_le; [exact H|]; apply maxs_app_l | apply IHts; eapply Nat.lt_of_lt_of_le; [exact H|]; apply maxs_app_r]. induction p; intro H; simpl in *.\n- apply HC_occurs_in_trms_false_if_gt_maxs; exact H.\n- apply orb_false_iff; split; apply HC_occurs_in_trm_false_if_gt_maxs; eauto using maxs_app_l, maxs_app_r.\n- apply orb_false_iff; split; [apply IHp1 | apply IHp2]; eauto using maxs_app_l, maxs_app_r.\n- all: apply IHp; exact H."
+      ]
+    },
+    {
+      "uuid": "9b9ffff21d6643058b0944b550712353",
+      "parent_uuid": "79cf3ace963643e7ba160b8e789c0042",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq (HC_occurs_in_frm hc p) true",
+            "Hgt : gt hc (maxs (accum_HCs_frm p))",
+            "p : frm (augmented_language L Henkin_constants)",
+            "hc : Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq true false"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros p Hgt. case_eq (HC_occurs_in_frm hc p); intro H."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq (HC_occurs_in_frm hc p) true",
+                "Hgt : gt hc (maxs (accum_HCs_frm p))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq true false"
+            },
+            {
+              "hypotheses": [
+                "H : eq (HC_occurs_in_frm hc p) false",
+                "Hgt : gt hc (maxs (accum_HCs_frm p))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq false false"
+            }
+          ]
+        },
+        "proof_prefix": "intros p Hgt. case_eq (HC_occurs_in_frm hc p); intro H."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "exfalso. apply (proj1 (HC_occurs_in_frm_iff_in_accumHCs_frm p hc) H) in H. assert (Hnotin : forall (l : list nat) (x : nat), x > maxs l -> ~ In x l)\n    by (induction l as [|a l IH]; simpl; intros x Hmax HIn; destruct HIn as [Hx|HIn];\n        [subst a; exact (Nat.lt_irrefl x (Nat.lt_of_le_of_lt (Nat.le_max_l x (maxs l)) Hmax))\n        | apply (IH x (Nat.lt_of_le_of_lt (Nat.le_max_r a (maxs l)) Hmax) HIn)]). apply (Hnotin (accum_HCs_frm p) hc Hgt H)."
+      ],
+      "failed_attempts": [
+        "exfalso. apply (proj1 (HC_occurs_in_frm_iff_in_accumHCs_frm p hc) H) in H. assert (Hnotin : forall (l : list nat) (x : nat), x > maxs l -> ~ In x l)\n    by (induction l as [|a l IH]; simpl; intros x Hmax HIn; destruct HIn as [Hx|HIn];\n        [subst a; exact (Nat.lt_irrefl x (Nat.lt_of_le_of_lt (Nat.le_max_l x (maxs l)) Hmax))\n        | apply (IH x (Nat.lt_of_le_of_lt (Nat.le_max_r a (maxs l)) Hmax) HIn)]). apply (Hnotin (accum_HCs_frm p) hc Hgt H)."
+      ]
+    },
+    {
+      "uuid": "9017207c45c24e71a74e7543b0d517bd",
+      "parent_uuid": "79cf3ace963643e7ba160b8e789c0042",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq (HC_occurs_in_frm hc p) false",
+            "Hgt : gt hc (maxs (accum_HCs_frm p))",
+            "p : frm (augmented_language L Henkin_constants)",
+            "hc : Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq false false"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros p Hgt. case_eq (HC_occurs_in_frm hc p); intro H."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq (HC_occurs_in_frm hc p) true",
+                "Hgt : gt hc (maxs (accum_HCs_frm p))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq true false"
+            },
+            {
+              "hypotheses": [
+                "H : eq (HC_occurs_in_frm hc p) false",
+                "Hgt : gt hc (maxs (accum_HCs_frm p))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq false false"
+            }
+          ]
+        },
+        "proof_prefix": "intros p Hgt. case_eq (HC_occurs_in_frm hc p); intro H. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "sfirstorder."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "fcf44d6d0c404f0eae8e7b5515c04fb6",
+      "parent_uuid": "79cf3ace963643e7ba160b8e789c0042",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : gt hc (maxs (accum_HCs_frm (Rel_frm R ts)))",
+            "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+            "R : relation_symbols (augmented_language L Henkin_constants)",
+            "hc : Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (HC_occurs_in_trms hc ts) false"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros p H. induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Rel_frm R ts)))",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_trms hc ts) false"
+            },
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Eqn_frm t1 t2)))",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_trm hc t1) (HC_occurs_in_trm hc t2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (Neg_frm p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : gt hc (maxs (accum_HCs_frm p2)),\neq (HC_occurs_in_frm hc p2) false",
+                "IHp1 : forall _ : gt hc (maxs (accum_HCs_frm p1)),\neq (HC_occurs_in_frm hc p1) false",
+                "H : gt hc (maxs (accum_HCs_frm (Imp_frm p1 p2)))",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_frm hc p1) (HC_occurs_in_frm hc p2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (All_frm y p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            }
+          ]
+        },
+        "proof_prefix": "intros p H. induction p; simpl."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "exact (HC_occurs_in_trms_false hc ts H)."
+      ],
+      "failed_attempts": [
+        "exact (HC_occurs_in_trms_false hc ts H)."
+      ]
+    },
+    {
+      "uuid": "5fdb01185a0e4907b88d530954ce8ca2",
+      "parent_uuid": "79cf3ace963643e7ba160b8e789c0042",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : gt hc (maxs (accum_HCs_frm (Eqn_frm t1 t2)))",
+            "t1,t2 : trm (augmented_language L Henkin_constants)",
+            "hc : Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (orb (HC_occurs_in_trm hc t1) (HC_occurs_in_trm hc t2)) false"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros p H. induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Rel_frm R ts)))",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_trms hc ts) false"
+            },
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Eqn_frm t1 t2)))",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_trm hc t1) (HC_occurs_in_trm hc t2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (Neg_frm p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : gt hc (maxs (accum_HCs_frm p2)),\neq (HC_occurs_in_frm hc p2) false",
+                "IHp1 : forall _ : gt hc (maxs (accum_HCs_frm p1)),\neq (HC_occurs_in_frm hc p1) false",
+                "H : gt hc (maxs (accum_HCs_frm (Imp_frm p1 p2)))",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_frm hc p1) (HC_occurs_in_frm hc p2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (All_frm y p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            }
+          ]
+        },
+        "proof_prefix": "intros p H. induction p; simpl. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply orb_false_iff; split; [ apply HC_occurs_in_trm_false; eapply Nat.lt_le_trans; [exact H | apply maxs_app_l] | apply HC_occurs_in_trm_false; eapply Nat.lt_le_trans; [exact H | apply maxs_app_r] ]."
+      ],
+      "failed_attempts": [
+        "apply orb_false_iff; split; [ apply HC_occurs_in_trm_false; eapply Nat.lt_le_trans; [exact H | apply maxs_app_l] | apply HC_occurs_in_trm_false; eapply Nat.lt_le_trans; [exact H | apply maxs_app_r] ]."
+      ]
+    },
+    {
+      "uuid": "3c1e6977bb60417d84e1a04c6f38dbbb",
+      "parent_uuid": "79cf3ace963643e7ba160b8e789c0042",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+            "H : gt hc (maxs (accum_HCs_frm (Neg_frm p)))",
+            "p : frm (augmented_language L Henkin_constants)",
+            "hc : Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (HC_occurs_in_frm hc p) false"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros p H. induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Rel_frm R ts)))",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_trms hc ts) false"
+            },
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Eqn_frm t1 t2)))",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_trm hc t1) (HC_occurs_in_trm hc t2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (Neg_frm p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : gt hc (maxs (accum_HCs_frm p2)),\neq (HC_occurs_in_frm hc p2) false",
+                "IHp1 : forall _ : gt hc (maxs (accum_HCs_frm p1)),\neq (HC_occurs_in_frm hc p1) false",
+                "H : gt hc (maxs (accum_HCs_frm (Imp_frm p1 p2)))",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_frm hc p1) (HC_occurs_in_frm hc p2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (All_frm y p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            }
+          ]
+        },
+        "proof_prefix": "intros p H. induction p; simpl. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "sfirstorder."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "b0be9d6f46904f1bba0c66c0a946fe32",
+      "parent_uuid": "79cf3ace963643e7ba160b8e789c0042",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp2 : forall _ : gt hc (maxs (accum_HCs_frm p2)),\neq (HC_occurs_in_frm hc p2) false",
+            "IHp1 : forall _ : gt hc (maxs (accum_HCs_frm p1)),\neq (HC_occurs_in_frm hc p1) false",
+            "H : gt hc (maxs (accum_HCs_frm (Imp_frm p1 p2)))",
+            "p1,p2 : frm (augmented_language L Henkin_constants)",
+            "hc : Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (orb (HC_occurs_in_frm hc p1) (HC_occurs_in_frm hc p2)) false"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros p H. induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Rel_frm R ts)))",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_trms hc ts) false"
+            },
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Eqn_frm t1 t2)))",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_trm hc t1) (HC_occurs_in_trm hc t2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (Neg_frm p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : gt hc (maxs (accum_HCs_frm p2)),\neq (HC_occurs_in_frm hc p2) false",
+                "IHp1 : forall _ : gt hc (maxs (accum_HCs_frm p1)),\neq (HC_occurs_in_frm hc p1) false",
+                "H : gt hc (maxs (accum_HCs_frm (Imp_frm p1 p2)))",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_frm hc p1) (HC_occurs_in_frm hc p2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (All_frm y p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            }
+          ]
+        },
+        "proof_prefix": "intros p H. induction p; simpl. admit. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "simpl accum_HCs_frm in H. assert (maxs_app : forall l1 l2 : list nat, maxs (l1 ++ l2) = max (maxs l1) (maxs l2)).\n{ induction l1 as [|x xs IH]; intros l2; simpl.\n-- sfirstorder.\n-- rewrite IH; rewrite Nat.max_assoc; reflexivity. }\nrewrite maxs_app in H. fcrush.",
+      "lemmas": null,
+      "attempts": [
+        "apply IHp; exact H.",
+        "simpl in H. assert (maxs_app : forall l1 l2, maxs (l1 ++ l2) = Nat.max (maxs l1) (maxs l2)) by\n  (induction l1; intros; simpl; [reflexivity | rewrite IHl1; rewrite <- Nat.max_assoc; reflexivity]). rewrite maxs_app in H. fcrush.",
+        "simpl in H. assert (Hmax_eq : maxs (app (accum_HCs_frm p1) (accum_HCs_frm p2)) = max (maxs (accum_HCs_frm p1)) (maxs (accum_HCs_frm p2))) by (induction (accum_HCs_frm p1) as [| a l1' IH]; simpl; [rewrite Nat.max_0_r | rewrite IH; rewrite Nat.max_assoc]; reflexivity). apply orb_false_iff; split; [apply IHp1; apply Nat.lt_of_le_of_lt with (max (maxs (accum_HCs_frm p1)) (maxs (accum_HCs_frm p2))); [apply Nat.le_max_l | rewrite <- Hmax_eq in H; exact H] | apply IHp2; apply Nat.lt_of_le_of_lt with (max (maxs (accum_HCs_frm p1)) (maxs (accum_HCs_frm p2))); [apply Nat.le_max_r | rewrite <- Hmax_eq in H; exact H] ].",
+        "",
+        "simpl accum_HCs_frm in H. assert (maxs_app : forall l1 l2 : list nat, maxs (l1 ++ l2) = max (maxs l1) (maxs l2)).\n{ induction l1 as [|x xs IH]; intros l2; simpl.\n-- sfirstorder.\n-- rewrite IH; rewrite Nat.max_assoc; reflexivity. }\nrewrite maxs_app in H. fcrush."
+      ],
+      "failed_attempts": [
+        "apply IHp; exact H.",
+        "simpl in H. assert (Hmax_eq : maxs (app (accum_HCs_frm p1) (accum_HCs_frm p2)) = max (maxs (accum_HCs_frm p1)) (maxs (accum_HCs_frm p2))) by (induction (accum_HCs_frm p1) as [| a l1' IH]; simpl; [rewrite Nat.max_0_r | rewrite IH; rewrite Nat.max_assoc]; reflexivity). apply orb_false_iff; split; [apply IHp1; apply Nat.lt_of_le_of_lt with (max (maxs (accum_HCs_frm p1)) (maxs (accum_HCs_frm p2))); [apply Nat.le_max_l | rewrite <- Hmax_eq in H; exact H] | apply IHp2; apply Nat.lt_of_le_of_lt with (max (maxs (accum_HCs_frm p1)) (maxs (accum_HCs_frm p2))); [apply Nat.le_max_r | rewrite <- Hmax_eq in H; exact H] ].",
+        ""
+      ]
+    },
+    {
+      "uuid": "644050170bce4b399d12186880f82653",
+      "parent_uuid": "79cf3ace963643e7ba160b8e789c0042",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+            "H : gt hc (maxs (accum_HCs_frm (All_frm y p)))",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y : ivar",
+            "hc : Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (HC_occurs_in_frm hc p) false"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros p H. induction p; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Rel_frm R ts)))",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_trms hc ts) false"
+            },
+            {
+              "hypotheses": [
+                "H : gt hc (maxs (accum_HCs_frm (Eqn_frm t1 t2)))",
+                "t1,t2 : trm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_trm hc t1) (HC_occurs_in_trm hc t2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (Neg_frm p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : gt hc (maxs (accum_HCs_frm p2)),\neq (HC_occurs_in_frm hc p2) false",
+                "IHp1 : forall _ : gt hc (maxs (accum_HCs_frm p1)),\neq (HC_occurs_in_frm hc p1) false",
+                "H : gt hc (maxs (accum_HCs_frm (Imp_frm p1 p2)))",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (orb (HC_occurs_in_frm hc p1) (HC_occurs_in_frm hc p2)) false"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : gt hc (maxs (accum_HCs_frm p)),\neq (HC_occurs_in_frm hc p) false",
+                "H : gt hc (maxs (accum_HCs_frm (All_frm y p)))",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : ivar",
+                "hc : Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (HC_occurs_in_frm hc p) false"
+            }
+          ]
+        },
+        "proof_prefix": "intros p H. induction p; simpl. admit. admit. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "apply IHp; exact H."
+      ],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536062800656,
+      "uuid": "fcf44d6d0c404f0eae8e7b5515c04fb6"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536337782992,
+      "uuid": "9b9ffff21d6643058b0944b550712353"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536205175504,
+      "uuid": "9017207c45c24e71a74e7543b0d517bd"
+    },
+    {
+      "cost": 0.0,
+      "id": 135535414584912,
+      "uuid": "79cf3ace963643e7ba160b8e789c0042"
+    }
+  ],
+  "costs_so_far": {
+    "79cf3ace963643e7ba160b8e789c0042": 0.0,
+    "9b9ffff21d6643058b0944b550712353": -0.1,
+    "9017207c45c24e71a74e7543b0d517bd": -0.2,
+    "fcf44d6d0c404f0eae8e7b5515c04fb6": -0.30000000000000004,
+    "5fdb01185a0e4907b88d530954ce8ca2": -0.4,
+    "3c1e6977bb60417d84e1a04c6f38dbbb": -0.5,
+    "b0be9d6f46904f1bba0c66c0a946fe32": -0.6000000000000001,
+    "644050170bce4b399d12186880f82653": -0.7000000000000001
+  },
+  "costs_to_go": {
+    "79cf3ace963643e7ba160b8e789c0042": 0,
+    "9b9ffff21d6643058b0944b550712353": 0,
+    "9017207c45c24e71a74e7543b0d517bd": 0,
+    "fcf44d6d0c404f0eae8e7b5515c04fb6": 0,
+    "5fdb01185a0e4907b88d530954ce8ca2": 0,
+    "3c1e6977bb60417d84e1a04c6f38dbbb": 0,
+    "b0be9d6f46904f1bba0c66c0a946fe32": 0,
+    "644050170bce4b399d12186880f82653": 0
+  },
+  "no_more_children": {
+    "b0be9d6f46904f1bba0c66c0a946fe32": true
+  },
+  "node_added_idx": {
+    "79cf3ace963643e7ba160b8e789c0042": 0,
+    "9b9ffff21d6643058b0944b550712353": 1,
+    "9017207c45c24e71a74e7543b0d517bd": 2,
+    "fcf44d6d0c404f0eae8e7b5515c04fb6": 3,
+    "5fdb01185a0e4907b88d530954ce8ca2": 4,
+    "3c1e6977bb60417d84e1a04c6f38dbbb": 5,
+    "b0be9d6f46904f1bba0c66c0a946fe32": 6,
+    "644050170bce4b399d12186880f82653": 7
+  },
+  "next_node_idx": 8,
+  "remaining_nodes_to_expand": 147,
+  "root_uuid": "79cf3ace963643e7ba160b8e789c0042",
+  "done": false,
+  "visualization": "\n* (2 HYPS)|-forall (p : frm (augmented_language L Henkin_constants))\n  (_ : gt hc (maxs (accum_HCs_frm p))),\neq (HC_occurs_in_frm hc p) false (cost:0.0; n_fail:1)\n  # 1 prefixes like intros p Hgt. case_eq (HC_occurs_in_frm hc p); intro H.\n  * (5 HYPS)|-eq true false (cost:-0.1; n_fail:0)\n\n  * (5 HYPS)|-eq false false (proven) (pruned) (done:True; cost:-0.2; n_fail:0)\n    # successful proof: hammer.\n  # 1 prefixes like intros p H. induction p; simpl.\n  * (5 HYPS)|-eq (HC_occurs_in_trms hc ts) false (cost:-0.30000000000000004; n_fail:0)\n\n  * (4 HYPS)|-eq (orb (HC_occurs_in_trm hc t1) (HC_occurs_in_trm hc t2)) false (cost:-0.4; n_fail:1)\n\n  * (5 HYPS)|-eq (HC_occurs_in_frm hc p) false (proven) (pruned) (done:True; cost:-0.5; n_fail:0)\n    # successful proof: hammer.\n  * (6 HYPS)|-eq (orb (HC_occurs_in_frm hc p1) (HC_occurs_in_frm hc p2)) false (proven) (pruned) (done:True; cost:-0.6000000000000001; n_fail:0)\n    # successful proof: simpl accum_HCs_frm in H. assert (maxs_app : forall l1 l2 : list nat, maxs (l1 ++ l2) = max (maxs l1) (maxs l2)).\n{ induction l1 as [|x xs IH]; intros l2; simpl.\n-- sfirstorder.\n-- rewrite IH; rewrite Nat.max_assoc; reflexivity. }\nrewrite maxs_app in H. fcrush.\n  * (6 HYPS)|-eq (HC_occurs_in_frm hc p) false (proven) (pruned) (done:True; cost:-0.7000000000000001; n_fail:0)\n    # successful proof: hammer."
+}

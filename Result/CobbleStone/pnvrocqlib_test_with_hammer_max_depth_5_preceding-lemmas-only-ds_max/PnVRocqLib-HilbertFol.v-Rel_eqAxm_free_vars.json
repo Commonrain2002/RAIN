@@ -1,0 +1,367 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-HilbertFol.v-Rel_eqAxm_free_vars.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "04c8e34f79374cc5b4232a0934dc87e2",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "n : nat",
+            "R : relation_symbols L",
+            "z : ivar",
+            "L : language"
+          ],
+          "goal": "iff (eq (is_free_in_frm z (Rel_eqAxm R)) true)\n  (lt z (Init.Nat.add n n))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "cb73bb1a146e4450a38b8db529d77401",
+          "c1de1b2d4ebc497ea9415e94e6c939f7"
+        ],
+        [
+          "2c7b11035a5a4ad3b746aa2695127ca4",
+          "05181048545747199952c50c308fc6cc"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "unfold Rel_eqAxm. simpl. induction n as [| k IH]; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z 0)"
+            },
+            {
+              "hypotheses": [
+                "IH : iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add k k))",
+                "k : nat",
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (S (Init.Nat.add k (S k))))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "unfold Rel_eqAxm. induction n as [|n IH]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add 0 0))"
+            },
+            {
+              "hypotheses": [
+                "IH : iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add n n))",
+                "n : nat",
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (Init.Nat.add (S n) (S n)))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "unfold Rel_eqAxm. simpl. induction n as [| k IH]; simpl.\n- split; intro H; [inversion H | omega].\n- rewrite orb_assoc, IH; simpl; omega.",
+        "unfold Rel_eqAxm. induction n as [|n IH].\n- simpl. split; intro H; [discriminate | omega].\n- simpl. unfold is_free_in_frm; simpl. rewrite IH. omega.",
+        "unfold Rel_eqAxm; simpl; split; apply Nat.ltb_lt.",
+        "unfold Rel_eqAxm; dec_trivial."
+      ],
+      "failed_attempts": [
+        "unfold Rel_eqAxm; simpl; split; apply Nat.ltb_lt.",
+        "unfold Rel_eqAxm; dec_trivial."
+      ]
+    },
+    {
+      "uuid": "cb73bb1a146e4450a38b8db529d77401",
+      "parent_uuid": "04c8e34f79374cc5b4232a0934dc87e2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "R : relation_symbols L",
+            "z : ivar",
+            "L : language"
+          ],
+          "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z 0)"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold Rel_eqAxm. simpl. induction n as [| k IH]; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z 0)"
+            },
+            {
+              "hypotheses": [
+                "IH : iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add k k))",
+                "k : nat",
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (S (Init.Nat.add k (S k))))"
+            }
+          ]
+        },
+        "proof_prefix": "unfold Rel_eqAxm. simpl. induction n as [| k IH]; simpl."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "split; intro H; [inversion H | omega]."
+      ],
+      "failed_attempts": [
+        "split; intro H; [inversion H | omega]."
+      ]
+    },
+    {
+      "uuid": "c1de1b2d4ebc497ea9415e94e6c939f7",
+      "parent_uuid": "04c8e34f79374cc5b4232a0934dc87e2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IH : iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add k k))",
+            "k : nat",
+            "R : relation_symbols L",
+            "z : ivar",
+            "L : language"
+          ],
+          "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (S (Init.Nat.add k (S k))))"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold Rel_eqAxm. simpl. induction n as [| k IH]; simpl."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z 0)"
+            },
+            {
+              "hypotheses": [
+                "IH : iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add k k))",
+                "k : nat",
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (S (Init.Nat.add k (S k))))"
+            }
+          ]
+        },
+        "proof_prefix": "unfold Rel_eqAxm. simpl. induction n as [| k IH]; simpl. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite orb_assoc, IH; simpl; omega."
+      ],
+      "failed_attempts": [
+        "rewrite orb_assoc, IH; simpl; omega."
+      ]
+    },
+    {
+      "uuid": "2c7b11035a5a4ad3b746aa2695127ca4",
+      "parent_uuid": "04c8e34f79374cc5b4232a0934dc87e2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "R : relation_symbols L",
+            "z : ivar",
+            "L : language"
+          ],
+          "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add 0 0))"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold Rel_eqAxm. induction n as [|n IH]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add 0 0))"
+            },
+            {
+              "hypotheses": [
+                "IH : iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add n n))",
+                "n : nat",
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (Init.Nat.add (S n) (S n)))"
+            }
+          ]
+        },
+        "proof_prefix": "unfold Rel_eqAxm. induction n as [|n IH]."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "simpl. split; intro H; [discriminate | omega]."
+      ],
+      "failed_attempts": [
+        "simpl. split; intro H; [discriminate | omega]."
+      ]
+    },
+    {
+      "uuid": "05181048545747199952c50c308fc6cc",
+      "parent_uuid": "04c8e34f79374cc5b4232a0934dc87e2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IH : iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add n n))",
+            "n : nat",
+            "R : relation_symbols L",
+            "z : ivar",
+            "L : language"
+          ],
+          "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (Init.Nat.add (S n) (S n)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold Rel_eqAxm. induction n as [|n IH]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add 0 0))"
+            },
+            {
+              "hypotheses": [
+                "IH : iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add n n))",
+                "n : nat",
+                "R : relation_symbols L",
+                "z : ivar",
+                "L : language"
+              ],
+              "goal": "iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (Init.Nat.add (S n) (S n)))"
+            }
+          ]
+        },
+        "proof_prefix": "unfold Rel_eqAxm. induction n as [|n IH]. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "simpl. unfold is_free_in_frm; simpl. rewrite IH. omega."
+      ],
+      "failed_attempts": [
+        "simpl. unfold is_free_in_frm; simpl. rewrite IH. omega."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536064063056,
+      "uuid": "2c7b11035a5a4ad3b746aa2695127ca4"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536160459600,
+      "uuid": "cb73bb1a146e4450a38b8db529d77401"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536160460624,
+      "uuid": "c1de1b2d4ebc497ea9415e94e6c939f7"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536064032528,
+      "uuid": "04c8e34f79374cc5b4232a0934dc87e2"
+    }
+  ],
+  "costs_so_far": {
+    "04c8e34f79374cc5b4232a0934dc87e2": 0.0,
+    "cb73bb1a146e4450a38b8db529d77401": -0.1,
+    "c1de1b2d4ebc497ea9415e94e6c939f7": -0.2,
+    "2c7b11035a5a4ad3b746aa2695127ca4": -0.30000000000000004,
+    "05181048545747199952c50c308fc6cc": -0.4
+  },
+  "costs_to_go": {
+    "04c8e34f79374cc5b4232a0934dc87e2": 0,
+    "cb73bb1a146e4450a38b8db529d77401": 0,
+    "c1de1b2d4ebc497ea9415e94e6c939f7": 0,
+    "2c7b11035a5a4ad3b746aa2695127ca4": 0,
+    "05181048545747199952c50c308fc6cc": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "04c8e34f79374cc5b4232a0934dc87e2": 0,
+    "cb73bb1a146e4450a38b8db529d77401": 1,
+    "c1de1b2d4ebc497ea9415e94e6c939f7": 2,
+    "2c7b11035a5a4ad3b746aa2695127ca4": 3,
+    "05181048545747199952c50c308fc6cc": 4
+  },
+  "next_node_idx": 5,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "04c8e34f79374cc5b4232a0934dc87e2",
+  "done": false,
+  "visualization": "\n* (4 HYPS)|-iff (eq (is_free_in_frm z (Rel_eqAxm R)) true)\n  (lt z (Init.Nat.add n n)) (cost:0.0; n_fail:0)\n  # 1 prefixes like unfold Rel_eqAxm. simpl. induction n as [| k IH]; simpl.\n  * (3 HYPS)|-iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z 0) (cost:-0.1; n_fail:0)\n\n  * (5 HYPS)|-iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (S (Init.Nat.add k (S k)))) (cost:-0.2; n_fail:0)\n\n  # 1 prefixes like unfold Rel_eqAxm. induction n as [|n IH].\n  * (3 HYPS)|-iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true) (lt z (Init.Nat.add 0 0)) (cost:-0.30000000000000004; n_fail:0)\n\n  * (5 HYPS)|-iff\n  (eq\n     (is_free_in_frm z\n        (eqns_imp\n           (prod_rec\n              (fun\n                 _ : prod (trms L (relation_arity_table L R))\n                       (trms L (relation_arity_table L R)) => \n               frm L)\n              (fun lhs rhs : trms L (relation_arity_table L R) =>\n               Imp_frm (Rel_frm R lhs) (Rel_frm R rhs))\n              (varcouples (relation_arity_table L R)))\n           (relation_arity_table L R))) true)\n  (lt z (Init.Nat.add (S n) (S n))) (cost:-0.4; n_fail:1)\n"
+}

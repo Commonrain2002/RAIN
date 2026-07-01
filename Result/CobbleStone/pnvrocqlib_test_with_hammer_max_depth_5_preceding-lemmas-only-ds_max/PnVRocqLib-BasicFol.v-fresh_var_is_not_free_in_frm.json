@@ -1,0 +1,234 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-BasicFol.v-fresh_var_is_not_free_in_frm.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "9c7afdfb31bf4210aa2f2691b298a238",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "p : frm L",
+            "t : trm L",
+            "x : ivar",
+            "L : language"
+          ],
+          "goal": "eq (is_free_in_frm (fresh_var x t p) p) false"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "7051567a458c4d7b8be95a0a491d92aa",
+          "1ce65373c68c41ef8682e063480e204a"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "destruct (fv_is_free_in_frm p (fresh_var x t p)) as [_ Htrue_in]. destruct (is_free_in_frm (fresh_var x t p) p) eqn:H."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Htrue_in : forall _ : eq true true, List.In (fresh_var x t p) (fvs_frm p)",
+                "H : eq (is_free_in_frm (fresh_var x t p) p) true",
+                "p : frm L",
+                "t : trm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "eq true false"
+            },
+            {
+              "hypotheses": [
+                "Htrue_in : forall _ : eq false true, List.In (fresh_var x t p) (fvs_frm p)",
+                "H : eq (is_free_in_frm (fresh_var x t p) p) false",
+                "p : frm L",
+                "t : trm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "eq false false"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply not_true_is_false. intro H. apply (proj2 (fv_is_free_in_frm p (fresh_var x t p))) in H. unfold fresh_var in H. apply maxs_spec in H. pose proof (maxs_suffix (app (cons x nil) (fvs_trm t)) (fvs_frm p)) as Hle. omega.",
+        "destruct (fv_is_free_in_frm p (fresh_var x t p)) as [_ Htrue_in]. destruct (is_free_in_frm (fresh_var x t p) p) eqn:H.\n- exfalso. apply Htrue_in in H. unfold fresh_var in *. set (L := app (cons x nil) (app (fvs_trm t) (fvs_frm p))). assert (HinL : In (1 + maxs L) L) by\n    (apply in_or_app; right; apply in_or_app; right; exact H). assert (Hle : forall l n, In n l -> n <= maxs l) by\n    (induction l; simpl; intros n' H0;\n     [ contradiction\n     | destruct H0 as [H1|H2];\n       [ subst; apply Nat.le_max_l\n       | apply Nat.le_trans with (maxs l); [ apply IHl, H2 | apply Nat.le_max_r ] ] ]). apply Hle in HinL; omega.\n- reflexivity.",
+        "apply fresh_var_not_free_in_frm.",
+        "apply fresh_var_not_free."
+      ],
+      "failed_attempts": [
+        "apply not_true_is_false. intro H. apply (proj2 (fv_is_free_in_frm p (fresh_var x t p))) in H. unfold fresh_var in H. apply maxs_spec in H. pose proof (maxs_suffix (app (cons x nil) (fvs_trm t)) (fvs_frm p)) as Hle. omega.",
+        "apply fresh_var_not_free_in_frm.",
+        "apply fresh_var_not_free."
+      ]
+    },
+    {
+      "uuid": "7051567a458c4d7b8be95a0a491d92aa",
+      "parent_uuid": "9c7afdfb31bf4210aa2f2691b298a238",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Htrue_in : forall _ : eq true true, List.In (fresh_var x t p) (fvs_frm p)",
+            "H : eq (is_free_in_frm (fresh_var x t p) p) true",
+            "p : frm L",
+            "t : trm L",
+            "x : ivar",
+            "L : language"
+          ],
+          "goal": "eq true false"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct (fv_is_free_in_frm p (fresh_var x t p)) as [_ Htrue_in]. destruct (is_free_in_frm (fresh_var x t p) p) eqn:H."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Htrue_in : forall _ : eq true true, List.In (fresh_var x t p) (fvs_frm p)",
+                "H : eq (is_free_in_frm (fresh_var x t p) p) true",
+                "p : frm L",
+                "t : trm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "eq true false"
+            },
+            {
+              "hypotheses": [
+                "Htrue_in : forall _ : eq false true, List.In (fresh_var x t p) (fvs_frm p)",
+                "H : eq (is_free_in_frm (fresh_var x t p) p) false",
+                "p : frm L",
+                "t : trm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "eq false false"
+            }
+          ]
+        },
+        "proof_prefix": "destruct (fv_is_free_in_frm p (fresh_var x t p)) as [_ Htrue_in]. destruct (is_free_in_frm (fresh_var x t p) p) eqn:H."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 2,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "exfalso. apply Htrue_in in H. unfold fresh_var in *. set (L := app (cons x nil) (app (fvs_trm t) (fvs_frm p))). assert (HinL : In (1 + maxs L) L) by\n    (apply in_or_app; right; apply in_or_app; right; exact H). assert (Hle : forall l n, In n l -> n <= maxs l) by\n    (induction l; simpl; intros n' H0;\n     [ contradiction\n     | destruct H0 as [H1|H2];\n       [ subst; apply Nat.le_max_l\n       | apply Nat.le_trans with (maxs l); [ apply IHl, H2 | apply Nat.le_max_r ] ] ]). apply Hle in HinL; omega.",
+        "exfalso. assert (Hlt : forall l z, In z l -> z < 1 + maxs l) by (induction l; intros z H; [contradiction|]; simpl; destruct H as [H|H]; subst; [apply (Nat.lt_of_le_of_lt _ (Nat.le_max_l _ _) (Nat.lt_succ_diag_r _)) | apply (Nat.lt_le_trans (IHl z H) (Nat.add_le_mono_l _ _ (Nat.le_max_r _ _)))]). assert (Hin_l : In (fresh_var x t p) (x :: fvs_trm t ++ fvs_frm p)) by (apply in_cons; apply in_or_app; right; apply (proj2 (fv_is_free_in_frm p (fresh_var x t p)) H)). assert (Hcontra : fresh_var x t p < fresh_var x t p) by (unfold fresh_var; apply (Hlt (x :: fvs_trm t ++ fvs_frm p) (fresh_var x t p) Hin_l)). exact (Nat.lt_irrefl _ Hcontra).",
+        "exfalso. pose proof (Htrue_in eq_refl) as Hin. unfold fresh_var in Hin. assert (Hmaxs_ge : forall z l, In z l -> z <= maxs l) by\n  (induction l; intros z H; simpl; destruct H as [Heq|Htail];\n   subst; [ apply Nat.le_max_l | apply le_trans with (maxs l);\n   [ apply IHl, Htail | apply Nat.le_max_r ]]). apply Hmaxs_ge in Hin. assert (Hmaxs_sub : forall l1 l2, maxs l2 <= maxs (l1 ++ l2)) by\n  (induction l1; simpl; intros l2; [ reflexivity | apply le_trans with (maxs (l1 ++ l2));\n   [ apply IHl1 | apply Nat.le_max_r ]]). assert (Hsub : maxs (fvs_frm p) <= maxs (x :: fvs_trm t ++ fvs_frm p)) by\n  (apply Hmaxs_sub). omega.",
+        "exfalso. assert (Hin : List.In (fresh_var x t p) (fvs_frm p)) by apply (Htrue_in eq_refl). assert (Hmem : List.In (fresh_var x t p) (x :: fvs_trm t ++ fvs_frm p)) by\n  (apply List.in_cons; apply in_or_app; right; exact Hin). assert (Hmaxs_spec : forall (l : list ivar) (n : ivar), List.In n l -> n <= maxs l) by\n  (induction l as [|a l IH]; simpl; intros n H;\n   [contradiction | destruct H as [H|H]; [subst; apply Nat.le_max_l | apply le_trans with (maxs l); [apply IH, H | apply Nat.le_max_r]]]). assert (Hle : fresh_var x t p <= maxs (x :: fvs_trm t ++ fvs_frm p)) by apply (Hmaxs_spec _ _ Hmem). unfold fresh_var in Hle. exact (Nat.nle_succ_diag_l _ Hle).",
+        "discriminate."
+      ],
+      "failed_attempts": [
+        "exfalso. apply Htrue_in in H. unfold fresh_var in *. set (L := app (cons x nil) (app (fvs_trm t) (fvs_frm p))). assert (HinL : In (1 + maxs L) L) by\n    (apply in_or_app; right; apply in_or_app; right; exact H). assert (Hle : forall l n, In n l -> n <= maxs l) by\n    (induction l; simpl; intros n' H0;\n     [ contradiction\n     | destruct H0 as [H1|H2];\n       [ subst; apply Nat.le_max_l\n       | apply Nat.le_trans with (maxs l); [ apply IHl, H2 | apply Nat.le_max_r ] ] ]). apply Hle in HinL; omega.",
+        "exfalso. assert (Hlt : forall l z, In z l -> z < 1 + maxs l) by (induction l; intros z H; [contradiction|]; simpl; destruct H as [H|H]; subst; [apply (Nat.lt_of_le_of_lt _ (Nat.le_max_l _ _) (Nat.lt_succ_diag_r _)) | apply (Nat.lt_le_trans (IHl z H) (Nat.add_le_mono_l _ _ (Nat.le_max_r _ _)))]). assert (Hin_l : In (fresh_var x t p) (x :: fvs_trm t ++ fvs_frm p)) by (apply in_cons; apply in_or_app; right; apply (proj2 (fv_is_free_in_frm p (fresh_var x t p)) H)). assert (Hcontra : fresh_var x t p < fresh_var x t p) by (unfold fresh_var; apply (Hlt (x :: fvs_trm t ++ fvs_frm p) (fresh_var x t p) Hin_l)). exact (Nat.lt_irrefl _ Hcontra).",
+        "exfalso. pose proof (Htrue_in eq_refl) as Hin. unfold fresh_var in Hin. assert (Hmaxs_ge : forall z l, In z l -> z <= maxs l) by\n  (induction l; intros z H; simpl; destruct H as [Heq|Htail];\n   subst; [ apply Nat.le_max_l | apply le_trans with (maxs l);\n   [ apply IHl, Htail | apply Nat.le_max_r ]]). apply Hmaxs_ge in Hin. assert (Hmaxs_sub : forall l1 l2, maxs l2 <= maxs (l1 ++ l2)) by\n  (induction l1; simpl; intros l2; [ reflexivity | apply le_trans with (maxs (l1 ++ l2));\n   [ apply IHl1 | apply Nat.le_max_r ]]). assert (Hsub : maxs (fvs_frm p) <= maxs (x :: fvs_trm t ++ fvs_frm p)) by\n  (apply Hmaxs_sub). omega.",
+        "exfalso. assert (Hin : List.In (fresh_var x t p) (fvs_frm p)) by apply (Htrue_in eq_refl). assert (Hmem : List.In (fresh_var x t p) (x :: fvs_trm t ++ fvs_frm p)) by\n  (apply List.in_cons; apply in_or_app; right; exact Hin). assert (Hmaxs_spec : forall (l : list ivar) (n : ivar), List.In n l -> n <= maxs l) by\n  (induction l as [|a l IH]; simpl; intros n H;\n   [contradiction | destruct H as [H|H]; [subst; apply Nat.le_max_l | apply le_trans with (maxs l); [apply IH, H | apply Nat.le_max_r]]]). assert (Hle : fresh_var x t p <= maxs (x :: fvs_trm t ++ fvs_frm p)) by apply (Hmaxs_spec _ _ Hmem). unfold fresh_var in Hle. exact (Nat.nle_succ_diag_l _ Hle).",
+        "discriminate."
+      ]
+    },
+    {
+      "uuid": "1ce65373c68c41ef8682e063480e204a",
+      "parent_uuid": "9c7afdfb31bf4210aa2f2691b298a238",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Htrue_in : forall _ : eq false true, List.In (fresh_var x t p) (fvs_frm p)",
+            "H : eq (is_free_in_frm (fresh_var x t p) p) false",
+            "p : frm L",
+            "t : trm L",
+            "x : ivar",
+            "L : language"
+          ],
+          "goal": "eq false false"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct (fv_is_free_in_frm p (fresh_var x t p)) as [_ Htrue_in]. destruct (is_free_in_frm (fresh_var x t p) p) eqn:H."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Htrue_in : forall _ : eq true true, List.In (fresh_var x t p) (fvs_frm p)",
+                "H : eq (is_free_in_frm (fresh_var x t p) p) true",
+                "p : frm L",
+                "t : trm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "eq true false"
+            },
+            {
+              "hypotheses": [
+                "Htrue_in : forall _ : eq false true, List.In (fresh_var x t p) (fvs_frm p)",
+                "H : eq (is_free_in_frm (fresh_var x t p) p) false",
+                "p : frm L",
+                "t : trm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "eq false false"
+            }
+          ]
+        },
+        "proof_prefix": "destruct (fv_is_free_in_frm p (fresh_var x t p)) as [_ Htrue_in]. destruct (is_free_in_frm (fresh_var x t p) p) eqn:H. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "reflexivity."
+      ],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": 0.0,
+      "id": 135536282931152,
+      "uuid": "9c7afdfb31bf4210aa2f2691b298a238"
+    }
+  ],
+  "costs_so_far": {
+    "9c7afdfb31bf4210aa2f2691b298a238": 0.0,
+    "7051567a458c4d7b8be95a0a491d92aa": -0.1,
+    "1ce65373c68c41ef8682e063480e204a": -0.2
+  },
+  "costs_to_go": {
+    "9c7afdfb31bf4210aa2f2691b298a238": 0,
+    "7051567a458c4d7b8be95a0a491d92aa": 0,
+    "1ce65373c68c41ef8682e063480e204a": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "9c7afdfb31bf4210aa2f2691b298a238": 0,
+    "7051567a458c4d7b8be95a0a491d92aa": 1,
+    "1ce65373c68c41ef8682e063480e204a": 2
+  },
+  "next_node_idx": 3,
+  "remaining_nodes_to_expand": 148,
+  "root_uuid": "9c7afdfb31bf4210aa2f2691b298a238",
+  "done": false,
+  "visualization": "\n* (4 HYPS)|-eq (is_free_in_frm (fresh_var x t p) p) false (cost:0.0; n_fail:0)\n  # 1 prefixes like destruct (fv_is_free_in_frm p (fresh_var x t p)) as [_ Htrue_in]. destruct (is_free_in_frm (fresh_var x t p) p) eqn:H.\n  * (6 HYPS)|-eq true false (cost:-0.1; n_fail:2)\n\n  * (6 HYPS)|-eq false false (proven) (pruned) (done:True; cost:-0.2; n_fail:0)\n    # successful proof: hammer."
+}

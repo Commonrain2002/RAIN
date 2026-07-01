@@ -1,0 +1,480 @@
+lemma_name,lemma,section_names,successful,error_message
+intersection_spec,"
+Theorem intersection_spec x y
+  : forall z, z \in intersection x y <-> (z \in x /\ z \in y).
+",[],success,
+Henkin_axiom_is_of_form,"
+Lemma Henkin_axiom_is_of_form n
+  (x := fst (cp n))
+  (phi := enum (snd (cp n)))
+  : nth_Henkin_axiom n = (Imp_frm (subst_frm (one_subst x (@Con_trm L' (inr (nth_Henkin_constant n)))) phi) (All_frm x phi)).
+",[],success,
+upair_spec,"
+Theorem upair_spec x1 x2
+  : forall z, z \in upair x1 x2 <-> (z == x1 \/ z == x2).
+",[],success,
+vec_to_trms_to_vec,"
+Lemma vec_to_trms_to_vec arity (xs : Vector.t trm arity)
+  : trms_to_vec (vec_to_trms xs) = xs.
+",[],success,
+fromAcc_member_fromAcc_intro,"
+Lemma fromAcc_member_fromAcc_intro (A : Type@{Set_u}) (R : A -> A -> Prop) (x : A) (x' : A) (ACC : Acc R x) (ACC' : Acc R x')
+  (R_x_x' : R x x')
+  : fromAcc x ACC \in fromAcc x' ACC'.
+",[],success,
+distr_hcompose_one,"
+Lemma distr_hcompose_one (sigma1 : hsubst) (sigma2 : hsubst) (x : hatom) (y : ivar) (z : hatom) (t : trm L') (p : frm L')
+  (FRESH : forallb (negb ∘ occurs_free_in_trm (inl y) ∘ sigma1)%prg (remove eq_dec x (accum_hatom_in_frm p)) = true)
+  (FREE : occurs_free_in_frm z p = true)
+  : cons_hsubst x t (hsubst_compose sigma1 sigma2) z = hsubst_compose (cons_hsubst x (Var_trm y) sigma1) (cons_hsubst (inl y) t sigma2) z.
+",[],failure,wall_timeout
+not_free_no_effect_on_interpret_frm,"
+Lemma not_free_no_effect_on_interpret_frm (env : ivar -> domain_of_discourse) (p : frm L) (y : ivar) (y_value : domain_of_discourse)
+  (NOT_FREE : is_free_in_frm y p = false)
+  : interpret_frm env p <-> interpret_frm (upd_env y y_value env) p.
+",[],failure,
+cut,"
+Lemma cut A B Gamma
+  (PROVE1 : E.insert A Gamma \proves B)
+  (PROVE2 : Gamma \proves A)
+  : Gamma \proves B.
+",[],failure,
+frm_is_fresh_in_subst_iff,"
+Theorem frm_is_fresh_in_subst_iff (p : frm L) (z : ivar) (s : subst L)
+  : frm_is_fresh_in_subst z s p = true <-> is_free_in_frm z (subst_frm s p) = false.
+",[],failure,wall_timeout
+supOfScottContinuousMaps_isWellDefined,"
+Lemma supOfScottContinuousMaps_isWellDefined {D : Type} {D' : Type} {PROSET : isProset D} {PROSET' : isProset D'} {CPO : isCpo D} {CPO' : isCpo D'} (F : ensemble `[D -> D'])
+  (F_isDirected : isDirected F)
+  : forall x, isDirected (E.image (fun f_i : `[D -> D'] => proj1_sig f_i x) F).
+",[],failure,
+closed_frm_is_sentence,"
+Lemma closed_frm_is_sentence (p : frm L)
+  : L.null (fvs_frm (closed_frm p)) = true.
+",[],failure,
+ImplicationE,"
+Lemma ImplicationE (Gamma : ensemble (frm L)) A B
+  (INFERS1 : Gamma ⊢ Imp_frm A B)
+  (INFERS2 : Gamma ⊢ A)
+  : Gamma ⊢ B.
+",[],failure,
+trm_is_enumerable,"
+Theorem trm_is_enumerable (t : trm L)
+  : { x : nat | enum_trm x = t }.
+",[],failure,wall_timeout
+ContradictionI_preserves,"
+Lemma ContradictionI_preserves (Gamma : ensemble formula) (A : formula)
+  (ENTAILS1 : Gamma ⊨ A)
+  (ENTAILS2 : Gamma ⊨ NegationF A)
+  : Gamma ⊨ ContradictionF.
+",[],failure,
+le_iff_lt_eq,"
+Lemma le_iff_lt_eq {A : Type} `{STRICT_ORDER : hasStrictOrder A} (x : A) (y : A)
+  : x ≦ y <-> (x ≨ y \/ x = y).
+",[],failure,
+singlton_inj,"
+Corollary singlton_inj x y
+  (EQ : singlton x == singlton y)
+  : x == y.
+",[],failure,
+scottLam3_isContinuous,"
+Lemma scottLam3_isContinuous
+  : isContinuous scottLam3.
+",[],failure,wall_timeout
+fact1_of_1_2_8,"
+Lemma fact1_of_1_2_8 X
+  : isFilter (cl X).
+",[],failure,
+zipWith_spec,"
+Lemma zipWith_spec {n : nat} {A : Type} {B : Type} {C : Type} (f : A -> B -> C) (xs : Vector.t A n) (ys : Vector.t B n)
+  : forall i, f (xs !! i) (ys !! i) = zipWith f xs ys !! i.
+",[],failure,wall_timeout
+union_f_proves_iff,"
+Lemma union_f_proves_iff p
+  : union_f f ⊢ p <-> (exists n, f n ⊢ p).
+",[],failure,
+for_Imp_I,"
+Lemma for_Imp_I (Gamma : ensemble (frm L)) (p : frm L) (q : frm L)
+  (PROVE1 : E.insert p Gamma \proves q)
+  : Gamma \proves Imp_frm p q.
+",[],failure,
+embed_frm_inj,"
+Theorem embed_frm_inj (p1 : frm L) (p2 : frm L)
+  (EQ : embed_frm p1 = embed_frm p2)
+  : p1 = p2.
+",[],failure,
+Deduction_theorem,"
+Theorem Deduction_theorem (Gamma : ensemble (frm L)) (H : frm L) (C : frm L)
+  : Gamma \proves (Imp_frm H C) <-> E.insert H Gamma \proves C.
+",[],failure,wall_timeout
+twilight_frm_spec,"
+Lemma twilight_frm_spec (p : frm L')
+  : twilight_frm p ≡ hsubst_frm (fun z : hatom => match z with inl x => Var_trm (x * 2) | inr hc => Var_trm (hc * 2 + 1) end) p.
+",[],failure,wall_timeout
+extend_alpha_proves,"
+Lemma extend_alpha_proves {L : language} (Gamma : ensemble (frm L)) (Gamma' : ensemble (frm L)) (C : frm L)
+  (SUBSET : forall p : frm L, forall IN : p \in Gamma, exists p' : frm L, p ≡ p' /\ p' \in Gamma')
+  (PROVE : Gamma ⊢ C)
+  : Gamma' ⊢ C.
+",[],failure,wall_timeout
+eqb_spec,"
+Theorem eqb_spec {A : Type} {hasEqDec : hasEqDec A} (x : A) (y : A) (b : bool)
+  : eqb x y = b <-> if b then x = y else x <> y.
+",[],failure,
+sum_from_0_to_spec,"
+Lemma sum_from_0_to_spec (n : nat)
+  : 2 * sum_from_0_to n = n * (S n).
+",[],failure,
+mod_eq_elim,"
+Lemma mod_eq_elim (a1 : nat) (a2 : nat) (b : nat)
+  (b_ne_0 : b <> 0)
+  (H_mod_eq : a1 mod b = a2 mod b)
+  : exists q1, exists q2, a1 + b * q1 = a2 + b * q2.
+",[],failure,
+in_image_iff,"
+Lemma in_image_iff (A : Type) (B : Type) f X
+  : forall z, z \in @image A B f X <-> (exists x, z = f x /\ x \in X).
+",[],failure,
+Rel_eqAxm_free_vars,"
+Lemma Rel_eqAxm_free_vars (z : ivar) (R : L.(relation_symbols))
+  (n := L.(relation_arity_table) R)
+  : is_free_in_frm z (Rel_eqAxm R) = true <-> z < n + n.
+",[],failure,wall_timeout
+cpInv_leftInv,"
+Lemma cpInv_leftInv (n : nat)
+  : cpInv (fst (cp n)) (snd (cp n)) = n.
+",[],failure,wall_timeout
+interpret_frm_ext_upto,"
+Lemma interpret_frm_ext_upto (env : ivar -> domain_of_discourse) (env' : ivar -> domain_of_discourse) (p : frm L)
+  (EQUIV : forall z : ivar, forall FREE : is_free_in_frm z p = true, env z == env' z)
+  : interpret_frm env p <-> interpret_frm env' p.
+",[],failure,
+to_list_rev,"
+Lemma to_list_rev {A : Type} {n : nat} (xs : Vector.t A n)
+  : to_list (rev xs) = L.rev (to_list xs).
+",[],failure,
+lemma1_of_1_2_11,"
+Lemma lemma1_of_1_2_11 n
+  : forall X, isFilter X -> isFilter (improveFilter X n).
+",[],failure,
+to_list_inj,"
+Lemma to_list_inj {n : nat} (xs1 : Vector.t A n) (xs2 : Vector.t A n)
+  (EXT_EQ : to_list xs1 = to_list xs2)
+  : xs1 = xs2.
+",[],failure,wall_timeout
+cl_isSubsetOf_Th,"
+Lemma cl_isSubsetOf_Th (X : ensemble formula)
+  : cl X \subseteq Th X.
+",[],failure,
+eqb_eq,"
+Lemma eqb_eq {A : Type} {hasEqDec : hasEqDec A} (x : A) (y : A)
+  : eqb x y = true <-> x = y.
+",[],failure,
+succ_isOrdinal,"
+Lemma succ_isOrdinal x
+  (ORDINAL : isOrdinal x)
+  : isOrdinal (succ x).
+",[],failure,
+div_mod_uniqueness,"
+Lemma div_mod_uniqueness a b q r
+  (H_DIVISION : a = b * q + r)
+  (r_lt_b : r < b)
+  : (a / b = q /\ a mod b = r)%nat.
+",[],failure,
+last_HC_gt_frm,"
+Lemma last_HC_gt_frm (hc : Henkin_constants)
+  : forall p : frm L', hc > maxs (accum_HCs_frm p) -> HC_occurs_in_frm hc p = false.
+",[],failure,wall_timeout
+minimisation_lemma,"
+Theorem minimisation_lemma (P : nat -> Prop)
+  (EXISTENCE : exists n, P n)
+  : exists n, P n /\ ⟪ MIN : forall m, P m -> m >= n ⟫.
+",[],failure,wall_timeout
+ContradictionE_preserves,"
+Lemma ContradictionE_preserves (Gamma : ensemble formula) (A : formula)
+  (ENTAILS1 : Gamma ⊨ ContradictionF)
+  : Gamma ⊨ A.
+",[],failure,
+eqimpl,"
+Lemma eqimpl: forall P Q : Prop, P = Q -> P -> Q.
+",[],failure,
+cons_hsubst_hsubst_frm,"
+Lemma cons_hsubst_hsubst_frm (x1 : hatom) (t1 : trm L') (y : hatom) (p : frm L') (sigma : hsubst)
+  (NOT_FREE : occurs_free_in_frm y p = false \/ y = x1)
+  : hsubst_frm (cons_hsubst x1 t1 sigma) p = hsubst_frm (cons_hsubst y t1 sigma) (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p).
+",[],failure,wall_timeout
+G_aux0_isMonotionicMap,"
+Lemma G_aux0_isMonotionicMap {UPPER_LATTICE : isUpperSemilattice D} (f : `[D -> D]) (x : D)
+  : isMonotonic1 (G_aux0 f x).
+",[],failure,
+inv_paco',"
+Lemma inv_paco' {paco_F : D -> D} {F : D -> D} {Y : D} {z : A}
+  (H_paco' : z \in paco' (paco_F := paco_F) F Y)
+  : exists X, X \subseteq join_lattice Y (paco_F Y) /\ z \in F X.
+",[],failure,
+proof_compose,"
+Lemma proof_compose p q r
+  : proof [] (Imp_frm (Imp_frm q r) (Imp_frm (Imp_frm p q) (Imp_frm p r))).
+",[],failure,wall_timeout
+subset_union_f,"
+Lemma subset_union_f n
+  : f n \subseteq union_f f.
+",[],failure,
+andsB_zero,"
+Lemma andsB_zero
+  : andsB [] == trueB.
+",[],failure,
+sup_Y_is_supremum_of_image_f_X_iff_f_sup_X_eq_sup_Y,"
+Lemma sup_Y_is_supremum_of_image_f_X_iff_f_sup_X_eq_sup_Y {D : Type} {D' : Type} {PROSET : isProset D} {PROSET' : isProset D'} {CPO : isCpo D} {CPO' : isCpo D'} (f : D -> D') (X : ensemble D) (sup_X : D) (sup_Y : D')
+  (CONTINUIOUS : isContinuous f)
+  (DIRECTED : isDirected X)
+  (SUPREMUM : is_supremum_of sup_X X)
+  : is_supremum_of sup_Y (E.image f X) <-> f sup_X == sup_Y.
+",[],failure,wall_timeout
+andB_le_intro_l,"
+Lemma andB_le_intro_l x1 x2
+  : andB x1 x2 =< x1.
+",[],failure,
+seperately_continuous_iff,"
+Theorem seperately_continuous_iff {D : Type} {D' : Type} {D'' : Type} {PROSET : isProset D} {PROSET' : isProset D'} {PROSET'' : isProset D''} {CPO : isCpo D} {CPO' : isCpo D'} {CPO'' : isCpo D''} (f : D * D' -> D'')
+  : ((forall x2, isContinuous (fun x1 => f (x1, x2))) /\ (forall x1, isContinuous (fun x2 => f (x1, x2)))) <-> isContinuous f.
+",[],failure,
+extenesionality,"
+Theorem extenesionality x y
+  (EXT_EQ : forall z, z \in x <-> z \in y)
+  : x == y.
+",[],failure,wall_timeout
+for_All_I,"
+Lemma for_All_I (x : ivar) (p : frm L) (Gamma : ensemble (frm L))
+  (FRESH : is_not_free_in_frms x Gamma)
+  (PROVE : Gamma \proves p)
+  : Gamma \proves All_frm x p.
+",[],failure,
+proof_flip,"
+Lemma proof_flip p q r
+  : proof [] (Imp_frm (Imp_frm q (Imp_frm p r)) (Imp_frm p (Imp_frm q r))).
+",[],failure,wall_timeout
+initPaco,"
+Lemma initPaco (f : `[D -> D])
+  : proj1_sig (nu f) == proj1_sig (Paco f) bot_lattice.
+",[],failure,
+projT2_eq,"
+Lemma projT2_eq {A : Type} {B : A -> Type} (x : A) (y1 : B x) (y2 : B x)
+  (EQ : @existT A B x y1 = @existT A B x y2)
+  : y1 = y2.
+",[],failure,
+isMonotonic_if_preserves_supremum,"
+Lemma isMonotonic_if_preserves_supremum {D : Type} {D' : Type} {PROSET : isProset D} {PROSET' : isProset D'} {CPO : isCpo D} {CPO' : isCpo D'} (f : D -> D')
+  (COMPAT_WITH_eqProp : eqPropCompatible1 f)
+  (PRESERVES_SUPREMUM : preserves_supremum f)
+  : isMonotonic1 f.
+",[],failure,wall_timeout
+ByAssumption,"
+Lemma ByAssumption (Gamma : ensemble (frm L)) C
+  (IN : C \in Gamma)
+  : Gamma ⊢ C.
+",[],failure,
+scottApp1_isMonotonic,"
+Lemma scottApp1_isMonotonic
+  : isMonotonic1 scottApp1.
+",[],failure,
+diagonal_spec,"
+Lemma diagonal_spec {A : Type} {n : nat} (xss : Vector.t (Vector.t A n) n)
+  : forall i : Fin.t n, xss !! i !! i = diagonal xss !! i.
+",[],failure,wall_timeout
+Fun_eqAxm_HC_free,"
+Lemma Fun_eqAxm_HC_free (f : L'.(function_symbols))
+  : forall c : Henkin_constants, HC_occurs_in_frm c (Fun_eqAxm f) = false.
+",[],failure,wall_timeout
+Henkin_constant_does_not_occur_in_any_former_Henkin_axioms,"
+Lemma Henkin_constant_does_not_occur_in_any_former_Henkin_axioms k n
+  (LT : k < n)
+  : HC_occurs_in_frm (nth_Henkin_constant n) (nth_Henkin_axiom k) = false.
+",[],failure,wall_timeout
+proves_eqn_rel,"
+Lemma proves_eqn_rel (Gamma : ensemble (frm L)) (R : L.(relation_symbols)) ts ts'
+  (PROVE : pairwise_equal Gamma ts ts')
+  : Gamma \proves Imp_frm (Rel_frm R ts) (Rel_frm R ts').
+",[],failure,wall_timeout
+subst_frm_similarity,"
+Lemma subst_frm_similarity (s : subst L) (s' : subst L') (p : frm L) (p' : frm L')
+  (s_SIM : s =~= s')
+  (p_SIM : p =~= p')
+  : subst_frm s p =~= subst_frm s' p'.
+",[],failure,
+fvs_frm_compat_similarity,"
+Lemma fvs_frm_compat_similarity (p : frm L) (p' : frm L')
+  (p_SIM : p =~= p')
+  : fvs_frm p = fvs_frm p'.
+",[],failure,
+isDirected_iff,"
+Lemma isDirected_iff {D : Type} `{PROSET : isProset D} (X : ensemble D)
+  : isDirected X <-> (forall xs, L.is_finsubset_of xs X -> exists y, y \in X /\ (forall x, L.In x xs -> x =< y)).
+",[],failure,
+in_union_iff,"
+Lemma in_union_iff (A : Type) X1 X2
+  : forall z, z \in @union A X1 X2 <-> (z \in X1 \/ z \in X2).
+",[],failure,
+walk_finds_path,"
+Theorem walk_finds_path (v0 : V) (v : V) (w : list V)
+  (WALK : v0 ~~~[ w ]~~> v)
+  : exists p, v0 ---[ p ]--> v.
+",[],failure,wall_timeout
+replicate_spec,"
+Lemma replicate_spec {A : Type} {n : nat} (x : A)
+  : forall i : Fin.t n, x = replicate x !! i.
+",[],failure,
+supremum_unique,"
+Lemma supremum_unique sup_X1 sup_X2 X1 X2
+  (SUPREMUM1 : is_supremum_of sup_X1 X1)
+  (SUPREMUM2 : is_supremum_of sup_X2 X2)
+  (EQ : X1 == X2)
+  : sup_X1 == sup_X2.
+",[],failure,
+supremum_monotonic,"
+Lemma supremum_monotonic sup_X1 sup_X2 X1 X2
+  (SUPREMUM1 : is_supremum_of sup_X1 X1)
+  (SUPREMUM2 : is_supremum_of sup_X2 X2)
+  (SUBSET : X1 \subseteq X2)
+  : sup_X1 =< sup_X2.
+",[],failure,
+indexed_union_isOrdinal,"
+Lemma indexed_union_isOrdinal {I : Type@{Set_u}} (x : I -> Tree)
+  (ORDINAL : forall i, isOrdinal (x i))
+  : isOrdinal (indexed_union I x).
+",[],failure,
+MuRecGraph_correct,"
+Theorem MuRecGraph_correct (n : Arity) (f : MuRec n) (xs : Vector.t Value n) (z : Value)
+  : MuRecGraph f xs z <-> MuRecSpec n f xs z.
+",[],failure,
+isFilter_intro,"
+Lemma isFilter_intro F
+  (NONEMPTY : exists x0, x0 \in F)
+  (CLOSED_MEET : forall x1, forall x2, x1 \in F -> x2 \in F -> andB x1 x2 \in F)
+  (CLOSED_UPWARD : forall x, x \in F -> forall x', x =< x' -> x' \in F)
+  : isFilter F.
+",[],failure,
+paco_init,"
+Theorem paco_init (F : D -> D)
+  (F_monotonic : isMonotonic1 F)
+  : paco F bot_lattice == proj1_sig (nu (@exist (D -> D) isMonotonic1 F F_monotonic)).
+",[],failure,
+for_CP1,"
+Lemma for_CP1 Gamma p q
+  (PROVE : Gamma \proves Imp_frm p q)
+  : Gamma \proves Imp_frm (Neg_frm q) (Neg_frm p).
+",[],failure,
+DisjunctionI1,"
+Lemma DisjunctionI1 (Gamma : ensemble (frm L)) A B
+  (INFERS1 : Gamma ⊢ A)
+  : Gamma ⊢ Dis_frm A B.
+",[],failure,
+postfixedpointsOf_increasing,"
+Lemma postfixedpointsOf_increasing (f1 : D -> D) (f2 : D -> D)
+  (LE : f1 =< f2)
+  : postfixedpointsOf f1 =< postfixedpointsOf f2.
+",[],failure,
+infimum_unique,"
+Lemma infimum_unique (X1 : ensemble D) (X2 : ensemble D) (inf_X1 : D) (inf_X2 : D)
+  (INFIMUM1 : is_infimum_of inf_X1 X1)
+  (INFIMUM2 : is_infimum_of inf_X2 X2)
+  (EQ : X1 == X2)
+  : inf_X1 == inf_X2.
+",[],failure,
+replace_constant_with_fresh_ivar_in_frm,"
+Theorem replace_constant_with_fresh_ivar_in_frm (c : Henkin_constants) (s : subst L') (p : frm L') (z : ivar)
+  (FRESH : s z = Var_trm z)
+  : replace_constant_in_frm c (Var_trm z) (subst_frm s p) = subst_frm (replace_constant_in_trm c (Var_trm z) ∘ s)%prg (replace_constant_in_frm c (Var_trm z) p).
+",[],failure,
+NegationE,"
+Lemma NegationE (Gamma : ensemble (frm L)) A
+  (INFERS1 : E.insert (Neg_frm A) Gamma ⊢ Bot_frm)
+  : Gamma ⊢ A.
+",[],failure,wall_timeout
+restrict_structure_frm,"
+Lemma restrict_structure_frm (STRUCTURE : isStructureOf L') (env : ivar -> domain_of_discourse) (p : frm L)
+  : interpret_frm STRUCTURE env (embed_frm p) == interpret_frm (restrict_structure STRUCTURE) env p.
+",[],failure,wall_timeout
+untwilight_frm,"
+Lemma untwilight_frm (p : frm L')
+  (HENKIN_FREE : forall c, HC_occurs_in_frm c p = false)
+  : twilight_frm p ≡ subst_frm (fun z : ivar => Var_trm (z * 2)) p.
+",[],failure,wall_timeout
+ConjunctionE1_preserves,"
+Lemma ConjunctionE1_preserves (Gamma : ensemble formula) (A : formula) (B : formula)
+  (ENTAILS1 : Gamma ⊨ ConjunctionF A B)
+  : Gamma ⊨ A.
+",[],failure,
+paco_unfold,"
+Theorem paco_unfold (F : D -> D) (Y : D)
+  (F_monotonic : isMonotonic1 F)
+  : paco F Y \subseteq F (join_lattice Y (paco F Y)).
+",[],failure,
+finite_entails_monotonic,"
+Lemma finite_entails_monotonic (Gamma : list formula) (Gamma' : list formula) (C : formula)
+  (ENTAILS : finite_entails Gamma C)
+  (SUBSET : forall H, In H Gamma -> In H Gamma')
+  : finite_entails Gamma' C.
+",[],failure,
+empty_bot_lattice_spec,"
+Lemma empty_bot_lattice_spec
+  : is_supremum_of (@E.empty A) E.empty.
+",[],failure,
+infers_dec,"
+Lemma infers_dec (C : formula)
+  : { ls : list propLetter | ⟪ OCCURS : forall l, In l ls <-> occurs l C ⟫ /\ ⟪ INFERS_DEC : forall e, let Gamma := E.fromList (gen_context_for e ls) in if eval_bool e C then Gamma ⊢ C else Gamma ⊢ NegationF C ⟫ }.
+",[],failure,wall_timeout
+sflib__negb_rewrite,"
+Lemma sflib__negb_rewrite: forall {b}, negb b -> b = false.
+",[],failure,
+fresh_var_is_not_free_in_frm,"
+Lemma fresh_var_is_not_free_in_frm (x : ivar) (t : trm L) (p : frm L)
+  : is_free_in_frm (fresh_var x t p) p = false.
+",[],failure,wall_timeout
+unions_isOrdinal,"
+Lemma unions_isOrdinal x
+  (ORDINAL : isOrdinal x)
+  : isOrdinal (unions x).
+",[],failure,
+for_MP,"
+Lemma for_MP (Gamma : ensemble (frm L)) (Gamma' : ensemble (frm L)) (p : frm L) (q : frm L)
+  (PROVE1 : Gamma \proves Imp_frm p q)
+  (PROVE2 : Gamma' \proves p)
+  : E.union Gamma Gamma' \proves q.
+",[],failure,
+one_subst_cons_subst,"
+Lemma one_subst_cons_subst (p : frm L) (x : ivar) (y : ivar) (z : ivar) (s : subst L)
+  (FRESH : is_free_in_frm x p = false \/ x = y)
+  : subst_frm (one_subst x (Var_trm z)) (subst_frm (cons_subst y (Var_trm z) s) p) = subst_frm (cons_subst y (Var_trm z) (subst_compose s (one_subst x (Var_trm z)))) (subst_frm (one_subst x (Var_trm y)) p).
+",[],failure,wall_timeout
+G0_isMonotonic1,"
+Lemma G0_isMonotonic1 (f : `[D -> D])
+  : isMonotonic1 (G0 f).
+",[],failure,
+rLe_eqTree_rLe,"
+Lemma rLe_eqTree_rLe x y z
+  (H_rLe : x ≦ᵣ y)
+  (EQ : y == z)
+  : x ≦ᵣ z.
+",[],failure,wall_timeout
+preservesDirectedness_if_isMonotonic,"
+Lemma preservesDirectedness_if_isMonotonic {A : Type} {B : Type} {A_isProset : isProset A} {B_isProset : isProset B} (f : A -> B)
+  (MONOTONIC : isMonotonic1 f)
+  : forall X, isDirected X -> isDirected (E.image f X).
+",[],failure,
+nat_compare_gt,"
+Lemma nat_compare_gt (x : nat) (y : nat)
+  (hyp_gt : nat_compare x y = Gt)
+  : y <= x /\ x <> y.
+",[],failure,
+supOfScottContinuousMaps_F_sup_X_is_supremum_of_unions_i_image_f_i_X_F,"
+Lemma supOfScottContinuousMaps_F_sup_X_is_supremum_of_unions_i_image_f_i_X_F {D : Type} {D' : Type} {PROSET : isProset D} {PROSET' : isProset D'} {CPO : isCpo D} {CPO' : isCpo D'} (F : ensemble `[D -> D']) (X : ensemble D) (sup_X : D)
+  (F_isDirected : isDirected F)
+  (X_isDirected : isDirected X)
+  (sup_X_is_supremum_of_X : is_supremum_of sup_X X)
+  : is_supremum_of (supOfScottContinuousMaps F F_isDirected sup_X) (E.unions (E.image (fun f_i => E.image (fun x => proj1_sig f_i x) X) F)).
+",[],failure,wall_timeout
+positive_odd,"
+Lemma positive_odd (n_odd : nat) n
+  : (n_odd = 2 * n + 1)%nat <-> (n = (n_odd - 1) / 2 /\ n_odd mod 2 = 1 /\ n_odd > 0)%nat.
+",[],failure,wall_timeout

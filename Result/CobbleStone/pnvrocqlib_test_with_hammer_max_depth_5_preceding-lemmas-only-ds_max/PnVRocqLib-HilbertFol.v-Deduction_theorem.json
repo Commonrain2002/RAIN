@@ -1,0 +1,559 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-HilbertFol.v-Deduction_theorem.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "f84252ee94344031ad4e7b7f383d441b",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H,C : frm L",
+            "Gamma : E.t (frm L)",
+            "L : language"
+          ],
+          "goal": "iff (proves Gamma (Imp_frm H C)) (proves (E.insert H Gamma) C)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "30f4bfdafcd34e3ea7d69f15a4aeb36b",
+          "09785c3920044fd09934ba9d5f735750"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "forall _ : proves Gamma (Imp_frm H C), proves (E.insert H Gamma) C"
+            },
+            {
+              "hypotheses": [
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "forall _ : proves (E.insert H Gamma) C, proves Gamma (Imp_frm H C)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "split.\n- intros [ps [Hsub [Hprf]]]. exists (H :: ps). split.\n-- intros x Hx; unfold E.insert; inversion Hx; [left; reflexivity | right; apply Hsub; exact H0].\n-- apply inhabited_intro; destruct Hprf as [Hprf]; eapply proof_deduction; eauto.\n- intros [ps [Hsub [Hprf]]]. exists (List.filter (fun x => x <> H) ps). split.\n-- intros x Hx; apply Hsub in Hx; destruct Hx; [exfalso; exact (H0 eq_refl) | assumption].\n-- apply inhabited_intro; destruct Hprf as [Hprf]; apply proof_deduction; exact Hprf.",
+        "split; intros [ps [Hsub [pf]]]; [exists (H :: ps); split; [unfold E.isSubsetOf, E.In, E.fromList, E.insert; intros x [Hx|Hx]; [left; reflexivity | right; apply Hsub; exact Hx] | apply inhabits; apply mp with H; [apply weaken with ps; exact pf | apply hyp; left; reflexivity]] | exists ps; split; [intros x Hx; destruct (Hsub x Hx) as [Hx'|Hx']; [exfalso; apply Hx'; reflexivity | exact Hx'] | apply inhabits; apply impl_intro with H; apply weaken with ps; exact pf]].",
+        "exact (conj (fun H1 : proves Gamma (Imp_frm H C) => mp (weaken Gamma (E.insert H Gamma) (Imp_frm H C) H1 (fun (x : frm L) (Hx : Gamma x) => or_intror Hx)) (axiom H Gamma)) (fun H2 : proves (E.insert H Gamma) C => ded H2)).",
+        "split.\n- intro H; apply proves_imp_e; exact H.\n- intro H; apply proves_imp_i; exact H."
+      ],
+      "failed_attempts": [
+        "split; intros [ps [Hsub [pf]]]; [exists (H :: ps); split; [unfold E.isSubsetOf, E.In, E.fromList, E.insert; intros x [Hx|Hx]; [left; reflexivity | right; apply Hsub; exact Hx] | apply inhabits; apply mp with H; [apply weaken with ps; exact pf | apply hyp; left; reflexivity]] | exists ps; split; [intros x Hx; destruct (Hsub x Hx) as [Hx'|Hx']; [exfalso; apply Hx'; reflexivity | exact Hx'] | apply inhabits; apply impl_intro with H; apply weaken with ps; exact pf]].",
+        "exact (conj (fun H1 : proves Gamma (Imp_frm H C) => mp (weaken Gamma (E.insert H Gamma) (Imp_frm H C) H1 (fun (x : frm L) (Hx : Gamma x) => or_intror Hx)) (axiom H Gamma)) (fun H2 : proves (E.insert H Gamma) C => ded H2))."
+      ]
+    },
+    {
+      "uuid": "30f4bfdafcd34e3ea7d69f15a4aeb36b",
+      "parent_uuid": "f84252ee94344031ad4e7b7f383d441b",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H,C : frm L",
+            "Gamma : E.t (frm L)",
+            "L : language"
+          ],
+          "goal": "forall _ : proves Gamma (Imp_frm H C), proves (E.insert H Gamma) C"
+        },
+        "decomposition": {
+          "proofs": [
+            "split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "forall _ : proves Gamma (Imp_frm H C), proves (E.insert H Gamma) C"
+            },
+            {
+              "hypotheses": [
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "forall _ : proves (E.insert H Gamma) C, proves Gamma (Imp_frm H C)"
+            }
+          ]
+        },
+        "proof_prefix": "split."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "e94f2692f75a4ca8a95e12eb80c11488",
+          "a27ccb1f55054f0cab543369efe3a126"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "intros [ps [Hsub [Hprf]]]. exists (H :: ps). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "E.isSubsetOf (E.fromList (cons H ps)) (E.insert H Gamma)"
+            },
+            {
+              "hypotheses": [
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "inhabited (proof (cons H ps) C)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros [ps [Hsub [Hprf]]]. exists (H :: ps). split.\n- intros x Hx; unfold E.insert; inversion Hx; [left; reflexivity | right; apply Hsub; exact H0].\n- apply inhabited_intro; destruct Hprf as [Hprf]; eapply proof_deduction; eauto.",
+        "intro H; apply proves_imp_e; exact H."
+      ],
+      "failed_attempts": [
+        "intro H; apply proves_imp_e; exact H."
+      ]
+    },
+    {
+      "uuid": "e94f2692f75a4ca8a95e12eb80c11488",
+      "parent_uuid": "30f4bfdafcd34e3ea7d69f15a4aeb36b",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hprf : proof ps (Imp_frm H C)",
+            "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+            "ps : list (frm L)",
+            "H,C : frm L",
+            "Gamma : E.t (frm L)",
+            "L : language"
+          ],
+          "goal": "E.isSubsetOf (E.fromList (cons H ps)) (E.insert H Gamma)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros [ps [Hsub [Hprf]]]. exists (H :: ps). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "E.isSubsetOf (E.fromList (cons H ps)) (E.insert H Gamma)"
+            },
+            {
+              "hypotheses": [
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "inhabited (proof (cons H ps) C)"
+            }
+          ]
+        },
+        "proof_prefix": "split. intros [ps [Hsub [Hprf]]]. exists (H :: ps). split."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "sfirstorder."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "a27ccb1f55054f0cab543369efe3a126",
+      "parent_uuid": "30f4bfdafcd34e3ea7d69f15a4aeb36b",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hprf : proof ps (Imp_frm H C)",
+            "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+            "ps : list (frm L)",
+            "H,C : frm L",
+            "Gamma : E.t (frm L)",
+            "L : language"
+          ],
+          "goal": "inhabited (proof (cons H ps) C)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros [ps [Hsub [Hprf]]]. exists (H :: ps). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "E.isSubsetOf (E.fromList (cons H ps)) (E.insert H Gamma)"
+            },
+            {
+              "hypotheses": [
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "inhabited (proof (cons H ps) C)"
+            }
+          ]
+        },
+        "proof_prefix": "split. intros [ps [Hsub [Hprf]]]. exists (H :: ps). split. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "039886514aea4cd791e281a664eb0209",
+          "c5e87266218249e7a9d868390ebd9a9e"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "apply inhabits. assert (weaken : forall A, proof ps A -> proof (H::ps) A)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "forall (A : frm L) (_ : proof ps A), proof (cons H ps) A"
+            },
+            {
+              "hypotheses": [
+                "weaken : forall (A : frm L) (_ : proof ps A), proof (cons H ps) A",
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "proof (cons H ps) C"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply inhabited_intro; destruct Hprf as [Hprf]; eapply proof_deduction; eauto.",
+        "apply inhabits. assert (weaken : forall A, proof ps A -> proof (H::ps) A).\n{ induction 1; econstructor; eauto; try (right; assumption). }\neapply mp; [exact (weaken (Imp_frm H C) Hprf) | apply hyp; left; reflexivity].",
+        "apply inhabits. apply mp with (A := H) (B := C).\n- induction Hprf as [Gamma A HIn | Gamma A B Hprf1 IH1 Hprf2 IH2 | Gamma p q r | Gamma p q | Gamma p | Gamma p | Gamma p q | Gamma p q r | Gamma p | Gamma x z p FRESH]; [apply hyp; apply in_cons; exact HIn | apply mp; [exact IH1 | exact IH2] | apply compose | apply cp1 | apply dne | apply dni | apply ex_falso | apply flip | apply id | apply rebind_All_frm; exact FRESH].\n- apply hyp; apply in_eq.",
+        "apply inhabits. apply imp_e with (Gamma := cons H ps) (A := H) (B := C).\n- apply weaken with (ps1 := ps) (ps2 := cons H ps) (A := Imp_frm H C).\n-- exact Hprf.\n-- intros F HF. apply in_cons. exact HF.\n- apply hyp. left. reflexivity.",
+        "induction Hprf as [Gamma f Hin | Gamma A B Hprf' IH | Gamma A B Hprf1 Hprf2 IH1 IH2]; apply inhabits; [apply (proof_imp_e (cons H ps) H C); [apply proof_hyp; simpl; right; exact Hin | apply proof_hyp; simpl; left; reflexivity] | exact Hprf' | destruct IH1 as [H1]; destruct IH2 as [H2]; apply (proof_imp_e (cons H ps) H C); [apply (proof_imp_e (cons H ps) A (Imp_frm H C) H1 H2) | apply proof_hyp; simpl; left; reflexivity]]."
+      ],
+      "failed_attempts": [
+        "apply inhabited_intro; destruct Hprf as [Hprf]; eapply proof_deduction; eauto.",
+        "apply inhabits. apply mp with (A := H) (B := C).\n- induction Hprf as [Gamma A HIn | Gamma A B Hprf1 IH1 Hprf2 IH2 | Gamma p q r | Gamma p q | Gamma p | Gamma p | Gamma p q | Gamma p q r | Gamma p | Gamma x z p FRESH]; [apply hyp; apply in_cons; exact HIn | apply mp; [exact IH1 | exact IH2] | apply compose | apply cp1 | apply dne | apply dni | apply ex_falso | apply flip | apply id | apply rebind_All_frm; exact FRESH].\n- apply hyp; apply in_eq.",
+        "apply inhabits. apply imp_e with (Gamma := cons H ps) (A := H) (B := C).\n- apply weaken with (ps1 := ps) (ps2 := cons H ps) (A := Imp_frm H C).\n-- exact Hprf.\n-- intros F HF. apply in_cons. exact HF.\n- apply hyp. left. reflexivity.",
+        "induction Hprf as [Gamma f Hin | Gamma A B Hprf' IH | Gamma A B Hprf1 Hprf2 IH1 IH2]; apply inhabits; [apply (proof_imp_e (cons H ps) H C); [apply proof_hyp; simpl; right; exact Hin | apply proof_hyp; simpl; left; reflexivity] | exact Hprf' | destruct IH1 as [H1]; destruct IH2 as [H2]; apply (proof_imp_e (cons H ps) H C); [apply (proof_imp_e (cons H ps) A (Imp_frm H C) H1 H2) | apply proof_hyp; simpl; left; reflexivity]]."
+      ]
+    },
+    {
+      "uuid": "039886514aea4cd791e281a664eb0209",
+      "parent_uuid": "a27ccb1f55054f0cab543369efe3a126",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hprf : proof ps (Imp_frm H C)",
+            "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+            "ps : list (frm L)",
+            "H,C : frm L",
+            "Gamma : E.t (frm L)",
+            "L : language"
+          ],
+          "goal": "forall (A : frm L) (_ : proof ps A), proof (cons H ps) A"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply inhabits. assert (weaken : forall A, proof ps A -> proof (H::ps) A)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "forall (A : frm L) (_ : proof ps A), proof (cons H ps) A"
+            },
+            {
+              "hypotheses": [
+                "weaken : forall (A : frm L) (_ : proof ps A), proof (cons H ps) A",
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "proof (cons H ps) C"
+            }
+          ]
+        },
+        "proof_prefix": "split. intros [ps [Hsub [Hprf]]]. exists (H :: ps). split. admit. apply inhabits. assert (weaken : forall A, proof ps A -> proof (H::ps) A)."
+      },
+      "depth": 3,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "c5e87266218249e7a9d868390ebd9a9e",
+      "parent_uuid": "a27ccb1f55054f0cab543369efe3a126",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "weaken : forall (A : frm L) (_ : proof ps A), proof (cons H ps) A",
+            "Hprf : proof ps (Imp_frm H C)",
+            "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+            "ps : list (frm L)",
+            "H,C : frm L",
+            "Gamma : E.t (frm L)",
+            "L : language"
+          ],
+          "goal": "proof (cons H ps) C"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply inhabits. assert (weaken : forall A, proof ps A -> proof (H::ps) A)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "forall (A : frm L) (_ : proof ps A), proof (cons H ps) A"
+            },
+            {
+              "hypotheses": [
+                "weaken : forall (A : frm L) (_ : proof ps A), proof (cons H ps) A",
+                "Hprf : proof ps (Imp_frm H C)",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "proof (cons H ps) C"
+            }
+          ]
+        },
+        "proof_prefix": "split. intros [ps [Hsub [Hprf]]]. exists (H :: ps). split. admit. apply inhabits. assert (weaken : forall A, proof ps A -> proof (H::ps) A). admit."
+      },
+      "depth": 3,
+      "num_failed_attempts_to_generate_children": 2,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply proof_imp_e with (A := H) (B := C).\n- apply weaken. exact Hprf.\n- apply proof_hyp. constructor.",
+        "apply imp_e with (A := H) (B := C).\n- apply weaken; exact Hprf.\n- apply hyp.",
+        "exact (imp_e (cons H ps) H C (weaken (Imp_frm H C) Hprf) (hyp (cons H ps) H (or_introl eq_refl))).",
+        "apply (imp_elim _ H C).\n- apply (weaken (Imp_frm H C) Hprf).\n- apply hyp. exact (in_eq H ps)."
+      ],
+      "failed_attempts": [
+        "apply proof_imp_e with (A := H) (B := C).\n- apply weaken. exact Hprf.\n- apply proof_hyp. constructor.",
+        "apply imp_e with (A := H) (B := C).\n- apply weaken; exact Hprf.\n- apply hyp.",
+        "exact (imp_e (cons H ps) H C (weaken (Imp_frm H C) Hprf) (hyp (cons H ps) H (or_introl eq_refl))).",
+        "apply (imp_elim _ H C).\n- apply (weaken (Imp_frm H C) Hprf).\n- apply hyp. exact (in_eq H ps)."
+      ]
+    },
+    {
+      "uuid": "09785c3920044fd09934ba9d5f735750",
+      "parent_uuid": "f84252ee94344031ad4e7b7f383d441b",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H,C : frm L",
+            "Gamma : E.t (frm L)",
+            "L : language"
+          ],
+          "goal": "forall _ : proves (E.insert H Gamma) C, proves Gamma (Imp_frm H C)"
+        },
+        "decomposition": {
+          "proofs": [
+            "split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "forall _ : proves Gamma (Imp_frm H C), proves (E.insert H Gamma) C"
+            },
+            {
+              "hypotheses": [
+                "H,C : frm L",
+                "Gamma : E.t (frm L)",
+                "L : language"
+              ],
+              "goal": "forall _ : proves (E.insert H Gamma) C, proves Gamma (Imp_frm H C)"
+            }
+          ]
+        },
+        "proof_prefix": "split. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros [ps [Hsub [Hprf]]]. exists (List.filter (fun x => x <> H) ps). split.\n- intros x Hx; apply Hsub in Hx; destruct Hx; [exfalso; exact (H0 eq_refl) | assumption].\n- apply inhabited_intro; destruct Hprf as [Hprf]; apply proof_deduction; exact Hprf.",
+        "intro H; apply proves_imp_i; exact H."
+      ],
+      "failed_attempts": [
+        "intros [ps [Hsub [Hprf]]]. exists (List.filter (fun x => x <> H) ps). split.\n- intros x Hx; apply Hsub in Hx; destruct Hx; [exfalso; exact (H0 eq_refl) | assumption].\n- apply inhabited_intro; destruct Hprf as [Hprf]; apply proof_deduction; exact Hprf.",
+        "intro H; apply proves_imp_i; exact H."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.5,
+      "id": 135536063229648,
+      "uuid": "039886514aea4cd791e281a664eb0209"
+    },
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536204294416,
+      "uuid": "e94f2692f75a4ca8a95e12eb80c11488"
+    },
+    {
+      "cost": -0.4,
+      "id": 135536204285840,
+      "uuid": "a27ccb1f55054f0cab543369efe3a126"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536205169680,
+      "uuid": "f84252ee94344031ad4e7b7f383d441b"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536160517264,
+      "uuid": "30f4bfdafcd34e3ea7d69f15a4aeb36b"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536204284880,
+      "uuid": "09785c3920044fd09934ba9d5f735750"
+    }
+  ],
+  "costs_so_far": {
+    "f84252ee94344031ad4e7b7f383d441b": 0.0,
+    "30f4bfdafcd34e3ea7d69f15a4aeb36b": -0.1,
+    "09785c3920044fd09934ba9d5f735750": -0.2,
+    "e94f2692f75a4ca8a95e12eb80c11488": -0.30000000000000004,
+    "a27ccb1f55054f0cab543369efe3a126": -0.4,
+    "039886514aea4cd791e281a664eb0209": -0.5,
+    "c5e87266218249e7a9d868390ebd9a9e": -0.6000000000000001
+  },
+  "costs_to_go": {
+    "f84252ee94344031ad4e7b7f383d441b": 0,
+    "30f4bfdafcd34e3ea7d69f15a4aeb36b": 0,
+    "09785c3920044fd09934ba9d5f735750": 0,
+    "e94f2692f75a4ca8a95e12eb80c11488": 0,
+    "a27ccb1f55054f0cab543369efe3a126": 0,
+    "039886514aea4cd791e281a664eb0209": 0,
+    "c5e87266218249e7a9d868390ebd9a9e": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "f84252ee94344031ad4e7b7f383d441b": 0,
+    "30f4bfdafcd34e3ea7d69f15a4aeb36b": 1,
+    "09785c3920044fd09934ba9d5f735750": 2,
+    "e94f2692f75a4ca8a95e12eb80c11488": 3,
+    "a27ccb1f55054f0cab543369efe3a126": 4,
+    "039886514aea4cd791e281a664eb0209": 5,
+    "c5e87266218249e7a9d868390ebd9a9e": 6
+  },
+  "next_node_idx": 7,
+  "remaining_nodes_to_expand": 147,
+  "root_uuid": "f84252ee94344031ad4e7b7f383d441b",
+  "done": false,
+  "visualization": "\n* (3 HYPS)|-iff (proves Gamma (Imp_frm H C)) (proves (E.insert H Gamma) C) (cost:0.0; n_fail:0)\n  # 1 prefixes like split.\n  * (3 HYPS)|-forall _ : proves Gamma (Imp_frm H C), proves (E.insert H Gamma) C (cost:-0.1; n_fail:0)\n    # 1 prefixes like intros [ps [Hsub [Hprf]]]. exists (H :: ps). split.\n    * (6 HYPS)|-E.isSubsetOf (E.fromList (cons H ps)) (E.insert H Gamma) (proven) (pruned) (done:True; cost:-0.30000000000000004; n_fail:0)\n      # successful proof: hammer.\n    * (6 HYPS)|-inhabited (proof (cons H ps) C) (cost:-0.4; n_fail:0)\n      # 1 prefixes like apply inhabits. assert (weaken : forall A, proof ps A -> proof (H::ps) A).\n      * (6 HYPS)|-forall (A : frm L) (_ : proof ps A), proof (cons H ps) A (cost:-0.5; n_fail:0)\n\n      * (7 HYPS)|-proof (cons H ps) C (cost:-0.6000000000000001; n_fail:2)\n\n  * (3 HYPS)|-forall _ : proves (E.insert H Gamma) C, proves Gamma (Imp_frm H C) (cost:-0.2; n_fail:0)\n"
+}

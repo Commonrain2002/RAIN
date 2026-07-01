@@ -1,0 +1,890 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-PropositionalLogic.v-infers_dec.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "afb7cc390b4f412b995cba72348a9209",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "C : formula"
+          ],
+          "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l C)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e C\n             then infers Gamma C\n             else infers Gamma (NegationF C)\n         end)))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "e744920042684ae487c995fef4316d72",
+          "fd38d1ec7952487088b772f9e45b609f",
+          "52c39750986449e887eca426e0ba3cc5",
+          "0879213c7e8d4ab39c29a921a5f8d7e9",
+          "efe7ae062f3444ad9cf2a8c821e234c2",
+          "da20092549904bf1a58d02e329f436cd",
+          "ffc9d166d7784216b30069ea13dd40a5",
+          "8751b6ed61e740a78ca1602afa190e16"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+            },
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+            },
+            {
+              "hypotheses": [],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "induction C; (exists match C with\n    | AtomF i => [i]\n    | ContradictionF => []\n    | NegationF C1 => proj1_sig IHC1\n    | ConjunctionF C1 C2 => proj1_sig IHC1 ++ proj1_sig IHC2\n    | DisjunctionF C1 C2 => proj1_sig IHC1 ++ proj1_sig IHC2\n    | ImplicationF C1 C2 => proj1_sig IHC1 ++ proj1_sig IHC2\n    | BiconditionalF C1 C2 => proj1_sig IHC1 ++ proj1_sig IHC2\n    end); split;\n  [ lazymatch C with\n    | AtomF i => simpl; intuition\n    | ContradictionF => simpl; intuition\n    | NegationF C1 => destruct IHC1 as [ls1 [Hocc1 Hdec1]]; simpl; simpl in Hocc1; exact Hocc1\n    | ConjunctionF C1 C2 | DisjunctionF C1 C2 | ImplicationF C1 C2 | BiconditionalF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      simpl; simpl in Hocc1, Hocc2; split;\n      [ intros l H; rewrite in_app_iff in H; destruct H as [H|H];\n        [ apply Hocc1, H | apply Hocc2, H ]\n      | intros [H|H]; rewrite in_app_iff;\n        [ left; apply Hocc1, H | right; apply Hocc2, H ] ]\n    end\n  | lazymatch C with\n    | AtomF i => intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto\n    | ContradictionF => intros e; simpl; apply NegationI; apply ByAssumption; simpl; auto\n    | NegationF C1 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He;\n      [ apply NegationI; eapply ContradictionI;\n        [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n        | apply ByAssumption; simpl; auto ]\n      | apply (Hdec1 e) ]\n    | ConjunctionF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He1; destruct (eval_bool e C2) eqn:He2;\n      [ eapply ConjunctionI;\n        [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; left; exact Hx ]\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply ConjunctionE1; apply ByAssumption; simpl; auto\n        | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply ConjunctionE2; apply ByAssumption; simpl; auto\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply ConjunctionE1; apply ByAssumption; simpl; auto\n        | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ] ]\n    | DisjunctionF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He1; destruct (eval_bool e C2) eqn:He2;\n      [ eapply DisjunctionI1; eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; left; exact Hx ]\n      | eapply DisjunctionI1; eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; left; exact Hx ]\n      | eapply DisjunctionI2; eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; right; exact Hx ]\n      | eapply NegationI; eapply DisjunctionE;\n        [ apply ByAssumption; simpl; auto\n        | eapply ContradictionI;\n          [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; right; exact Hx ]\n          | apply ByAssumption; simpl; auto ]\n        | eapply ContradictionI;\n          [ eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; right; exact Hx ]\n          | apply ByAssumption; simpl; auto ] ] ]\n    | ImplicationF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He1; destruct (eval_bool e C2) eqn:He2;\n      [ eapply ImplicationI; eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply ImplicationE;\n          [ apply ByAssumption; simpl; auto\n          | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply ImplicationI; eapply ContradictionE; eapply ContradictionI;\n        [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n        | apply ByAssumption; simpl; auto ]\n      | eapply ImplicationI; eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n    | BiconditionalF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He1; destruct (eval_bool e C2) eqn:He2;\n      [ eapply BiconditionalI;\n        [ eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n        | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply BiconditionalE1;\n          [ apply ByAssumption; simpl; auto\n          | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply BiconditionalE2;\n          [ apply ByAssumption; simpl; auto\n          | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply BiconditionalI;\n        [ eapply ContradictionE; eapply ContradictionI;\n          [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n          | apply ByAssumption; simpl; auto ]\n        | eapply ContradictionE; eapply ContradictionI;\n          [ eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n          | apply ByAssumption; simpl; auto ] ] ]\n    end ].",
+        "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto]).",
+        "",
+        "refine (let strong : forall (C : formula) (e : forall _ : propLetter, bool) (Gamma : E.t formula), (forall l, occurs l C -> E.In (if e l then AtomF l else NegationF (AtomF l)) Gamma) -> if eval_bool e C then infers Gamma C else infers Gamma (NegationF C) := _ in _)."
+      ],
+      "failed_attempts": [
+        "induction C; (exists match C with\n    | AtomF i => [i]\n    | ContradictionF => []\n    | NegationF C1 => proj1_sig IHC1\n    | ConjunctionF C1 C2 => proj1_sig IHC1 ++ proj1_sig IHC2\n    | DisjunctionF C1 C2 => proj1_sig IHC1 ++ proj1_sig IHC2\n    | ImplicationF C1 C2 => proj1_sig IHC1 ++ proj1_sig IHC2\n    | BiconditionalF C1 C2 => proj1_sig IHC1 ++ proj1_sig IHC2\n    end); split;\n  [ lazymatch C with\n    | AtomF i => simpl; intuition\n    | ContradictionF => simpl; intuition\n    | NegationF C1 => destruct IHC1 as [ls1 [Hocc1 Hdec1]]; simpl; simpl in Hocc1; exact Hocc1\n    | ConjunctionF C1 C2 | DisjunctionF C1 C2 | ImplicationF C1 C2 | BiconditionalF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      simpl; simpl in Hocc1, Hocc2; split;\n      [ intros l H; rewrite in_app_iff in H; destruct H as [H|H];\n        [ apply Hocc1, H | apply Hocc2, H ]\n      | intros [H|H]; rewrite in_app_iff;\n        [ left; apply Hocc1, H | right; apply Hocc2, H ] ]\n    end\n  | lazymatch C with\n    | AtomF i => intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto\n    | ContradictionF => intros e; simpl; apply NegationI; apply ByAssumption; simpl; auto\n    | NegationF C1 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He;\n      [ apply NegationI; eapply ContradictionI;\n        [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n        | apply ByAssumption; simpl; auto ]\n      | apply (Hdec1 e) ]\n    | ConjunctionF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He1; destruct (eval_bool e C2) eqn:He2;\n      [ eapply ConjunctionI;\n        [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; left; exact Hx ]\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply ConjunctionE1; apply ByAssumption; simpl; auto\n        | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply ConjunctionE2; apply ByAssumption; simpl; auto\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply ConjunctionE1; apply ByAssumption; simpl; auto\n        | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ] ]\n    | DisjunctionF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He1; destruct (eval_bool e C2) eqn:He2;\n      [ eapply DisjunctionI1; eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; left; exact Hx ]\n      | eapply DisjunctionI1; eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; left; exact Hx ]\n      | eapply DisjunctionI2; eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.fromList in Hx; simpl in Hx; unfold E.fromList; simpl; apply in_or_app; right; exact Hx ]\n      | eapply NegationI; eapply DisjunctionE;\n        [ apply ByAssumption; simpl; auto\n        | eapply ContradictionI;\n          [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; right; exact Hx ]\n          | apply ByAssumption; simpl; auto ]\n        | eapply ContradictionI;\n          [ eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; right; exact Hx ]\n          | apply ByAssumption; simpl; auto ] ] ]\n    | ImplicationF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He1; destruct (eval_bool e C2) eqn:He2;\n      [ eapply ImplicationI; eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply ImplicationE;\n          [ apply ByAssumption; simpl; auto\n          | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply ImplicationI; eapply ContradictionE; eapply ContradictionI;\n        [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n        | apply ByAssumption; simpl; auto ]\n      | eapply ImplicationI; eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n    | BiconditionalF C1 C2 =>\n      destruct IHC1 as [ls1 [Hocc1 Hdec1]]; destruct IHC2 as [ls2 [Hocc2 Hdec2]];\n      intros e; simpl; destruct (eval_bool e C1) eqn:He1; destruct (eval_bool e C2) eqn:He2;\n      [ eapply BiconditionalI;\n        [ eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n        | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply BiconditionalE1;\n          [ apply ByAssumption; simpl; auto\n          | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply NegationI; eapply ContradictionI;\n        [ eapply BiconditionalE2;\n          [ apply ByAssumption; simpl; auto\n          | eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n        | eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ] ]\n      | eapply BiconditionalI;\n        [ eapply ContradictionE; eapply ContradictionI;\n          [ eapply extend_infers; [ apply (Hdec1 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n          | apply ByAssumption; simpl; auto ]\n        | eapply ContradictionE; eapply ContradictionI;\n          [ eapply extend_infers; [ apply (Hdec2 e) | intros x Hx; unfold E.insert; simpl; right; exact Hx ]\n          | apply ByAssumption; simpl; auto ] ] ]\n    end ].",
+        "",
+        "refine (let strong : forall (C : formula) (e : forall _ : propLetter, bool) (Gamma : E.t formula), (forall l, occurs l C -> E.In (if e l then AtomF l else NegationF (AtomF l)) Gamma) -> if eval_bool e C then infers Gamma C else infers Gamma (NegationF C) := _ in _)."
+      ]
+    },
+    {
+      "uuid": "e744920042684ae487c995fef4316d72",
+      "parent_uuid": "afb7cc390b4f412b995cba72348a9209",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "e : forall _ : propLetter, bool",
+            "i : propLetter"
+          ],
+          "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+            },
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+            },
+            {
+              "hypotheses": [],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+            }
+          ]
+        },
+        "proof_prefix": "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "fd38d1ec7952487088b772f9e45b609f",
+      "parent_uuid": "afb7cc390b4f412b995cba72348a9209",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "e : forall _ : propLetter, bool",
+            "i : propLetter"
+          ],
+          "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+            },
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+            },
+            {
+              "hypotheses": [],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+            }
+          ]
+        },
+        "proof_prefix": "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto]). admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "52c39750986449e887eca426e0ba3cc5",
+      "parent_uuid": "afb7cc390b4f412b995cba72348a9209",
+      "value": {
+        "obligation": {
+          "hypotheses": [],
+          "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+            },
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+            },
+            {
+              "hypotheses": [],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+            }
+          ]
+        },
+        "proof_prefix": "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto]). admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "0879213c7e8d4ab39c29a921a5f8d7e9",
+      "parent_uuid": "afb7cc390b4f412b995cba72348a9209",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+            "p : formula"
+          ],
+          "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+            },
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+            },
+            {
+              "hypotheses": [],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+            }
+          ]
+        },
+        "proof_prefix": "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto]). admit. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "efe7ae062f3444ad9cf2a8c821e234c2",
+      "parent_uuid": "afb7cc390b4f412b995cba72348a9209",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+            "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+            "p,q : formula"
+          ],
+          "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+            },
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+            },
+            {
+              "hypotheses": [],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+            }
+          ]
+        },
+        "proof_prefix": "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto]). admit. admit. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "da20092549904bf1a58d02e329f436cd",
+      "parent_uuid": "afb7cc390b4f412b995cba72348a9209",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+            "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+            "p,q : formula"
+          ],
+          "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+            },
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+            },
+            {
+              "hypotheses": [],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+            }
+          ]
+        },
+        "proof_prefix": "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto]). admit. admit. admit. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "ffc9d166d7784216b30069ea13dd40a5",
+      "parent_uuid": "afb7cc390b4f412b995cba72348a9209",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+            "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+            "p,q : formula"
+          ],
+          "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+            },
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+            },
+            {
+              "hypotheses": [],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+            }
+          ]
+        },
+        "proof_prefix": "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto]). admit. admit. admit. admit. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "8751b6ed61e740a78ca1602afa190e16",
+      "parent_uuid": "afb7cc390b4f412b995cba72348a9209",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+            "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+            "p,q : formula"
+          ],
+          "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto])."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (AtomF i) (E.fromList (cons (AtomF i) nil))"
+            },
+            {
+              "hypotheses": [
+                "e : forall _ : propLetter, bool",
+                "i : propLetter"
+              ],
+              "goal": "E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil))"
+            },
+            {
+              "hypotheses": [],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end)))"
+            },
+            {
+              "hypotheses": [
+                "IHq : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l q)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e q\n             then infers Gamma q\n             else infers Gamma (NegationF q)\n         end)))",
+                "IHp : sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l p)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e p\n             then infers Gamma p\n             else infers Gamma (NegationF p)\n         end)))",
+                "p,q : formula"
+              ],
+              "goal": "sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end)))"
+            }
+          ]
+        },
+        "proof_prefix": "induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto]). admit. admit. admit. admit. admit. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.7000000000000001,
+      "id": 135536064074064,
+      "uuid": "ffc9d166d7784216b30069ea13dd40a5"
+    },
+    {
+      "cost": -0.4,
+      "id": 135536160324752,
+      "uuid": "0879213c7e8d4ab39c29a921a5f8d7e9"
+    },
+    {
+      "cost": -0.6000000000000001,
+      "id": 135536160315408,
+      "uuid": "da20092549904bf1a58d02e329f436cd"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536160311248,
+      "uuid": "e744920042684ae487c995fef4316d72"
+    },
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536160314128,
+      "uuid": "52c39750986449e887eca426e0ba3cc5"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536160325264,
+      "uuid": "fd38d1ec7952487088b772f9e45b609f"
+    },
+    {
+      "cost": -0.5,
+      "id": 135536160312848,
+      "uuid": "efe7ae062f3444ad9cf2a8c821e234c2"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536203801360,
+      "uuid": "afb7cc390b4f412b995cba72348a9209"
+    }
+  ],
+  "costs_so_far": {
+    "afb7cc390b4f412b995cba72348a9209": 0.0,
+    "e744920042684ae487c995fef4316d72": -0.1,
+    "fd38d1ec7952487088b772f9e45b609f": -0.2,
+    "52c39750986449e887eca426e0ba3cc5": -0.30000000000000004,
+    "0879213c7e8d4ab39c29a921a5f8d7e9": -0.4,
+    "efe7ae062f3444ad9cf2a8c821e234c2": -0.5,
+    "da20092549904bf1a58d02e329f436cd": -0.6000000000000001,
+    "ffc9d166d7784216b30069ea13dd40a5": -0.7000000000000001,
+    "8751b6ed61e740a78ca1602afa190e16": -0.8
+  },
+  "costs_to_go": {
+    "afb7cc390b4f412b995cba72348a9209": 0,
+    "e744920042684ae487c995fef4316d72": 0,
+    "fd38d1ec7952487088b772f9e45b609f": 0,
+    "52c39750986449e887eca426e0ba3cc5": 0,
+    "0879213c7e8d4ab39c29a921a5f8d7e9": 0,
+    "efe7ae062f3444ad9cf2a8c821e234c2": 0,
+    "da20092549904bf1a58d02e329f436cd": 0,
+    "ffc9d166d7784216b30069ea13dd40a5": 0,
+    "8751b6ed61e740a78ca1602afa190e16": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "afb7cc390b4f412b995cba72348a9209": 0,
+    "e744920042684ae487c995fef4316d72": 1,
+    "fd38d1ec7952487088b772f9e45b609f": 2,
+    "52c39750986449e887eca426e0ba3cc5": 3,
+    "0879213c7e8d4ab39c29a921a5f8d7e9": 4,
+    "efe7ae062f3444ad9cf2a8c821e234c2": 5,
+    "da20092549904bf1a58d02e329f436cd": 6,
+    "ffc9d166d7784216b30069ea13dd40a5": 7,
+    "8751b6ed61e740a78ca1602afa190e16": 8
+  },
+  "next_node_idx": 9,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "afb7cc390b4f412b995cba72348a9209",
+  "done": false,
+  "visualization": "\n* (1 HYPS)|-sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt => forall l : propLetter, iff (List.In l ls) (occurs l C)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e C\n             then infers Gamma C\n             else infers Gamma (NegationF C)\n         end))) (cost:0.0; n_fail:0)\n  # 1 prefixes like induction C as [i | | p IHp | p IHp q IHq | p IHp q IHq | p IHp q IHq | p IHp q IHq]; try (exists (i :: nil); split; [simpl; intros l; split; [intros [H|[]]; subst; auto | intros H; subst; auto] | intros e; simpl; destruct (e i); apply ByAssumption; simpl; auto]).\n  * (2 HYPS)|-E.In (AtomF i) (E.fromList (cons (AtomF i) nil)) (proven) (pruned) (done:True; cost:-0.1; n_fail:0)\n    # successful proof: hammer.\n  * (2 HYPS)|-E.In (NegationF (AtomF i))\n  (E.fromList (cons (NegationF (AtomF i)) nil)) (proven) (pruned) (done:True; cost:-0.2; n_fail:0)\n    # successful proof: hammer.\n  * (0 HYPS)|-sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l ContradictionF)\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e ContradictionF\n             then infers Gamma ContradictionF\n             else infers Gamma (NegationF ContradictionF)\n         end))) (cost:-0.30000000000000004; n_fail:0)\n\n  * (2 HYPS)|-sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (NegationF p))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (NegationF p)\n             then infers Gamma (NegationF p)\n             else infers Gamma (NegationF (NegationF p))\n         end))) (cost:-0.4; n_fail:0)\n\n  * (3 HYPS)|-sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ConjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ConjunctionF p q)\n             then infers Gamma (ConjunctionF p q)\n             else infers Gamma (NegationF (ConjunctionF p q))\n         end))) (cost:-0.5; n_fail:0)\n\n  * (3 HYPS)|-sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (DisjunctionF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (DisjunctionF p q)\n             then infers Gamma (DisjunctionF p q)\n             else infers Gamma (NegationF (DisjunctionF p q))\n         end))) (cost:-0.6000000000000001; n_fail:0)\n\n  * (3 HYPS)|-sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (ImplicationF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (ImplicationF p q)\n             then infers Gamma (ImplicationF p q)\n             else infers Gamma (NegationF (ImplicationF p q))\n         end))) (cost:-0.7000000000000001; n_fail:0)\n\n  * (3 HYPS)|-sig\n  (fun ls : list propLetter =>\n   and\n     (NW\n        (fun OCCURS : unit =>\n         match OCCURS with\n         | tt =>\n             forall l : propLetter,\n             iff (List.In l ls) (occurs l (BiconditionalF p q))\n         end))\n     (NW\n        (fun INFERS_DEC : unit =>\n         match INFERS_DEC with\n         | tt =>\n             forall e : forall _ : propLetter, bool,\n             let Gamma := E.fromList (gen_context_for e ls) in\n             if eval_bool e (BiconditionalF p q)\n             then infers Gamma (BiconditionalF p q)\n             else infers Gamma (NegationF (BiconditionalF p q))\n         end))) (cost:-0.8; n_fail:1)\n"
+}

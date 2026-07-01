@@ -1,0 +1,2479 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-BasicFol2.v-cons_hsubst_hsubst_frm.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "c65c9153efad4520a4545decbd90a9d2",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "NOT_FREE : or (eq (occurs_free_in_frm y p) false) (eq y x1)",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "644247aaade94ea398d3ff13fb892ff2",
+          "9ec0644f241e401c86e675ed5169beac"
+        ],
+        [
+          "8cab55f17d89495fbd0af20c74e4e6b4",
+          "db06ecdfa97b44a8a828cdb791964ce1"
+        ],
+        [
+          "ea96857a365a47b1849580ae25f295e9",
+          "79d1110887ea4b178ea65dd6de7d3532"
+        ],
+        [
+          "50e5d37c4ab64da1906c493050eceadd",
+          "f649a99583d94c51964aa35e146fc050"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "rewrite (hcompose_one_hsubst_frm x1 (nil_hsubst y) (cons_hsubst y t1 sigma) p). apply equiv_hsubst_in_frm_implies_hsubst_frm_same. intros z Hz. destruct y as [y'|c]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hz : eq (occurs_free_in_frm z p) true",
+                "z : sum ivar Henkin_constants",
+                "NOT_FREE : or (eq (occurs_free_in_frm (inl y') p) false) (eq (inl y') x1)",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y' : ivar",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inl y') t1 sigma) (nil_hsubst (inl y')))\n     (cons_hsubst (inl y') t1 sigma) z)"
+            },
+            {
+              "hypotheses": [
+                "Hz : eq (occurs_free_in_frm z p) true",
+                "z : sum ivar Henkin_constants",
+                "NOT_FREE : or (eq (occurs_free_in_frm (inr c) p) false) (eq (inr c) x1)",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "c : Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inr c) t1 sigma) (nil_hsubst (inr c)))\n     (cons_hsubst (inr c) t1 sigma) z)"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "assert (hsubst_trm_nil : forall sigma' (z : hatom), hsubst_trm sigma' (nil_hsubst z) = sigma' z).\n{ intro sigma'; intro z0; destruct z0; simpl; auto. }\ndestruct NOT_FREE as [Hnotfree | Heq]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "hsubst_trm_nil : forall\n  (sigma' : forall _ : sum ivar Henkin_constants,\n            trm (augmented_language L Henkin_constants))\n  (z : sum ivar Henkin_constants),\neq (hsubst_trm sigma' (nil_hsubst z)) (sigma' z)",
+                "Hnotfree : eq (occurs_free_in_frm y p) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            },
+            {
+              "hypotheses": [
+                "hsubst_trm_nil : forall\n  (sigma' : forall _ : sum ivar Henkin_constants,\n            trm (augmented_language L Henkin_constants))\n  (z : sum ivar Henkin_constants),\neq (hsubst_trm sigma' (nil_hsubst z)) (sigma' z)",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "destruct NOT_FREE as [H|H]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq (occurs_free_in_frm y p) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            },
+            {
+              "hypotheses": [
+                "H : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "destruct NOT_FREE as [Hnf | Heq]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y p) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite (hcompose_one_hsubst_frm x1 (nil_hsubst y) (cons_hsubst y t1 sigma) p). apply equiv_hsubst_in_frm_implies_hsubst_frm_same. intros z Hz. destruct y as [y'|c].\n- apply (distr_hcompose_one nil_hsubst sigma x1 y' z t1 p);\n      [| exact Hz]. destruct NOT_FREE as [Hnf|Heq].\n-- apply/forallP => w Hw. move/removeP in Hw; destruct Hw as [Hneq Hmem]. apply/negP => Hoc. apply Hneq; apply/eqP; rewrite -occurs_free_in_frm_iff; exact Hmem.\n-- subst; exact: trivial.\n- simpl; do 2 case eqb; reflexivity.",
+        "assert (hsubst_trm_nil : forall sigma' (z : hatom), hsubst_trm sigma' (nil_hsubst z) = sigma' z).\n{ intro sigma'; intro z0; destruct z0; simpl; auto. }\ndestruct NOT_FREE as [Hnotfree | Heq].\n- rewrite <- hsubst_compose_frm_spec. apply equiv_hsubst_in_frm_implies_hsubst_frm_same; intros z Hfree; simpl; destruct (eqb z x1) eqn:Heqzx1;\n  [ rewrite hsubst_trm_nil; simpl; auto\n  | rewrite hsubst_trm_nil; simpl; destruct (eqb z y) eqn:Heqzy;\n    [ destruct z; destruct y; simpl in Heqzy; try discriminate; apply Nat.eqb_eq in Heqzy; subst; rewrite Hnotfree in Hfree; discriminate\n    | reflexivity ] ].\n- subst y; rewrite <- hsubst_compose_frm_spec. apply equiv_hsubst_in_frm_implies_hsubst_frm_same; intros z Hfree; simpl; destruct (eqb z x1) eqn:Heqzx1;\n  [ rewrite hsubst_trm_nil; simpl; auto\n  | rewrite hsubst_trm_nil; simpl; auto ].",
+        "destruct NOT_FREE as [H|H].\n- rewrite hsubst_frm_comp; apply hsubst_frm_ext_free; intros z Hz; simpl. destruct (eqb_spec z x1) as [Hx|Hx]; subst; simpl.\n-- rewrite hsubst_trm_nil; simpl; auto.\n-- destruct (eqb_spec z y) as [Hy|Hy]; subst; simpl.\n--- exfalso; apply H; rewrite Hz; reflexivity.\n--- rewrite hsubst_trm_nil; simpl; auto.\n- subst y; rewrite hsubst_frm_comp; apply hsubst_frm_ext_free; intros z Hz; simpl. destruct (eqb_spec z x1) as [Hx|Hx]; subst; simpl; rewrite hsubst_trm_nil; simpl; auto.",
+        "destruct NOT_FREE as [Hnf | Heq].\n- induction p; simpl; f_equal; auto.\n-- destruct (eqb y (inl y0)) eqn:Heqy.\n--- rewrite eqb_eq in Heqy; subst. apply IHp; right; reflexivity.\n--- simpl in Hnf; rewrite Heqy in Hnf. apply IHp; left; auto.\n- rewrite Heq; induction p; simpl; f_equal; auto.\n-- apply IHp; right; reflexivity."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "644247aaade94ea398d3ff13fb892ff2",
+      "parent_uuid": "c65c9153efad4520a4545decbd90a9d2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hz : eq (occurs_free_in_frm z p) true",
+            "z : sum ivar Henkin_constants",
+            "NOT_FREE : or (eq (occurs_free_in_frm (inl y') p) false) (eq (inl y') x1)",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y' : ivar",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inl y') t1 sigma) (nil_hsubst (inl y')))\n     (cons_hsubst (inl y') t1 sigma) z)"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite (hcompose_one_hsubst_frm x1 (nil_hsubst y) (cons_hsubst y t1 sigma) p). apply equiv_hsubst_in_frm_implies_hsubst_frm_same. intros z Hz. destruct y as [y'|c]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hz : eq (occurs_free_in_frm z p) true",
+                "z : sum ivar Henkin_constants",
+                "NOT_FREE : or (eq (occurs_free_in_frm (inl y') p) false) (eq (inl y') x1)",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y' : ivar",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inl y') t1 sigma) (nil_hsubst (inl y')))\n     (cons_hsubst (inl y') t1 sigma) z)"
+            },
+            {
+              "hypotheses": [
+                "Hz : eq (occurs_free_in_frm z p) true",
+                "z : sum ivar Henkin_constants",
+                "NOT_FREE : or (eq (occurs_free_in_frm (inr c) p) false) (eq (inr c) x1)",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "c : Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inr c) t1 sigma) (nil_hsubst (inr c)))\n     (cons_hsubst (inr c) t1 sigma) z)"
+            }
+          ]
+        },
+        "proof_prefix": "rewrite (hcompose_one_hsubst_frm x1 (nil_hsubst y) (cons_hsubst y t1 sigma) p). apply equiv_hsubst_in_frm_implies_hsubst_frm_same. intros z Hz. destruct y as [y'|c]."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply (distr_hcompose_one nil_hsubst sigma x1 y' z t1 p);\n      [| exact Hz]. destruct NOT_FREE as [Hnf|Heq].\n- apply/forallP => w Hw. move/removeP in Hw; destruct Hw as [Hneq Hmem]. apply/negP => Hoc. apply Hneq; apply/eqP; rewrite -occurs_free_in_frm_iff; exact Hmem.\n- subst; exact: trivial."
+      ],
+      "failed_attempts": [
+        "apply (distr_hcompose_one nil_hsubst sigma x1 y' z t1 p);\n      [| exact Hz]. destruct NOT_FREE as [Hnf|Heq].\n- apply/forallP => w Hw. move/removeP in Hw; destruct Hw as [Hneq Hmem]. apply/negP => Hoc. apply Hneq; apply/eqP; rewrite -occurs_free_in_frm_iff; exact Hmem.\n- subst; exact: trivial."
+      ]
+    },
+    {
+      "uuid": "9ec0644f241e401c86e675ed5169beac",
+      "parent_uuid": "c65c9153efad4520a4545decbd90a9d2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hz : eq (occurs_free_in_frm z p) true",
+            "z : sum ivar Henkin_constants",
+            "NOT_FREE : or (eq (occurs_free_in_frm (inr c) p) false) (eq (inr c) x1)",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "c : Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inr c) t1 sigma) (nil_hsubst (inr c)))\n     (cons_hsubst (inr c) t1 sigma) z)"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite (hcompose_one_hsubst_frm x1 (nil_hsubst y) (cons_hsubst y t1 sigma) p). apply equiv_hsubst_in_frm_implies_hsubst_frm_same. intros z Hz. destruct y as [y'|c]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hz : eq (occurs_free_in_frm z p) true",
+                "z : sum ivar Henkin_constants",
+                "NOT_FREE : or (eq (occurs_free_in_frm (inl y') p) false) (eq (inl y') x1)",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y' : ivar",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inl y') t1 sigma) (nil_hsubst (inl y')))\n     (cons_hsubst (inl y') t1 sigma) z)"
+            },
+            {
+              "hypotheses": [
+                "Hz : eq (occurs_free_in_frm z p) true",
+                "z : sum ivar Henkin_constants",
+                "NOT_FREE : or (eq (occurs_free_in_frm (inr c) p) false) (eq (inr c) x1)",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "c : Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inr c) t1 sigma) (nil_hsubst (inr c)))\n     (cons_hsubst (inr c) t1 sigma) z)"
+            }
+          ]
+        },
+        "proof_prefix": "rewrite (hcompose_one_hsubst_frm x1 (nil_hsubst y) (cons_hsubst y t1 sigma) p). apply equiv_hsubst_in_frm_implies_hsubst_frm_same. intros z Hz. destruct y as [y'|c]. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "simpl; do 2 case eqb; reflexivity."
+      ],
+      "failed_attempts": [
+        "simpl; do 2 case eqb; reflexivity."
+      ]
+    },
+    {
+      "uuid": "8cab55f17d89495fbd0af20c74e4e6b4",
+      "parent_uuid": "c65c9153efad4520a4545decbd90a9d2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "hsubst_trm_nil : forall\n  (sigma' : forall _ : sum ivar Henkin_constants,\n            trm (augmented_language L Henkin_constants))\n  (z : sum ivar Henkin_constants),\neq (hsubst_trm sigma' (nil_hsubst z)) (sigma' z)",
+            "Hnotfree : eq (occurs_free_in_frm y p) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (hsubst_trm_nil : forall sigma' (z : hatom), hsubst_trm sigma' (nil_hsubst z) = sigma' z).\n{ intro sigma'; intro z0; destruct z0; simpl; auto. }\ndestruct NOT_FREE as [Hnotfree | Heq]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "hsubst_trm_nil : forall\n  (sigma' : forall _ : sum ivar Henkin_constants,\n            trm (augmented_language L Henkin_constants))\n  (z : sum ivar Henkin_constants),\neq (hsubst_trm sigma' (nil_hsubst z)) (sigma' z)",
+                "Hnotfree : eq (occurs_free_in_frm y p) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            },
+            {
+              "hypotheses": [
+                "hsubst_trm_nil : forall\n  (sigma' : forall _ : sum ivar Henkin_constants,\n            trm (augmented_language L Henkin_constants))\n  (z : sum ivar Henkin_constants),\neq (hsubst_trm sigma' (nil_hsubst z)) (sigma' z)",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "assert (hsubst_trm_nil : forall sigma' (z : hatom), hsubst_trm sigma' (nil_hsubst z) = sigma' z).\n{ intro sigma'; intro z0; destruct z0; simpl; auto. }\ndestruct NOT_FREE as [Hnotfree | Heq]."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite <- hsubst_compose_frm_spec. apply equiv_hsubst_in_frm_implies_hsubst_frm_same; intros z Hfree; simpl; destruct (eqb z x1) eqn:Heqzx1;\n  [ rewrite hsubst_trm_nil; simpl; auto\n  | rewrite hsubst_trm_nil; simpl; destruct (eqb z y) eqn:Heqzy;\n    [ destruct z; destruct y; simpl in Heqzy; try discriminate; apply Nat.eqb_eq in Heqzy; subst; rewrite Hnotfree in Hfree; discriminate\n    | reflexivity ] ]."
+      ],
+      "failed_attempts": [
+        "rewrite <- hsubst_compose_frm_spec. apply equiv_hsubst_in_frm_implies_hsubst_frm_same; intros z Hfree; simpl; destruct (eqb z x1) eqn:Heqzx1;\n  [ rewrite hsubst_trm_nil; simpl; auto\n  | rewrite hsubst_trm_nil; simpl; destruct (eqb z y) eqn:Heqzy;\n    [ destruct z; destruct y; simpl in Heqzy; try discriminate; apply Nat.eqb_eq in Heqzy; subst; rewrite Hnotfree in Hfree; discriminate\n    | reflexivity ] ]."
+      ]
+    },
+    {
+      "uuid": "db06ecdfa97b44a8a828cdb791964ce1",
+      "parent_uuid": "c65c9153efad4520a4545decbd90a9d2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "hsubst_trm_nil : forall\n  (sigma' : forall _ : sum ivar Henkin_constants,\n            trm (augmented_language L Henkin_constants))\n  (z : sum ivar Henkin_constants),\neq (hsubst_trm sigma' (nil_hsubst z)) (sigma' z)",
+            "Heq : eq y x1",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (hsubst_trm_nil : forall sigma' (z : hatom), hsubst_trm sigma' (nil_hsubst z) = sigma' z).\n{ intro sigma'; intro z0; destruct z0; simpl; auto. }\ndestruct NOT_FREE as [Hnotfree | Heq]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "hsubst_trm_nil : forall\n  (sigma' : forall _ : sum ivar Henkin_constants,\n            trm (augmented_language L Henkin_constants))\n  (z : sum ivar Henkin_constants),\neq (hsubst_trm sigma' (nil_hsubst z)) (sigma' z)",
+                "Hnotfree : eq (occurs_free_in_frm y p) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            },
+            {
+              "hypotheses": [
+                "hsubst_trm_nil : forall\n  (sigma' : forall _ : sum ivar Henkin_constants,\n            trm (augmented_language L Henkin_constants))\n  (z : sum ivar Henkin_constants),\neq (hsubst_trm sigma' (nil_hsubst z)) (sigma' z)",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "assert (hsubst_trm_nil : forall sigma' (z : hatom), hsubst_trm sigma' (nil_hsubst z) = sigma' z).\n{ intro sigma'; intro z0; destruct z0; simpl; auto. }\ndestruct NOT_FREE as [Hnotfree | Heq]. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "subst y; rewrite <- hsubst_compose_frm_spec. apply equiv_hsubst_in_frm_implies_hsubst_frm_same; intros z Hfree; simpl; destruct (eqb z x1) eqn:Heqzx1;\n  [ rewrite hsubst_trm_nil; simpl; auto\n  | rewrite hsubst_trm_nil; simpl; auto ]."
+      ],
+      "failed_attempts": [
+        "subst y; rewrite <- hsubst_compose_frm_spec. apply equiv_hsubst_in_frm_implies_hsubst_frm_same; intros z Hfree; simpl; destruct (eqb z x1) eqn:Heqzx1;\n  [ rewrite hsubst_trm_nil; simpl; auto\n  | rewrite hsubst_trm_nil; simpl; auto ]."
+      ]
+    },
+    {
+      "uuid": "ea96857a365a47b1849580ae25f295e9",
+      "parent_uuid": "c65c9153efad4520a4545decbd90a9d2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq (occurs_free_in_frm y p) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct NOT_FREE as [H|H]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq (occurs_free_in_frm y p) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            },
+            {
+              "hypotheses": [
+                "H : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [H|H]."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite hsubst_frm_comp; apply hsubst_frm_ext_free; intros z Hz; simpl. destruct (eqb_spec z x1) as [Hx|Hx]; subst; simpl.\n- rewrite hsubst_trm_nil; simpl; auto.\n- destruct (eqb_spec z y) as [Hy|Hy]; subst; simpl.\n-- exfalso; apply H; rewrite Hz; reflexivity.\n-- rewrite hsubst_trm_nil; simpl; auto."
+      ],
+      "failed_attempts": [
+        "rewrite hsubst_frm_comp; apply hsubst_frm_ext_free; intros z Hz; simpl. destruct (eqb_spec z x1) as [Hx|Hx]; subst; simpl.\n- rewrite hsubst_trm_nil; simpl; auto.\n- destruct (eqb_spec z y) as [Hy|Hy]; subst; simpl.\n-- exfalso; apply H; rewrite Hz; reflexivity.\n-- rewrite hsubst_trm_nil; simpl; auto."
+      ]
+    },
+    {
+      "uuid": "79d1110887ea4b178ea65dd6de7d3532",
+      "parent_uuid": "c65c9153efad4520a4545decbd90a9d2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq y x1",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct NOT_FREE as [H|H]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq (occurs_free_in_frm y p) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            },
+            {
+              "hypotheses": [
+                "H : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [H|H]. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "subst y; rewrite hsubst_frm_comp; apply hsubst_frm_ext_free; intros z Hz; simpl. destruct (eqb_spec z x1) as [Hx|Hx]; subst; simpl; rewrite hsubst_trm_nil; simpl; auto."
+      ],
+      "failed_attempts": [
+        "subst y; rewrite hsubst_frm_comp; apply hsubst_frm_ext_free; intros z Hz; simpl. destruct (eqb_spec z x1) as [Hx|Hx]; subst; simpl; rewrite hsubst_trm_nil; simpl; auto."
+      ]
+    },
+    {
+      "uuid": "50e5d37c4ab64da1906c493050eceadd",
+      "parent_uuid": "c65c9153efad4520a4545decbd90a9d2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hnf : eq (occurs_free_in_frm y p) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct NOT_FREE as [Hnf | Heq]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y p) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "3d34ef52136a4de48b788aae8492866c",
+          "3d4d3d5844554b99af4a570970a69b70",
+          "15deb65c467b4a129b53f434dfc9b2c3",
+          "6d34e769b5af481e938844a36c5e9409",
+          "dd009b5685c140baadea9d7fc39ea522",
+          "504779dc0f7f4605a7d478eb82977265",
+          "b1e3b1215fbd47faa971490465ba661c"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Rel_frm R ts)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "induction p; simpl; f_equal; auto.\n- destruct (eqb y (inl y0)) eqn:Heqy.\n-- rewrite eqb_eq in Heqy; subst. apply IHp; right; reflexivity.\n-- simpl in Hnf; rewrite Heqy in Hnf. apply IHp; left; auto."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "3d34ef52136a4de48b788aae8492866c",
+      "parent_uuid": "50e5d37c4ab64da1906c493050eceadd",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hnf : eq (occurs_free_in_frm y (Rel_frm R ts)) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+            "R : relation_symbols (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Rel_frm R ts)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. induction p; simpl; f_equal; auto."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "destruct (eqb y (inl y0)) eqn:Heqy.\n- rewrite eqb_eq in Heqy; subst. apply IHp; right; reflexivity.\n- simpl in Hnf; rewrite Heqy in Hnf. apply IHp; left; auto."
+      ],
+      "failed_attempts": [
+        "destruct (eqb y (inl y0)) eqn:Heqy.\n- rewrite eqb_eq in Heqy; subst. apply IHp; right; reflexivity.\n- simpl in Hnf; rewrite Heqy in Hnf. apply IHp; left; auto."
+      ]
+    },
+    {
+      "uuid": "3d4d3d5844554b99af4a570970a69b70",
+      "parent_uuid": "50e5d37c4ab64da1906c493050eceadd",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "t0,t2 : trm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Rel_frm R ts)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. induction p; simpl; f_equal; auto. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "15deb65c467b4a129b53f434dfc9b2c3",
+      "parent_uuid": "50e5d37c4ab64da1906c493050eceadd",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "t0,t2 : trm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Rel_frm R ts)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. induction p; simpl; f_equal; auto. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "6d34e769b5af481e938844a36c5e9409",
+      "parent_uuid": "50e5d37c4ab64da1906c493050eceadd",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+            "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+            "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p1,p2 : frm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Rel_frm R ts)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. induction p; simpl; f_equal; auto. admit. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "dd009b5685c140baadea9d7fc39ea522",
+      "parent_uuid": "50e5d37c4ab64da1906c493050eceadd",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+            "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+            "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p1,p2 : frm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Rel_frm R ts)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. induction p; simpl; f_equal; auto. admit. admit. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "504779dc0f7f4605a7d478eb82977265",
+      "parent_uuid": "50e5d37c4ab64da1906c493050eceadd",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+            "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y0 : ivar",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Rel_frm R ts)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. induction p; simpl; f_equal; auto. admit. admit. admit. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "b1e3b1215fbd47faa971490465ba661c",
+      "parent_uuid": "50e5d37c4ab64da1906c493050eceadd",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+            "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y0 : ivar",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Rel_frm R ts)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y (Eqn_frm t0 t2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))"
+            },
+            {
+              "hypotheses": [
+                "IHp2 : forall _ : eq (occurs_free_in_frm y p2) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))",
+                "IHp1 : forall _ : eq (occurs_free_in_frm y p1) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1))",
+                "Hnf : eq (occurs_free_in_frm y (Imp_frm p1 p2)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p1,p2 : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : forall _ : eq (occurs_free_in_frm y p) false,\neq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))",
+                "Hnf : eq (occurs_free_in_frm y (All_frm y0 p)) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. induction p; simpl; f_equal; auto. admit. admit. admit. admit. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "f649a99583d94c51964aa35e146fc050",
+      "parent_uuid": "c65c9153efad4520a4545decbd90a9d2",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Heq : eq y x1",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct NOT_FREE as [Hnf | Heq]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hnf : eq (occurs_free_in_frm y p) false",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "a113489950444d89a56b3a13f4fe5244",
+          "5587a3b03ceb4dbea0f4e86ca4b13ef3",
+          "ba56a4855092481a80c18fc3c88be387",
+          "a20fd17126bf46d3978684651cce15cc",
+          "11707ea715334683824530e1688ab809"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "rewrite Heq; induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst x1 t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst x1)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst x1 t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst x1))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst x1 t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst x1))) p))))\n        (cons_hsubst x1 t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst x1))) p))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite Heq; induction p; simpl; f_equal; auto.\n- apply IHp; right; reflexivity."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "a113489950444d89a56b3a13f4fe5244",
+      "parent_uuid": "f649a99583d94c51964aa35e146fc050",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Heq : eq y x1",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+            "R : relation_symbols (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst x1 t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst x1)) ts))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite Heq; induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst x1 t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst x1)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst x1 t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst x1))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst x1 t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst x1))) p))))\n        (cons_hsubst x1 t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst x1))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. admit. rewrite Heq; induction p; simpl; f_equal; auto."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply IHp; right; reflexivity."
+      ],
+      "failed_attempts": [
+        "apply IHp; right; reflexivity."
+      ]
+    },
+    {
+      "uuid": "5587a3b03ceb4dbea0f4e86ca4b13ef3",
+      "parent_uuid": "f649a99583d94c51964aa35e146fc050",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Heq : eq y x1",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "t0,t2 : trm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t0))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite Heq; induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst x1 t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst x1)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst x1 t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst x1))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst x1 t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst x1))) p))))\n        (cons_hsubst x1 t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst x1))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. admit. rewrite Heq; induction p; simpl; f_equal; auto. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "ba56a4855092481a80c18fc3c88be387",
+      "parent_uuid": "f649a99583d94c51964aa35e146fc050",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Heq : eq y x1",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "t0,t2 : trm (augmented_language L Henkin_constants)",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t2))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite Heq; induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst x1 t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst x1)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst x1 t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst x1))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst x1 t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst x1))) p))))\n        (cons_hsubst x1 t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst x1))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. admit. rewrite Heq; induction p; simpl; f_equal; auto. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "a20fd17126bf46d3978684651cce15cc",
+      "parent_uuid": "f649a99583d94c51964aa35e146fc050",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+            "Heq : eq y x1",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y0 : ivar",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst x1 t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst x1))) p)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite Heq; induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst x1 t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst x1)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst x1 t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst x1))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst x1 t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst x1))) p))))\n        (cons_hsubst x1 t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst x1))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. admit. rewrite Heq; induction p; simpl; f_equal; auto. admit. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "11707ea715334683824530e1688ab809",
+      "parent_uuid": "f649a99583d94c51964aa35e146fc050",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+            "Heq : eq y x1",
+            "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+            "p : frm (augmented_language L Henkin_constants)",
+            "y0 : ivar",
+            "y : sum ivar Henkin_constants",
+            "t1 : trm (augmented_language L Henkin_constants)",
+            "x1 : sum ivar Henkin_constants",
+            "L : language"
+          ],
+          "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst x1 t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst x1))) p))))\n        (cons_hsubst x1 t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst x1))) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite Heq; induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "ts : trms (augmented_language L Henkin_constants)\n  (relation_arity_table (augmented_language L Henkin_constants) R)",
+                "R : relation_symbols (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst x1 t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst x1)) ts))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t0))"
+            },
+            {
+              "hypotheses": [
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "t0,t2 : trm (augmented_language L Henkin_constants)",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst x1 t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst x1))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst x1 t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst x1)) p))",
+                "Heq : eq y x1",
+                "sigma : forall _ : sum ivar Henkin_constants,\ntrm (augmented_language L Henkin_constants)",
+                "p : frm (augmented_language L Henkin_constants)",
+                "y0 : ivar",
+                "y : sum ivar Henkin_constants",
+                "t1 : trm (augmented_language L Henkin_constants)",
+                "x1 : sum ivar Henkin_constants",
+                "L : language"
+              ],
+              "goal": "eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst x1 t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst x1))) p))))\n        (cons_hsubst x1 t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst x1))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct NOT_FREE as [Hnf | Heq]. admit. rewrite Heq; induction p; simpl; f_equal; auto. admit. admit. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -1.9000000000000001,
+      "id": 135536204923792,
+      "uuid": "a20fd17126bf46d3978684651cce15cc"
+    },
+    {
+      "cost": -1.8,
+      "id": 135536204929232,
+      "uuid": "ba56a4855092481a80c18fc3c88be387"
+    },
+    {
+      "cost": -1.4000000000000001,
+      "id": 135536204935184,
+      "uuid": "504779dc0f7f4605a7d478eb82977265"
+    },
+    {
+      "cost": -1.7000000000000002,
+      "id": 135536204929104,
+      "uuid": "5587a3b03ceb4dbea0f4e86ca4b13ef3"
+    },
+    {
+      "cost": -0.9,
+      "id": 135536204587152,
+      "uuid": "3d34ef52136a4de48b788aae8492866c"
+    },
+    {
+      "cost": -1.1,
+      "id": 135536204584464,
+      "uuid": "15deb65c467b4a129b53f434dfc9b2c3"
+    },
+    {
+      "cost": -1.3,
+      "id": 135536204931664,
+      "uuid": "dd009b5685c140baadea9d7fc39ea522"
+    },
+    {
+      "cost": -1.0,
+      "id": 135536204588752,
+      "uuid": "3d4d3d5844554b99af4a570970a69b70"
+    },
+    {
+      "cost": -1.6,
+      "id": 135536204936208,
+      "uuid": "a113489950444d89a56b3a13f4fe5244"
+    },
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536204380624,
+      "uuid": "8cab55f17d89495fbd0af20c74e4e6b4"
+    },
+    {
+      "cost": -0.8,
+      "id": 135536204583376,
+      "uuid": "f649a99583d94c51964aa35e146fc050"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536284569168,
+      "uuid": "9ec0644f241e401c86e675ed5169beac"
+    },
+    {
+      "cost": -0.6000000000000001,
+      "id": 135536062974736,
+      "uuid": "79d1110887ea4b178ea65dd6de7d3532"
+    },
+    {
+      "cost": -0.5,
+      "id": 135536062984016,
+      "uuid": "ea96857a365a47b1849580ae25f295e9"
+    },
+    {
+      "cost": -1.2000000000000002,
+      "id": 135536204586000,
+      "uuid": "6d34e769b5af481e938844a36c5e9409"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536781584272,
+      "uuid": "644247aaade94ea398d3ff13fb892ff2"
+    },
+    {
+      "cost": -0.7000000000000001,
+      "id": 135536209250512,
+      "uuid": "50e5d37c4ab64da1906c493050eceadd"
+    },
+    {
+      "cost": -0.4,
+      "id": 135536205299472,
+      "uuid": "db06ecdfa97b44a8a828cdb791964ce1"
+    },
+    {
+      "cost": -1.5,
+      "id": 135536204938128,
+      "uuid": "b1e3b1215fbd47faa971490465ba661c"
+    },
+    {
+      "cost": 0.0,
+      "id": 135535414203984,
+      "uuid": "c65c9153efad4520a4545decbd90a9d2"
+    }
+  ],
+  "costs_so_far": {
+    "c65c9153efad4520a4545decbd90a9d2": 0.0,
+    "644247aaade94ea398d3ff13fb892ff2": -0.1,
+    "9ec0644f241e401c86e675ed5169beac": -0.2,
+    "8cab55f17d89495fbd0af20c74e4e6b4": -0.30000000000000004,
+    "db06ecdfa97b44a8a828cdb791964ce1": -0.4,
+    "ea96857a365a47b1849580ae25f295e9": -0.5,
+    "79d1110887ea4b178ea65dd6de7d3532": -0.6000000000000001,
+    "50e5d37c4ab64da1906c493050eceadd": -0.7000000000000001,
+    "f649a99583d94c51964aa35e146fc050": -0.8,
+    "3d34ef52136a4de48b788aae8492866c": -0.9,
+    "3d4d3d5844554b99af4a570970a69b70": -1.0,
+    "15deb65c467b4a129b53f434dfc9b2c3": -1.1,
+    "6d34e769b5af481e938844a36c5e9409": -1.2000000000000002,
+    "dd009b5685c140baadea9d7fc39ea522": -1.3,
+    "504779dc0f7f4605a7d478eb82977265": -1.4000000000000001,
+    "b1e3b1215fbd47faa971490465ba661c": -1.5,
+    "a113489950444d89a56b3a13f4fe5244": -1.6,
+    "5587a3b03ceb4dbea0f4e86ca4b13ef3": -1.7000000000000002,
+    "ba56a4855092481a80c18fc3c88be387": -1.8,
+    "a20fd17126bf46d3978684651cce15cc": -1.9000000000000001,
+    "11707ea715334683824530e1688ab809": -2.0
+  },
+  "costs_to_go": {
+    "c65c9153efad4520a4545decbd90a9d2": 0,
+    "644247aaade94ea398d3ff13fb892ff2": 0,
+    "9ec0644f241e401c86e675ed5169beac": 0,
+    "8cab55f17d89495fbd0af20c74e4e6b4": 0,
+    "db06ecdfa97b44a8a828cdb791964ce1": 0,
+    "ea96857a365a47b1849580ae25f295e9": 0,
+    "79d1110887ea4b178ea65dd6de7d3532": 0,
+    "50e5d37c4ab64da1906c493050eceadd": 0,
+    "f649a99583d94c51964aa35e146fc050": 0,
+    "3d34ef52136a4de48b788aae8492866c": 0,
+    "3d4d3d5844554b99af4a570970a69b70": 0,
+    "15deb65c467b4a129b53f434dfc9b2c3": 0,
+    "6d34e769b5af481e938844a36c5e9409": 0,
+    "dd009b5685c140baadea9d7fc39ea522": 0,
+    "504779dc0f7f4605a7d478eb82977265": 0,
+    "b1e3b1215fbd47faa971490465ba661c": 0,
+    "a113489950444d89a56b3a13f4fe5244": 0,
+    "5587a3b03ceb4dbea0f4e86ca4b13ef3": 0,
+    "ba56a4855092481a80c18fc3c88be387": 0,
+    "a20fd17126bf46d3978684651cce15cc": 0,
+    "11707ea715334683824530e1688ab809": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "c65c9153efad4520a4545decbd90a9d2": 0,
+    "644247aaade94ea398d3ff13fb892ff2": 1,
+    "9ec0644f241e401c86e675ed5169beac": 2,
+    "8cab55f17d89495fbd0af20c74e4e6b4": 3,
+    "db06ecdfa97b44a8a828cdb791964ce1": 4,
+    "ea96857a365a47b1849580ae25f295e9": 5,
+    "79d1110887ea4b178ea65dd6de7d3532": 6,
+    "50e5d37c4ab64da1906c493050eceadd": 7,
+    "f649a99583d94c51964aa35e146fc050": 8,
+    "3d34ef52136a4de48b788aae8492866c": 9,
+    "3d4d3d5844554b99af4a570970a69b70": 10,
+    "15deb65c467b4a129b53f434dfc9b2c3": 11,
+    "6d34e769b5af481e938844a36c5e9409": 12,
+    "dd009b5685c140baadea9d7fc39ea522": 13,
+    "504779dc0f7f4605a7d478eb82977265": 14,
+    "b1e3b1215fbd47faa971490465ba661c": 15,
+    "a113489950444d89a56b3a13f4fe5244": 16,
+    "5587a3b03ceb4dbea0f4e86ca4b13ef3": 17,
+    "ba56a4855092481a80c18fc3c88be387": 18,
+    "a20fd17126bf46d3978684651cce15cc": 19,
+    "11707ea715334683824530e1688ab809": 20
+  },
+  "next_node_idx": 21,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "c65c9153efad4520a4545decbd90a9d2",
+  "done": false,
+  "visualization": "\n* (7 HYPS)|-eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p)) (cost:0.0; n_fail:0)\n  # 1 prefixes like rewrite (hcompose_one_hsubst_frm x1 (nil_hsubst y) (cons_hsubst y t1 sigma) p). apply equiv_hsubst_in_frm_implies_hsubst_frm_same. intros z Hz. destruct y as [y'|c].\n  * (9 HYPS)|-eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inl y') t1 sigma) (nil_hsubst (inl y')))\n     (cons_hsubst (inl y') t1 sigma) z) (cost:-0.1; n_fail:0)\n\n  * (9 HYPS)|-eq (cons_hsubst x1 t1 sigma z)\n  (cons_hsubst x1\n     (hsubst_trm (cons_hsubst (inr c) t1 sigma) (nil_hsubst (inr c)))\n     (cons_hsubst (inr c) t1 sigma) z) (cost:-0.2; n_fail:0)\n\n  # 1 prefixes like assert (hsubst_trm_nil : forall sigma' (z : hatom), hsubst_trm sigma' (nil_hsubst z) = sigma' z).\n{ intro sigma'; intro z0; destruct z0; simpl; auto. }\ndestruct NOT_FREE as [Hnotfree | Heq].\n  * (8 HYPS)|-eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p)) (cost:-0.30000000000000004; n_fail:0)\n\n  * (8 HYPS)|-eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p)) (cost:-0.4; n_fail:0)\n\n  # 1 prefixes like destruct NOT_FREE as [H|H].\n  * (7 HYPS)|-eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p)) (cost:-0.5; n_fail:0)\n\n  * (7 HYPS)|-eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p)) (cost:-0.6000000000000001; n_fail:0)\n\n  # 1 prefixes like destruct NOT_FREE as [Hnf | Heq].\n  * (7 HYPS)|-eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p)) (cost:-0.7000000000000001; n_fail:0)\n    # 1 prefixes like induction p; simpl; f_equal; auto.\n    * (8 HYPS)|-eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst y t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst y)) ts)) (cost:-0.9; n_fail:0)\n\n    * (7 HYPS)|-eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t0)) (cost:-1.0; n_fail:0)\n\n    * (7 HYPS)|-eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst y t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst y)) t2)) (cost:-1.1; n_fail:0)\n\n    * (9 HYPS)|-eq (hsubst_frm (cons_hsubst x1 t1 sigma) p1)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p1)) (cost:-1.2000000000000002; n_fail:0)\n\n    * (9 HYPS)|-eq (hsubst_frm (cons_hsubst x1 t1 sigma) p2)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p2)) (cost:-1.3; n_fail:0)\n\n    * (9 HYPS)|-eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst y t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst y))) p))) (cost:-1.4000000000000001; n_fail:0)\n\n    * (9 HYPS)|-eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst y t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst y))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst y))) p))))\n        (cons_hsubst y t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst y)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst y))) p)) (cost:-1.5; n_fail:0)\n\n  * (7 HYPS)|-eq (hsubst_frm (cons_hsubst x1 t1 sigma) p)\n  (hsubst_frm (cons_hsubst y t1 sigma)\n     (hsubst_frm (one_hsubst x1 (nil_hsubst y)) p)) (cost:-0.8; n_fail:0)\n    # 1 prefixes like rewrite Heq; induction p; simpl; f_equal; auto.\n    * (8 HYPS)|-eq (hsubst_trms (cons_hsubst x1 t1 sigma) ts)\n  (hsubst_trms (cons_hsubst x1 t1 sigma)\n     (hsubst_trms (one_hsubst x1 (nil_hsubst x1)) ts)) (cost:-1.6; n_fail:0)\n\n    * (7 HYPS)|-eq (hsubst_trm (cons_hsubst x1 t1 sigma) t0)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t0)) (cost:-1.7000000000000002; n_fail:0)\n\n    * (7 HYPS)|-eq (hsubst_trm (cons_hsubst x1 t1 sigma) t2)\n  (hsubst_trm (cons_hsubst x1 t1 sigma)\n     (hsubst_trm (one_hsubst x1 (nil_hsubst x1)) t2)) (cost:-1.8; n_fail:0)\n\n    * (9 HYPS)|-eq (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p))\n  (hchi_frm (cons_hsubst x1 t1 sigma)\n     (All_frm (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p))\n        (hsubst_frm\n           (cons_hsubst (inl y0)\n              (Var_trm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))) (one_hsubst x1 (nil_hsubst x1))) p))) (cost:-1.9000000000000001; n_fail:0)\n\n    * (9 HYPS)|-eq\n  (hsubst_frm\n     (cons_hsubst (inl y0)\n        (Var_trm (hchi_frm (cons_hsubst x1 t1 sigma) (All_frm y0 p)))\n        (cons_hsubst x1 t1 sigma)) p)\n  (hsubst_frm\n     (cons_hsubst\n        (inl (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n        (Var_trm\n           (hchi_frm (cons_hsubst x1 t1 sigma)\n              (All_frm\n                 (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                    (All_frm y0 p))\n                 (hsubst_frm\n                    (cons_hsubst (inl y0)\n                       (Var_trm\n                          (hchi_frm (one_hsubst x1 (nil_hsubst x1))\n                             (All_frm y0 p)))\n                       (one_hsubst x1 (nil_hsubst x1))) p))))\n        (cons_hsubst x1 t1 sigma))\n     (hsubst_frm\n        (cons_hsubst (inl y0)\n           (Var_trm\n              (hchi_frm (one_hsubst x1 (nil_hsubst x1)) (All_frm y0 p)))\n           (one_hsubst x1 (nil_hsubst x1))) p)) (cost:-2.0; n_fail:1)\n"
+}

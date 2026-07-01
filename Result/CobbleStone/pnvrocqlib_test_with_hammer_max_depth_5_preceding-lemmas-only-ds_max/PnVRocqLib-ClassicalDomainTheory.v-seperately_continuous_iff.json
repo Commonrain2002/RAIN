@@ -1,0 +1,67 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ClassicalDomainTheory.v-seperately_continuous_iff.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "fb00a806bfe24d18959e55a00dd17c7a",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "f : forall _ : prod D D', D''",
+            "CPO'' : isCpo D''",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET'' : isProset D''",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D'' : Type",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "iff\n  (and (forall x2 : D', isContinuous (fun x1 : D => f (pair x1 x2)))\n     (forall x1 : D, isContinuous (fun x2 : D' => f (pair x1 x2))))\n  (isContinuous f)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "split.\n- intros [H1 H2]; exact (f_cont_if_f1_and_f2_cont f H1 H2).\n- intros H; split.\n-- intro x2; exact (f1_cont_if_f_cont f x2 H).\n-- intro x1; exact (f2_cont_if_f_cont f x1 H).",
+      "lemmas": null,
+      "attempts": [
+        "intros D D' D'' PROSET PROSET' PROSET'' CPO CPO' CPO'' f. split.\n- intros Hcont. split.\n-- intro x2; apply (f1_cont_if_f_cont f x2 Hcont).\n-- intro x1; apply (f2_cont_if_f_cont f x1 Hcont).\n- intros [H1 H2]; apply (f_cont_if_f1_and_f2_cont f H1 H2).",
+        "split.\n- intros [H1 H2]; exact (f_cont_if_f1_and_f2_cont f H1 H2).\n- intros H; split.\n  + intro x2; exact (f1_cont_if_f_cont f x2 H).\n  + intro x1; exact (f2_cont_if_f_cont f x1 H)."
+      ],
+      "failed_attempts": [
+        "intros D D' D'' PROSET PROSET' PROSET'' CPO CPO' CPO'' f. split.\n- intros Hcont. split.\n-- intro x2; apply (f1_cont_if_f_cont f x2 Hcont).\n-- intro x1; apply (f2_cont_if_f_cont f x1 Hcont).\n- intros [H1 H2]; apply (f_cont_if_f1_and_f2_cont f H1 H2)."
+      ]
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "fb00a806bfe24d18959e55a00dd17c7a": 0.0
+  },
+  "costs_to_go": {
+    "fb00a806bfe24d18959e55a00dd17c7a": 0
+  },
+  "no_more_children": {
+    "fb00a806bfe24d18959e55a00dd17c7a": true
+  },
+  "node_added_idx": {
+    "fb00a806bfe24d18959e55a00dd17c7a": 0
+  },
+  "next_node_idx": 1,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "fb00a806bfe24d18959e55a00dd17c7a",
+  "done": false,
+  "visualization": "\n* (10 HYPS)|-iff\n  (and (forall x2 : D', isContinuous (fun x1 : D => f (pair x1 x2)))\n     (forall x1 : D, isContinuous (fun x2 : D' => f (pair x1 x2))))\n  (isContinuous f) (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # successful proof: split.\n- intros [H1 H2]; exact (f_cont_if_f1_and_f2_cont f H1 H2).\n- intros H; split.\n-- intro x2; exact (f1_cont_if_f_cont f x2 H).\n-- intro x1; exact (f2_cont_if_f_cont f x1 H)."
+}

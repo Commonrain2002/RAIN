@@ -1,0 +1,376 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-Graph.v-walk_finds_path.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "f47219e53c80403c99b31351abffd95d",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "WALK : walk v v0 w",
+            "w : list (GRAPH.vertices G)",
+            "v0,v : GRAPH.vertices G",
+            "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+            "G : GRAPH.t"
+          ],
+          "goal": "ex (fun p : list (GRAPH.vertices G) => path v v0 p)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "1692087e98c340f0ab8b3317428307dc",
+          "bedf6620c31f4df187b42ba17d3fcbee"
+        ],
+        [
+          "0a0a780ce2254e71a6294372e6e62130",
+          "0278051fb40f4575ab2fc55c16c25483"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "assert (last_last_lemma : forall (l : list V) (d : V), last l (last l d) = last l d)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "forall (l : list (GRAPH.vertices G)) (d : GRAPH.vertices G),\neq (last l (last l d)) (last l d)"
+            },
+            {
+              "hypotheses": [
+                "last_last_lemma : forall (l : list (GRAPH.vertices G)) (d : GRAPH.vertices G),\neq (last l (last l d)) (last l d)",
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "ex (fun p : list (GRAPH.vertices G) => path v v0 p)"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "assert (path_to_vertex_simple : forall v u p, path v u p -> forall w, L.In w p -> exists q, path v w q /\\ not (L.In w q))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "forall (v u : GRAPH.vertices G) (p : list (GRAPH.vertices G))\n  (_ : path v u p) (w : GRAPH.vertices G) (_ : L.In w p),\nex\n  (fun q : list (GRAPH.vertices G) => and (path v w q) (not (L.In w q)))"
+            },
+            {
+              "hypotheses": [
+                "path_to_vertex_simple : forall (v u : GRAPH.vertices G) (p : list (GRAPH.vertices G))\n  (_ : path v u p) (w : GRAPH.vertices G) (_ : L.In w p),\nex\n  (fun q : list (GRAPH.vertices G) => and (path v w q) (not (L.In w q)))",
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "ex (fun p : list (GRAPH.vertices G) => path v v0 p)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "",
+        "assert (last_last_lemma : forall (l : list V) (d : V), last l (last l d) = last l d).\n{ induction l; simpl; auto. }\ninduction w as [| a w IH].\n- inversion WALK; subst; exists nil; apply path_refl.\n- pose proof (walk_last v v0 (a::w) WALK) as Hlast1. inversion WALK as [ | ? ? ? Hedge Hwalk | ]; subst; try discriminate. apply (walk_last v a w) in Hwalk. simpl in Hlast1, Hwalk. rewrite Hwalk, (last_last_lemma w v), <- Hwalk in Hlast1. subst a. apply (IH v v0 Hwalk).",
+        "refine (let vertices := GRAPH.vertices G in\nlet strip (a : vertices) : forall (b : vertices) (p : list vertices), path v b p -> L.In a p -> {p' : list vertices | path v a p' /\\ ~ L.In a p'} :=\n  fix rec b p hp (Hin : L.In a p) {struct hp} : {p' : list vertices | path v a p' /\\ ~ L.In a p'} :=\n    match hp with\n    | path_refl => match Hin with end\n    | path_step b0 b1 p' He Hp Hnotin =>\n      match Hin with\n      | L.In_eq _ _ => exist _ p' (conj Hp Hnotin)\n      | L.In_cons _ _ Hin' => rec b1 p' Hp Hin'\n      end\n    end\nin let walk_to_path (x : vertices) (l : list vertices) (hw : walk v x l) {struct l} : exists p : list vertices, path v x p :=\n  match hw with\n  | walk_refl => ex_intro _ nil (path_refl v)\n  | walk_step x0 x1 l' hedge hwalk' =>\n    match walk_to_path x1 l' hwalk' with\n    | ex_intro _ p' hp' =>\n      match In_dec x1 p' with\n      | right nin => ex_intro _ (x1 :: p') (path_step x0 x1 p' hedge hp' nin)\n      | left hin =>\n        let (p'', h) := strip x1 x1 p' hp' hin in\n        ex_intro _ (x1 :: p'') (path_step x0 x1 p'' hedge (proj1 h) (proj2 h))\n      end\n    end\n  end\nin walk_to_path v0 w WALK).",
+        "assert (path_to_vertex_simple : forall v u p, path v u p -> forall w, L.In w p -> exists q, path v w q /\\ not (L.In w q)).\n{ induction 1 as [| v0 v1 p Hedge Hpath IH Hnot]; intros w Hin; [exfalso; inversion Hin | inversion Hin; clear Hin; subst; [exists p; split; [exact Hpath | exact Hnot] | apply IH with (w:=w) in H; destruct H as [q [Hq Hnotq]]; exists q; split; [exact Hq | exact Hnotq]]]. }\ninduction WALK as [| v0 v1 w' Hedge Hwalk IH]; [exists nil; apply path_refl | destruct IH as [p Hp]; destruct (In_dec v1 p) as [Hin | Hnot]; [apply path_to_vertex_simple with (w:=v1) in Hp as [p' [Hp' Hnot']]; exists (cons v1 p'); apply path_step with (v1:=v1) (p:=p'); [exact Hedge | exact Hp' | exact Hnot'] | exists (cons v1 p); apply path_step with (v1:=v1) (p:=p); [exact Hedge | exact Hp | exact Hnot]]]."
+      ],
+      "failed_attempts": [
+        "",
+        "refine (let vertices := GRAPH.vertices G in\nlet strip (a : vertices) : forall (b : vertices) (p : list vertices), path v b p -> L.In a p -> {p' : list vertices | path v a p' /\\ ~ L.In a p'} :=\n  fix rec b p hp (Hin : L.In a p) {struct hp} : {p' : list vertices | path v a p' /\\ ~ L.In a p'} :=\n    match hp with\n    | path_refl => match Hin with end\n    | path_step b0 b1 p' He Hp Hnotin =>\n      match Hin with\n      | L.In_eq _ _ => exist _ p' (conj Hp Hnotin)\n      | L.In_cons _ _ Hin' => rec b1 p' Hp Hin'\n      end\n    end\nin let walk_to_path (x : vertices) (l : list vertices) (hw : walk v x l) {struct l} : exists p : list vertices, path v x p :=\n  match hw with\n  | walk_refl => ex_intro _ nil (path_refl v)\n  | walk_step x0 x1 l' hedge hwalk' =>\n    match walk_to_path x1 l' hwalk' with\n    | ex_intro _ p' hp' =>\n      match In_dec x1 p' with\n      | right nin => ex_intro _ (x1 :: p') (path_step x0 x1 p' hedge hp' nin)\n      | left hin =>\n        let (p'', h) := strip x1 x1 p' hp' hin in\n        ex_intro _ (x1 :: p'') (path_step x0 x1 p'' hedge (proj1 h) (proj2 h))\n      end\n    end\n  end\nin walk_to_path v0 w WALK)."
+      ]
+    },
+    {
+      "uuid": "1692087e98c340f0ab8b3317428307dc",
+      "parent_uuid": "f47219e53c80403c99b31351abffd95d",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "WALK : walk v v0 w",
+            "w : list (GRAPH.vertices G)",
+            "v0,v : GRAPH.vertices G",
+            "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+            "G : GRAPH.t"
+          ],
+          "goal": "forall (l : list (GRAPH.vertices G)) (d : GRAPH.vertices G),\neq (last l (last l d)) (last l d)"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (last_last_lemma : forall (l : list V) (d : V), last l (last l d) = last l d)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "forall (l : list (GRAPH.vertices G)) (d : GRAPH.vertices G),\neq (last l (last l d)) (last l d)"
+            },
+            {
+              "hypotheses": [
+                "last_last_lemma : forall (l : list (GRAPH.vertices G)) (d : GRAPH.vertices G),\neq (last l (last l d)) (last l d)",
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "ex (fun p : list (GRAPH.vertices G) => path v v0 p)"
+            }
+          ]
+        },
+        "proof_prefix": "assert (last_last_lemma : forall (l : list V) (d : V), last l (last l d) = last l d)."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "bedf6620c31f4df187b42ba17d3fcbee",
+      "parent_uuid": "f47219e53c80403c99b31351abffd95d",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "last_last_lemma : forall (l : list (GRAPH.vertices G)) (d : GRAPH.vertices G),\neq (last l (last l d)) (last l d)",
+            "WALK : walk v v0 w",
+            "w : list (GRAPH.vertices G)",
+            "v0,v : GRAPH.vertices G",
+            "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+            "G : GRAPH.t"
+          ],
+          "goal": "ex (fun p : list (GRAPH.vertices G) => path v v0 p)"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (last_last_lemma : forall (l : list V) (d : V), last l (last l d) = last l d)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "forall (l : list (GRAPH.vertices G)) (d : GRAPH.vertices G),\neq (last l (last l d)) (last l d)"
+            },
+            {
+              "hypotheses": [
+                "last_last_lemma : forall (l : list (GRAPH.vertices G)) (d : GRAPH.vertices G),\neq (last l (last l d)) (last l d)",
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "ex (fun p : list (GRAPH.vertices G) => path v v0 p)"
+            }
+          ]
+        },
+        "proof_prefix": "assert (last_last_lemma : forall (l : list V) (d : V), last l (last l d) = last l d). admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "0a0a780ce2254e71a6294372e6e62130",
+      "parent_uuid": "f47219e53c80403c99b31351abffd95d",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "WALK : walk v v0 w",
+            "w : list (GRAPH.vertices G)",
+            "v0,v : GRAPH.vertices G",
+            "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+            "G : GRAPH.t"
+          ],
+          "goal": "forall (v u : GRAPH.vertices G) (p : list (GRAPH.vertices G))\n  (_ : path v u p) (w : GRAPH.vertices G) (_ : L.In w p),\nex\n  (fun q : list (GRAPH.vertices G) => and (path v w q) (not (L.In w q)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (path_to_vertex_simple : forall v u p, path v u p -> forall w, L.In w p -> exists q, path v w q /\\ not (L.In w q))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "forall (v u : GRAPH.vertices G) (p : list (GRAPH.vertices G))\n  (_ : path v u p) (w : GRAPH.vertices G) (_ : L.In w p),\nex\n  (fun q : list (GRAPH.vertices G) => and (path v w q) (not (L.In w q)))"
+            },
+            {
+              "hypotheses": [
+                "path_to_vertex_simple : forall (v u : GRAPH.vertices G) (p : list (GRAPH.vertices G))\n  (_ : path v u p) (w : GRAPH.vertices G) (_ : L.In w p),\nex\n  (fun q : list (GRAPH.vertices G) => and (path v w q) (not (L.In w q)))",
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "ex (fun p : list (GRAPH.vertices G) => path v v0 p)"
+            }
+          ]
+        },
+        "proof_prefix": "assert (path_to_vertex_simple : forall v u p, path v u p -> forall w, L.In w p -> exists q, path v w q /\\ not (L.In w q))."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "0278051fb40f4575ab2fc55c16c25483",
+      "parent_uuid": "f47219e53c80403c99b31351abffd95d",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "path_to_vertex_simple : forall (v u : GRAPH.vertices G) (p : list (GRAPH.vertices G))\n  (_ : path v u p) (w : GRAPH.vertices G) (_ : L.In w p),\nex\n  (fun q : list (GRAPH.vertices G) => and (path v w q) (not (L.In w q)))",
+            "WALK : walk v v0 w",
+            "w : list (GRAPH.vertices G)",
+            "v0,v : GRAPH.vertices G",
+            "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+            "G : GRAPH.t"
+          ],
+          "goal": "ex (fun p : list (GRAPH.vertices G) => path v v0 p)"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (path_to_vertex_simple : forall v u p, path v u p -> forall w, L.In w p -> exists q, path v w q /\\ not (L.In w q))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "forall (v u : GRAPH.vertices G) (p : list (GRAPH.vertices G))\n  (_ : path v u p) (w : GRAPH.vertices G) (_ : L.In w p),\nex\n  (fun q : list (GRAPH.vertices G) => and (path v w q) (not (L.In w q)))"
+            },
+            {
+              "hypotheses": [
+                "path_to_vertex_simple : forall (v u : GRAPH.vertices G) (p : list (GRAPH.vertices G))\n  (_ : path v u p) (w : GRAPH.vertices G) (_ : L.In w p),\nex\n  (fun q : list (GRAPH.vertices G) => and (path v w q) (not (L.In w q)))",
+                "WALK : walk v v0 w",
+                "w : list (GRAPH.vertices G)",
+                "v0,v : GRAPH.vertices G",
+                "In_dec : forall (v : GRAPH.vertices G) (vs : list (GRAPH.vertices G)),\nor (L.In v vs) (not (L.In v vs))",
+                "G : GRAPH.t"
+              ],
+              "goal": "ex (fun p : list (GRAPH.vertices G) => path v v0 p)"
+            }
+          ]
+        },
+        "proof_prefix": "assert (path_to_vertex_simple : forall v u p, path v u p -> forall w, L.In w p -> exists q, path v w q /\\ not (L.In w q)). admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.30000000000000004,
+      "id": 135536283546128,
+      "uuid": "0a0a780ce2254e71a6294372e6e62130"
+    },
+    {
+      "cost": -0.1,
+      "id": 135536204714960,
+      "uuid": "1692087e98c340f0ab8b3317428307dc"
+    },
+    {
+      "cost": -0.2,
+      "id": 135536204723152,
+      "uuid": "bedf6620c31f4df187b42ba17d3fcbee"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536161116752,
+      "uuid": "f47219e53c80403c99b31351abffd95d"
+    }
+  ],
+  "costs_so_far": {
+    "f47219e53c80403c99b31351abffd95d": 0.0,
+    "1692087e98c340f0ab8b3317428307dc": -0.1,
+    "bedf6620c31f4df187b42ba17d3fcbee": -0.2,
+    "0a0a780ce2254e71a6294372e6e62130": -0.30000000000000004,
+    "0278051fb40f4575ab2fc55c16c25483": -0.4
+  },
+  "costs_to_go": {
+    "f47219e53c80403c99b31351abffd95d": 0,
+    "1692087e98c340f0ab8b3317428307dc": 0,
+    "bedf6620c31f4df187b42ba17d3fcbee": 0,
+    "0a0a780ce2254e71a6294372e6e62130": 0,
+    "0278051fb40f4575ab2fc55c16c25483": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "f47219e53c80403c99b31351abffd95d": 0,
+    "1692087e98c340f0ab8b3317428307dc": 1,
+    "bedf6620c31f4df187b42ba17d3fcbee": 2,
+    "0a0a780ce2254e71a6294372e6e62130": 3,
+    "0278051fb40f4575ab2fc55c16c25483": 4
+  },
+  "next_node_idx": 5,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "f47219e53c80403c99b31351abffd95d",
+  "done": false,
+  "visualization": "\n* (5 HYPS)|-ex (fun p : list (GRAPH.vertices G) => path v v0 p) (cost:0.0; n_fail:0)\n  # 1 prefixes like assert (last_last_lemma : forall (l : list V) (d : V), last l (last l d) = last l d).\n  * (5 HYPS)|-forall (l : list (GRAPH.vertices G)) (d : GRAPH.vertices G),\neq (last l (last l d)) (last l d) (cost:-0.1; n_fail:0)\n\n  * (6 HYPS)|-ex (fun p : list (GRAPH.vertices G) => path v v0 p) (cost:-0.2; n_fail:0)\n\n  # 1 prefixes like assert (path_to_vertex_simple : forall v u p, path v u p -> forall w, L.In w p -> exists q, path v w q /\\ not (L.In w q)).\n  * (5 HYPS)|-forall (v u : GRAPH.vertices G) (p : list (GRAPH.vertices G))\n  (_ : path v u p) (w : GRAPH.vertices G) (_ : L.In w p),\nex\n  (fun q : list (GRAPH.vertices G) => and (path v w q) (not (L.In w q))) (cost:-0.30000000000000004; n_fail:0)\n\n  * (6 HYPS)|-ex (fun p : list (GRAPH.vertices G) => path v v0 p) (cost:-0.4; n_fail:1)\n"
+}

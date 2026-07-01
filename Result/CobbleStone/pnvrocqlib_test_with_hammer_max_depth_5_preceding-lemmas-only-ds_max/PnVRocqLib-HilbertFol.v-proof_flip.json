@@ -1,0 +1,70 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-HilbertFol.v-proof_flip.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "b6f08c04f6cd4493890e22ed91230135",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "p,q,r : frm L",
+            "L : language"
+          ],
+          "goal": "proof nil (Imp_frm (Imp_frm q (Imp_frm p r)) (Imp_frm p (Imp_frm q r)))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 3,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "exact (proof_imp_i (Imp_frm q (Imp_frm p r)) (Imp_frm p (Imp_frm q r)) nil\n  (proof_imp_i p (Imp_frm q r) (Imp_frm q (Imp_frm p r) :: nil)\n    (proof_imp_i q r (p :: Imp_frm q (Imp_frm p r) :: nil)\n      (proof_imp_e p r (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n        (proof_imp_e q (Imp_frm p r) (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n          (proof_hyp (Imp_frm q (Imp_frm p r)) (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n            (or_intror (or_intror (or_introl eq_refl))))\n          (proof_hyp q (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n            (or_introl eq_refl)))\n        (proof_hyp p (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n          (or_intror (or_introl eq_refl)))))).",
+        "apply proof_imp. apply proof_imp. apply proof_imp. apply proof_mp.\n- apply proof_mp.\n-- apply proof_hyp; simpl; auto.\n-- apply proof_hyp; simpl; auto.\n- apply proof_hyp; simpl; auto.",
+        "refine (imp_i (Imp_frm q (Imp_frm p r)) (Imp_frm p (Imp_frm q r))\n          (imp_i p (Imp_frm q r)\n            (imp_i q r\n              (imp_e (Imp_frm p r) r\n                (imp_e (Imp_frm q (Imp_frm p r)) (Imp_frm p r)\n                  (hyp (Imp_frm q (Imp_frm p r)) _)\n                  (hyp q _))\n                (hyp p _))))). all: simpl; auto.",
+        "apply (C q p r).",
+        "refine (proof_imp_i (Imp_frm q (Imp_frm p r)) (Imp_frm p (Imp_frm q r))\n  (proof_imp_i p (Imp_frm q r)\n    (proof_imp_i q r\n      (proof_imp_e p r\n        (proof_imp_e q (Imp_frm p r)\n          (proof_hyp (Imp_frm q (Imp_frm p r)) _)\n          (proof_hyp q _))\n        (proof_hyp p _)))));\nall: repeat constructor.",
+        "auto using proof_id, proof_compose, syllogism.",
+        "repeat apply Imp_I. apply Imp_E with (A := p) (B := r).\n- apply Imp_E with (A := q) (B := Imp_frm p r).\n-- apply Ax; repeat constructor.\n-- apply Ax; repeat constructor.\n- apply Ax; repeat constructor.",
+        "repeat apply imp_i. apply imp_e with (Imp_frm p r).\n- apply imp_e with q.\n-- apply hyp; simpl; auto.\n-- apply hyp; simpl; auto.\n- apply hyp; simpl; auto."
+      ],
+      "failed_attempts": [
+        "exact (proof_imp_i (Imp_frm q (Imp_frm p r)) (Imp_frm p (Imp_frm q r)) nil\n  (proof_imp_i p (Imp_frm q r) (Imp_frm q (Imp_frm p r) :: nil)\n    (proof_imp_i q r (p :: Imp_frm q (Imp_frm p r) :: nil)\n      (proof_imp_e p r (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n        (proof_imp_e q (Imp_frm p r) (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n          (proof_hyp (Imp_frm q (Imp_frm p r)) (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n            (or_intror (or_intror (or_introl eq_refl))))\n          (proof_hyp q (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n            (or_introl eq_refl)))\n        (proof_hyp p (q :: p :: Imp_frm q (Imp_frm p r) :: nil)\n          (or_intror (or_introl eq_refl)))))).",
+        "apply proof_imp. apply proof_imp. apply proof_imp. apply proof_mp.\n- apply proof_mp.\n-- apply proof_hyp; simpl; auto.\n-- apply proof_hyp; simpl; auto.\n- apply proof_hyp; simpl; auto.",
+        "refine (imp_i (Imp_frm q (Imp_frm p r)) (Imp_frm p (Imp_frm q r))\n          (imp_i p (Imp_frm q r)\n            (imp_i q r\n              (imp_e (Imp_frm p r) r\n                (imp_e (Imp_frm q (Imp_frm p r)) (Imp_frm p r)\n                  (hyp (Imp_frm q (Imp_frm p r)) _)\n                  (hyp q _))\n                (hyp p _))))). all: simpl; auto.",
+        "apply (C q p r).",
+        "refine (proof_imp_i (Imp_frm q (Imp_frm p r)) (Imp_frm p (Imp_frm q r))\n  (proof_imp_i p (Imp_frm q r)\n    (proof_imp_i q r\n      (proof_imp_e p r\n        (proof_imp_e q (Imp_frm p r)\n          (proof_hyp (Imp_frm q (Imp_frm p r)) _)\n          (proof_hyp q _))\n        (proof_hyp p _)))));\nall: repeat constructor.",
+        "auto using proof_id, proof_compose, syllogism.",
+        "repeat apply Imp_I. apply Imp_E with (A := p) (B := r).\n- apply Imp_E with (A := q) (B := Imp_frm p r).\n-- apply Ax; repeat constructor.\n-- apply Ax; repeat constructor.\n- apply Ax; repeat constructor.",
+        "repeat apply imp_i. apply imp_e with (Imp_frm p r).\n- apply imp_e with q.\n-- apply hyp; simpl; auto.\n-- apply hyp; simpl; auto.\n- apply hyp; simpl; auto."
+      ]
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "b6f08c04f6cd4493890e22ed91230135": 0.0
+  },
+  "costs_to_go": {
+    "b6f08c04f6cd4493890e22ed91230135": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "b6f08c04f6cd4493890e22ed91230135": 0
+  },
+  "next_node_idx": 1,
+  "remaining_nodes_to_expand": 148,
+  "root_uuid": "b6f08c04f6cd4493890e22ed91230135",
+  "done": false,
+  "visualization": "\n* (2 HYPS)|-proof nil (Imp_frm (Imp_frm q (Imp_frm p r)) (Imp_frm p (Imp_frm q r))) (cost:0.0; n_fail:3)\n"
+}

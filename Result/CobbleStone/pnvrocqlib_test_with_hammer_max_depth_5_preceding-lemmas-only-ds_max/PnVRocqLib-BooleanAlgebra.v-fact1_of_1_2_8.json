@@ -1,0 +1,739 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-BooleanAlgebra.v-fact1_of_1_2_8.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "c010be44d5e24f35b92ac48a3548d0df",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "X : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "isFilter (cl X)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "b48b99d190174a00a6975eef605d4ae5",
+          "4f9c7d43c541472e97b09c3cd871cb5c",
+          "1d66a8fbe0ee4c09974cd527fa3e5b13"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "apply isFilter_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "ex (fun x0 : B => E.In x0 (cl X))"
+            },
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x1 x2 : B) (_ : E.In x1 (cl X)) (_ : E.In x2 (cl X)),\nE.In (BooleanAlgebra.andB x1 x2) (cl X)"
+            },
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : E.In x (cl X)) (x' : B) (_ : leProp x x'),\nE.In x' (cl X)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "apply isFilter_intro.\n- exists trueB; unfold cl; exists []; split; [intros x H; inversion H | rewrite andsB_zero; reflexivity].\n- intros x1 x2 Hx1 Hx2; destruct Hx1 as [xs1 [Hxs1 Hle1]], Hx2 as [xs2 [Hxs2 Hle2]]; unfold cl; exists (xs1 ++ xs2); split; [intros x H; apply L.In_app_iff in H; destruct H as [H|H]; [apply Hxs1 | apply Hxs2]; assumption | rewrite andsB_app; apply andB_compathWith_leProp; [exact Hle1 | exact Hle2]].\n- intros x Hx x' Hle; destruct Hx as [xs [Hxs Hle_xs_x]]; unfold cl; exists xs; split; [assumption | etransitivity; eassumption].",
+        "apply isFilter_intro.\n- refine (ex_intro (cl X) trueB\n          (ex_intro (fun xs => and (forall y, L.In y xs -> E.In y X)\n                                   (leProp (andsB xs) trueB))\n                    []\n                    (conj (fun y Hy => match Hy with end)\n                          (leB_PartialOrder.(partial_order_equivalence) andsB_zero)))).\n- refine (fun x1 x2 Hx1 Hx2 =>\n            let (xs1, H1) := Hx1 in\n            let (Hxs1_in, Hxs1_le) := H1 in\n            let (xs2, H2) := Hx2 in\n            let (Hxs2_in, Hxs2_le) := H2 in\n            ex_intro (fun xs => and (forall y, L.In y xs -> E.In y X)\n                                    (leProp (andsB xs) (andB x1 x2)))\n                     (xs1 ++ xs2)\n                     (conj (fun y Hy => let H := L.In_app_or xs1 xs2 y Hy in\n                                        match H with\n                                        | or_introl H' => Hxs1_in y H'\n                                        | or_intror H' => Hxs2_in y H'\n                                        end)\n                           ((leB_PreOrder.(PreOrder_Transitive).(transitivity))\n                              (andsB (xs1 ++ xs2)) (andB (andsB xs1) (andsB xs2)) (andB x1 x2)\n                              (leB_PartialOrder.(partial_order_equivalence) (andsB_app xs1 xs2))\n                              (andB_compathWith_leProp (andsB xs1) x1 (andsB xs2) x2 Hxs1_le Hxs2_le)))).\n- refine (fun x Hx x' Hle =>\n            let (xs, H) := Hx in\n            let (Hxs_in, Hxs_le) := H in\n            ex_intro (fun xs => and (forall y, L.In y xs -> E.In y X)\n                                    (leProp (andsB xs) x'))\n                     xs\n                     (conj Hxs_in\n                           ((leB_PreOrder.(PreOrder_Transitive).(transitivity))\n                              (andsB xs) x x' Hxs_le Hle))).",
+        "destruct BOOLEAN_ALGEBRA_LAWS as [andB_comp orB_comp notB_comp andB_assoc orB_assoc andB_comm orB_comm andB_distr_orB orB_distr_andB trueB_id_andB falseB_id_orB falseB_ann_andB trueB_ann_orB andB_idem orB_idem Abs andB_notB_falseB orB_notB_trueB]. destruct SETOID as [eq [eq_refl eq_sym eq_trans]]. exact (let leProp_refl : forall x, leProp x x := fun x => andB_idem x in\nlet leProp_trans : forall a b c, leProp a b -> leProp b c -> leProp a c :=\n  fun a b c H H0 =>\n    eq_trans (eq_trans (eq_trans (andB_comp a (andB a b) c c (eq_sym H) (eq_refl c))\n                    (andB_assoc a b c))\n              (andB_comp a a (andB b c) b (eq_refl a) H0)) H in\nlet leProp_and_monotone : forall x y z w, leProp x y -> leProp z w -> leProp (andB x z) (andB y w) :=\n  fun x y z w Hxy Hzw =>\n    let H_reassoc : eqProp (andB z (andB y w)) (andB y (andB z w)) :=\n      eq_trans (eq_sym (andB_assoc z y w))\n        (eq_trans (andB_comp (andB z y) (andB y z) w w (andB_comm z y) (eq_refl w))\n                  (andB_assoc y z w)) in\n    eq_trans\n      (eq_trans (andB_assoc x z (andB y w))\n                (eq_trans (andB_comp x x (andB z (andB y w)) (andB y (andB z w)) (eq_refl x) H_reassoc)\n                          (eq_sym (andB_assoc x y (andB z w)))))\n      (eq_trans (andB_comp (andB x y) x (andB z w) (andB z w) Hxy (eq_refl (andB z w)))\n                (andB_comp x x (andB z w) z (eq_refl x) Hzw)) in\nlet eq_to_leProp : forall x y, eqProp x y -> leProp x y :=\n  fun x y H => eq_trans (andB_comp x x y x (eq_refl x) (eq_sym H)) (andB_idem x) in\nlet andsB_app : forall l1 l2 : list B, eqProp (andsB (l1 ++ l2)) (andB (andsB l1) (andsB l2)) :=\n  fix rec (l1 : list B) : forall l2 : list B, eqProp (andsB (l1 ++ l2)) (andB (andsB l1) (andsB l2)) :=\n  match l1 return (forall l2 : list B, eqProp (andsB (l1 ++ l2)) (andB (andsB l1) (andsB l2))) with\n  | [] => fun l2 => eq_sym (trueB_id_andB (andsB l2))\n  | a :: l1' => fun l2 =>\n    eq_trans (andB_comp a a (andsB (l1' ++ l2)) (andB (andsB l1') (andsB l2)) (eq_refl a) (rec l1' l2))\n             (andB_assoc a (andsB l1') (andsB l2))\n  end in\nisFilter_if (cl X)\n  (fun xs H =>\n    let aux : forall (xs : list B), (forall x, L.In x xs -> cl X x) -> cl X (andsB xs) :=\n      fix aux (xs : list B) : (forall x, L.In x xs -> cl X x) -> cl X (andsB xs) :=\n      fun H => match xs return ((forall x, L.In x xs -> cl X x) -> cl X (andsB xs)) with\n               | [] => fun _ =>\n                 ex_intro (fun zs => (forall y, L.In y zs -> X y) /\\ leProp (andsB zs) (andsB [])) []\n                   (conj (fun y Hy => False_rect (X y) Hy) (leProp_refl (andsB [])))\n               | a :: xs' => fun H =>\n                 let Ha : cl X a := H a (L.in_eq B a xs') in\n                 let Hxs' : forall x, L.In x xs' -> cl X x := fun x h => H x (L.in_cons B a x xs' h) in\n                 let r : cl X (andsB xs') := aux xs' Hxs' in\n                 let (zs1, (Hxs1, Hle1)) := Ha in\n                 let (zs2, (Hxs2, Hle2)) := r in\n                 let zs := zs1 ++ zs2 in\n                 ex_intro (fun zs => (forall y, L.In y zs -> X y) /\\ leProp (andsB zs) (andsB (a :: xs'))) zs\n                   (conj\n                     (fun y Hy =>\n                       let H' := L.in_app_or B zs1 zs2 y Hy in\n                       match H' with\n                       | or_introl h => Hxs1 y h\n                       | or_intror h => Hxs2 y h\n                       end)\n                     (leProp_trans (andsB zs) (andB (andsB zs1) (andsB zs2)) (andB a (andsB xs'))\n                        (eq_to_leProp (andsB zs) (andB (andsB zs1) (andsB zs2)) (andsB_app zs1 zs2))\n                        (leProp_and_monotone (andsB zs1) a (andsB zs2) (andsB xs') Hle1 Hle2)))\n               end\n      in\n    aux xs H)\n  (fun x (Hx : cl X x) x' (Hle : leProp x x') =>\n    let (zs, (Hxs, Hlez)) := Hx in\n    ex_intro (fun zs => (forall y, L.In y zs -> X y) /\\ leProp (andsB zs) x') zs\n      (conj Hxs (leProp_trans (andsB zs) x x' Hlez Hle)))).",
+        "induction l1 as [|x xs IH]; intros l2.\n- simpl; apply leProp_refl.\n- simpl; apply andB_le_compat_r; auto. apply isFilter_if.\n- intros xs H; induction xs as [|x xs IH].\n-- exists []; split; [intros; inversion H|]; apply (trueB_id_andB trueB).\n-- destruct (H x (L.in_eq _ _)) as [l1 [Hl1 Hle1]],\n               (IH (fun y Hy => H y (L.in_cons _ _ _ Hy))) as [l2 [Hl2 Hle2]]. exists (l1 ++ l2); split.\n--- intros a Ha; apply L.in_app_or in Ha; destruct Ha; auto.\n--- apply (leProp_glb (andsB (l1 ++ l2)) x (andsB xs));\n          [ apply leProp_trans with (andsB l1); [apply andsB_le_l | assumption]\n          | apply leProp_trans with (andsB l2); [apply andsB_le_r | assumption] ].\n- intros x Hx x' Hle; destruct Hx as [l [Hl Hle']]. exists l; split; auto; apply leProp_trans with x; assumption."
+      ],
+      "failed_attempts": [
+        "destruct BOOLEAN_ALGEBRA_LAWS as [andB_comp orB_comp notB_comp andB_assoc orB_assoc andB_comm orB_comm andB_distr_orB orB_distr_andB trueB_id_andB falseB_id_orB falseB_ann_andB trueB_ann_orB andB_idem orB_idem Abs andB_notB_falseB orB_notB_trueB]. destruct SETOID as [eq [eq_refl eq_sym eq_trans]]. exact (let leProp_refl : forall x, leProp x x := fun x => andB_idem x in\nlet leProp_trans : forall a b c, leProp a b -> leProp b c -> leProp a c :=\n  fun a b c H H0 =>\n    eq_trans (eq_trans (eq_trans (andB_comp a (andB a b) c c (eq_sym H) (eq_refl c))\n                    (andB_assoc a b c))\n              (andB_comp a a (andB b c) b (eq_refl a) H0)) H in\nlet leProp_and_monotone : forall x y z w, leProp x y -> leProp z w -> leProp (andB x z) (andB y w) :=\n  fun x y z w Hxy Hzw =>\n    let H_reassoc : eqProp (andB z (andB y w)) (andB y (andB z w)) :=\n      eq_trans (eq_sym (andB_assoc z y w))\n        (eq_trans (andB_comp (andB z y) (andB y z) w w (andB_comm z y) (eq_refl w))\n                  (andB_assoc y z w)) in\n    eq_trans\n      (eq_trans (andB_assoc x z (andB y w))\n                (eq_trans (andB_comp x x (andB z (andB y w)) (andB y (andB z w)) (eq_refl x) H_reassoc)\n                          (eq_sym (andB_assoc x y (andB z w)))))\n      (eq_trans (andB_comp (andB x y) x (andB z w) (andB z w) Hxy (eq_refl (andB z w)))\n                (andB_comp x x (andB z w) z (eq_refl x) Hzw)) in\nlet eq_to_leProp : forall x y, eqProp x y -> leProp x y :=\n  fun x y H => eq_trans (andB_comp x x y x (eq_refl x) (eq_sym H)) (andB_idem x) in\nlet andsB_app : forall l1 l2 : list B, eqProp (andsB (l1 ++ l2)) (andB (andsB l1) (andsB l2)) :=\n  fix rec (l1 : list B) : forall l2 : list B, eqProp (andsB (l1 ++ l2)) (andB (andsB l1) (andsB l2)) :=\n  match l1 return (forall l2 : list B, eqProp (andsB (l1 ++ l2)) (andB (andsB l1) (andsB l2))) with\n  | [] => fun l2 => eq_sym (trueB_id_andB (andsB l2))\n  | a :: l1' => fun l2 =>\n    eq_trans (andB_comp a a (andsB (l1' ++ l2)) (andB (andsB l1') (andsB l2)) (eq_refl a) (rec l1' l2))\n             (andB_assoc a (andsB l1') (andsB l2))\n  end in\nisFilter_if (cl X)\n  (fun xs H =>\n    let aux : forall (xs : list B), (forall x, L.In x xs -> cl X x) -> cl X (andsB xs) :=\n      fix aux (xs : list B) : (forall x, L.In x xs -> cl X x) -> cl X (andsB xs) :=\n      fun H => match xs return ((forall x, L.In x xs -> cl X x) -> cl X (andsB xs)) with\n               | [] => fun _ =>\n                 ex_intro (fun zs => (forall y, L.In y zs -> X y) /\\ leProp (andsB zs) (andsB [])) []\n                   (conj (fun y Hy => False_rect (X y) Hy) (leProp_refl (andsB [])))\n               | a :: xs' => fun H =>\n                 let Ha : cl X a := H a (L.in_eq B a xs') in\n                 let Hxs' : forall x, L.In x xs' -> cl X x := fun x h => H x (L.in_cons B a x xs' h) in\n                 let r : cl X (andsB xs') := aux xs' Hxs' in\n                 let (zs1, (Hxs1, Hle1)) := Ha in\n                 let (zs2, (Hxs2, Hle2)) := r in\n                 let zs := zs1 ++ zs2 in\n                 ex_intro (fun zs => (forall y, L.In y zs -> X y) /\\ leProp (andsB zs) (andsB (a :: xs'))) zs\n                   (conj\n                     (fun y Hy =>\n                       let H' := L.in_app_or B zs1 zs2 y Hy in\n                       match H' with\n                       | or_introl h => Hxs1 y h\n                       | or_intror h => Hxs2 y h\n                       end)\n                     (leProp_trans (andsB zs) (andB (andsB zs1) (andsB zs2)) (andB a (andsB xs'))\n                        (eq_to_leProp (andsB zs) (andB (andsB zs1) (andsB zs2)) (andsB_app zs1 zs2))\n                        (leProp_and_monotone (andsB zs1) a (andsB zs2) (andsB xs') Hle1 Hle2)))\n               end\n      in\n    aux xs H)\n  (fun x (Hx : cl X x) x' (Hle : leProp x x') =>\n    let (zs, (Hxs, Hlez)) := Hx in\n    ex_intro (fun zs => (forall y, L.In y zs -> X y) /\\ leProp (andsB zs) x') zs\n      (conj Hxs (leProp_trans (andsB zs) x x' Hlez Hle)))).",
+        "induction l1 as [|x xs IH]; intros l2.\n- simpl; apply leProp_refl.\n- simpl; apply andB_le_compat_r; auto. apply isFilter_if.\n- intros xs H; induction xs as [|x xs IH].\n-- exists []; split; [intros; inversion H|]; apply (trueB_id_andB trueB).\n-- destruct (H x (L.in_eq _ _)) as [l1 [Hl1 Hle1]],\n               (IH (fun y Hy => H y (L.in_cons _ _ _ Hy))) as [l2 [Hl2 Hle2]]. exists (l1 ++ l2); split.\n--- intros a Ha; apply L.in_app_or in Ha; destruct Ha; auto.\n--- apply (leProp_glb (andsB (l1 ++ l2)) x (andsB xs));\n          [ apply leProp_trans with (andsB l1); [apply andsB_le_l | assumption]\n          | apply leProp_trans with (andsB l2); [apply andsB_le_r | assumption] ].\n- intros x Hx x' Hle; destruct Hx as [l [Hl Hle']]. exists l; split; auto; apply leProp_trans with x; assumption."
+      ]
+    },
+    {
+      "uuid": "b48b99d190174a00a6975eef605d4ae5",
+      "parent_uuid": "c010be44d5e24f35b92ac48a3548d0df",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "X : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "ex (fun x0 : B => E.In x0 (cl X))"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply isFilter_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "ex (fun x0 : B => E.In x0 (cl X))"
+            },
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x1 x2 : B) (_ : E.In x1 (cl X)) (_ : E.In x2 (cl X)),\nE.In (BooleanAlgebra.andB x1 x2) (cl X)"
+            },
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : E.In x (cl X)) (x' : B) (_ : leProp x x'),\nE.In x' (cl X)"
+            }
+          ]
+        },
+        "proof_prefix": "apply isFilter_intro."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "exists trueB. unfold E.In, cl. exists nil. split.\n- intros x H; inversion H.\n- simpl. sfirstorder.",
+      "lemmas": null,
+      "attempts": [
+        "exists trueB; unfold cl; exists []; split; [intros x H; inversion H | rewrite andsB_zero; reflexivity].",
+        "refine (ex_intro (cl X) trueB\n          (ex_intro (fun xs => and (forall y, L.In y xs -> E.In y X)\n                                   (leProp (andsB xs) trueB))\n                    []\n                    (conj (fun y Hy => match Hy with end)\n                          (leB_PartialOrder.(partial_order_equivalence) andsB_zero)))).",
+        "",
+        "exists trueB; unfold E.In, cl; exists []; split; [compute; intros x0 H; inversion H | compute; rewrite andsB_zero; reflexivity].",
+        "exists trueB. unfold E.In, cl. exists nil. split.\n- intros x H; inversion H.\n- simpl. sfirstorder.",
+        "exists trueB; unfold E.In, cl; exists nil; unfold NW; simpl; split; [exact (fun y H => match H with end) | unfold leProp; simpl; apply (proj2 (BOOLEAN_ALGEBRA_LAWS.(trueB_id_andB) trueB))]."
+      ],
+      "failed_attempts": [
+        "exists trueB; unfold cl; exists []; split; [intros x H; inversion H | rewrite andsB_zero; reflexivity].",
+        "refine (ex_intro (cl X) trueB\n          (ex_intro (fun xs => and (forall y, L.In y xs -> E.In y X)\n                                   (leProp (andsB xs) trueB))\n                    []\n                    (conj (fun y Hy => match Hy with end)\n                          (leB_PartialOrder.(partial_order_equivalence) andsB_zero)))).",
+        "",
+        "exists trueB; unfold E.In, cl; exists []; split; [compute; intros x0 H; inversion H | compute; rewrite andsB_zero; reflexivity].",
+        "exists trueB; unfold E.In, cl; exists nil; unfold NW; simpl; split; [exact (fun y H => match H with end) | unfold leProp; simpl; apply (proj2 (BOOLEAN_ALGEBRA_LAWS.(trueB_id_andB) trueB))]."
+      ]
+    },
+    {
+      "uuid": "4f9c7d43c541472e97b09c3cd871cb5c",
+      "parent_uuid": "c010be44d5e24f35b92ac48a3548d0df",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "X : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "forall (x1 x2 : B) (_ : E.In x1 (cl X)) (_ : E.In x2 (cl X)),\nE.In (BooleanAlgebra.andB x1 x2) (cl X)"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply isFilter_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "ex (fun x0 : B => E.In x0 (cl X))"
+            },
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x1 x2 : B) (_ : E.In x1 (cl X)) (_ : E.In x2 (cl X)),\nE.In (BooleanAlgebra.andB x1 x2) (cl X)"
+            },
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : E.In x (cl X)) (x' : B) (_ : leProp x x'),\nE.In x' (cl X)"
+            }
+          ]
+        },
+        "proof_prefix": "apply isFilter_intro. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "e1e3d0f8c5cc4966bc88edad97a46a54",
+          "e5b9ce99cb654b8db2a07270cf85a5d2"
+        ],
+        [
+          "7ee30e76ba5b480eb8d0ac5d3efbd092",
+          "94801ae5feb74d22907a54f755b68e76"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "unfold E.In, cl, NW in *. intros x1 x2 H1 H2. destruct H1 as [xs1 [H1xs H1le]], H2 as [xs2 [H2xs H2le]]. exists (xs1 ++ xs2); split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H2le : leProp (andsB xs2) x2",
+                "H2xs : forall (x : B) (_ : L.In x xs2), E.In x X",
+                "xs2 : list B",
+                "H1le : leProp (andsB xs1) x1",
+                "H1xs : forall (x : B) (_ : L.In x xs1), E.In x X",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X"
+            },
+            {
+              "hypotheses": [
+                "H2le : leProp (andsB xs2) x2",
+                "H2xs : forall (x : B) (_ : L.In x xs2), E.In x X",
+                "xs2 : list B",
+                "H1le : leProp (andsB xs1) x1",
+                "H1xs : forall (x : B) (_ : L.In x xs1), E.In x X",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2)"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [xs1 [Hxs1 Hle1]]. destruct Hx2 as [xs2 [Hxs2 Hle2]]. exists (xs1 ++ xs2). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs2) x2\n   end)",
+                "Hxs2 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs2), E.In x X\n   end)",
+                "xs2 : list B",
+                "Hle1 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs1) x1\n   end)",
+                "Hxs1 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs1), E.In x X\n   end)",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X\n   end)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs2) x2\n   end)",
+                "Hxs2 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs2), E.In x X\n   end)",
+                "xs2 : list B",
+                "Hle1 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs1) x1\n   end)",
+                "Hxs1 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs1), E.In x X\n   end)",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2)\n   end)"
+            }
+          ]
+        }
+      ],
+      "proof": "intros x1 x2 H1 H2. unfold E.In, cl, NW in *; simpl in *. destruct H1 as [xs1 [HX1 Hle1]], H2 as [xs2 [HX2 Hle2]]; exists (xs1 ++ xs2); split.\n- intros x0 HIn; apply L.in_app_or in HIn; destruct HIn; [apply HX1 | apply HX2]; assumption.\n- rewrite andsB_app; apply andB_compathWith_leProp; assumption.",
+      "lemmas": null,
+      "attempts": [
+        "intros x1 x2 Hx1 Hx2; destruct Hx1 as [xs1 [Hxs1 Hle1]], Hx2 as [xs2 [Hxs2 Hle2]]; unfold cl; exists (xs1 ++ xs2); split; [intros x H; apply L.In_app_iff in H; destruct H as [H|H]; [apply Hxs1 | apply Hxs2]; assumption | rewrite andsB_app; apply andB_compathWith_leProp; [exact Hle1 | exact Hle2]].",
+        "refine (fun x1 x2 Hx1 Hx2 =>\n            let (xs1, H1) := Hx1 in\n            let (Hxs1_in, Hxs1_le) := H1 in\n            let (xs2, H2) := Hx2 in\n            let (Hxs2_in, Hxs2_le) := H2 in\n            ex_intro (fun xs => and (forall y, L.In y xs -> E.In y X)\n                                    (leProp (andsB xs) (andB x1 x2)))\n                     (xs1 ++ xs2)\n                     (conj (fun y Hy => let H := L.In_app_or xs1 xs2 y Hy in\n                                        match H with\n                                        | or_introl H' => Hxs1_in y H'\n                                        | or_intror H' => Hxs2_in y H'\n                                        end)\n                           ((leB_PreOrder.(PreOrder_Transitive).(transitivity))\n                              (andsB (xs1 ++ xs2)) (andB (andsB xs1) (andsB xs2)) (andB x1 x2)\n                              (leB_PartialOrder.(partial_order_equivalence) (andsB_app xs1 xs2))\n                              (andB_compathWith_leProp (andsB xs1) x1 (andsB xs2) x2 Hxs1_le Hxs2_le)))).",
+        "intros x1 x2 H1 H2. unfold E.In, cl, NW in *; simpl in *. destruct H1 as [xs1 [HX1 Hle1]], H2 as [xs2 [HX2 Hle2]]; exists (xs1 ++ xs2); split.\n- intros x0 HIn; apply L.in_app_or in HIn; destruct HIn; [apply HX1 | apply HX2]; assumption.\n- rewrite andsB_app; apply andB_compathWith_leProp; assumption.",
+        "intros x1 x2 Hx1 Hx2. unfold cl in Hx1, Hx2. destruct Hx1 as [xs1 [[u1 Hxs1_all] [u2 Hxs1_le]]], Hx2 as [xs2 [[u3 Hxs2_all] [u4 Hxs2_le]]]. exists (xs1 ++ xs2); split.\n- intros x Hx; destruct (L.in_app_or _ _ _ Hx) as [Hx'|Hx']; [exact (Hxs1_all x Hx')| exact (Hxs2_all x Hx')].\n- rewrite andsB_app; apply (andB_compathWith_leProp _ _ _ _ Hxs1_le Hxs2_le).",
+        "unfold E.In, cl, NW in *. intros x1 x2 H1 H2. destruct H1 as [xs1 [H1xs H1le]], H2 as [xs2 [H2xs H2le]]. exists (xs1 ++ xs2); split.\n- intros y Hy; apply L.In_app_or in Hy; destruct Hy as [Hy|Hy]; [apply H1xs | apply H2xs]; assumption.\n- rewrite andsB_app; apply leProp_andB_compat; assumption.",
+        "intros x1 x2 Hx1 Hx2. destruct Hx1 as [xs1 [Hxs1 Hle1]]. destruct Hx2 as [xs2 [Hxs2 Hle2]]. exists (xs1 ++ xs2). split.\n- intros x Hx; apply L.in_app_or in Hx; destruct Hx as [Hx|Hx]; [apply Hxs1 | apply Hxs2]; exact Hx.\n- eapply leProp_trans; [apply andsB_app | apply andB_leProp_compat; [exact Hle1 | exact Hle2]]."
+      ],
+      "failed_attempts": [
+        "intros x1 x2 Hx1 Hx2; destruct Hx1 as [xs1 [Hxs1 Hle1]], Hx2 as [xs2 [Hxs2 Hle2]]; unfold cl; exists (xs1 ++ xs2); split; [intros x H; apply L.In_app_iff in H; destruct H as [H|H]; [apply Hxs1 | apply Hxs2]; assumption | rewrite andsB_app; apply andB_compathWith_leProp; [exact Hle1 | exact Hle2]].",
+        "refine (fun x1 x2 Hx1 Hx2 =>\n            let (xs1, H1) := Hx1 in\n            let (Hxs1_in, Hxs1_le) := H1 in\n            let (xs2, H2) := Hx2 in\n            let (Hxs2_in, Hxs2_le) := H2 in\n            ex_intro (fun xs => and (forall y, L.In y xs -> E.In y X)\n                                    (leProp (andsB xs) (andB x1 x2)))\n                     (xs1 ++ xs2)\n                     (conj (fun y Hy => let H := L.In_app_or xs1 xs2 y Hy in\n                                        match H with\n                                        | or_introl H' => Hxs1_in y H'\n                                        | or_intror H' => Hxs2_in y H'\n                                        end)\n                           ((leB_PreOrder.(PreOrder_Transitive).(transitivity))\n                              (andsB (xs1 ++ xs2)) (andB (andsB xs1) (andsB xs2)) (andB x1 x2)\n                              (leB_PartialOrder.(partial_order_equivalence) (andsB_app xs1 xs2))\n                              (andB_compathWith_leProp (andsB xs1) x1 (andsB xs2) x2 Hxs1_le Hxs2_le)))).",
+        "intros x1 x2 Hx1 Hx2. unfold cl in Hx1, Hx2. destruct Hx1 as [xs1 [[u1 Hxs1_all] [u2 Hxs1_le]]], Hx2 as [xs2 [[u3 Hxs2_all] [u4 Hxs2_le]]]. exists (xs1 ++ xs2); split.\n- intros x Hx; destruct (L.in_app_or _ _ _ Hx) as [Hx'|Hx']; [exact (Hxs1_all x Hx')| exact (Hxs2_all x Hx')].\n- rewrite andsB_app; apply (andB_compathWith_leProp _ _ _ _ Hxs1_le Hxs2_le)."
+      ]
+    },
+    {
+      "uuid": "e1e3d0f8c5cc4966bc88edad97a46a54",
+      "parent_uuid": "4f9c7d43c541472e97b09c3cd871cb5c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H2le : leProp (andsB xs2) x2",
+            "H2xs : forall (x : B) (_ : L.In x xs2), E.In x X",
+            "xs2 : list B",
+            "H1le : leProp (andsB xs1) x1",
+            "H1xs : forall (x : B) (_ : L.In x xs1), E.In x X",
+            "xs1 : list B",
+            "x1,x2 : B",
+            "X : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold E.In, cl, NW in *. intros x1 x2 H1 H2. destruct H1 as [xs1 [H1xs H1le]], H2 as [xs2 [H2xs H2le]]. exists (xs1 ++ xs2); split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H2le : leProp (andsB xs2) x2",
+                "H2xs : forall (x : B) (_ : L.In x xs2), E.In x X",
+                "xs2 : list B",
+                "H1le : leProp (andsB xs1) x1",
+                "H1xs : forall (x : B) (_ : L.In x xs1), E.In x X",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X"
+            },
+            {
+              "hypotheses": [
+                "H2le : leProp (andsB xs2) x2",
+                "H2xs : forall (x : B) (_ : L.In x xs2), E.In x X",
+                "xs2 : list B",
+                "H1le : leProp (andsB xs1) x1",
+                "H1xs : forall (x : B) (_ : L.In x xs1), E.In x X",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2)"
+            }
+          ]
+        },
+        "proof_prefix": "apply isFilter_intro. admit. unfold E.In, cl, NW in *. intros x1 x2 H1 H2. destruct H1 as [xs1 [H1xs H1le]], H2 as [xs2 [H2xs H2le]]. exists (xs1 ++ xs2); split."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hauto use: in_app_or.",
+      "lemmas": null,
+      "attempts": [
+        "hauto use: in_app_or."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "e5b9ce99cb654b8db2a07270cf85a5d2",
+      "parent_uuid": "4f9c7d43c541472e97b09c3cd871cb5c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H2le : leProp (andsB xs2) x2",
+            "H2xs : forall (x : B) (_ : L.In x xs2), E.In x X",
+            "xs2 : list B",
+            "H1le : leProp (andsB xs1) x1",
+            "H1xs : forall (x : B) (_ : L.In x xs1), E.In x X",
+            "xs1 : list B",
+            "x1,x2 : B",
+            "X : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2)"
+        },
+        "decomposition": {
+          "proofs": [
+            "unfold E.In, cl, NW in *. intros x1 x2 H1 H2. destruct H1 as [xs1 [H1xs H1le]], H2 as [xs2 [H2xs H2le]]. exists (xs1 ++ xs2); split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H2le : leProp (andsB xs2) x2",
+                "H2xs : forall (x : B) (_ : L.In x xs2), E.In x X",
+                "xs2 : list B",
+                "H1le : leProp (andsB xs1) x1",
+                "H1xs : forall (x : B) (_ : L.In x xs1), E.In x X",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X"
+            },
+            {
+              "hypotheses": [
+                "H2le : leProp (andsB xs2) x2",
+                "H2xs : forall (x : B) (_ : L.In x xs2), E.In x X",
+                "xs2 : list B",
+                "H1le : leProp (andsB xs1) x1",
+                "H1xs : forall (x : B) (_ : L.In x xs1), E.In x X",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2)"
+            }
+          ]
+        },
+        "proof_prefix": "apply isFilter_intro. admit. unfold E.In, cl, NW in *. intros x1 x2 H1 H2. destruct H1 as [xs1 [H1xs H1le]], H2 as [xs2 [H2xs H2le]]. exists (xs1 ++ xs2); split. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite andsB_app; apply leProp_andB_compat; assumption."
+      ],
+      "failed_attempts": [
+        "rewrite andsB_app; apply leProp_andB_compat; assumption."
+      ]
+    },
+    {
+      "uuid": "7ee30e76ba5b480eb8d0ac5d3efbd092",
+      "parent_uuid": "4f9c7d43c541472e97b09c3cd871cb5c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hle2 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs2) x2\n   end)",
+            "Hxs2 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs2), E.In x X\n   end)",
+            "xs2 : list B",
+            "Hle1 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs1) x1\n   end)",
+            "Hxs1 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs1), E.In x X\n   end)",
+            "xs1 : list B",
+            "x1,x2 : B",
+            "X : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X\n   end)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [xs1 [Hxs1 Hle1]]. destruct Hx2 as [xs2 [Hxs2 Hle2]]. exists (xs1 ++ xs2). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs2) x2\n   end)",
+                "Hxs2 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs2), E.In x X\n   end)",
+                "xs2 : list B",
+                "Hle1 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs1) x1\n   end)",
+                "Hxs1 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs1), E.In x X\n   end)",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X\n   end)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs2) x2\n   end)",
+                "Hxs2 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs2), E.In x X\n   end)",
+                "xs2 : list B",
+                "Hle1 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs1) x1\n   end)",
+                "Hxs1 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs1), E.In x X\n   end)",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2)\n   end)"
+            }
+          ]
+        },
+        "proof_prefix": "apply isFilter_intro. admit. intros x1 x2 Hx1 Hx2. destruct Hx1 as [xs1 [Hxs1 Hle1]]. destruct Hx2 as [xs2 [Hxs2 Hle2]]. exists (xs1 ++ xs2). split."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "intros x Hx; apply L.in_app_or in Hx; destruct Hx as [Hx|Hx]; [apply Hxs1 | apply Hxs2]; exact Hx.",
+      "lemmas": null,
+      "attempts": [
+        "intros x Hx; apply L.in_app_or in Hx; destruct Hx as [Hx|Hx]; [apply Hxs1 | apply Hxs2]; exact Hx."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "94801ae5feb74d22907a54f755b68e76",
+      "parent_uuid": "4f9c7d43c541472e97b09c3cd871cb5c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hle2 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs2) x2\n   end)",
+            "Hxs2 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs2), E.In x X\n   end)",
+            "xs2 : list B",
+            "Hle1 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs1) x1\n   end)",
+            "Hxs1 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs1), E.In x X\n   end)",
+            "xs1 : list B",
+            "x1,x2 : B",
+            "X : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2)\n   end)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros x1 x2 Hx1 Hx2. destruct Hx1 as [xs1 [Hxs1 Hle1]]. destruct Hx2 as [xs2 [Hxs2 Hle2]]. exists (xs1 ++ xs2). split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle2 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs2) x2\n   end)",
+                "Hxs2 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs2), E.In x X\n   end)",
+                "xs2 : list B",
+                "Hle1 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs1) x1\n   end)",
+                "Hxs1 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs1), E.In x X\n   end)",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X\n   end)"
+            },
+            {
+              "hypotheses": [
+                "Hle2 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs2) x2\n   end)",
+                "Hxs2 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs2), E.In x X\n   end)",
+                "xs2 : list B",
+                "Hle1 : NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB xs1) x1\n   end)",
+                "Hxs1 : NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x xs1), E.In x X\n   end)",
+                "xs1 : list B",
+                "x1,x2 : B",
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2)\n   end)"
+            }
+          ]
+        },
+        "proof_prefix": "apply isFilter_intro. admit. intros x1 x2 Hx1 Hx2. destruct Hx1 as [xs1 [Hxs1 Hle1]]. destruct Hx2 as [xs2 [Hxs2 Hle2]]. exists (xs1 ++ xs2). split. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "eapply leProp_trans; [apply andsB_app | apply andB_leProp_compat; [exact Hle1 | exact Hle2]]."
+      ],
+      "failed_attempts": [
+        "eapply leProp_trans; [apply andsB_app | apply andB_leProp_compat; [exact Hle1 | exact Hle2]]."
+      ]
+    },
+    {
+      "uuid": "1d66a8fbe0ee4c09974cd527fa3e5b13",
+      "parent_uuid": "c010be44d5e24f35b92ac48a3548d0df",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "X : E.t B",
+            "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+            "SETOID : isSetoid B",
+            "BA : isBA B",
+            "B : Type"
+          ],
+          "goal": "forall (x : B) (_ : E.In x (cl X)) (x' : B) (_ : leProp x x'),\nE.In x' (cl X)"
+        },
+        "decomposition": {
+          "proofs": [
+            "apply isFilter_intro."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "ex (fun x0 : B => E.In x0 (cl X))"
+            },
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x1 x2 : B) (_ : E.In x1 (cl X)) (_ : E.In x2 (cl X)),\nE.In (BooleanAlgebra.andB x1 x2) (cl X)"
+            },
+            {
+              "hypotheses": [
+                "X : E.t B",
+                "BOOLEAN_ALGEBRA_LAWS : BooleanAlgebraLaws BA",
+                "SETOID : isSetoid B",
+                "BA : isBA B",
+                "B : Type"
+              ],
+              "goal": "forall (x : B) (_ : E.In x (cl X)) (x' : B) (_ : leProp x x'),\nE.In x' (cl X)"
+            }
+          ]
+        },
+        "proof_prefix": "apply isFilter_intro. admit. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "hauto l: on unfold: NW, E.In, cl.",
+        "hauto l: on unfold: NW, E.In, cl."
+      ],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "c010be44d5e24f35b92ac48a3548d0df": 0.0,
+    "b48b99d190174a00a6975eef605d4ae5": -0.1,
+    "4f9c7d43c541472e97b09c3cd871cb5c": -0.2,
+    "1d66a8fbe0ee4c09974cd527fa3e5b13": -0.30000000000000004,
+    "e1e3d0f8c5cc4966bc88edad97a46a54": -0.4,
+    "e5b9ce99cb654b8db2a07270cf85a5d2": -0.5,
+    "7ee30e76ba5b480eb8d0ac5d3efbd092": -0.6000000000000001,
+    "94801ae5feb74d22907a54f755b68e76": -0.7000000000000001
+  },
+  "costs_to_go": {
+    "c010be44d5e24f35b92ac48a3548d0df": 0,
+    "b48b99d190174a00a6975eef605d4ae5": 0,
+    "4f9c7d43c541472e97b09c3cd871cb5c": 0,
+    "1d66a8fbe0ee4c09974cd527fa3e5b13": 0,
+    "e1e3d0f8c5cc4966bc88edad97a46a54": 0,
+    "e5b9ce99cb654b8db2a07270cf85a5d2": 0,
+    "7ee30e76ba5b480eb8d0ac5d3efbd092": 0,
+    "94801ae5feb74d22907a54f755b68e76": 0
+  },
+  "no_more_children": {
+    "b48b99d190174a00a6975eef605d4ae5": true
+  },
+  "node_added_idx": {
+    "c010be44d5e24f35b92ac48a3548d0df": 0,
+    "b48b99d190174a00a6975eef605d4ae5": 1,
+    "4f9c7d43c541472e97b09c3cd871cb5c": 2,
+    "1d66a8fbe0ee4c09974cd527fa3e5b13": 3,
+    "e1e3d0f8c5cc4966bc88edad97a46a54": 4,
+    "e5b9ce99cb654b8db2a07270cf85a5d2": 5,
+    "7ee30e76ba5b480eb8d0ac5d3efbd092": 6,
+    "94801ae5feb74d22907a54f755b68e76": 7
+  },
+  "next_node_idx": 8,
+  "remaining_nodes_to_expand": 147,
+  "root_uuid": "c010be44d5e24f35b92ac48a3548d0df",
+  "done": false,
+  "visualization": "\n* (5 HYPS)|-isFilter (cl X) (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # 1 prefixes like apply isFilter_intro.\n  * (5 HYPS)|-ex (fun x0 : B => E.In x0 (cl X)) (proven) (pruned) (done:True; cost:-0.1; n_fail:0)\n    # successful proof: exists trueB. unfold E.In, cl. exists nil. split.\n- intros x H; inversion H.\n- simpl. sfirstorder.\n  * (5 HYPS)|-forall (x1 x2 : B) (_ : E.In x1 (cl X)) (_ : E.In x2 (cl X)),\nE.In (BooleanAlgebra.andB x1 x2) (cl X) (proven) (pruned) (done:True; cost:-0.2; n_fail:0)\n    # successful proof: intros x1 x2 H1 H2. unfold E.In, cl, NW in *; simpl in *. destruct H1 as [xs1 [HX1 Hle1]], H2 as [xs2 [HX2 Hle2]]; exists (xs1 ++ xs2); split.\n- intros x0 HIn; apply L.in_app_or in HIn; destruct HIn; [apply HX1 | apply HX2]; assumption.\n- rewrite andsB_app; apply andB_compathWith_leProp; assumption.\n    # 1 prefixes like unfold E.In, cl, NW in *. intros x1 x2 H1 H2. destruct H1 as [xs1 [H1xs H1le]], H2 as [xs2 [H2xs H2le]]. exists (xs1 ++ xs2); split.\n    * (12 HYPS)|-forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X (proven) (pruned) (done:True; cost:-0.4; n_fail:0)\n      # successful proof: hauto use: in_app_or.\n    * (12 HYPS)|-leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2) (pruned) (cost:-0.5; n_fail:0)\n\n    # 1 prefixes like intros x1 x2 Hx1 Hx2. destruct Hx1 as [xs1 [Hxs1 Hle1]]. destruct Hx2 as [xs2 [Hxs2 Hle2]]. exists (xs1 ++ xs2). split.\n    * (12 HYPS)|-NW\n  (fun FINITE_SUBSET : unit =>\n   match FINITE_SUBSET with\n   | tt => forall (x : B) (_ : L.In x (app xs1 xs2)), E.In x X\n   end) (proven) (pruned) (done:True; cost:-0.6000000000000001; n_fail:0)\n      # successful proof: intros x Hx; apply L.in_app_or in Hx; destruct Hx as [Hx|Hx]; [apply Hxs1 | apply Hxs2]; exact Hx.\n    * (12 HYPS)|-NW\n  (fun andsB_LE : unit =>\n   match andsB_LE with\n   | tt => leProp (andsB (app xs1 xs2)) (BooleanAlgebra.andB x1 x2)\n   end) (pruned) (cost:-0.7000000000000001; n_fail:0)\n\n  * (5 HYPS)|-forall (x : B) (_ : E.In x (cl X)) (x' : B) (_ : leProp x x'),\nE.In x' (cl X) (proven) (pruned) (done:True; cost:-0.30000000000000004; n_fail:0)\n    # successful proof: hammer."
+}

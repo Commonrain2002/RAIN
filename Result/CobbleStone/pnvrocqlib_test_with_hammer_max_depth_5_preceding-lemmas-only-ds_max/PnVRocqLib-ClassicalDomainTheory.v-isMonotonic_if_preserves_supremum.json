@@ -1,0 +1,292 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-ClassicalDomainTheory.v-isMonotonic_if_preserves_supremum.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "33ee052160244d5cabf64232cfa61ccc",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "PRESERVES_SUPREMUM : preserves_supremum f",
+            "COMPAT_WITH_eqProp : eqPropCompatible1 f",
+            "f : forall _ : D, D'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "isMonotonic1 f"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "98b76338c1d34578ae96144f3c1c204a",
+          "dd334cb6b4fe4c259991623d768cff9e"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "intros a b Hle. assert (Hdir : isDirected (fun x : D => leProp x b))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle : leProp a b",
+                "a,b : D",
+                "PRESERVES_SUPREMUM : preserves_supremum f",
+                "COMPAT_WITH_eqProp : eqPropCompatible1 f",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "isDirected (fun x : D => leProp x b)"
+            },
+            {
+              "hypotheses": [
+                "Hdir : isDirected (fun x : D => leProp x b)",
+                "Hle : leProp a b",
+                "a,b : D",
+                "PRESERVES_SUPREMUM : preserves_supremum f",
+                "COMPAT_WITH_eqProp : eqPropCompatible1 f",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (f a) (f b)"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intros a b Hle. assert (Hdir : isDirected (fun x : D => leProp x b)).\n{ unfold isDirected; split; [exists b; apply (PreOrder_Reflexive _ (leProp_PreOrder PROSET) b) | intros x y Hx Hy; exists b; split; [apply (PreOrder_Reflexive _ (leProp_PreOrder PROSET) b) | split; [exact Hx | exact Hy]]]. }\nassert (Hsup_b : is_supremum_of b (fun x : D => leProp x b)) by (split; [intros x Hx; exact Hx | intros u Hu; apply Hu; apply (PreOrder_Reflexive _ (leProp_PreOrder PROSET) b)]). destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [sup_X [sup_Y [HsupX [HsupY Heq]]]]. assert (H_eq_supX_b : sup_X == b) by (apply (PartialOrder_Antisymmetric _ _ _ leProp_PartialOrder sup_X b); [apply (proj2 HsupX b); intros x Hx; exact Hx | apply (proj2 Hsup_b sup_X); intros x Hx; apply (proj1 HsupX x Hx)]). assert (H_eq_supY_fb : sup_Y == f b) by (eapply (Setoid_Transitive (Proset_isSetoid D') _ (f sup_X) _); [apply (Setoid_Symmetric (Proset_isSetoid D') _ _ Heq) | apply COMPAT_WITH_eqProp; exact H_eq_supX_b]). apply (PreOrder_Transitive _ (leProp_PreOrder PROSET') (f a) sup_Y (f b)); [apply (proj1 HsupY (f a)); unfold E.image; eexists a; split; [exact Hle | reflexivity] | apply (proj1 H_eq_supY_fb)].",
+        "intros x1 x2 Hle. set (X := fun d => d = x1 \\/ d = x2). assert (Hdir : isDirected X) by (unfold isDirected; intros a b Ha Hb; unfold X in Ha, Hb; destruct Ha as [->|->]; destruct Hb as [->|->]; exists x2; split; [right; reflexivity | split; [exact Hle | apply (PreOrder_Reflexive leProp_PreOrder x2)]]). destruct (PRESERVES_SUPREMUM X Hdir) as [sup_X [sup_Y [Hsup_X [Hsup_img Heq]]]]. assert (Hsup_x2 : is_supremum_of x2 X) by (split; [intros d [->| ->]; [exact Hle | apply (PreOrder_Reflexive leProp_PreOrder x2)] | intros y Hy; apply Hy; right; reflexivity]). destruct Hsup_X as [Hsup_X_upper Hsup_X_min], Hsup_x2 as [Hsup_x2_upper Hsup_x2_min]. assert (HsupX_eq_x2 : eqProp sup_X x2) by (apply (partial_order_antisym leProp_PartialOrder sup_X x2); [apply (Hsup_X_min x2 Hsup_x2_upper) | apply (Hsup_x2_min sup_X Hsup_X_upper)]). destruct (COMPAT_WITH_eqProp sup_X x2 HsupX_eq_x2) as [HfsupX_le_fx2 Hfx2_le_fsupX], Heq as [HfsupX_le_supY HsupY_le_fsupX], Hsup_img as [Hsup_img_upper Hsup_img_min]. exact (PreOrder_Transitive leProp_PreOrder (f x1) sup_Y (f x2) (Hsup_img_upper (f x1) (ex_intro (fun x => X x /\\ f x = f x1) x1 (conj (or_introl eq_refl) eq_refl))) (PreOrder_Transitive leProp_PreOrder sup_Y (f sup_X) (f x2) HsupY_le_fsupX HfsupX_le_fx2)).",
+        "",
+        "unfold isMonotonic1; intros x1 x2 Hle. pose proof (leProp_PreOrder PROSET) as HPreD; destruct HPreD as [HreflD HtransD]. pose proof (leProp_PreOrder PROSET') as HPreD'; destruct HPreD' as [HreflD' HtransD']. pose proof (leProp_PartialOrder PROSET) as HPartialD. pose proof (leProp_PartialOrder PROSET') as HPartialD'. set (X := fun x : D => x = x1 \\/ x = x2). assert (Hdir : isDirected X). unfold isDirected; split.\n- exists x1; left; reflexivity.\n- intros a b Ha Hb. destruct Ha as [Ha1 | Ha2]; destruct Hb as [Hb1 | Hb2]; subst.\n-- exists x2; split; [right; reflexivity | split; [exact Hle | exact (HreflD x2)]].\n-- exists x2; split; [right; reflexivity | split; [exact Hle | exact (HreflD x2)]].\n-- exists x2; split; [right; reflexivity | split; [exact Hle | exact (HreflD x2)]].\n-- exists x2; split; [right; reflexivity | split; [exact (HreflD x2) | exact (HreflD x2)]]. destruct (PRESERVES_SUPREMUM X Hdir) as [sup_X [sup_Y [Hsup_X [Hsup_Y Heq]]]]. destruct Hsup_X as [Hupper_X Hleast_X]; destruct Hsup_Y as [Hupper_Y Hleast_Y]. assert (Hx1_sup_X : leProp x1 sup_X) := Hupper_X x1 (or_introl eq_refl). assert (Hx2_sup_X : leProp x2 sup_X) := Hupper_X x2 (or_intror eq_refl). assert (Hx2_upper : forall x, X x -> leProp x x2). intros x [Hx | Hx]; subst; [exact Hle | exact (HreflD x2)]. assert (Hsup_X_le_x2 : leProp sup_X x2) := Hleast_X x2 Hx2_upper. assert (Heq_sup_X_x2 : eqProp sup_X x2). destruct (HPartialD sup_X x2) as [Hiff _]; apply Hiff; split; [exact Hsup_X_le_x2 | exact Hx2_sup_X]. assert (Hcompat := COMPAT_WITH_eqProp); unfold eqPropCompatible1 in Hcompat. assert (Heq_f_sup_X_f_x2 : eqProp (f sup_X) (f x2)). apply Hcompat with (x1 := sup_X) (x2 := x2); exact Heq_sup_X_x2. destruct (HPartialD' (f sup_X) sup_Y) as [Hiff_sup _]; destruct (Hiff_sup Heq) as [Hle_fsup_supY Hle_supY_fsup]. destruct (HPartialD' (f sup_X) (f x2)) as [Hiff_fx2 _]; destruct (Hiff_fx2 Heq_f_sup_X_f_x2) as [Hle_fsup_fx2 Hle_fx2_fsup]. assert (Hle_supY_fx2 : leProp sup_Y (f x2)). apply (HtransD' sup_Y (f sup_X) (f x2)); [exact Hle_supY_fsup | exact Hle_fsup_fx2]. assert (Hin_image : E.image f X (f x1)). unfold E.image; exists x1; split; [exact (or_introl eq_refl) | reflexivity]. assert (Hle_fx1_supY : leProp (f x1) sup_Y) := Hupper_Y (f x1) Hin_image. apply (HtransD' (f x1) sup_Y (f x2)); [exact Hle_fx1_supY | exact Hle_supY_fx2]."
+      ],
+      "failed_attempts": [
+        "intros x1 x2 Hle. set (X := fun d => d = x1 \\/ d = x2). assert (Hdir : isDirected X) by (unfold isDirected; intros a b Ha Hb; unfold X in Ha, Hb; destruct Ha as [->|->]; destruct Hb as [->|->]; exists x2; split; [right; reflexivity | split; [exact Hle | apply (PreOrder_Reflexive leProp_PreOrder x2)]]). destruct (PRESERVES_SUPREMUM X Hdir) as [sup_X [sup_Y [Hsup_X [Hsup_img Heq]]]]. assert (Hsup_x2 : is_supremum_of x2 X) by (split; [intros d [->| ->]; [exact Hle | apply (PreOrder_Reflexive leProp_PreOrder x2)] | intros y Hy; apply Hy; right; reflexivity]). destruct Hsup_X as [Hsup_X_upper Hsup_X_min], Hsup_x2 as [Hsup_x2_upper Hsup_x2_min]. assert (HsupX_eq_x2 : eqProp sup_X x2) by (apply (partial_order_antisym leProp_PartialOrder sup_X x2); [apply (Hsup_X_min x2 Hsup_x2_upper) | apply (Hsup_x2_min sup_X Hsup_X_upper)]). destruct (COMPAT_WITH_eqProp sup_X x2 HsupX_eq_x2) as [HfsupX_le_fx2 Hfx2_le_fsupX], Heq as [HfsupX_le_supY HsupY_le_fsupX], Hsup_img as [Hsup_img_upper Hsup_img_min]. exact (PreOrder_Transitive leProp_PreOrder (f x1) sup_Y (f x2) (Hsup_img_upper (f x1) (ex_intro (fun x => X x /\\ f x = f x1) x1 (conj (or_introl eq_refl) eq_refl))) (PreOrder_Transitive leProp_PreOrder sup_Y (f sup_X) (f x2) HsupY_le_fsupX HfsupX_le_fx2)).",
+        "",
+        "unfold isMonotonic1; intros x1 x2 Hle. pose proof (leProp_PreOrder PROSET) as HPreD; destruct HPreD as [HreflD HtransD]. pose proof (leProp_PreOrder PROSET') as HPreD'; destruct HPreD' as [HreflD' HtransD']. pose proof (leProp_PartialOrder PROSET) as HPartialD. pose proof (leProp_PartialOrder PROSET') as HPartialD'. set (X := fun x : D => x = x1 \\/ x = x2). assert (Hdir : isDirected X). unfold isDirected; split.\n- exists x1; left; reflexivity.\n- intros a b Ha Hb. destruct Ha as [Ha1 | Ha2]; destruct Hb as [Hb1 | Hb2]; subst.\n-- exists x2; split; [right; reflexivity | split; [exact Hle | exact (HreflD x2)]].\n-- exists x2; split; [right; reflexivity | split; [exact Hle | exact (HreflD x2)]].\n-- exists x2; split; [right; reflexivity | split; [exact Hle | exact (HreflD x2)]].\n-- exists x2; split; [right; reflexivity | split; [exact (HreflD x2) | exact (HreflD x2)]]. destruct (PRESERVES_SUPREMUM X Hdir) as [sup_X [sup_Y [Hsup_X [Hsup_Y Heq]]]]. destruct Hsup_X as [Hupper_X Hleast_X]; destruct Hsup_Y as [Hupper_Y Hleast_Y]. assert (Hx1_sup_X : leProp x1 sup_X) := Hupper_X x1 (or_introl eq_refl). assert (Hx2_sup_X : leProp x2 sup_X) := Hupper_X x2 (or_intror eq_refl). assert (Hx2_upper : forall x, X x -> leProp x x2). intros x [Hx | Hx]; subst; [exact Hle | exact (HreflD x2)]. assert (Hsup_X_le_x2 : leProp sup_X x2) := Hleast_X x2 Hx2_upper. assert (Heq_sup_X_x2 : eqProp sup_X x2). destruct (HPartialD sup_X x2) as [Hiff _]; apply Hiff; split; [exact Hsup_X_le_x2 | exact Hx2_sup_X]. assert (Hcompat := COMPAT_WITH_eqProp); unfold eqPropCompatible1 in Hcompat. assert (Heq_f_sup_X_f_x2 : eqProp (f sup_X) (f x2)). apply Hcompat with (x1 := sup_X) (x2 := x2); exact Heq_sup_X_x2. destruct (HPartialD' (f sup_X) sup_Y) as [Hiff_sup _]; destruct (Hiff_sup Heq) as [Hle_fsup_supY Hle_supY_fsup]. destruct (HPartialD' (f sup_X) (f x2)) as [Hiff_fx2 _]; destruct (Hiff_fx2 Heq_f_sup_X_f_x2) as [Hle_fsup_fx2 Hle_fx2_fsup]. assert (Hle_supY_fx2 : leProp sup_Y (f x2)). apply (HtransD' sup_Y (f sup_X) (f x2)); [exact Hle_supY_fsup | exact Hle_fsup_fx2]. assert (Hin_image : E.image f X (f x1)). unfold E.image; exists x1; split; [exact (or_introl eq_refl) | reflexivity]. assert (Hle_fx1_supY : leProp (f x1) sup_Y) := Hupper_Y (f x1) Hin_image. apply (HtransD' (f x1) sup_Y (f x2)); [exact Hle_fx1_supY | exact Hle_supY_fx2]."
+      ]
+    },
+    {
+      "uuid": "98b76338c1d34578ae96144f3c1c204a",
+      "parent_uuid": "33ee052160244d5cabf64232cfa61ccc",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hle : leProp a b",
+            "a,b : D",
+            "PRESERVES_SUPREMUM : preserves_supremum f",
+            "COMPAT_WITH_eqProp : eqPropCompatible1 f",
+            "f : forall _ : D, D'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "isDirected (fun x : D => leProp x b)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros a b Hle. assert (Hdir : isDirected (fun x : D => leProp x b))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle : leProp a b",
+                "a,b : D",
+                "PRESERVES_SUPREMUM : preserves_supremum f",
+                "COMPAT_WITH_eqProp : eqPropCompatible1 f",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "isDirected (fun x : D => leProp x b)"
+            },
+            {
+              "hypotheses": [
+                "Hdir : isDirected (fun x : D => leProp x b)",
+                "Hle : leProp a b",
+                "a,b : D",
+                "PRESERVES_SUPREMUM : preserves_supremum f",
+                "COMPAT_WITH_eqProp : eqPropCompatible1 f",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (f a) (f b)"
+            }
+          ]
+        },
+        "proof_prefix": "intros a b Hle. assert (Hdir : isDirected (fun x : D => leProp x b))."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "dd334cb6b4fe4c259991623d768cff9e",
+      "parent_uuid": "33ee052160244d5cabf64232cfa61ccc",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hdir : isDirected (fun x : D => leProp x b)",
+            "Hle : leProp a b",
+            "a,b : D",
+            "PRESERVES_SUPREMUM : preserves_supremum f",
+            "COMPAT_WITH_eqProp : eqPropCompatible1 f",
+            "f : forall _ : D, D'",
+            "CPO' : isCpo D'",
+            "CPO : isCpo D",
+            "PROSET' : isProset D'",
+            "PROSET : isProset D",
+            "D' : Type",
+            "D : Type"
+          ],
+          "goal": "leProp (f a) (f b)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intros a b Hle. assert (Hdir : isDirected (fun x : D => leProp x b))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "Hle : leProp a b",
+                "a,b : D",
+                "PRESERVES_SUPREMUM : preserves_supremum f",
+                "COMPAT_WITH_eqProp : eqPropCompatible1 f",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "isDirected (fun x : D => leProp x b)"
+            },
+            {
+              "hypotheses": [
+                "Hdir : isDirected (fun x : D => leProp x b)",
+                "Hle : leProp a b",
+                "a,b : D",
+                "PRESERVES_SUPREMUM : preserves_supremum f",
+                "COMPAT_WITH_eqProp : eqPropCompatible1 f",
+                "f : forall _ : D, D'",
+                "CPO' : isCpo D'",
+                "CPO : isCpo D",
+                "PROSET' : isProset D'",
+                "PROSET : isProset D",
+                "D' : Type",
+                "D : Type"
+              ],
+              "goal": "leProp (f a) (f b)"
+            }
+          ]
+        },
+        "proof_prefix": "intros a b Hle. assert (Hdir : isDirected (fun x : D => leProp x b)). admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 2,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [s [t [[Hs1 Hs2] [Ht1 Ht2] Heq]]]. assert (Hsup_b : is_supremum_of b (fun x : D => leProp x b)) by (split; [ exact (fun x Hx => Hx) | intros u Hu; apply Hu; apply (PreOrder_Reflexive (leProp_PreOrder PROSET) b) ]). assert (Heq_s : eqProp s b) by (apply (leProp_PartialOrder PROSET s b); [ exact (Hs2 b (fun x Hx => Hx)) | exact (proj2 Hsup_b s (fun x Hx => Hs1 x Hx)) ]). assert (Hfb_eq_t : eqProp (f b) t) by (transitivity (f s); [ symmetry; apply (COMPAT_WITH_eqProp s b Heq_s) | exact Heq ]). assert (Hfa_image : E.In (E.image f (fun x : D => leProp x b)) (f a)) by (exists a; split; [ exact Hle | reflexivity ]). destruct Hfb_eq_t as [Hle_fb_t Hle_t_fb]. apply (PreOrder_Transitive (leProp_PreOrder PROSET') (f a) t (f b)); [ exact (Ht1 (f a) Hfa_image) | exact Hle_t_fb ].",
+        "",
+        "destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [sup_X [sup_Y [H_sup_X [H_sup_image Heq]]]]. assert (H_sup_b : is_supremum_of b (fun x : D => leProp x b)) by\n  (split; [exact (fun x hx => hx) | exact (fun u hu => hu b (PreOrder_Reflexive leProp_PreOrder b))]). destruct H_sup_b as [Hub_b Lst_b], H_sup_X as [Hub_X Lst_X], H_sup_image as [Hub_img Lst_img]. assert (eq_sup_Y_f_b : eqProp sup_Y (f b)) by\n  (transitivity (f sup_X); [symmetry; exact Heq | exact (COMPAT_WITH_eqProp sup_X b (proj1 (leProp_PartialOrder sup_X b) (conj (Lst_X b Hub_b) (Lst_b sup_X Hub_X))))]). assert (le_f_a_sup_Y : leProp (f a) sup_Y) by\n  (apply Hub_img (f a); eexists a; split; [exact Hle | reflexivity]). apply (PreOrder_Transitive leProp_PreOrder (f a) sup_Y (f b) le_f_a_sup_Y (proj1 (proj2 (leProp_PartialOrder sup_Y (f b)) eq_sup_Y_f_b))).",
+        "destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [s' [t [Hs' [Ht Heq]]]];\ndestruct Hs' as [Hup_s' Hleast_s']; destruct Ht as [Hup_t Hleast_t];\ndestruct (PROSET'.(leProp_PreOrder)) as [Href' Htrans']; destruct (PROSET'.(leProp_PartialOrder)) as [Hsub' Hanti'];\nassert (Heq_s'_b : eqProp s' b) by\n  (apply (PROSET.(leProp_PartialOrder)).(po_antisym);\n   [ apply (Hleast_s' b); exact (fun x Hx => Hx)\n   | apply (Hup_s' b); apply (PROSET.(leProp_PreOrder)).(PreOrder_Reflexive) b ]);\napply Htrans' with t;\n [ apply Hup_t; exists a; split; [exact Hle | reflexivity]\n | apply Hsub'; transitivity (f s'); [symmetry; exact Heq | apply COMPAT_WITH_eqProp; exact Heq_s'_b] ].",
+        "destruct leProp_PreOrder as [Hrefl Htrans]. destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [sup_X [sup_Y [[HsupX_upper HsupX_least] [[HsupY_upper HsupY_least] [Heq1 Heq2]]]]]. assert (Hle_b_supX : leProp b sup_X) by (apply HsupX_upper; exact (Hrefl b)). assert (Hle_supX_b : leProp sup_X b) by (apply HsupX_least; intros y Hy; exact Hy). assert (Heq_supX_b : eqProp sup_X b) by (apply leProp_PartialOrder; [exact Hle_supX_b | exact Hle_b_supX]). assert (Hle_fsupX_fb : leProp (f sup_X) (f b)) by (destruct (COMPAT_WITH_eqProp sup_X b Heq_supX_b) as [l _]; exact l). assert (Hle_fa_supY : leProp (f a) sup_Y) by (apply HsupY_upper; (unfold E.image, E.In; exists a; split; [exact Hle | split; apply Hrefl])). apply Htrans with sup_Y; [exact Hle_fa_supY | apply Htrans with (f sup_X); [exact Heq2 | exact Hle_fsupX_fb]].",
+        "destruct leProp_PreOrder as [Hrefl Htrans], leProp_PartialOrder as [antisym eq_implies_le]. destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [sx [sy [[Usx Lsx] [Usy Lsy] Heq]]]. assert (Hbx : E.In b (fun x : D => leProp x b)) by apply Hrefl. assert (eq_sx_b : eqProp sx b) by (apply antisym; split; [apply Usx, Hbx | apply Lsx; intros x Hx; exact Hx]). assert (eq_sy_fb : eqProp sy (f b)) by (transitivity (f sx); [exact Heq | apply COMPAT_WITH_eqProp; exact eq_sx_b]). assert (Hfa_sy : leProp (f a) sy) by (apply Usy; apply E.image_intro with a; [exact Hle | reflexivity]). apply (Htrans (f a) sy (f b) Hfa_sy (proj1 (eq_implies_le sy (f b) eq_sy_fb))).",
+        "pose (X := fun x : D => leProp x b). destruct (PRESERVES_SUPREMUM X Hdir) as (sup_X, (sup_Y, (Hsup_X, (Hsup_Y, Heq)))). destruct Hsup_X as [Hsup_X_ub Hsup_X_least], Hsup_Y as [Hsup_Y_ub Hsup_Y_least]. have b_in_X : E.In b X := (leProp_PreOrder D PROSET).(PreOrder_Reflexive) b. have eq_supY_fb : eqProp sup_Y (f b) :=\n  let E' := leProp_PartialOrder D' PROSET' in\n  let E := leProp_PartialOrder D PROSET in\n  transitivity (f sup_X);\n    [ apply (Equivalence_Symmetric _ (partial_order_equivalence E') _ _ Heq)\n    | apply COMPAT_WITH_eqProp;\n        apply (partial_order_antisymmetry E) sup_X b\n          (Hsup_X_least b (fun x Hx => Hx))\n          (Hsup_X_ub b b_in_X) ]. have supY_le_fb : leProp sup_Y (f b) :=\n  eqProp_leProp D' PROSET' sup_Y (f b) eq_supY_fb. have fa_in_image : E.In (f a) (E.image f X) :=\n  ex_intro (fun x : D => E.In x X /\\ eqProp (f a) (f x)) a\n    (conj Hle ((leProp_PartialOrder D' PROSET').(partial_order_equivalence).(Equivalence_Reflexive) (f a))). eapply PreOrder_Transitive;\n  [ apply (leProp_PreOrder D' PROSET')\n  | apply Hsup_Y_ub; exact fa_in_image\n  | exact supY_le_fb ].",
+        "destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [sup_X [sup_Y [HsupX [HsupY Hfeq]]]]. destruct (leProp_PreOrder PROSET) as [HreflD HtransD]. destruct (leProp_PreOrder PROSET') as [HreflD' HtransD']. destruct HsupX as [HupperX HleastX]. destruct HsupY as [HupperY HleastY]. pose proof (leProp_PartialOrder PROSET) as HpartialD. pose proof (leProp_PartialOrder PROSET') as HpartialD'. assert (Heq_leProp' : forall x y : D', eqProp x y -> leProp x y).\n{ intros x y Heq; destruct (proj2 (HpartialD' x y) Heq) as [Hl _]; exact Hl. }\nassert (H_a_supX : leProp a sup_X) by apply HupperX a Hle. assert (H_b_supX : leProp b sup_X) by apply HupperX b (HreflD b). assert (Hb_upper : forall x : D, E.In x (fun x0 : D => leProp x0 b) -> leProp x b).\n{ intros x Hx; exact Hx. }\nassert (H_supX_b : leProp sup_X b) by apply HleastX b Hb_upper. assert (Heq_supX_b : eqProp sup_X b) by apply (proj1 (HpartialD sup_X b) (conj H_supX_b H_b_supX)). assert (Heq_fsupX_fb : eqProp (f sup_X) (f b)) by apply COMPAT_WITH_eqProp Heq_supX_b. assert (Heq_supY_fb : eqProp sup_Y (f b)) by apply (eq_trans (eq_sym Hfeq) Heq_fsupX_fb). assert (H_supY_fb : leProp sup_Y (f b)) by apply Heq_leProp' sup_Y (f b) Heq_supY_fb. assert (H_fa_supY : leProp (f a) sup_Y) by apply HupperY (f a) (E.image_intro f (fun x : D => leProp x b) a Hle). apply (HtransD' (f a) sup_Y (f b) H_fa_supY H_supY_fb)."
+      ],
+      "failed_attempts": [
+        "destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [s [t [[Hs1 Hs2] [Ht1 Ht2] Heq]]]. assert (Hsup_b : is_supremum_of b (fun x : D => leProp x b)) by (split; [ exact (fun x Hx => Hx) | intros u Hu; apply Hu; apply (PreOrder_Reflexive (leProp_PreOrder PROSET) b) ]). assert (Heq_s : eqProp s b) by (apply (leProp_PartialOrder PROSET s b); [ exact (Hs2 b (fun x Hx => Hx)) | exact (proj2 Hsup_b s (fun x Hx => Hs1 x Hx)) ]). assert (Hfb_eq_t : eqProp (f b) t) by (transitivity (f s); [ symmetry; apply (COMPAT_WITH_eqProp s b Heq_s) | exact Heq ]). assert (Hfa_image : E.In (E.image f (fun x : D => leProp x b)) (f a)) by (exists a; split; [ exact Hle | reflexivity ]). destruct Hfb_eq_t as [Hle_fb_t Hle_t_fb]. apply (PreOrder_Transitive (leProp_PreOrder PROSET') (f a) t (f b)); [ exact (Ht1 (f a) Hfa_image) | exact Hle_t_fb ].",
+        "",
+        "destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [sup_X [sup_Y [H_sup_X [H_sup_image Heq]]]]. assert (H_sup_b : is_supremum_of b (fun x : D => leProp x b)) by\n  (split; [exact (fun x hx => hx) | exact (fun u hu => hu b (PreOrder_Reflexive leProp_PreOrder b))]). destruct H_sup_b as [Hub_b Lst_b], H_sup_X as [Hub_X Lst_X], H_sup_image as [Hub_img Lst_img]. assert (eq_sup_Y_f_b : eqProp sup_Y (f b)) by\n  (transitivity (f sup_X); [symmetry; exact Heq | exact (COMPAT_WITH_eqProp sup_X b (proj1 (leProp_PartialOrder sup_X b) (conj (Lst_X b Hub_b) (Lst_b sup_X Hub_X))))]). assert (le_f_a_sup_Y : leProp (f a) sup_Y) by\n  (apply Hub_img (f a); eexists a; split; [exact Hle | reflexivity]). apply (PreOrder_Transitive leProp_PreOrder (f a) sup_Y (f b) le_f_a_sup_Y (proj1 (proj2 (leProp_PartialOrder sup_Y (f b)) eq_sup_Y_f_b))).",
+        "destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [s' [t [Hs' [Ht Heq]]]];\ndestruct Hs' as [Hup_s' Hleast_s']; destruct Ht as [Hup_t Hleast_t];\ndestruct (PROSET'.(leProp_PreOrder)) as [Href' Htrans']; destruct (PROSET'.(leProp_PartialOrder)) as [Hsub' Hanti'];\nassert (Heq_s'_b : eqProp s' b) by\n  (apply (PROSET.(leProp_PartialOrder)).(po_antisym);\n   [ apply (Hleast_s' b); exact (fun x Hx => Hx)\n   | apply (Hup_s' b); apply (PROSET.(leProp_PreOrder)).(PreOrder_Reflexive) b ]);\napply Htrans' with t;\n [ apply Hup_t; exists a; split; [exact Hle | reflexivity]\n | apply Hsub'; transitivity (f s'); [symmetry; exact Heq | apply COMPAT_WITH_eqProp; exact Heq_s'_b] ].",
+        "destruct leProp_PreOrder as [Hrefl Htrans]. destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [sup_X [sup_Y [[HsupX_upper HsupX_least] [[HsupY_upper HsupY_least] [Heq1 Heq2]]]]]. assert (Hle_b_supX : leProp b sup_X) by (apply HsupX_upper; exact (Hrefl b)). assert (Hle_supX_b : leProp sup_X b) by (apply HsupX_least; intros y Hy; exact Hy). assert (Heq_supX_b : eqProp sup_X b) by (apply leProp_PartialOrder; [exact Hle_supX_b | exact Hle_b_supX]). assert (Hle_fsupX_fb : leProp (f sup_X) (f b)) by (destruct (COMPAT_WITH_eqProp sup_X b Heq_supX_b) as [l _]; exact l). assert (Hle_fa_supY : leProp (f a) sup_Y) by (apply HsupY_upper; (unfold E.image, E.In; exists a; split; [exact Hle | split; apply Hrefl])). apply Htrans with sup_Y; [exact Hle_fa_supY | apply Htrans with (f sup_X); [exact Heq2 | exact Hle_fsupX_fb]].",
+        "destruct leProp_PreOrder as [Hrefl Htrans], leProp_PartialOrder as [antisym eq_implies_le]. destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [sx [sy [[Usx Lsx] [Usy Lsy] Heq]]]. assert (Hbx : E.In b (fun x : D => leProp x b)) by apply Hrefl. assert (eq_sx_b : eqProp sx b) by (apply antisym; split; [apply Usx, Hbx | apply Lsx; intros x Hx; exact Hx]). assert (eq_sy_fb : eqProp sy (f b)) by (transitivity (f sx); [exact Heq | apply COMPAT_WITH_eqProp; exact eq_sx_b]). assert (Hfa_sy : leProp (f a) sy) by (apply Usy; apply E.image_intro with a; [exact Hle | reflexivity]). apply (Htrans (f a) sy (f b) Hfa_sy (proj1 (eq_implies_le sy (f b) eq_sy_fb))).",
+        "pose (X := fun x : D => leProp x b). destruct (PRESERVES_SUPREMUM X Hdir) as (sup_X, (sup_Y, (Hsup_X, (Hsup_Y, Heq)))). destruct Hsup_X as [Hsup_X_ub Hsup_X_least], Hsup_Y as [Hsup_Y_ub Hsup_Y_least]. have b_in_X : E.In b X := (leProp_PreOrder D PROSET).(PreOrder_Reflexive) b. have eq_supY_fb : eqProp sup_Y (f b) :=\n  let E' := leProp_PartialOrder D' PROSET' in\n  let E := leProp_PartialOrder D PROSET in\n  transitivity (f sup_X);\n    [ apply (Equivalence_Symmetric _ (partial_order_equivalence E') _ _ Heq)\n    | apply COMPAT_WITH_eqProp;\n        apply (partial_order_antisymmetry E) sup_X b\n          (Hsup_X_least b (fun x Hx => Hx))\n          (Hsup_X_ub b b_in_X) ]. have supY_le_fb : leProp sup_Y (f b) :=\n  eqProp_leProp D' PROSET' sup_Y (f b) eq_supY_fb. have fa_in_image : E.In (f a) (E.image f X) :=\n  ex_intro (fun x : D => E.In x X /\\ eqProp (f a) (f x)) a\n    (conj Hle ((leProp_PartialOrder D' PROSET').(partial_order_equivalence).(Equivalence_Reflexive) (f a))). eapply PreOrder_Transitive;\n  [ apply (leProp_PreOrder D' PROSET')\n  | apply Hsup_Y_ub; exact fa_in_image\n  | exact supY_le_fb ].",
+        "destruct (PRESERVES_SUPREMUM (fun x : D => leProp x b) Hdir) as [sup_X [sup_Y [HsupX [HsupY Hfeq]]]]. destruct (leProp_PreOrder PROSET) as [HreflD HtransD]. destruct (leProp_PreOrder PROSET') as [HreflD' HtransD']. destruct HsupX as [HupperX HleastX]. destruct HsupY as [HupperY HleastY]. pose proof (leProp_PartialOrder PROSET) as HpartialD. pose proof (leProp_PartialOrder PROSET') as HpartialD'. assert (Heq_leProp' : forall x y : D', eqProp x y -> leProp x y).\n{ intros x y Heq; destruct (proj2 (HpartialD' x y) Heq) as [Hl _]; exact Hl. }\nassert (H_a_supX : leProp a sup_X) by apply HupperX a Hle. assert (H_b_supX : leProp b sup_X) by apply HupperX b (HreflD b). assert (Hb_upper : forall x : D, E.In x (fun x0 : D => leProp x0 b) -> leProp x b).\n{ intros x Hx; exact Hx. }\nassert (H_supX_b : leProp sup_X b) by apply HleastX b Hb_upper. assert (Heq_supX_b : eqProp sup_X b) by apply (proj1 (HpartialD sup_X b) (conj H_supX_b H_b_supX)). assert (Heq_fsupX_fb : eqProp (f sup_X) (f b)) by apply COMPAT_WITH_eqProp Heq_supX_b. assert (Heq_supY_fb : eqProp sup_Y (f b)) by apply (eq_trans (eq_sym Hfeq) Heq_fsupX_fb). assert (H_supY_fb : leProp sup_Y (f b)) by apply Heq_leProp' sup_Y (f b) Heq_supY_fb. assert (H_fa_supY : leProp (f a) sup_Y) by apply HupperY (f a) (E.image_intro f (fun x : D => leProp x b) a Hle). apply (HtransD' (f a) sup_Y (f b) H_fa_supY H_supY_fb)."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.1,
+      "id": 135536063201872,
+      "uuid": "98b76338c1d34578ae96144f3c1c204a"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536781582352,
+      "uuid": "33ee052160244d5cabf64232cfa61ccc"
+    }
+  ],
+  "costs_so_far": {
+    "33ee052160244d5cabf64232cfa61ccc": 0.0,
+    "98b76338c1d34578ae96144f3c1c204a": -0.1,
+    "dd334cb6b4fe4c259991623d768cff9e": -0.2
+  },
+  "costs_to_go": {
+    "33ee052160244d5cabf64232cfa61ccc": 0,
+    "98b76338c1d34578ae96144f3c1c204a": 0,
+    "dd334cb6b4fe4c259991623d768cff9e": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "33ee052160244d5cabf64232cfa61ccc": 0,
+    "98b76338c1d34578ae96144f3c1c204a": 1,
+    "dd334cb6b4fe4c259991623d768cff9e": 2
+  },
+  "next_node_idx": 3,
+  "remaining_nodes_to_expand": 148,
+  "root_uuid": "33ee052160244d5cabf64232cfa61ccc",
+  "done": false,
+  "visualization": "\n* (9 HYPS)|-isMonotonic1 f (cost:0.0; n_fail:0)\n  # 1 prefixes like intros a b Hle. assert (Hdir : isDirected (fun x : D => leProp x b)).\n  * (11 HYPS)|-isDirected (fun x : D => leProp x b) (cost:-0.1; n_fail:0)\n\n  * (12 HYPS)|-leProp (f a) (f b) (cost:-0.2; n_fail:2)\n"
+}

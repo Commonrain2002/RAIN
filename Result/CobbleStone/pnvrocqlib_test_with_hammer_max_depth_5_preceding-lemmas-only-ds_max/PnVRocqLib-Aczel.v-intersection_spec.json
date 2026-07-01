@@ -1,0 +1,62 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-Aczel.v-intersection_spec.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "170b4ef6c9b54d8297f95e8d1d4fbe65",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "x,y : Tree"
+          ],
+          "goal": "forall z : Tree,\niff (member z (intersection x y)) (and (member z x) (member z y))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "intros z; split.\n- intro H. apply (filter_spec (fun w => member w x) y) in H. destruct H as [c [Hmemc Hzeq]]. sauto.\n- intro H. destruct H as [Hx [c Heq]]. apply (filter_spec (fun w => member w x) y). exists c; split; [rewrite Heq in Hx; exact Hx | exact Heq].",
+      "lemmas": null,
+      "attempts": [
+        "intros z; rewrite filter_spec; unfold member; split; firstorder.",
+        "intros z; split.\n- intro H. apply (filter_spec (fun w => member w x) y) in H. destruct H as [c [Hmemc Hzeq]]. sauto.\n- intro H. destruct H as [Hx [c Heq]]. apply (filter_spec (fun w => member w x) y). exists c; split; [rewrite Heq in Hx; exact Hx | exact Heq].",
+        "intros z. unfold intersection. apply filter_correct. split; intros [H1 H2]; split; assumption.",
+        "intros z. unfold intersection. rewrite filter_member. simpl. apply and_comm."
+      ],
+      "failed_attempts": [
+        "intros z; rewrite filter_spec; unfold member; split; firstorder.",
+        "intros z. unfold intersection. apply filter_correct. split; intros [H1 H2]; split; assumption.",
+        "intros z. unfold intersection. rewrite filter_member. simpl. apply and_comm."
+      ]
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "170b4ef6c9b54d8297f95e8d1d4fbe65": 0.0
+  },
+  "costs_to_go": {
+    "170b4ef6c9b54d8297f95e8d1d4fbe65": 0
+  },
+  "no_more_children": {
+    "170b4ef6c9b54d8297f95e8d1d4fbe65": true
+  },
+  "node_added_idx": {
+    "170b4ef6c9b54d8297f95e8d1d4fbe65": 0
+  },
+  "next_node_idx": 1,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "170b4ef6c9b54d8297f95e8d1d4fbe65",
+  "done": false,
+  "visualization": "\n* (1 HYPS)|-forall z : Tree,\niff (member z (intersection x y)) (and (member z x) (member z y)) (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # successful proof: intros z; split.\n- intro H. apply (filter_spec (fun w => member w x) y) in H. destruct H as [c [Hmemc Hzeq]]. sauto.\n- intro H. destruct H as [Hx [c Heq]]. apply (filter_spec (fun w => member w x) y). exists c; split; [rewrite Heq in Hx; exact Hx | exact Heq]."
+}

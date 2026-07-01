@@ -1,0 +1,247 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-HilbertFol.v-for_All_I.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "8e03bf85a5b54de798356902c07221a9",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "PROVE : proves Gamma p",
+            "FRESH : is_not_free_in_frms x Gamma",
+            "Gamma : E.t (frm L)",
+            "p : frm L",
+            "x : ivar",
+            "L : language"
+          ],
+          "goal": "proves Gamma (All_frm x p)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "cd25fbfe02674aaca62c04ff90243881",
+          "4d8d83c34fbb40d3b76acec3566bf239"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "destruct PROVE as (ps & Hsub & [prfps]). exists ps. split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "prfps : proof ps p",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "FRESH : is_not_free_in_frms x Gamma",
+                "Gamma : E.t (frm L)",
+                "p : frm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "E.isSubsetOf (E.fromList ps) Gamma"
+            },
+            {
+              "hypotheses": [
+                "prfps : proof ps p",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "FRESH : is_not_free_in_frms x Gamma",
+                "Gamma : E.t (frm L)",
+                "p : frm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "inhabited (proof ps (All_frm x p))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "exact (for_All_I Gamma x p PROVE FRESH).",
+        "intros. destruct PROVE as [ps [Hsub Hprf]]. destruct Hprf as [prf]. exists ps; split; [exact Hsub | exact (inhabits (gen x ps p (fun q HIn => FRESH q (Hsub q HIn)) prf))].",
+        "destruct PROVE as (ps & Hsub & [prfps]). exists ps. split.\n- exact Hsub.\n- apply inhabits. apply all_intro with (ps:=ps).\n-- intros B HB. apply FRESH. apply Hsub. apply E.in_fromList. exact HB.\n-- exact prfps.",
+        "apply proves_all_intro; assumption."
+      ],
+      "failed_attempts": [
+        "exact (for_All_I Gamma x p PROVE FRESH).",
+        "intros. destruct PROVE as [ps [Hsub Hprf]]. destruct Hprf as [prf]. exists ps; split; [exact Hsub | exact (inhabits (gen x ps p (fun q HIn => FRESH q (Hsub q HIn)) prf))].",
+        "apply proves_all_intro; assumption."
+      ]
+    },
+    {
+      "uuid": "cd25fbfe02674aaca62c04ff90243881",
+      "parent_uuid": "8e03bf85a5b54de798356902c07221a9",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "prfps : proof ps p",
+            "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+            "ps : list (frm L)",
+            "FRESH : is_not_free_in_frms x Gamma",
+            "Gamma : E.t (frm L)",
+            "p : frm L",
+            "x : ivar",
+            "L : language"
+          ],
+          "goal": "E.isSubsetOf (E.fromList ps) Gamma"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct PROVE as (ps & Hsub & [prfps]). exists ps. split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "prfps : proof ps p",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "FRESH : is_not_free_in_frms x Gamma",
+                "Gamma : E.t (frm L)",
+                "p : frm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "E.isSubsetOf (E.fromList ps) Gamma"
+            },
+            {
+              "hypotheses": [
+                "prfps : proof ps p",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "FRESH : is_not_free_in_frms x Gamma",
+                "Gamma : E.t (frm L)",
+                "p : frm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "inhabited (proof ps (All_frm x p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct PROVE as (ps & Hsub & [prfps]). exists ps. split."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [
+        "exact Hsub."
+      ],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "4d8d83c34fbb40d3b76acec3566bf239",
+      "parent_uuid": "8e03bf85a5b54de798356902c07221a9",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "prfps : proof ps p",
+            "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+            "ps : list (frm L)",
+            "FRESH : is_not_free_in_frms x Gamma",
+            "Gamma : E.t (frm L)",
+            "p : frm L",
+            "x : ivar",
+            "L : language"
+          ],
+          "goal": "inhabited (proof ps (All_frm x p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct PROVE as (ps & Hsub & [prfps]). exists ps. split."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "prfps : proof ps p",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "FRESH : is_not_free_in_frms x Gamma",
+                "Gamma : E.t (frm L)",
+                "p : frm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "E.isSubsetOf (E.fromList ps) Gamma"
+            },
+            {
+              "hypotheses": [
+                "prfps : proof ps p",
+                "Hsub : E.isSubsetOf (E.fromList ps) Gamma",
+                "ps : list (frm L)",
+                "FRESH : is_not_free_in_frms x Gamma",
+                "Gamma : E.t (frm L)",
+                "p : frm L",
+                "x : ivar",
+                "L : language"
+              ],
+              "goal": "inhabited (proof ps (All_frm x p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct PROVE as (ps & Hsub & [prfps]). exists ps. split. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "econstructor. econstructor.\n- intros q Hq; apply FRESH; apply Hsub; exact Hq.\n- exact prfps.",
+      "lemmas": null,
+      "attempts": [
+        "apply inhabits. apply all_intro with (ps:=ps).\n- intros B HB. apply FRESH. apply Hsub. apply E.in_fromList. exact HB.\n- exact prfps.",
+        "exact (inhabits (proof_gen ps x p (fun q Hq => FRESH q (Hsub q Hq)) prfps)).",
+        "exact (inhabits (fun (Gamma' : E.t (frm L)) (Hsub' : E.isSubsetOf (E.fromList ps) Gamma') => Gen_preserves_truth x p ps Gamma' (fun q Hq => FRESH q (Hsub' q Hq)) prfps Hsub')).",
+        "refine (inhabited_intro (proof_all_intro ps x p prfps (fun q Hq => FRESH q (Hsub q Hq)))).",
+        "econstructor. econstructor.\n- intros q Hq; apply FRESH; apply Hsub; exact Hq.\n- exact prfps."
+      ],
+      "failed_attempts": [
+        "apply inhabits. apply all_intro with (ps:=ps).\n- intros B HB. apply FRESH. apply Hsub. apply E.in_fromList. exact HB.\n- exact prfps.",
+        "exact (inhabits (proof_gen ps x p (fun q Hq => FRESH q (Hsub q Hq)) prfps)).",
+        "exact (inhabits (fun (Gamma' : E.t (frm L)) (Hsub' : E.isSubsetOf (E.fromList ps) Gamma') => Gen_preserves_truth x p ps Gamma' (fun q Hq => FRESH q (Hsub' q Hq)) prfps Hsub')).",
+        "refine (inhabited_intro (proof_all_intro ps x p prfps (fun q Hq => FRESH q (Hsub q Hq))))."
+      ]
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "8e03bf85a5b54de798356902c07221a9": 0.0,
+    "cd25fbfe02674aaca62c04ff90243881": -0.1,
+    "4d8d83c34fbb40d3b76acec3566bf239": -0.2
+  },
+  "costs_to_go": {
+    "8e03bf85a5b54de798356902c07221a9": 0,
+    "cd25fbfe02674aaca62c04ff90243881": 0,
+    "4d8d83c34fbb40d3b76acec3566bf239": 0
+  },
+  "no_more_children": {
+    "4d8d83c34fbb40d3b76acec3566bf239": true
+  },
+  "node_added_idx": {
+    "8e03bf85a5b54de798356902c07221a9": 0,
+    "cd25fbfe02674aaca62c04ff90243881": 1,
+    "4d8d83c34fbb40d3b76acec3566bf239": 2
+  },
+  "next_node_idx": 3,
+  "remaining_nodes_to_expand": 148,
+  "root_uuid": "8e03bf85a5b54de798356902c07221a9",
+  "done": false,
+  "visualization": "\n* (6 HYPS)|-proves Gamma (All_frm x p) (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # 1 prefixes like destruct PROVE as (ps & Hsub & [prfps]). exists ps. split.\n  * (8 HYPS)|-E.isSubsetOf (E.fromList ps) Gamma (proven) (pruned) (done:True; cost:-0.1; n_fail:0)\n    # successful proof: hammer.\n  * (8 HYPS)|-inhabited (proof ps (All_frm x p)) (proven) (pruned) (done:True; cost:-0.2; n_fail:0)\n    # successful proof: econstructor. econstructor.\n- intros q Hq; apply FRESH; apply Hsub; exact Hq.\n- exact prfps."
+}

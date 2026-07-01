@@ -1,0 +1,308 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-Vector.v-zipWith_spec.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "9bfc38ef585b4894be1d0df8ddf73480",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "ys : Vector.t B n",
+            "xs : Vector.t A n",
+            "f : forall (_ : A) (_ : B), C",
+            "C : Type",
+            "B : Type",
+            "A : Type",
+            "n : nat"
+          ],
+          "goal": "forall i : Fin.t n,\neq (f (nth xs i) (nth ys i)) (nth (zipWith f xs ys) i)"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "b048bcb63c664429a49cf88af82be4a1",
+          "61a62cf989d9458192a5a8f8a89fbd29"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "intro i. induction i."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "ys : Vector.t B (S n)",
+                "xs : Vector.t A (S n)",
+                "n : nat",
+                "f : forall (_ : A) (_ : B), C",
+                "C : Type",
+                "B : Type",
+                "A : Type"
+              ],
+              "goal": "eq (f (nth xs Fin.FZ) (nth ys Fin.FZ)) (nth (zipWith f xs ys) Fin.FZ)"
+            },
+            {
+              "hypotheses": [
+                "IHi : forall (xs : Vector.t A n) (ys : Vector.t B n),\neq (f (nth xs i) (nth ys i)) (nth (zipWith f xs ys) i)",
+                "i : t n",
+                "ys : Vector.t B (S n)",
+                "xs : Vector.t A (S n)",
+                "n : nat",
+                "f : forall (_ : A) (_ : B), C",
+                "C : Type",
+                "B : Type",
+                "A : Type"
+              ],
+              "goal": "eq (f (nth xs (Fin.FS i)) (nth ys (Fin.FS i)))\n  (nth (zipWith f xs ys) (Fin.FS i))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "intro i; induction i as [n' | n' i' IH]; [destruct xs, ys; try discriminate; reflexivity | destruct xs, ys; try discriminate; simpl; apply IH].",
+        "intro i. induction i.\n- destruct xs, ys; simpl; reflexivity.\n- destruct xs, ys; simpl; apply IHi.",
+        "induction n; intros xs ys i; destruct i, xs, ys; simpl; auto using IHn.",
+        "intros A B C n f xs ys i. induction xs as [|n0 x xs' IH]; intros ys i.\n- inversion i.\n- inversion ys; subst; [discriminate | destruct i; simpl; [reflexivity | apply IH]]."
+      ],
+      "failed_attempts": [
+        "intro i; induction i as [n' | n' i' IH]; [destruct xs, ys; try discriminate; reflexivity | destruct xs, ys; try discriminate; simpl; apply IH].",
+        "induction n; intros xs ys i; destruct i, xs, ys; simpl; auto using IHn.",
+        "intros A B C n f xs ys i. induction xs as [|n0 x xs' IH]; intros ys i.\n- inversion i.\n- inversion ys; subst; [discriminate | destruct i; simpl; [reflexivity | apply IH]]."
+      ]
+    },
+    {
+      "uuid": "b048bcb63c664429a49cf88af82be4a1",
+      "parent_uuid": "9bfc38ef585b4894be1d0df8ddf73480",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "ys : Vector.t B (S n)",
+            "xs : Vector.t A (S n)",
+            "n : nat",
+            "f : forall (_ : A) (_ : B), C",
+            "C : Type",
+            "B : Type",
+            "A : Type"
+          ],
+          "goal": "eq (f (nth xs Fin.FZ) (nth ys Fin.FZ)) (nth (zipWith f xs ys) Fin.FZ)"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro i. induction i."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "ys : Vector.t B (S n)",
+                "xs : Vector.t A (S n)",
+                "n : nat",
+                "f : forall (_ : A) (_ : B), C",
+                "C : Type",
+                "B : Type",
+                "A : Type"
+              ],
+              "goal": "eq (f (nth xs Fin.FZ) (nth ys Fin.FZ)) (nth (zipWith f xs ys) Fin.FZ)"
+            },
+            {
+              "hypotheses": [
+                "IHi : forall (xs : Vector.t A n) (ys : Vector.t B n),\neq (f (nth xs i) (nth ys i)) (nth (zipWith f xs ys) i)",
+                "i : t n",
+                "ys : Vector.t B (S n)",
+                "xs : Vector.t A (S n)",
+                "n : nat",
+                "f : forall (_ : A) (_ : B), C",
+                "C : Type",
+                "B : Type",
+                "A : Type"
+              ],
+              "goal": "eq (f (nth xs (Fin.FS i)) (nth ys (Fin.FS i)))\n  (nth (zipWith f xs ys) (Fin.FS i))"
+            }
+          ]
+        },
+        "proof_prefix": "intro i. induction i."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "destruct xs, ys; simpl; reflexivity."
+      ],
+      "failed_attempts": [
+        "destruct xs, ys; simpl; reflexivity."
+      ]
+    },
+    {
+      "uuid": "61a62cf989d9458192a5a8f8a89fbd29",
+      "parent_uuid": "9bfc38ef585b4894be1d0df8ddf73480",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHi : forall (xs : Vector.t A n) (ys : Vector.t B n),\neq (f (nth xs i) (nth ys i)) (nth (zipWith f xs ys) i)",
+            "i : t n",
+            "ys : Vector.t B (S n)",
+            "xs : Vector.t A (S n)",
+            "n : nat",
+            "f : forall (_ : A) (_ : B), C",
+            "C : Type",
+            "B : Type",
+            "A : Type"
+          ],
+          "goal": "eq (f (nth xs (Fin.FS i)) (nth ys (Fin.FS i)))\n  (nth (zipWith f xs ys) (Fin.FS i))"
+        },
+        "decomposition": {
+          "proofs": [
+            "intro i. induction i."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "ys : Vector.t B (S n)",
+                "xs : Vector.t A (S n)",
+                "n : nat",
+                "f : forall (_ : A) (_ : B), C",
+                "C : Type",
+                "B : Type",
+                "A : Type"
+              ],
+              "goal": "eq (f (nth xs Fin.FZ) (nth ys Fin.FZ)) (nth (zipWith f xs ys) Fin.FZ)"
+            },
+            {
+              "hypotheses": [
+                "IHi : forall (xs : Vector.t A n) (ys : Vector.t B n),\neq (f (nth xs i) (nth ys i)) (nth (zipWith f xs ys) i)",
+                "i : t n",
+                "ys : Vector.t B (S n)",
+                "xs : Vector.t A (S n)",
+                "n : nat",
+                "f : forall (_ : A) (_ : B), C",
+                "C : Type",
+                "B : Type",
+                "A : Type"
+              ],
+              "goal": "eq (f (nth xs (Fin.FS i)) (nth ys (Fin.FS i)))\n  (nth (zipWith f xs ys) (Fin.FS i))"
+            }
+          ]
+        },
+        "proof_prefix": "intro i. induction i. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 8,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "destruct xs, ys; simpl; apply IHi.",
+        "inversion xs. subst. inversion ys. subst. simpl. apply IHi.",
+        "destruct xs as [|n0 x xs'], ys as [|n1 y ys']; try discriminate; simpl; apply (IHi xs' ys').",
+        "destruct xs as [|x xs'] eqn:Hxs; [discriminate Hxs |]. destruct ys as [|y ys'] eqn:Hys; [discriminate Hys |]. simpl. apply IHi.",
+        "inversion xs; subst; clear xs. inversion ys; subst; clear ys. simpl. apply IHi.",
+        "destruct xs, ys; unfold zipWith; simpl; fold zipWith; apply IHi.",
+        "simpl; apply IHi.",
+        "destruct xs as [| n0 a xs']. destruct ys as [| n1 b ys']. simpl. apply IHi.",
+        "destruct xs; [discriminate| destruct ys; [discriminate| simpl; apply IHi]].",
+        "inversion xs; clear xs; inversion ys; clear ys; subst; simpl; apply IHi.",
+        "inversion xs as [|n' x xs']; inversion ys as [|m' y ys']; simpl; apply IHi.",
+        "inversion xs as [| n0 x xs']. subst n0. inversion ys as [| n1 y ys']. subst n1. simpl. apply IHi.",
+        "inversion xs. inversion ys. subst. simpl. apply IHi.",
+        "inversion xs as [| n0 x xs' Hlen]; subst n0. inversion ys as [| n1 y ys' Hlen1]; subst n1. simpl. apply IHi.",
+        "destruct xs as [|n' x xs']. destruct ys as [|m' y ys']. unfold zipWith. simpl. apply IHi.",
+        "inversion xs; inversion ys; subst; simpl; apply IHi.",
+        "inversion xs as [|n0 x xs' Hlen Hxs]; [discriminate | subst n0; inversion ys as [|m0 y ys' Hlen' Hys]; [discriminate | subst m0; simpl; apply IHi]].",
+        "[REASONING]\nWe are given an induction hypothesis IHi that states the property for vectors of length n. The goal is for vectors of length S n, using the same function f and the same index i shifted by FS. By using the inversion tactic on xs and ys, we break them into their head and tail components. The inversion gives us equations that the tail lengths are exactly n (since the input vectors have length S n). After substituting these equalities, simplifying the definitions of nth and zipWith yields the left-hand side matching the hypothesis IHi applied to the tails. Therefore, we can apply IHi to conclude the proof. [PROOF]\ninversion xs as [| n1 x xs'] Hxs. injection Hxs as Hn; subst Hn. inversion ys as [| m1 y ys'] Hys. injection Hys as Hm; subst Hm. simpl. apply IHi.",
+        "inversion xs as [|n' x xs'] Hxs. inversion ys as [|n'' y ys'] Hys. subst. simpl. exact (IHi xs' ys').",
+        "destruct xs as [|x xs'], ys as [|y ys']; simpl; apply IHi.",
+        "destruct xs as [|_ x xs'] eqn:Hxs; [discriminate Hxs|]; destruct ys as [|_ y ys'] eqn:Hys; [discriminate Hys|]; simpl; apply IHi.",
+        "inversion_clear xs. inversion_clear ys. simpl. apply IHi.",
+        "inversion xs; subst; clear xs. inversion ys; subst; clear ys. simpl. apply IHi.",
+        "intros. inversion xs.\n- discriminate.\n- subst. inversion ys.\n-- discriminate.\n-- subst. simpl. apply IHi.",
+        "destruct xs as [| n' x xs'].\n- discriminate.\n- destruct ys as [| n'' y ys'].\n-- discriminate.\n-- simpl; apply IHi.",
+        "destruct xs; destruct ys; simpl; try discriminate; apply IHi.",
+        "inversion xs as [Hnil | n' x xs' Hcons].\n- discriminate Hnil.\n- inversion ys as [Hnil' | n'' y ys' Hcons'].\n-- discriminate Hnil'.\n-- subst. apply IHi.",
+        "destruct xs; destruct ys; simpl; apply IHi.",
+        "inversion xs as [| n' x xs' Hlen1 Hxs1]; [discriminate | inversion ys as [| m' y ys' Hlen2 Hys2]; [discriminate | subst; simpl; apply IHi xs' ys']]."
+      ],
+      "failed_attempts": [
+        "destruct xs, ys; simpl; apply IHi.",
+        "inversion xs. subst. inversion ys. subst. simpl. apply IHi.",
+        "destruct xs as [|n0 x xs'], ys as [|n1 y ys']; try discriminate; simpl; apply (IHi xs' ys').",
+        "destruct xs as [|x xs'] eqn:Hxs; [discriminate Hxs |]. destruct ys as [|y ys'] eqn:Hys; [discriminate Hys |]. simpl. apply IHi.",
+        "inversion xs; subst; clear xs. inversion ys; subst; clear ys. simpl. apply IHi.",
+        "destruct xs, ys; unfold zipWith; simpl; fold zipWith; apply IHi.",
+        "simpl; apply IHi.",
+        "destruct xs as [| n0 a xs']. destruct ys as [| n1 b ys']. simpl. apply IHi.",
+        "destruct xs; [discriminate| destruct ys; [discriminate| simpl; apply IHi]].",
+        "inversion xs; clear xs; inversion ys; clear ys; subst; simpl; apply IHi.",
+        "inversion xs as [|n' x xs']; inversion ys as [|m' y ys']; simpl; apply IHi.",
+        "inversion xs as [| n0 x xs']. subst n0. inversion ys as [| n1 y ys']. subst n1. simpl. apply IHi.",
+        "inversion xs. inversion ys. subst. simpl. apply IHi.",
+        "inversion xs as [| n0 x xs' Hlen]; subst n0. inversion ys as [| n1 y ys' Hlen1]; subst n1. simpl. apply IHi.",
+        "destruct xs as [|n' x xs']. destruct ys as [|m' y ys']. unfold zipWith. simpl. apply IHi.",
+        "inversion xs; inversion ys; subst; simpl; apply IHi.",
+        "inversion xs as [|n0 x xs' Hlen Hxs]; [discriminate | subst n0; inversion ys as [|m0 y ys' Hlen' Hys]; [discriminate | subst m0; simpl; apply IHi]].",
+        "[REASONING]\nWe are given an induction hypothesis IHi that states the property for vectors of length n. The goal is for vectors of length S n, using the same function f and the same index i shifted by FS. By using the inversion tactic on xs and ys, we break them into their head and tail components. The inversion gives us equations that the tail lengths are exactly n (since the input vectors have length S n). After substituting these equalities, simplifying the definitions of nth and zipWith yields the left-hand side matching the hypothesis IHi applied to the tails. Therefore, we can apply IHi to conclude the proof. [PROOF]\ninversion xs as [| n1 x xs'] Hxs. injection Hxs as Hn; subst Hn. inversion ys as [| m1 y ys'] Hys. injection Hys as Hm; subst Hm. simpl. apply IHi.",
+        "inversion xs as [|n' x xs'] Hxs. inversion ys as [|n'' y ys'] Hys. subst. simpl. exact (IHi xs' ys').",
+        "destruct xs as [|x xs'], ys as [|y ys']; simpl; apply IHi.",
+        "destruct xs as [|_ x xs'] eqn:Hxs; [discriminate Hxs|]; destruct ys as [|_ y ys'] eqn:Hys; [discriminate Hys|]; simpl; apply IHi.",
+        "inversion_clear xs. inversion_clear ys. simpl. apply IHi.",
+        "inversion xs; subst; clear xs. inversion ys; subst; clear ys. simpl. apply IHi.",
+        "intros. inversion xs.\n- discriminate.\n- subst. inversion ys.\n-- discriminate.\n-- subst. simpl. apply IHi.",
+        "destruct xs as [| n' x xs'].\n- discriminate.\n- destruct ys as [| n'' y ys'].\n-- discriminate.\n-- simpl; apply IHi.",
+        "destruct xs; destruct ys; simpl; try discriminate; apply IHi.",
+        "inversion xs as [Hnil | n' x xs' Hcons].\n- discriminate Hnil.\n- inversion ys as [Hnil' | n'' y ys' Hcons'].\n-- discriminate Hnil'.\n-- subst. apply IHi.",
+        "destruct xs; destruct ys; simpl; apply IHi.",
+        "inversion xs as [| n' x xs' Hlen1 Hxs1]; [discriminate | inversion ys as [| m' y ys' Hlen2 Hys2]; [discriminate | subst; simpl; apply IHi xs' ys']]."
+      ]
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -0.1,
+      "id": 135536064149584,
+      "uuid": "b048bcb63c664429a49cf88af82be4a1"
+    },
+    {
+      "cost": 0.0,
+      "id": 135536064053456,
+      "uuid": "9bfc38ef585b4894be1d0df8ddf73480"
+    }
+  ],
+  "costs_so_far": {
+    "9bfc38ef585b4894be1d0df8ddf73480": 0.0,
+    "b048bcb63c664429a49cf88af82be4a1": -0.1,
+    "61a62cf989d9458192a5a8f8a89fbd29": -0.2
+  },
+  "costs_to_go": {
+    "9bfc38ef585b4894be1d0df8ddf73480": 0,
+    "b048bcb63c664429a49cf88af82be4a1": 0,
+    "61a62cf989d9458192a5a8f8a89fbd29": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "9bfc38ef585b4894be1d0df8ddf73480": 0,
+    "b048bcb63c664429a49cf88af82be4a1": 1,
+    "61a62cf989d9458192a5a8f8a89fbd29": 2
+  },
+  "next_node_idx": 3,
+  "remaining_nodes_to_expand": 142,
+  "root_uuid": "9bfc38ef585b4894be1d0df8ddf73480",
+  "done": false,
+  "visualization": "\n* (7 HYPS)|-forall i : Fin.t n,\neq (f (nth xs i) (nth ys i)) (nth (zipWith f xs ys) i) (cost:0.0; n_fail:0)\n  # 1 prefixes like intro i. induction i.\n  * (7 HYPS)|-eq (f (nth xs Fin.FZ) (nth ys Fin.FZ)) (nth (zipWith f xs ys) Fin.FZ) (cost:-0.1; n_fail:0)\n\n  * (9 HYPS)|-eq (f (nth xs (Fin.FS i)) (nth ys (Fin.FS i)))\n  (nth (zipWith f xs ys) (Fin.FS i)) (cost:-0.2; n_fail:8)\n"
+}

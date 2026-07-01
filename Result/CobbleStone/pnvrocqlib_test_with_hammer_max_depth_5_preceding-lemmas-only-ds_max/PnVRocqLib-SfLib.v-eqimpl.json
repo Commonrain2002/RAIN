@@ -1,0 +1,51 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-SfLib.v-eqimpl.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "b678cbaecf3142d0bf3a660c68f0db78",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [],
+          "goal": "forall (P Q : Prop) (_ : eq P Q) (_ : P), Q"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [],
+  "costs_so_far": {
+    "b678cbaecf3142d0bf3a660c68f0db78": 0.0
+  },
+  "costs_to_go": {
+    "b678cbaecf3142d0bf3a660c68f0db78": 0
+  },
+  "no_more_children": {
+    "b678cbaecf3142d0bf3a660c68f0db78": true
+  },
+  "node_added_idx": {
+    "b678cbaecf3142d0bf3a660c68f0db78": 0
+  },
+  "next_node_idx": 1,
+  "remaining_nodes_to_expand": 149,
+  "root_uuid": "b678cbaecf3142d0bf3a660c68f0db78",
+  "done": false,
+  "visualization": "\n* (0 HYPS)|-forall (P Q : Prop) (_ : eq P Q) (_ : P), Q (proven) (pruned) (done:True; cost:0.0; n_fail:0)\n  # successful proof: hammer."
+}

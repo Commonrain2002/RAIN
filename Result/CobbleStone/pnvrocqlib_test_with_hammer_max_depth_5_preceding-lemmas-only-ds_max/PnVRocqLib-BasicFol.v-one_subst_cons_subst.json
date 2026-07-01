@@ -1,0 +1,1301 @@
+{
+  "config": {
+    "max_nodes_to_expand": 150,
+    "max_depth": 5,
+    "try_hammer": true,
+    "state_file": "<COBBLESTONE_ROOT>/data/evaluation/goal_decomposition/pnvrocqlib_test_with_hammer_max_depth_5_preceding-lemmas-only-ds_max/PnVRocqLib-BasicFol.v-one_subst_cons_subst.json",
+    "lemma_context": "preceding-lemmas-only",
+    "premise_names": null,
+    "model": "deepseek-v4-flash"
+  },
+  "nodes": [
+    {
+      "uuid": "0e85990a72ad4df0a20fbfdb38c7af2d",
+      "parent_uuid": null,
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "FRESH : or (eq (is_free_in_frm x p) false) (eq x y)",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+        },
+        "decomposition": null,
+        "proof_prefix": null
+      },
+      "depth": 0,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "6da082f9ff244e81b4479a89d91d7da8",
+          "d0129fd56df648b0bae86d6db15e967c"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "destruct FRESH as [H | H]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq (is_free_in_frm x p) false",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite <- (subst_compose_frm_spec (cons_subst y (Var_trm z) s) (one_subst x (Var_trm z)) p). rewrite <- (subst_compose_frm_spec (one_subst x (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst x (Var_trm z)))) p). apply equiv_subst_in_frm_implies_subst_frm_same. unfold equiv_subst_in_frm. intros w Hfree. unfold subst_compose, cons_subst, one_subst, nil_subst. destruct FRESH as [Hxnotfree | Hxy].\n- repeat match goal with\n  | |- context [eq_dec w y] => destruct (eq_dec w y) as [Hwy|Hwny]; [subst w |]\n  | |- context [eq_dec w x] => destruct (eq_dec w x) as [Hwx|Hwnx]; [exfalso; subst; rewrite Hfree in Hxnotfree; discriminate |]\n  | |- context [eq_dec ?a ?b] => destruct (eq_dec a b) as [Heq|Hneq]; [subst a |]\n  end; reflexivity.\n- subst y; repeat match goal with\n  | |- context [eq_dec w x] => destruct (eq_dec w x) as [Hwx|Hwnx]; [subst w |]\n  | |- context [eq_dec ?a ?b] => destruct (eq_dec a b) as [Heq|Hneq]; [subst a |]\n  end; reflexivity.",
+        "destruct FRESH as [Hxfree | Heq]; [ apply equiv_subst_in_frm_implies_subst_frm_same; unfold equiv_subst_in_frm; intros z Hfree; unfold subst_compose, cons_subst, one_subst; simpl; destruct (eq_dec z y) as [Hzy | Hnzy]; [subst z; reflexivity | destruct (eq_dec z x) as [Hzx | Hnzx]; [exfalso; apply Hxfree; rewrite <- Hzx; exact Hfree | reflexivity]] | subst y; apply equiv_subst_in_frm_implies_subst_frm_same; unfold equiv_subst_in_frm; intros z Hfree; unfold subst_compose, cons_subst, one_subst; simpl; destruct (eq_dec z x) as [Hzx | Hnzx]; [subst z; reflexivity | reflexivity] ].",
+        "",
+        "destruct FRESH as [H | H].\n- rewrite (subst_frm_not_free x (Var_trm y) p H). apply subst_frm_compose.\n- subst y. rewrite (subst_frm_one_subst_same x p). apply subst_frm_compose."
+      ],
+      "failed_attempts": [
+        "rewrite <- (subst_compose_frm_spec (cons_subst y (Var_trm z) s) (one_subst x (Var_trm z)) p). rewrite <- (subst_compose_frm_spec (one_subst x (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst x (Var_trm z)))) p). apply equiv_subst_in_frm_implies_subst_frm_same. unfold equiv_subst_in_frm. intros w Hfree. unfold subst_compose, cons_subst, one_subst, nil_subst. destruct FRESH as [Hxnotfree | Hxy].\n- repeat match goal with\n  | |- context [eq_dec w y] => destruct (eq_dec w y) as [Hwy|Hwny]; [subst w |]\n  | |- context [eq_dec w x] => destruct (eq_dec w x) as [Hwx|Hwnx]; [exfalso; subst; rewrite Hfree in Hxnotfree; discriminate |]\n  | |- context [eq_dec ?a ?b] => destruct (eq_dec a b) as [Heq|Hneq]; [subst a |]\n  end; reflexivity.\n- subst y; repeat match goal with\n  | |- context [eq_dec w x] => destruct (eq_dec w x) as [Hwx|Hwnx]; [subst w |]\n  | |- context [eq_dec ?a ?b] => destruct (eq_dec a b) as [Heq|Hneq]; [subst a |]\n  end; reflexivity.",
+        "destruct FRESH as [Hxfree | Heq]; [ apply equiv_subst_in_frm_implies_subst_frm_same; unfold equiv_subst_in_frm; intros z Hfree; unfold subst_compose, cons_subst, one_subst; simpl; destruct (eq_dec z y) as [Hzy | Hnzy]; [subst z; reflexivity | destruct (eq_dec z x) as [Hzx | Hnzx]; [exfalso; apply Hxfree; rewrite <- Hzx; exact Hfree | reflexivity]] | subst y; apply equiv_subst_in_frm_implies_subst_frm_same; unfold equiv_subst_in_frm; intros z Hfree; unfold subst_compose, cons_subst, one_subst; simpl; destruct (eq_dec z x) as [Hzx | Hnzx]; [subst z; reflexivity | reflexivity] ].",
+        ""
+      ]
+    },
+    {
+      "uuid": "6da082f9ff244e81b4479a89d91d7da8",
+      "parent_uuid": "0e85990a72ad4df0a20fbfdb38c7af2d",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq (is_free_in_frm x p) false",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct FRESH as [H | H]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq (is_free_in_frm x p) false",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "rewrite (subst_frm_not_free x (Var_trm y) p H). apply subst_frm_compose."
+      ],
+      "failed_attempts": [
+        "rewrite (subst_frm_not_free x (Var_trm y) p H). apply subst_frm_compose."
+      ]
+    },
+    {
+      "uuid": "d0129fd56df648b0bae86d6db15e967c",
+      "parent_uuid": "0e85990a72ad4df0a20fbfdb38c7af2d",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "destruct FRESH as [H | H]."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq (is_free_in_frm x p) false",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit."
+      },
+      "depth": 1,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "d04a1a0f8e124d38bcb250b357e52218",
+          "99437a8e3eda42acb9211e5a5a9ba9b6"
+        ],
+        [
+          "3804c8c1ad1e41be8ea8d9723de8f32e",
+          "d4df9a87e15d44edb7281d3a56757b7b",
+          "3129c68846b94b22a0553fb91adedcec",
+          "6ed0ee8b4ef94347a0179396d45a5be4",
+          "d61a57ef3fdb46e2aedf34953b5bfd71"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "assert (Hcond : is_free_in_frm x p = false \\/ x = y)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "or (eq (is_free_in_frm x p) false) (eq x y)"
+            },
+            {
+              "hypotheses": [
+                "Hcond : or (eq (is_free_in_frm x p) false) (eq x y)",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "rewrite H. induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "ts : trms L (relation_arity_table L R)",
+                "R : relation_symbols L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trms (one_subst y (Var_trm z))\n     (subst_trms (cons_subst y (Var_trm z) s) ts))\n  (subst_trms\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trms (one_subst y (Var_trm y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t1))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t1))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t2))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (chi_frm (one_subst y (Var_trm z))\n     (All_frm (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n              (cons_subst y (Var_trm z) s)) p)))\n  (chi_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (All_frm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n              (one_subst y (Var_trm y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "subst y. rewrite (subst_frm_one_subst_same x p). apply subst_frm_compose.",
+        "assert (Hcond : is_free_in_frm x p = false \\/ x = y).\n{ right; exact H. }\nrewrite (cons_subst_subst_frm y (Var_trm z) x p s Hcond). rewrite H. rewrite <- (subst_compose_frm_spec (subst_frm (one_subst x (Var_trm x)) p) (cons_subst x (Var_trm z) s) (one_subst x (Var_trm z))). assert (H_subst_eq : forall w, (subst_compose (cons_subst x (Var_trm z) s) (one_subst x (Var_trm z))) w = (cons_subst x (Var_trm z) (subst_compose s (one_subst x (Var_trm z)))) w).\n{ intro w. unfold subst_compose, cons_subst, one_subst. destruct (eq_dec w x) as [Hw | Hnw].\n-- subst w. simpl. destruct (eq_dec z x); subst; auto.\n-- simpl. auto. }\napply equiv_subst_in_frm_implies_subst_frm_same. exact (fun z _ => H_subst_eq z).",
+        "rewrite H, <- (cons_subst_subst_frm x (Var_trm z) x p (subst_compose s (one_subst x (Var_trm z))) (or_intror eq_refl)), <- (subst_compose_frm_spec p (cons_subst x (Var_trm z) s) (one_subst x (Var_trm z)));\napply (equiv_subst_in_frm_implies_subst_frm_same _ _ p (fun z _ => match eq_dec z x with left Heq => match Heq with eq_refl => eq_refl end | right Hneq => eq_refl end)).",
+        "rewrite H. rewrite (subst_frm_compose (one_subst x (Var_trm z)) (cons_subst x (Var_trm z) s) p). rewrite (subst_frm_compose (cons_subst x (Var_trm z) (subst_compose s (one_subst x (Var_trm z)))) (one_subst x (Var_trm x)) p). apply subst_frm_ext; intro w. unfold subst_compose, cons_subst, one_subst, nil_subst; simpl. destruct (eq_dec w x); reflexivity.",
+        "rewrite H. induction p; simpl; f_equal; auto."
+      ],
+      "failed_attempts": [
+        "subst y. rewrite (subst_frm_one_subst_same x p). apply subst_frm_compose.",
+        "rewrite H, <- (cons_subst_subst_frm x (Var_trm z) x p (subst_compose s (one_subst x (Var_trm z))) (or_intror eq_refl)), <- (subst_compose_frm_spec p (cons_subst x (Var_trm z) s) (one_subst x (Var_trm z)));\napply (equiv_subst_in_frm_implies_subst_frm_same _ _ p (fun z _ => match eq_dec z x with left Heq => match Heq with eq_refl => eq_refl end | right Hneq => eq_refl end)).",
+        "rewrite H. rewrite (subst_frm_compose (one_subst x (Var_trm z)) (cons_subst x (Var_trm z) s) p). rewrite (subst_frm_compose (cons_subst x (Var_trm z) (subst_compose s (one_subst x (Var_trm z)))) (one_subst x (Var_trm x)) p). apply subst_frm_ext; intro w. unfold subst_compose, cons_subst, one_subst, nil_subst; simpl. destruct (eq_dec w x); reflexivity."
+      ]
+    },
+    {
+      "uuid": "d04a1a0f8e124d38bcb250b357e52218",
+      "parent_uuid": "d0129fd56df648b0bae86d6db15e967c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "L : language"
+          ],
+          "goal": "or (eq (is_free_in_frm x p) false) (eq x y)"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (Hcond : is_free_in_frm x p = false \\/ x = y)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "or (eq (is_free_in_frm x p) false) (eq x y)"
+            },
+            {
+              "hypotheses": [
+                "Hcond : or (eq (is_free_in_frm x p) false) (eq x y)",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. assert (Hcond : is_free_in_frm x p = false \\/ x = y)."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "99437a8e3eda42acb9211e5a5a9ba9b6",
+      "parent_uuid": "d0129fd56df648b0bae86d6db15e967c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hcond : or (eq (is_free_in_frm x p) false) (eq x y)",
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (Hcond : is_free_in_frm x p = false \\/ x = y)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "or (eq (is_free_in_frm x p) false) (eq x y)"
+            },
+            {
+              "hypotheses": [
+                "Hcond : or (eq (is_free_in_frm x p) false) (eq x y)",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. assert (Hcond : is_free_in_frm x p = false \\/ x = y). admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "3804c8c1ad1e41be8ea8d9723de8f32e",
+      "parent_uuid": "d0129fd56df648b0bae86d6db15e967c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "ts : trms L (relation_arity_table L R)",
+            "R : relation_symbols L",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_trms (one_subst y (Var_trm z))\n     (subst_trms (cons_subst y (Var_trm z) s) ts))\n  (subst_trms\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trms (one_subst y (Var_trm y)) ts))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite H. induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "ts : trms L (relation_arity_table L R)",
+                "R : relation_symbols L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trms (one_subst y (Var_trm z))\n     (subst_trms (cons_subst y (Var_trm z) s) ts))\n  (subst_trms\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trms (one_subst y (Var_trm y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t1))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t1))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t2))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (chi_frm (one_subst y (Var_trm z))\n     (All_frm (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n              (cons_subst y (Var_trm z) s)) p)))\n  (chi_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (All_frm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n              (one_subst y (Var_trm y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. rewrite H. induction p; simpl; f_equal; auto."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "d4df9a87e15d44edb7281d3a56757b7b",
+      "parent_uuid": "d0129fd56df648b0bae86d6db15e967c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "t1,t2 : trm L",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t1))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t1))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite H. induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "ts : trms L (relation_arity_table L R)",
+                "R : relation_symbols L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trms (one_subst y (Var_trm z))\n     (subst_trms (cons_subst y (Var_trm z) s) ts))\n  (subst_trms\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trms (one_subst y (Var_trm y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t1))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t1))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t2))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (chi_frm (one_subst y (Var_trm z))\n     (All_frm (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n              (cons_subst y (Var_trm z) s)) p)))\n  (chi_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (All_frm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n              (one_subst y (Var_trm y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. rewrite H. induction p; simpl; f_equal; auto. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "3129c68846b94b22a0553fb91adedcec",
+      "parent_uuid": "d0129fd56df648b0bae86d6db15e967c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "t1,t2 : trm L",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t2))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t2))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite H. induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "ts : trms L (relation_arity_table L R)",
+                "R : relation_symbols L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trms (one_subst y (Var_trm z))\n     (subst_trms (cons_subst y (Var_trm z) s) ts))\n  (subst_trms\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trms (one_subst y (Var_trm y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t1))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t1))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t2))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (chi_frm (one_subst y (Var_trm z))\n     (All_frm (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n              (cons_subst y (Var_trm z) s)) p)))\n  (chi_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (All_frm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n              (one_subst y (Var_trm y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. rewrite H. induction p; simpl; f_equal; auto. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "6ed0ee8b4ef94347a0179396d45a5be4",
+      "parent_uuid": "d0129fd56df648b0bae86d6db15e967c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "y0 : ivar",
+            "L : language"
+          ],
+          "goal": "eq\n  (chi_frm (one_subst y (Var_trm z))\n     (All_frm (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n              (cons_subst y (Var_trm z) s)) p)))\n  (chi_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (All_frm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n              (one_subst y (Var_trm y))) p)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite H. induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "ts : trms L (relation_arity_table L R)",
+                "R : relation_symbols L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trms (one_subst y (Var_trm z))\n     (subst_trms (cons_subst y (Var_trm z) s) ts))\n  (subst_trms\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trms (one_subst y (Var_trm y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t1))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t1))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t2))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (chi_frm (one_subst y (Var_trm z))\n     (All_frm (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n              (cons_subst y (Var_trm z) s)) p)))\n  (chi_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (All_frm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n              (one_subst y (Var_trm y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. rewrite H. induction p; simpl; f_equal; auto. admit. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "d61a57ef3fdb46e2aedf34953b5bfd71",
+      "parent_uuid": "d0129fd56df648b0bae86d6db15e967c",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "y0 : ivar",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "rewrite H. induction p; simpl; f_equal; auto."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "ts : trms L (relation_arity_table L R)",
+                "R : relation_symbols L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trms (one_subst y (Var_trm z))\n     (subst_trms (cons_subst y (Var_trm z) s) ts))\n  (subst_trms\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trms (one_subst y (Var_trm y)) ts))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t1))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t1))"
+            },
+            {
+              "hypotheses": [
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "t1,t2 : trm L",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t2))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t2))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (chi_frm (one_subst y (Var_trm z))\n     (All_frm (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n              (cons_subst y (Var_trm z) s)) p)))\n  (chi_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (All_frm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n              (one_subst y (Var_trm y))) p)))"
+            },
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. rewrite H. induction p; simpl; f_equal; auto. admit. admit. admit. admit."
+      },
+      "depth": 2,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [
+        [
+          "79b1b3e5971740038dc57d59a7be57d5",
+          "f41fba71ff674f22882d8cf317afb0bf"
+        ],
+        [
+          "e491de49ffe24d95b6dbcc79bf412ab2",
+          "41594ee6d02e4688813600a08496bc8d"
+        ]
+      ],
+      "decompositions": [
+        {
+          "proofs": [
+            "set (A := subst_compose (cons_subst y (Var_trm z) s) (one_subst y (Var_trm z))). set (B := subst_compose (one_subst y (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z))))). assert (A_eq_B : forall u, A u = B u)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "B : subst L",
+                "A : subst L",
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "forall u : ivar, eq (A u) (B u)"
+            },
+            {
+              "hypotheses": [
+                "A_eq_B : forall u : ivar, eq (A u) (B u)",
+                "B : subst L",
+                "A : subst L",
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        {
+          "proofs": [
+            "assert (Hfull : subst_frm (one_subst y (Var_trm z)) (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)) = subst_frm (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z)))) (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))"
+            },
+            {
+              "hypotheses": [
+                "Hfull : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))",
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        }
+      ],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [
+        "set (A := subst_compose (cons_subst y (Var_trm z) s) (one_subst y (Var_trm z))). set (B := subst_compose (one_subst y (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z))))). assert (A_eq_B : forall u, A u = B u).\n{ intro u; unfold A, B, subst_compose, cons_subst, one_subst, nil_subst; simpl; destruct (eq_dec u y); subst; simpl; destruct (eq_dec u y0); subst; simpl; reflexivity. }\nassert (EQUIV : equiv_subst_in_frm A B (All_frm y0 p)).\n{ intros z Hfree; apply A_eq_B. }\nassert (H_All_eq : subst_frm A (All_frm y0 p) = subst_frm B (All_frm y0 p)).\n{ exact (equiv_subst_in_frm_implies_subst_frm_same A B (All_frm y0 p) EQUIV). }\nrewrite (subst_compose_frm_spec (All_frm y0 p) (cons_subst y (Var_trm z) s) (one_subst y (Var_trm z))) in H_All_eq. rewrite (subst_compose_frm_spec (All_frm y0 p) (one_subst y (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z))))) in H_All_eq. simpl in H_All_eq. injection H_All_eq as _ H_goal. exact H_goal.",
+        "assert (Hfull : subst_frm (one_subst y (Var_trm z)) (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)) = subst_frm (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z)))) (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p))).\n{ rewrite !subst_compose_frm_spec. apply (f_equal (fun f => subst_frm f (All_frm y0 p))). apply functional_extensionality; intro v. unfold subst_compose, cons_subst, one_subst, nil_subst. destruct (eq_dec v y) as [Heq|Hneq]; subst; simpl; auto. }\nsimpl in Hfull. injection Hfull as _ Hbody. exact Hbody.",
+        "apply IHp.",
+        "simpl. apply f_equal.\n- apply f_equal. apply IHp.\n- apply IHp."
+      ],
+      "failed_attempts": [
+        "apply IHp.",
+        "simpl. apply f_equal.\n- apply f_equal. apply IHp.\n- apply IHp."
+      ]
+    },
+    {
+      "uuid": "79b1b3e5971740038dc57d59a7be57d5",
+      "parent_uuid": "d61a57ef3fdb46e2aedf34953b5bfd71",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "B : subst L",
+            "A : subst L",
+            "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "y0 : ivar",
+            "L : language"
+          ],
+          "goal": "forall u : ivar, eq (A u) (B u)"
+        },
+        "decomposition": {
+          "proofs": [
+            "set (A := subst_compose (cons_subst y (Var_trm z) s) (one_subst y (Var_trm z))). set (B := subst_compose (one_subst y (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z))))). assert (A_eq_B : forall u, A u = B u)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "B : subst L",
+                "A : subst L",
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "forall u : ivar, eq (A u) (B u)"
+            },
+            {
+              "hypotheses": [
+                "A_eq_B : forall u : ivar, eq (A u) (B u)",
+                "B : subst L",
+                "A : subst L",
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. rewrite H. induction p; simpl; f_equal; auto. admit. admit. admit. admit. set (A := subst_compose (cons_subst y (Var_trm z) s) (one_subst y (Var_trm z))). set (B := subst_compose (one_subst y (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z))))). assert (A_eq_B : forall u, A u = B u)."
+      },
+      "depth": 3,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "f41fba71ff674f22882d8cf317afb0bf",
+      "parent_uuid": "d61a57ef3fdb46e2aedf34953b5bfd71",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "A_eq_B : forall u : ivar, eq (A u) (B u)",
+            "B : subst L",
+            "A : subst L",
+            "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "y0 : ivar",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "set (A := subst_compose (cons_subst y (Var_trm z) s) (one_subst y (Var_trm z))). set (B := subst_compose (one_subst y (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z))))). assert (A_eq_B : forall u, A u = B u)."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "B : subst L",
+                "A : subst L",
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "forall u : ivar, eq (A u) (B u)"
+            },
+            {
+              "hypotheses": [
+                "A_eq_B : forall u : ivar, eq (A u) (B u)",
+                "B : subst L",
+                "A : subst L",
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. rewrite H. induction p; simpl; f_equal; auto. admit. admit. admit. admit. set (A := subst_compose (cons_subst y (Var_trm z) s) (one_subst y (Var_trm z))). set (B := subst_compose (one_subst y (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z))))). assert (A_eq_B : forall u, A u = B u). admit."
+      },
+      "depth": 3,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "e491de49ffe24d95b6dbcc79bf412ab2",
+      "parent_uuid": "d61a57ef3fdb46e2aedf34953b5bfd71",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "y0 : ivar",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (Hfull : subst_frm (one_subst y (Var_trm z)) (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)) = subst_frm (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z)))) (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))"
+            },
+            {
+              "hypotheses": [
+                "Hfull : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))",
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. rewrite H. induction p; simpl; f_equal; auto. admit. admit. admit. admit. assert (Hfull : subst_frm (one_subst y (Var_trm z)) (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)) = subst_frm (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z)))) (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))."
+      },
+      "depth": 3,
+      "num_failed_attempts_to_generate_children": 1,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": null,
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    },
+    {
+      "uuid": "41594ee6d02e4688813600a08496bc8d",
+      "parent_uuid": "d61a57ef3fdb46e2aedf34953b5bfd71",
+      "value": {
+        "obligation": {
+          "hypotheses": [
+            "Hfull : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))",
+            "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+            "H : eq x y",
+            "s : subst L",
+            "x,y,z : ivar",
+            "p : frm L",
+            "y0 : ivar",
+            "L : language"
+          ],
+          "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+        },
+        "decomposition": {
+          "proofs": [
+            "assert (Hfull : subst_frm (one_subst y (Var_trm z)) (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)) = subst_frm (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z)))) (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))."
+          ],
+          "goals": [
+            {
+              "hypotheses": [
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))"
+            },
+            {
+              "hypotheses": [
+                "Hfull : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p)))",
+                "IHp : eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) p))",
+                "H : eq x y",
+                "s : subst L",
+                "x,y,z : ivar",
+                "p : frm L",
+                "y0 : ivar",
+                "L : language"
+              ],
+              "goal": "eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p))"
+            }
+          ]
+        },
+        "proof_prefix": "destruct FRESH as [H | H]. admit. rewrite H. induction p; simpl; f_equal; auto. admit. admit. admit. admit. assert (Hfull : subst_frm (one_subst y (Var_trm z)) (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)) = subst_frm (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z)))) (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p))). admit."
+      },
+      "depth": 3,
+      "num_failed_attempts_to_generate_children": 0,
+      "children_uuids": [],
+      "decompositions": [],
+      "proof": "hammer.",
+      "lemmas": null,
+      "attempts": [],
+      "failed_attempts": []
+    }
+  ],
+  "nodes_to_expand": [
+    {
+      "cost": -1.1,
+      "id": 135536334604560,
+      "uuid": "f41fba71ff674f22882d8cf317afb0bf"
+    },
+    {
+      "cost": -1.0,
+      "id": 135536287917840,
+      "uuid": "79b1b3e5971740038dc57d59a7be57d5"
+    },
+    {
+      "cost": -0.9,
+      "id": 135536781080080,
+      "uuid": "d61a57ef3fdb46e2aedf34953b5bfd71"
+    },
+    {
+      "cost": -0.4,
+      "id": 135684747655056,
+      "uuid": "99437a8e3eda42acb9211e5a5a9ba9b6"
+    },
+    {
+      "cost": -0.8,
+      "id": 135684921998416,
+      "uuid": "6ed0ee8b4ef94347a0179396d45a5be4"
+    },
+    {
+      "cost": -0.6000000000000001,
+      "id": 135684921998992,
+      "uuid": "d4df9a87e15d44edb7281d3a56757b7b"
+    },
+    {
+      "cost": -0.5,
+      "id": 135684921989072,
+      "uuid": "3804c8c1ad1e41be8ea8d9723de8f32e"
+    },
+    {
+      "cost": 0.0,
+      "id": 135683999532880,
+      "uuid": "0e85990a72ad4df0a20fbfdb38c7af2d"
+    },
+    {
+      "cost": -0.2,
+      "id": 135684747569936,
+      "uuid": "d0129fd56df648b0bae86d6db15e967c"
+    },
+    {
+      "cost": -0.30000000000000004,
+      "id": 135684747643792,
+      "uuid": "d04a1a0f8e124d38bcb250b357e52218"
+    },
+    {
+      "cost": -0.7000000000000001,
+      "id": 135684921988112,
+      "uuid": "3129c68846b94b22a0553fb91adedcec"
+    },
+    {
+      "cost": -0.1,
+      "id": 135684747559696,
+      "uuid": "6da082f9ff244e81b4479a89d91d7da8"
+    }
+  ],
+  "costs_so_far": {
+    "0e85990a72ad4df0a20fbfdb38c7af2d": 0.0,
+    "6da082f9ff244e81b4479a89d91d7da8": -0.1,
+    "d0129fd56df648b0bae86d6db15e967c": -0.2,
+    "d04a1a0f8e124d38bcb250b357e52218": -0.30000000000000004,
+    "99437a8e3eda42acb9211e5a5a9ba9b6": -0.4,
+    "3804c8c1ad1e41be8ea8d9723de8f32e": -0.5,
+    "d4df9a87e15d44edb7281d3a56757b7b": -0.6000000000000001,
+    "3129c68846b94b22a0553fb91adedcec": -0.7000000000000001,
+    "6ed0ee8b4ef94347a0179396d45a5be4": -0.8,
+    "d61a57ef3fdb46e2aedf34953b5bfd71": -0.9,
+    "79b1b3e5971740038dc57d59a7be57d5": -1.0,
+    "f41fba71ff674f22882d8cf317afb0bf": -1.1,
+    "e491de49ffe24d95b6dbcc79bf412ab2": -1.2000000000000002,
+    "41594ee6d02e4688813600a08496bc8d": -1.3
+  },
+  "costs_to_go": {
+    "0e85990a72ad4df0a20fbfdb38c7af2d": 0,
+    "6da082f9ff244e81b4479a89d91d7da8": 0,
+    "d0129fd56df648b0bae86d6db15e967c": 0,
+    "d04a1a0f8e124d38bcb250b357e52218": 0,
+    "99437a8e3eda42acb9211e5a5a9ba9b6": 0,
+    "3804c8c1ad1e41be8ea8d9723de8f32e": 0,
+    "d4df9a87e15d44edb7281d3a56757b7b": 0,
+    "3129c68846b94b22a0553fb91adedcec": 0,
+    "6ed0ee8b4ef94347a0179396d45a5be4": 0,
+    "d61a57ef3fdb46e2aedf34953b5bfd71": 0,
+    "79b1b3e5971740038dc57d59a7be57d5": 0,
+    "f41fba71ff674f22882d8cf317afb0bf": 0,
+    "e491de49ffe24d95b6dbcc79bf412ab2": 0,
+    "41594ee6d02e4688813600a08496bc8d": 0
+  },
+  "no_more_children": {},
+  "node_added_idx": {
+    "0e85990a72ad4df0a20fbfdb38c7af2d": 0,
+    "6da082f9ff244e81b4479a89d91d7da8": 1,
+    "d0129fd56df648b0bae86d6db15e967c": 2,
+    "d04a1a0f8e124d38bcb250b357e52218": 3,
+    "99437a8e3eda42acb9211e5a5a9ba9b6": 4,
+    "3804c8c1ad1e41be8ea8d9723de8f32e": 5,
+    "d4df9a87e15d44edb7281d3a56757b7b": 6,
+    "3129c68846b94b22a0553fb91adedcec": 7,
+    "6ed0ee8b4ef94347a0179396d45a5be4": 8,
+    "d61a57ef3fdb46e2aedf34953b5bfd71": 9,
+    "79b1b3e5971740038dc57d59a7be57d5": 10,
+    "f41fba71ff674f22882d8cf317afb0bf": 11,
+    "e491de49ffe24d95b6dbcc79bf412ab2": 12,
+    "41594ee6d02e4688813600a08496bc8d": 13
+  },
+  "next_node_idx": 14,
+  "remaining_nodes_to_expand": 147,
+  "root_uuid": "0e85990a72ad4df0a20fbfdb38c7af2d",
+  "done": false,
+  "visualization": "\n* (5 HYPS)|-eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p)) (cost:0.0; n_fail:0)\n  # 1 prefixes like destruct FRESH as [H | H].\n  * (5 HYPS)|-eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p)) (cost:-0.1; n_fail:0)\n\n  * (5 HYPS)|-eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p)) (cost:-0.2; n_fail:0)\n    # 1 prefixes like assert (Hcond : is_free_in_frm x p = false \\/ x = y).\n    * (5 HYPS)|-or (eq (is_free_in_frm x p) false) (eq x y) (proven) (pruned) (done:True; cost:-0.30000000000000004; n_fail:0)\n      # successful proof: hammer.\n    * (6 HYPS)|-eq\n  (subst_frm (one_subst x (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) p))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst x (Var_trm z))))\n     (subst_frm (one_subst x (Var_trm y)) p)) (cost:-0.4; n_fail:0)\n\n    # 1 prefixes like rewrite H. induction p; simpl; f_equal; auto.\n    * (6 HYPS)|-eq\n  (subst_trms (one_subst y (Var_trm z))\n     (subst_trms (cons_subst y (Var_trm z) s) ts))\n  (subst_trms\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trms (one_subst y (Var_trm y)) ts)) (cost:-0.5; n_fail:0)\n\n    * (5 HYPS)|-eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t1))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t1)) (cost:-0.6000000000000001; n_fail:0)\n\n    * (5 HYPS)|-eq\n  (subst_trm (one_subst y (Var_trm z))\n     (subst_trm (cons_subst y (Var_trm z) s) t2))\n  (subst_trm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_trm (one_subst y (Var_trm y)) t2)) (cost:-0.7000000000000001; n_fail:0)\n\n    * (7 HYPS)|-eq\n  (chi_frm (one_subst y (Var_trm z))\n     (All_frm (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n              (cons_subst y (Var_trm z) s)) p)))\n  (chi_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (All_frm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (subst_frm\n           (cons_subst y0\n              (Var_trm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n              (one_subst y (Var_trm y))) p))) (cost:-0.8; n_fail:0)\n\n    * (7 HYPS)|-eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p)) (cost:-0.9; n_fail:0)\n      # 1 prefixes like set (A := subst_compose (cons_subst y (Var_trm z) s) (one_subst y (Var_trm z))). set (B := subst_compose (one_subst y (Var_trm y)) (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z))))). assert (A_eq_B : forall u, A u = B u).\n      * (9 HYPS)|-forall u : ivar, eq (A u) (B u) (cost:-1.0; n_fail:0)\n\n      * (10 HYPS)|-eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p)) (cost:-1.1; n_fail:0)\n\n      # 1 prefixes like assert (Hfull : subst_frm (one_subst y (Var_trm z)) (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)) = subst_frm (cons_subst y (Var_trm z) (subst_compose s (one_subst y (Var_trm z)))) (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p))).\n      * (7 HYPS)|-eq\n  (subst_frm (one_subst y (Var_trm z))\n     (subst_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n  (subst_frm\n     (cons_subst y (Var_trm z)\n        (subst_compose s (one_subst y (Var_trm z))))\n     (subst_frm (one_subst y (Var_trm y)) (All_frm y0 p))) (cost:-1.2000000000000002; n_fail:1)\n\n      * (8 HYPS)|-eq\n  (subst_frm\n     (cons_subst (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n        (Var_trm\n           (chi_frm (one_subst y (Var_trm z))\n              (All_frm\n                 (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (cons_subst y (Var_trm z) s)\n                             (All_frm y0 p)))\n                       (cons_subst y (Var_trm z) s)) p))))\n        (one_subst y (Var_trm z)))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm\n              (chi_frm (cons_subst y (Var_trm z) s) (All_frm y0 p)))\n           (cons_subst y (Var_trm z) s)) p))\n  (subst_frm\n     (cons_subst (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n        (Var_trm\n           (chi_frm\n              (cons_subst y (Var_trm z)\n                 (subst_compose s (one_subst y (Var_trm z))))\n              (All_frm\n                 (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p))\n                 (subst_frm\n                    (cons_subst y0\n                       (Var_trm\n                          (chi_frm (one_subst y (Var_trm y))\n                             (All_frm y0 p))) (one_subst y (Var_trm y)))\n                    p))))\n        (cons_subst y (Var_trm z)\n           (subst_compose s (one_subst y (Var_trm z)))))\n     (subst_frm\n        (cons_subst y0\n           (Var_trm (chi_frm (one_subst y (Var_trm y)) (All_frm y0 p)))\n           (one_subst y (Var_trm y))) p)) (proven) (pruned) (done:True; cost:-1.3; n_fail:0)\n        # successful proof: hammer."
+}
